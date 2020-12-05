@@ -9,6 +9,12 @@
 
 Link to scrum board: https://github.com/orgs/P5-Tacos/projects/1
 
+## Changes Log
+Week 0 
+- created readme
+- created scrumboard
+- creating preliminary issues (assignments)
+
 ### Abstract
 Thrift store inventory and sale system. Creating a web based storefront for users to see what stock is within the store and potentially purchase items from the thrift shop.
 

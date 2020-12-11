@@ -7,16 +7,21 @@
 | Andrew Zhang | Ketherbug | Pair 2|
 |Brayden Basinger  |  BraydenBasinger| Pair 2|
 
-Link to scrum board: https://github.com/orgs/P5-Tacos/projects/1
-Link to project board: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
+- Link to scrum board: https://github.com/orgs/P5-Tacos/projects/1
+- Link to project plan and requirements: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
 
 ## Changes Log
+
+Week 1
+- completed the project plan/schedule
+- started to look into implmentation of database by deploying Nighthawk Coding Society page onto pi
+
 Week 0 
 - created readme
 - created scrumboard
 - creating preliminary issues (assignments)
 
-### Abstract
+### Summary
 Thrift store inventory and sale system. Creating a web based storefront for users to see what stock is within the store and potentially purchase items from the thrift shop.
 
 The website application would need to differentiate between user and employee. The user could use the site to browse the items available without purchasing them online. The user would have to sign in with their personal information to purchase items online. The employee would sign into the website to identify what items need to be picked out to ship off to the customer as well as an interface to upload images to corresponding identifying numbers.
@@ -26,12 +31,12 @@ The website application would need to differentiate between user and employee. T
 Store information of username and password
 
 users
--   Store recent purchases of users
+- Store recent purchases of users
 - suggested items based off recent purchases
 - suggested thrift shop based off recent purchases
 
 employee/admin
--   Store items in stock that have been uploaded to show in the store front
+- Store items in stock that have been uploaded to show in the store front
 - show per store visualization of when are the most active times
 
 Different stores could register within the website, this would introduce an additional landing page where customers can select which store they want to browse through

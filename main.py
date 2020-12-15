@@ -11,6 +11,10 @@ app = Flask(__name__)
 def home():
     return render_template("test.html")#home has to be under templates
 
+@approute('inventory')
+def inv():
+    return render_template("inventory.html") #this is a navbar for socks, shirts, shorts
+
 if __name__ == "__main__":
     #runs the application on the repl development server
     app.run(debug=True)

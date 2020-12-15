@@ -23,11 +23,11 @@ def __init__(self, name, city, addr,pin):
 db.create_all()
 
 #connects default URL of server to a python function
-@app.route('/')
+"""@app.route('/')
 def home():
     return render_template("test.html")#home has to be under templates
-
-@app.route('inventory')
+"""
+@app.route('/')
 def inv():
     return render_template("inventory.html") #this is a navbar for socks, shirts, shorts
 

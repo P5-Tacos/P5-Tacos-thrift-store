@@ -31,6 +31,22 @@ def home():
 def inv():
     return render_template("inventory.html") #this is a navbar for socks, shirts, shorts
 
+@app.route('/contactus')
+def contactus():
+    return render_template("contactus.html") #this is the app route to the contact us page
+
+@app.route('/men')
+def men():
+    return render_template("men.html") #this is the app route to the men's page
+
+@app.route('/women')
+def women():
+    return render_template("women.html") #this is the app route to the women's page
+
+@app.route('/inventory')
+def inventory():
+    return render_template("inventory.html") #this is the app route to home page
+
 if __name__ == "__main__":
     #runs the application on the repl development server
     app.run(debug=True)

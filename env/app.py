@@ -1,32 +1,44 @@
 # https://flask.palletsprojects.com/en/1.1.x/api/
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from flask_bootstrap import Bootstrap
+from wtforms import  BooleanField, StringField, PasswordField
+from wtforms.validators import InputRequired,Email,Length
+
 
 
 #create a Flask instance
 app = Flask(__name__)
+app.config['SECRET_KEY'] = ':)'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
+Bootstrap(app)
 db = SQLAlchemy(app)
-class students(db.Model):
+class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key = True)
     name = db.Column(db.String(100))
     type = db.Column(db.String(50))
     price = db.Column(db.Float(200))
 
-def __init__(self, name, city, addr,pin):
+def __init__(self, id, name, type, price):
     self.name = name
-    self.city = city
-    self.addr = addr
-    self.pin = pin
+    self.id = id
+    self.type = type
+    self.price = price
 
 db.create_all()
 
+class ItemForm(FlaskForm):
+    name = StringField('name',validators=[InputRequired(), Length(min=1,max=15)])
+    type = StringField('type',validators=[InputRequired(), Length(min=1,max=80)])
+    price = StringField('price',validators=[InputRequired(), Length(min=1,max=80)])
 #connects default URL of server to a python function
 """@app.route('/')
 def home():
     return render_template("test.html")#home has to be under templates
 """
+
 @app.route('/')
 def inv():
     return render_template("inventory.html") #this is a navbar for socks, shirts, shorts
@@ -34,6 +46,19 @@ def inv():
 @app.route('/contactus')
 def contactus():
     return render_template("contactus.html") #this is the app route to the contact us page
+
+
+@app.route('/database')
+def signup():
+    form = ItemForm()
+    if form.validate_on_submit():
+        new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
+        db.session.add(new_item)
+        db.session.commit()
+        return redirect(url_for('contactus'))
+
+
+    return render_template("Database test.html", form = form)
 
 @app.route('/men')
 def men():
@@ -46,6 +71,7 @@ def women():
 @app.route('/inventory')
 def inventory():
     return render_template("inventory.html") #this is the app route to home page
+
 
 if __name__ == "__main__":
     #runs the application on the repl development server

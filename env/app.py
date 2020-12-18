@@ -1,16 +1,19 @@
 # https://flask.palletsprojects.com/en/1.1.x/api/
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import Form, BooleanField, StringField, PasswordField
+from flask_bootstrap import Bootstrap
+from wtforms import  BooleanField, StringField, PasswordField
 from wtforms.validators import InputRequired,Email,Length
 
 
 
 #create a Flask instance
 app = Flask(__name__)
+app.config['SECRET_KEY'] = ':)'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
+Bootstrap(app)
 db = SQLAlchemy(app)
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key = True)
@@ -27,35 +30,49 @@ def __init__(self, id, name, type, price):
 db.create_all()
 
 class ItemForm(FlaskForm):
-    name = StringField('name',validators=[InputRequired(), Length(min=4,max=15)])
-    type = StringField('type',validators=[InputRequired(), Length(min=8,max=80)])
-    price = StringField('price',validators=[InputRequired(), Length(min=8,max=80)])
+    name = StringField('name',validators=[InputRequired(), Length(min=1,max=15)])
+    type = StringField('type',validators=[InputRequired(), Length(min=1,max=80)])
+    price = StringField('price',validators=[InputRequired(), Length(min=1,max=80)])
 #connects default URL of server to a python function
 """@app.route('/')
 def home():
     return render_template("test.html")#home has to be under templates
 """
+
 @app.route('/')
 def inv():
     return render_template("inventory.html") #this is a navbar for socks, shirts, shorts
-def create():
-    if request.form:
-        """prepare data for primary table extracting from form"""
-        user = Users(username=request.form.get("username"), password=request.form.get("password"))
-        """add and commit data to user table"""
-        db.session.add(user)
+
+@app.route('/contactus')
+def contactus():
+    return render_template("contactus.html") #this is the app route to the contact us page
+
+
+@app.route('/database')
+def signup():
+    form = ItemForm()
+    if form.validate_on_submit():
+        new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
+        db.session.add(new_item)
         db.session.commit()
-        """prepare data for related tables extracting from form and using new UserID """
-        userid = db.session.query(func.max(Users.UserID))
-        email = Emails(email_address=request.form.get("email"), UserID=userid)
-        phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=userid)
-        """email table add and commit"""
-        db.session.add(email)
-        db.session.commit()
-        """phone number table add and commit"""
-        db.session.add(phone_number)
-        db.session.commit()
-    return redirect(url_for('pythondb_bp.databases'))
+        return redirect(url_for('contactus'))
+
+
+    return render_template("Database test.html", form = form)
+
+@app.route('/men')
+def men():
+    return render_template("men.html") #this is the app route to the men's page
+
+@app.route('/women')
+def women():
+    return render_template("women.html") #this is the app route to the women's page
+
+@app.route('/inventory')
+def inventory():
+    return render_template("inventory.html") #this is the app route to home page
+
+
 if __name__ == "__main__":
     #runs the application on the repl development server
     app.run(debug=True)

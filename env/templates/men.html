@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 <html lang="en">
 
 <head>
@@ -33,20 +33,11 @@ body {
   color: blue;
 }
 </style>
-</head>
-<body>
-
-<div class="topnav">
-    <a class="home" href="inventory">Home</a>
-    <a href="men">Men</a>
-    <a href="women">Women</a>
-    <a href="contactus">Contact Us</a>
-</div>
-<head>
     <meta charset="UTF-8">
     <title>Men's Clothing</title>
 </head>
-<body>
+{% block content %}
+
 <p>Men's Clothing</p>
 
-</body>
+{% endblock %}

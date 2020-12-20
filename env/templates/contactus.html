@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 <html lang="en">
 
 <head>
@@ -33,24 +33,8 @@ body {
   color: blue;
 }
 </style>
-</head>
-<body>
-
-<div class="topnav">
-    <a class="home" href="inventory">Home</a>
-    <a href="men">Men</a>
-    <a href="women">Women</a>
-    <a href="contactus">Contact Us</a>
-</div>
-
-<head>
     <meta charset="UTF-8">
     <title>Contact Us!</title>
-</head>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-<head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,8 +67,10 @@ body {
       .row.content {height: auto;}
     }
   </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
+
+{% block content %}
 
 <div class="container-fluid">
     <div class="row content">
@@ -112,8 +98,7 @@ body {
                 <p>Footer Text</p>
             </footer>
 
-</body>
-
+{% endblock %}
 
 <body>
 

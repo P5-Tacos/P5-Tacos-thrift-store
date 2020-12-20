@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title></title>
+    {% endblock %}
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        .topnav a {
+          float: left;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 20px;
+        }
+
+        .topnav a:hover {
+          background-color: #193347;
+          color: Navy;
+        }
+
+        .topnav a.active {
+          background-color: #3d77a6;
+          color: blue;
+        }
+        </style>
+</head>
+<body>
+    <!-- this is the nav bar -->
+    <div class="topnav">
+        <a class="home" href="inventory">Home</a>
+        <a href="men">Men</a>
+        <a href="women">Women</a>
+        <a href="contactus">Contact Us</a>
+        <a href="database">Database</a>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

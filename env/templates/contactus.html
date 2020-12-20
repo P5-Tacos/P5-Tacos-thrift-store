@@ -33,8 +33,13 @@ body {
   color: blue;
 }
 </style>
-    <meta charset="UTF-8">
-    <title>Contact Us!</title>
+    </head>
+
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,10 +72,8 @@ body {
       .row.content {height: auto;}
     }
   </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-
-{% block content %}
+<body>
 
 <div class="container-fluid">
     <div class="row content">
@@ -97,12 +100,7 @@ body {
             <footer class="container-fluid">
                 <p>Footer Text</p>
             </footer>
+</body>
 
 {% endblock %}
 
-<body>
-
-</body>
-
-
-</html>

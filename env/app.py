@@ -9,12 +9,14 @@ from wtforms.validators import InputRequired,Email,Length
 
 
 #create a Flask instance
+"Setting up the keys are needed for the database"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = ':)'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
 Bootstrap(app)
 db = SQLAlchemy(app)
+"Initialize Database with specific Items"
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key = True)
     name = db.Column(db.String(100))
@@ -26,9 +28,10 @@ def __init__(self, id, name, type, price):
     self.id = id
     self.type = type
     self.price = price
-
+"Create Database"
 db.create_all()
 
+"Initialize the form that will retrieve data from the HTML page,flaskwtf form"
 class ItemForm(FlaskForm):
     name = StringField('name',validators=[InputRequired(), Length(min=1,max=15)])
     type = StringField('type',validators=[InputRequired(), Length(min=1,max=80)])
@@ -51,6 +54,7 @@ def contactus():
 @app.route('/database')
 def signup():
     form = ItemForm()
+    "Validate the forms"
     if form.validate_on_submit():
         new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
         db.session.add(new_item)

@@ -36,12 +36,17 @@ body {
 </head>
 <body>
 
-<div class="topnav">
+<div class="topnav
     <a class="home" href="inventory">Home</a>
     <a href="men">Men</a>
     <a href="women">Women</a>
     <a href="contactus">Contact Us</a>
 </div>
+{% for item in items%}
+<h1>{{ item.product }} </h1>
+<h2>{{ item.price }} </h2>
+<hr>
+{% endfor %}
 <head>
 
 <head>

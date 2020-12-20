@@ -66,7 +66,9 @@ def men():
 
 @app.route('/women')
 def women():
-    return render_template("women.html") #this is the app route to the women's page
+    items = [{"product":"t-shirt", "price":10},]
+    return render_template("women.html", items = items) #this is the app route to the women's page
+
 
 @app.route('/inventory')
 def inventory():

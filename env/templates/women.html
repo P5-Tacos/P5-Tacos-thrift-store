@@ -7,36 +7,6 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.topnav a:hover {
-  background-color: #193347;
-  color: Navy;
-}
-
-.topnav a.active {
-  background-color: #3d77a6;
-  color: blue;
-}
-</style>
 </head>
 {% block content %}
 
@@ -44,10 +14,5 @@ body {
     <h1>{{ item.product }} </h1>
     <h2>{{ item.price }} </h2>
 {% endfor %}
-
-<head>
-    <meta charset="UTF-8">
-    <title>Women's Clothing</title>
-</head>
 
 {% endblock %}

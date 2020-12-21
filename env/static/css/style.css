@@ -1,0 +1,48 @@
+body {
+  margin: 10;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+  color: black;
+}
+p {
+    color: black;
+}
+
+h1 {
+    color: black;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.topnav a {
+  float: left;
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topnav a:hover {
+  background-color: #5AAEDE;
+  color: Navy;
+}
+
+.topnav a.active {
+  background-color: #5AAEDE;
+  color: blue;
+}
+
+/*style for an iprogress overlay */
+.in_progress{
+    position: absolute;
+    opacity: 0.6;
+    text-align: center;
+    color: #b32400;
+    font-size: 300%;
+    transform: rotate(20deg);
+    pointer-events: none;
+    top:42%;
+    }

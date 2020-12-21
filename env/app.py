@@ -5,6 +5,7 @@ from flask_wtf import FlaskForm
 from flask_bootstrap import Bootstrap
 from wtforms import  BooleanField, StringField, PasswordField
 from wtforms.validators import InputRequired,Email,Length
+import inventory_data
 
 #create a Flask instance
 "Setting up the keys are needed for the database"
@@ -36,9 +37,14 @@ class ItemForm(FlaskForm):
     price = StringField('price',validators=[InputRequired(), Length(min=1,max=80)])
 #connects default URL of server to a python function
 
+"""@app.route('/')
+def index():
+    return render_template("inventory.html") #this the the first landing page that the user enters"""
+
 @app.route('/')
 def index():
-    return render_template("inventory.html") #this the the first landing page that the user enters
+    #function use Flask import (Jinga) to render an HTML template
+    return render_template("gallery.html", inventory_list=inventory_data.inventory_items())
 
 @app.route('/contactus')
 def contactus():
@@ -61,7 +67,7 @@ def men():
 
 @app.route('/women')
 def women():
-    items = [{"product":"t-shirt", "price":10},]
+    items = [{"product":"t-shirt", "price":10},]#formating the dictonary in a list, similar to a JSON format
     return render_template("women.html", items = items) #this is the app route to the women's page
 
 if __name__ == "__main__":

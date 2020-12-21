@@ -39,11 +39,11 @@
 <body>
     <!-- this is the nav bar -->
     <div class="topnav">
-        <a class="home" href="inventory">Home</a>
-        <a href="men">Men</a>
-        <a href="women">Women</a>
-        <a href="contactus">Contact Us</a>
-        <a href="database">Database</a>
+        <a class="home" href="{{url_for('.index')}}">Home</a>
+        <a href="{{url_for('.men')}}">Men</a>
+        <a href="{{url_for('.women')}}">Women</a>
+        <a href="{{url_for('.contactus')}}">Contact Us</a>
+        <a href="{{url_for('.signup')}}">Database</a>
     </div>
     {% block content %}{% endblock %}
 </body>

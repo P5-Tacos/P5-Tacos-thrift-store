@@ -43,7 +43,7 @@ def home():
 """
 
 @app.route('/')
-def inv():
+def index():
     return render_template("inventory.html") #this is a navbar for socks, shirts, shorts
 
 @app.route('/contactus')

@@ -11,6 +11,14 @@
 #### Link to project plan and requirements: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
 
 ## Changes Log
+Week 2
+Week 2
+- began on protype on the webpage
+	- will use the webpage to ideate what the storyboard will be like (see what works and what doesn't)
+- completed preliminary prototype of customer UI 
+	- see the [gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/2d13dcbbebd1e39eaefef786d938f3d0cbb0779a/env/templates/gallery.html#L1-L59) 
+- preliminary designs of Data collection
+	- see [database test](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/2d13dcbbebd1e39eaefef786d938f3d0cbb0779a/env/templates/Database%20test.html#L1-L22) 
 
 Week 1
 - completed the project plan/schedule

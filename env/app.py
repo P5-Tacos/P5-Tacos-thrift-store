@@ -6,8 +6,6 @@ from flask_bootstrap import Bootstrap
 from wtforms import  BooleanField, StringField, PasswordField
 from wtforms.validators import InputRequired,Email,Length
 
-
-
 #create a Flask instance
 "Setting up the keys are needed for the database"
 app = Flask(__name__)
@@ -37,21 +35,16 @@ class ItemForm(FlaskForm):
     type = StringField('type',validators=[InputRequired(), Length(min=1,max=80)])
     price = StringField('price',validators=[InputRequired(), Length(min=1,max=80)])
 #connects default URL of server to a python function
-"""@app.route('/')
-def home():
-    return render_template("test.html")#home has to be under templates
-"""
 
 @app.route('/')
 def index():
-    return render_template("inventory.html") #this is a navbar for socks, shirts, shorts
+    return render_template("inventory.html") #this the the first landing page that the user enters
 
 @app.route('/contactus')
 def contactus():
     return render_template("contactus.html") #this is the app route to the contact us page
 
-
-@app.route('/database')
+@app.route('/database') #contribution by Andrew
 def signup():
     form = ItemForm()
     "Validate the forms"
@@ -60,8 +53,6 @@ def signup():
         db.session.add(new_item)
         db.session.commit()
         return redirect(url_for('contactus'))
-
-
     return render_template("Database test.html", form = form)
 
 @app.route('/men')
@@ -73,12 +64,5 @@ def women():
     items = [{"product":"t-shirt", "price":10},]
     return render_template("women.html", items = items) #this is the app route to the women's page
 
-
-@app.route('/inventory')
-def inventory():
-    return render_template("inventory.html") #this is the app route to home page
-
-
 if __name__ == "__main__":
-    #runs the application on the repl development server
     app.run(debug=True)

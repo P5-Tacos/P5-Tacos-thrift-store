@@ -10,6 +10,9 @@
 #### Link to scrum board: https://github.com/orgs/P5-Tacos/projects/1
 #### Link to project plan and requirements: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
 
+when downloading need to execute:
+    pip install -r requirements.txt
+
 ## Changes Log
 Week 2
 Week 2

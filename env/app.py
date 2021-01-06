@@ -52,7 +52,7 @@ def contactus():
 
 @app.route('/database') #contribution by Andrew
 def signup():
-    form = ItemForm() 
+    form = ItemForm()
     "Validate the forms"
     if form.validate_on_submit():
         new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)

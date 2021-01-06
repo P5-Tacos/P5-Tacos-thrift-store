@@ -50,7 +50,7 @@ def index():
 def contactus():
     return render_template("contactus.html") #this is the app route to the contact us page
 
-@app.route('/database') #contribution by Andrew
+@app.route('/database', methods = ['GET','POST']) #contribution by Andrew
 def signup():
     form = ItemForm()
     "Validate the forms"

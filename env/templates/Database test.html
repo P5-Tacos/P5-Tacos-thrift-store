@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container" style="color:black;">
 
-    <form class="form-append" method="POST" action="/database/">
+    <form class="form-append" method="POST" action="/database">
         {{ form.hidden_tag() }}
         <h2 class="form-signin-heading">Please append data</h2>
         {{wtf.form_field(form.name)}}

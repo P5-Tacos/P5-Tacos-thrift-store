@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if 'name' in data %}
+{% set repl = data['name'] %}
+{% include "inventorydate.py" %}
+{% endif %}
+
+{% if 'tag' in data %}
+{% set repl = data['tag'] %}
+{% include "inventorydate.py" %}
+{% endif %}
+
+{% if 'description' in data %}
+{% set repl = data['description'] %}
+{% include "inventorydate.py" %}
+{% endif %}
+
+{% if 'size' in data %}
+{% set repl = data['size'] %}
+{% include "inventorydate.py" %}
+{% endif %}
+
+{% if 'price' in data %}
+{% set repl = data['price'] %}
+{% include "inventorydate.py" %}
+{% endif %}
+
+
+
+
+
+
+
+<style>
+
+        h1{
+            font-size: 4em;;
+        }
+
+        .block{
+            margin-top: 2.5%;
+        }
+
+
+    </style>
+
+
+{% endblock %}

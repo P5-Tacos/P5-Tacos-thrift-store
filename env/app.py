@@ -64,7 +64,7 @@ def signup():
 
 @app.route('/men')
 def men():
-    return render_template("men.html") #this is the app route to the men's page
+    return render_template("gallery.html", inventory_list=inventory_data.inventory_itemsbarb()) #this is the app route to the men's page
 
 @app.route('/women')
 def women():

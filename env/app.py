@@ -6,6 +6,8 @@ from flask_bootstrap import Bootstrap
 from wtforms import  BooleanField, StringField, PasswordField
 from wtforms.validators import InputRequired,Email,Length
 import inventory_data
+from inventory_data import * # the * imports all functions from the inventory_data.py, so name,tag,price,...
+
 
 #create a Flask instance
 "Setting up the keys are needed for the database"
@@ -52,7 +54,7 @@ def contactus():
 
 @app.route('/database', methods = ['GET','POST']) #contribution by Andrew
 def signup():
-    form = ItemForm() 
+    form = ItemForm()
     "Validate the forms"
     if form.validate_on_submit():
         new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
@@ -63,12 +65,29 @@ def signup():
 
 @app.route('/men')
 def men():
-    return render_template("men.html") #this is the app route to the men's page
+    return render_template("gallery.html", inventory_list=inventory_data.inventory_itemsbarb()) #this is the app route to the men's page
 
 @app.route('/women')
 def women():
     items = [{"product":"t-shirt", "price":10},]#formating the dictonary in a list, similar to a JSON format
     return render_template("women.html", items = items) #this is the app route to the women's page
+
+@app.route('/item1a')
+def item1a():
+    return render_template("clothes_info.html", data = inventory_data.item1a()) #takes the variables and sticks it in to the template
+
+@app.route('/item2a')
+def item2a():
+    return render_template("clothes_info.html", data = inventory_data.item2a())
+
+@app.route('/item3a')
+def item3a():
+    return render_template("clothes_info.html", data = inventory_data.item3a())
+
+@app.route('/item4a')
+def item4a():
+    return render_template("clothes_info.html", data = inventory_data.item4a())
+
 
 if __name__ == "__main__":
     app.run(debug=True)

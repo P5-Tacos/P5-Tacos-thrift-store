@@ -6,7 +6,6 @@ from flask_bootstrap import Bootstrap
 from wtforms import  BooleanField, StringField, PasswordField
 from wtforms.validators import InputRequired,Email,Length
 import inventory_data
-from inventory_data import *
 
 
 #create a Flask instance
@@ -74,19 +73,8 @@ def women():
 
 @app.route('/item1')
 def item1():
-    return render_template("clothes_info.html", data = inventory_data.item1())
+    return render_template("clothes_info.html", data = inventory_data.inventory_items[1])
 
-@app.route('/item2')
-def item2():
-    return render_template("clothes_info.html", data = inventory_data.item2())
-
-@app.route('/item3')
-def item3():
-    return render_template("clothes_info.html", data = inventory_data.item3())
-
-@app.route('/item4')
-def item4():
-    return render_template("clothes_info.html", data = inventory_data.item4())
 
 if __name__ == "__main__":
     app.run(debug=True)

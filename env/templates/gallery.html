@@ -40,7 +40,7 @@
     <!--<p>item</p>-->
     <div class="row">
         <div class="column">
-            <div class="card"><a href=item{{loop.index}}>
+            <div class="card">
                 <img src="../static/images/item{{loop.index}}.jpg" width=100%>
                 <div class="container">
                     <h2>Item #{{loop.index}} - {{name}}</h2>
@@ -48,9 +48,9 @@
                     <p class="title" sytle="color:black;">{{tag}}</p>
                     <p sytle="color:black;">{{description}}</p>
                     <p sytle="color:black;">${{price}}.00</p>
-                    <a href=item{{loop.index}}><button class="button">add to cart</button></a> <!-- convert to POST -->
+                    <a href="/item1"><button class="button">add to cart</button></a> <!-- convert to POST -->
                 </div>
-            </a></div>
+            </div>
         </div>
     {% endfor %}
 

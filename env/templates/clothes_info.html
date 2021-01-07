@@ -3,33 +3,50 @@
 {% extends "base.html" %}
 {% block content %}
 
+
 {% if 'name' in data %}
-{% set name = data['name'] %}
+{% set repl = data['name'] %}
+{% include "inventorydate.py" %}
 {% endif %}
 
-
 {% if 'tag' in data %}
-{% set tag = data['tag'] %}
+{% set repl = data['tag'] %}
+{% include "inventorydate.py" %}
 {% endif %}
 
 {% if 'description' in data %}
-{% set description = data['description'] %}
+{% set repl = data['description'] %}
+{% include "inventorydate.py" %}
 {% endif %}
 
 {% if 'size' in data %}
-{% set size = data['size'] %}
+{% set repl = data['size'] %}
+{% include "inventorydate.py" %}
 {% endif %}
 
 {% if 'price' in data %}
-{% set price = data['price'] %}
+{% set repl = data['price'] %}
+{% include "inventorydate.py" %}
 {% endif %}
 
-<!--This is where the information comes in-->
-{{name}}
-{{tag}}
-{{descprition}}
-{{size}}
-{{price}}
+
+
+
+
+
+
+<style>
+
+        h1{
+            font-size: 4em;;
+        }
+
+        .block{
+            margin-top: 2.5%;
+        }
+
+
+    </style>
 
 
 {% endblock %}

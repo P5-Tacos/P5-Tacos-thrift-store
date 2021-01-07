@@ -7,6 +7,7 @@ from wtforms import  BooleanField, StringField, PasswordField
 from wtforms.validators import InputRequired,Email,Length
 import inventory_data
 
+
 #create a Flask instance
 "Setting up the keys are needed for the database"
 app = Flask(__name__)
@@ -69,6 +70,11 @@ def men():
 def women():
     items = [{"product":"t-shirt", "price":10},]#formating the dictonary in a list, similar to a JSON format
     return render_template("women.html", items = items) #this is the app route to the women's page
+
+@app.route('/item1')
+def item1():
+    return render_template("clothes_info.html", data = inventory_data.inventory_items[1])
+
 
 if __name__ == "__main__":
     app.run(debug=True)

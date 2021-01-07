@@ -5,31 +5,31 @@
 
 
 {% if 'name' in data %}
-{% set repl = data['name'] %}
-{% include "inventorydate.py" %}
+{% set name = data['name'] %}
 {% endif %}
 
 {% if 'tag' in data %}
-{% set repl = data['tag'] %}
-{% include "inventorydate.py" %}
+{% set tag = data['tag'] %}
 {% endif %}
 
 {% if 'description' in data %}
-{% set repl = data['description'] %}
-{% include "inventorydate.py" %}
+{% set description = data['description'] %}
 {% endif %}
 
 {% if 'size' in data %}
-{% set repl = data['size'] %}
-{% include "inventorydate.py" %}
+{% set size = data['size'] %}
 {% endif %}
 
 {% if 'price' in data %}
-{% set repl = data['price'] %}
-{% include "inventorydate.py" %}
+{% set price = data['price'] %}
 {% endif %}
 
+<!-- re-define variables -->
 
+{{name}}
+{{tag}}
+{{price}}
+{{description}}
 
 
 

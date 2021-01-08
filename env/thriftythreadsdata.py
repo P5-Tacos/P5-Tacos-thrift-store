@@ -1,4 +1,4 @@
-def item1a():
+def TT1():
     name = "boxing shorts"
     tag ="shorts"
     description = "for lighting fast feet"
@@ -7,7 +7,7 @@ def item1a():
     info = {"name": name,"tag":tag, "description": description, "size":size, "price": price}
     return info
 
-def item2a():
+def TT2():
     name = "blue polo"
     tag ="shirt"
     description = "great for any look"
@@ -16,7 +16,7 @@ def item2a():
     info = {"name": name,"tag":tag, "description": description, "size":size, "price": price}
     return info
 
-def item3a():
+def TT3():
     name = "Fo Leather Jacket"
     tag ="jacket"
     description = "Looks like leather"
@@ -25,7 +25,7 @@ def item3a():
     info = {"name": name,"tag":tag, "description": description, "size":size, "price": price}
     return info
 
-def item4a():
+def TT4():
     name = "sandals"
     tag ="footwear"
     description = "studded with jewels"
@@ -35,27 +35,7 @@ def item4a():
     return info
 
 
-def inventory_items():
-    return [item1a(), item2a(), item3a(), item4a()]
+def inventory_itemsTT():
+    return [TT1(), TT2(), TT3(), TT4()]
 
 
-def item1b():
-    name = "Vintage socks"
-    tag = "footwear"
-    description = "cool design/logo"
-    price = "5"
-    size = "Men's M"
-    info = {"name": name, "tag":tag, "description": description, "size":size, "price": price}
-    return info
-
-def item2b():
-    name ="Vintage Jacket"
-    tag = "jacket"
-    description = "bomber jacket 94"
-    price = "45"
-    size = "Men's XL"
-    info = {"name": name, "tag":tag, "description": description, "size":size, "price": price}
-    return info
-
-def inventory_itemsbarb():
-    return [item1b(), item2b()]

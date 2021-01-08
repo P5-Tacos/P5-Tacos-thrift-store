@@ -1,13 +1,12 @@
 # https://flask.palletsprojects.com/en/1.1.x/api/
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, redirect, url_for
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from flask_bootstrap import Bootstrap
-from wtforms import  BooleanField, StringField, PasswordField
-from wtforms.validators import InputRequired,Email,Length
-import inventory_data
-from inventory_data import * # the * imports all functions from the inventory_data.py, so name,tag,price,...
-
+from wtforms import StringField
+from wtforms.validators import InputRequired, Length
+import thriftythreadsdata
+import barbarella
 
 #create a Flask instance
 "Setting up the keys are needed for the database"
@@ -46,7 +45,7 @@ def index():
 @app.route('/')
 def index():
     #function use Flask import (Jinga) to render an HTML template
-    return render_template("gallery.html", inventory_list=inventory_data.inventory_items())
+    return render_template("men.html")
 
 @app.route('/contactus')
 def contactus():
@@ -63,30 +62,29 @@ def signup():
         return redirect(url_for('contactus'))
     return render_template("Database test.html", form = form)
 
-@app.route('/men')
-def men():
-    return render_template("gallery.html", inventory_list=inventory_data.inventory_itemsbarb()) #this is the app route to the men's page
+@app.route('/thriftythreads')
+def thriftythreads():
+    return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT()) #this is the app route to the ThriftTHreads's page
 
-@app.route('/women')
-def women():
-    items = [{"product":"t-shirt", "price":10},]#formating the dictonary in a list, similar to a JSON format
-    return render_template("women.html", items = items) #this is the app route to the women's page
+@app.route('/barbarella')
+def barbarella():
+    return render_template("gallery.html", inventory_list=barbarella.inventory_itemsBB()) #this is the app route to Barbarella's page
 
-@app.route('/item1a')
-def item1a():
-    return render_template("clothes_info.html", data = inventory_data.item1a()) #takes the variables and sticks it in to the template
+@app.route('/TT1')
+def TT1():
+    return render_template("clothes_info.html", data = thriftythreadsdata.TT1()) #takes the variables and sticks it in to the template
 
-@app.route('/item2a')
-def item2a():
-    return render_template("clothes_info.html", data = inventory_data.item2a())
+@app.route('/TT2')
+def TT2():
+    return render_template("clothes_info.html", data = thriftythreadsdata.TT2())
 
-@app.route('/item3a')
-def item3a():
-    return render_template("clothes_info.html", data = inventory_data.item3a())
+@app.route('/TT3')
+def TT3():
+    return render_template("clothes_info.html", data = thriftythreadsdata.TT3())
 
-@app.route('/item4a')
-def item4a():
-    return render_template("clothes_info.html", data = inventory_data.item4a())
+@app.route('/TT4')
+def TT4():
+    return render_template("clothes_info.html", data = thriftythreadsdata.TT4())
 
 
 if __name__ == "__main__":

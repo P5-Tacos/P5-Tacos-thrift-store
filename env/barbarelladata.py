@@ -4,7 +4,8 @@ def BB1():
     description = "cool design/logo"
     price = "5"
     size = "Men's M"
-    info = {"name": name, "tag":tag, "description": description, "size":size, "price": price}
+    folder ="barbarella" #name of folder file is stored in
+    info = {"name": name, "tag":tag, "description": description, "size":size, "price": price, "folder":folder}
     return info
 
 def BB2():
@@ -13,7 +14,8 @@ def BB2():
     description = "bomber jacket 94"
     price = "45"
     size = "Men's XL"
-    info = {"name": name, "tag":tag, "description": description, "size":size, "price": price}
+    folder ="barbarella" #name of folder file is stored in
+    info = {"name": name, "tag":tag, "description": description, "size":size, "price": price, "folder":folder}
     return info
 
 def inventory_itemsBB():

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+<html lang="en">
+
+
+{% block title %}
+<title>Home Page</title>
+{% endblock %}
+
+{% block style %}
+<head>
+    <link href="../static/css/style_gallery.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 50px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: green;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<h1> Thrifty Threads</h1>
+<div class="scrollmenu">
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+</div>
+
+<h1> Barbarella</h1>
+<div class="scrollmenu">
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+    <a href="/">Item Here</a>
+</div>
+
+{% endblock %}

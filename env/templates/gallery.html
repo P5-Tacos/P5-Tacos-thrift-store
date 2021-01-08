@@ -36,12 +36,12 @@
     {% set description = data["description"] %}
     {% set price = data["price"] %}
     {% set size = data["size"] %}
+    {% set store_folder_name = data["folder"] %}
     <!-- need to place the cards here -->
-    <!--<p>item</p>-->
     <div class="row">
         <div class="column">
             <div class="card">
-                <img src="../static/images/item{{loop.index}}.jpg" width=100%>
+                <img src="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg" width=100%>
                 <div class="container">
                     <h2>Item #{{loop.index}} - {{name}}</h2>
                     <!--<p>loop index = {{loop.index}}</p>-->

@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length
 import thriftythreadsdata
-import barbarella
+import barbarelladata
 
 #create a Flask instance
 "Setting up the keys are needed for the database"
@@ -64,11 +64,11 @@ def signup():
 
 @app.route('/thriftythreads')
 def thriftythreads():
-    return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT()) #this is the app route to the ThriftTHreads's page
+    return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT(), Store_Title="Thrifty Threads") #this is the app route to the ThriftTHreads's page
 
 @app.route('/barbarella')
 def barbarella():
-    return render_template("gallery.html", inventory_list=barbarella.inventory_itemsBB()) #this is the app route to Barbarella's page
+    return render_template("gallery.html", inventory_list=barbarelladata.inventory_itemsBB(), Store_Title="Barbarella") #this is the app route to Barbarella's page
 
 @app.route('/TT1')
 def TT1():

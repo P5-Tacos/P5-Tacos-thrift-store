@@ -1,5 +1,7 @@
 # the intent of this file is to download all images displayed on amazon
 
+#heavily used this toutorial: https://www.youtube.com/watch?v=stIxEKR7o-c
+
 import requests
 from bs4 import BeautifulSoup
 import os

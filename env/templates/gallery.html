@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="mid">
-<h2 style="text-align:center;">{{Store_Title}}</h2><!--Reads store title form the app.py-->
+<h2 style="text-align:center;">{{Store_Title}}</h2><!--Reads store title form the view.py-->
 <h3 style="text-align:center; color:red;"> Only {{inventory_list|length}} Left!</h3>
 <p style="text-align:center;">see the top items for _____ (location) this week. Come soon, not guaranteed to stay stocked for long!</p>
 </div>
@@ -46,12 +46,13 @@
                     <h2>Item #{{loop.index}} - {{name}}</h2>
                     <!--<p>loop index = {{loop.index}}</p>-->
                     <p class="title" sytle="color:black;">{{tag}}</p>
-                    <p sytle="color:black;">{{description}}</p>
+                    <p sytle ="color:black;">{{description}}</p>
                     <p sytle="color:black;">${{price}}.00</p>
                     <a href=item{{loop.index}}><button class="button">add to cart</button></a> <!-- references the iteration of the loop -->
                 </div>
             </div>
         </div>
+    </div>
     {% endfor %}
 
 </body>

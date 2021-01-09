@@ -14,7 +14,13 @@
 ```pip install -r requirements.txt```
 
 ## Changes Log
-Week 2
+Week 3
+- programed a web scraper to download all items with image tags into a specific directories
+	- see the [scraper](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/env/image_downloader.py)
+	- see the [images downloaded](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/env/static/images/barbarella)
+- preliminary page of more clothing info, we look forward to include more information on this page, specifically embedding maps location of the storefronts for pickup
+	- see [clothing info prototype](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/7b7269c4d1317a555dcb01238eb1e851054e0d0a/env/templates/clothes_info.html#L1-L52)
+	
 Week 2
 - began on protype on the webpage
 	- will use the webpage to ideate what the storyboard will be like (see what works and what doesn't)
@@ -31,6 +37,10 @@ Week 0
 - created readme
 - created scrumboard
 - creating preliminary issues (assignments)
+
+#### Resources used 
+- [How to Scrape and Download ALL images from a webpage with Python](https://www.youtube.com/watch?v=stIxEKR7o-c)
+- [images for products](https://www.etsy.com/market/vintage_t_shirt)
 
 ### Summary
 Thrift store inventory and sale system. Creating a web based storefront for users to see what hot stock(top 50 items per week) is within the store and potentially purchase items from the thrift shop.

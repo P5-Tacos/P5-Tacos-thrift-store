@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length
+
 import thriftythreadsdata
 import barbarelladata
 
@@ -51,16 +52,29 @@ def index():
 def contactus():
     return render_template("contactus.html") #this is the app route to the contact us page
 
+
 @app.route('/database', methods = ['GET','POST']) #contribution by Andrew
-def signup():
+def shopowner():
     form = ItemForm()
     "Validate the forms"
     if form.validate_on_submit():
         new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
         db.session.add(new_item)
         db.session.commit()
-        return redirect(url_for('contactus'))
+        return render_template("Database test.html", form = form)
     return render_template("Database test.html", form = form)
+@app.route('/display')
+def databases():
+    """convert Users table into a list of dictionary rows"""
+    records = []
+    item = items.query.all()
+    for item in item:
+        user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
+        # filter email
+
+        # append to records
+        records.append(user_dict)
+    return render_template("pythondb/index.html", table=records)
 
 @app.route('/thriftythreads')
 def thriftythreads():

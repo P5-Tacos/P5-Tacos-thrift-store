@@ -21,6 +21,39 @@
 {% endblock %}
 
 {% block content %}
+<div class="jumbotron jumbotron-fluid" style="height: 50%; ">
+
+    <div class="row justify-content-center">
+        <div class="col-10" style="text-align: center;">
+            <h1>Sample Table</h1>
+        </div>
+    </div>
+
+
+
+    <!-- Table block is dependent on table variable and dictionary setup -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Price</th>
+        </tr>
+        <!-- Loop through rows in table -->
+        {% for row in table %}
+        <!-- build elements in table -->
+        <tr>
+            <th>{{ row['id'] }}</th>
+            <th>{{ row['name'] }}</th>
+            <th>{{ row['type'] }}</th>
+            <th>{{ row['price'] }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</div>
+
 <div class="container">
 
     <form class="form-append" method="POST" action="/database">

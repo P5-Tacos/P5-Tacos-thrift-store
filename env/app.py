@@ -3,7 +3,7 @@ from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, FloatField
 from wtforms.validators import InputRequired, Length
 
 import thriftythreadsdata
@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
 Bootstrap(app)
 db = SQLAlchemy(app)
+
 "Initialize Database with specific Items"
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key = True)
@@ -57,13 +58,19 @@ def contactus():
 def shopowner():
     form = ItemForm()
     "Validate the forms"
+    records = []
+
     if form.validate_on_submit():
         new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
         db.session.add(new_item)
         db.session.commit()
-        return render_template("Database test.html", form = form)
-    return render_template("Database test.html", form = form)
-@app.route('/display')
+        item = items.query.all()
+        for item in item:
+            user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
+        records.append(user_dict)
+
+    return render_template("Database test.html", form = form, table = records)
+@app.route('/show')
 def databases():
     """convert Users table into a list of dictionary rows"""
     records = []
@@ -74,7 +81,8 @@ def databases():
 
         # append to records
         records.append(user_dict)
-    return render_template("pythondb/index.html", table=records)
+
+    return render_template("Database test.html", table=records)
 
 @app.route('/thriftythreads')
 def thriftythreads():

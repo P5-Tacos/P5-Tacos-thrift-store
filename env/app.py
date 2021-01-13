@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
 Bootstrap(app)
 db = SQLAlchemy(app)
+records = []
 
 "Initialize Database with specific Items"
 class items(db.Model):
@@ -58,7 +59,6 @@ def contactus():
 def shopowner():
     form = ItemForm()
     "Validate the forms"
-    records = []
 
     if form.validate_on_submit():
         new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
@@ -70,19 +70,7 @@ def shopowner():
         records.append(user_dict)
 
     return render_template("Database test.html", form = form, table = records)
-@app.route('/show')
-def databases():
-    """convert Users table into a list of dictionary rows"""
-    records = []
-    item = items.query.all()
-    for item in item:
-        user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
-        # filter email
 
-        # append to records
-        records.append(user_dict)
-
-    return render_template("Database test.html", table=records)
 
 @app.route('/thriftythreads')
 def thriftythreads():

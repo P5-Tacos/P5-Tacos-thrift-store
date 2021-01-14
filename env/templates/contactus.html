@@ -53,12 +53,22 @@
             <h4>Website Creators</h4>
             <ul class="nav nav-pills nav-stacked">
                 <p>
-                    <b>Samuel Mahjouri</b><a href="https://www.linkedin.com/mynetwork/"><img src="../static/images/contactus/linkedin.png" alt="linkedin account" style="width:20px;height:20px;"></a>
-                    <br><img src="../static/images/contactus/Samuel_Mahjouri.jpg" width=40% height=40%></br>
-                    <br><b>Brayden Basinger </b><a href="https://www.linkedin.com/in/brayden-basinger-377b271b7/"><img src="../static/images/contactus/linkedin.png" alt="linkedin account" style="width:20px;height:20px;"></a></br>
-                    <br><b>Colin Szeto  </b><a href="https://www.linkedin.com/in/colin-szeto-1a556318a/"><img src="../static/images/contactus/linkedin.png" alt="linkedin account" style="width:20px;height:20px;"></a></br>
-                    <img src="../static/images/contactus/Colin_Profile.jpg" width=40% height=40%>
-                    <br><b> Andrew Zhang</b><a href="https://www.linkedin.com/in/andrew-zhang-81a422160/"><img src="../static/images/contactus/linkedin.png" alt="linkedin account" style="width:20px;height:20px;"></a></br>
+                    {% for image in images %}
+                    {% set name = image['name'] %}
+                    {% set linkedin = image['linkedin'] %}
+                    {% set picture = image['picture'] %}
+                    <option value={{route}}>{{title}}</option>
+                    <b>{{name}}</b><a href="{{linkedin}}"><img src="../static/images/contactus/linkedin.png" alt="linkedin account" style="width:20px;height:20px;"></a>
+                    <br><img src={{picture}} width=40% height="40%"></br>
+
+
+                    <!--<br><b>{{name}}</b><a href={{linkedin}}><img src="../static/images/contactus/linkedin.png" alt="linkedin account" style="width:20px;height:20px;"></a></br>
+                    <img src={{picture}} width=40% height=40%><br>
+                    <br><b>{{name}}</b><a href={{linkedin}}><img src="../static/images/contactus/linkedin.png" alt="linkedin account" style="width:20px;height:20px;"></a></br>
+                    <img src={{picture}}"../static/images/contactus/Colin_Profile.jpg" width=40% height=40%><br>
+                    <br><b>{{name}}</b><a href={{linkedin}}><img src="../static/images/contactus/linkedin.png" alt="linkedin account" style="width:20px;height:20px;"></a></br>
+                    <img src={{picture}}"../static/images/contactus/Andrew_Profile.jpg" width=40% height=40%></br> -->
+                    {% endfor %}
                     <br>
 
                 </p>

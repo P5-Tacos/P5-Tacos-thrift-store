@@ -7,6 +7,7 @@ from wtforms import StringField
 from wtforms.validators import InputRequired, Length
 import thriftythreadsdata
 import barbarelladata
+import contactimages
 
 #create a Flask instance
 "Setting up the keys are needed for the database"
@@ -49,7 +50,7 @@ def index():
 
 @app.route('/contactus')
 def contactus():
-    return render_template("contactus.html") #this is the app route to the contact us page
+    return render_template("contactus.html", images=contactimages.grouppictures()) #this is the app route to the contact us page
 
 @app.route('/database', methods = ['GET','POST']) #contribution by Andrew
 def signup():

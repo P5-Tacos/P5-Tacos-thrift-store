@@ -3,8 +3,9 @@ from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, FloatField
 from wtforms.validators import InputRequired, Length
+
 import thriftythreadsdata
 import barbarelladata
 import contactimages
@@ -17,6 +18,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
 Bootstrap(app)
 db = SQLAlchemy(app)
+records = []
+
 "Initialize Database with specific Items"
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key = True)
@@ -52,16 +55,23 @@ def index():
 def contactus():
     return render_template("contactus.html", images=contactimages.grouppictures()) #this is the app route to the contact us page
 
+
 @app.route('/database', methods = ['GET','POST']) #contribution by Andrew
-def signup():
+def shopowner():
     form = ItemForm()
     "Validate the forms"
+
     if form.validate_on_submit():
         new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
         db.session.add(new_item)
         db.session.commit()
-        return redirect(url_for('contactus'))
-    return render_template("Database test.html", form = form)
+        item = items.query.all()
+        for item in item:
+            user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
+        records.append(user_dict)
+
+    return render_template("Database test.html", form = form, table = records)
+
 
 @app.route('/thriftythreads')
 def thriftythreads():

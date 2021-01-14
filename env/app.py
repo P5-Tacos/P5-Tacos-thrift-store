@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
 Bootstrap(app)
 db = SQLAlchemy(app)
-records = []
+
 
 "Initialize Database with specific Items"
 class items(db.Model):
@@ -55,6 +55,11 @@ def index():
 def contactus():
     return render_template("contactus.html", images=contactimages.grouppictures()) #this is the app route to the contact us page
 
+records = []
+item = items.query.all()
+for item in item:
+    user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
+    records.append(user_dict) #Do the indent
 
 @app.route('/database', methods = ['GET','POST']) #contribution by Andrew
 def shopowner():
@@ -62,13 +67,11 @@ def shopowner():
     "Validate the forms"
 
     if form.validate_on_submit():
-        new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
-        db.session.add(new_item)
+        new = items(type = form.type.data, name = form.name.data, price = form.price.data)
+        db.session.add(new)
         db.session.commit()
-        item = items.query.all()
-        for item in item:
-            user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
-        records.append(user_dict)
+        user = {'id': new.id, 'name': new.name, 'type': new.type, 'price': new.price}
+        records.append(user)
 
     return render_template("Database test.html", form = form, table = records)
 

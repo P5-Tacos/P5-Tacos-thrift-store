@@ -1,9 +1,9 @@
 # https://flask.palletsprojects.com/en/1.1.x/api/
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField
+from wtforms import StringField
 from wtforms.validators import InputRequired, Length
 
 import thriftythreadsdata

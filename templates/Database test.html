@@ -2,11 +2,11 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
-<title>Database</title>
+<title xmlns="http://www.w3.org/1999/html">Database</title>
 {% endblock %}
 
 {% block style %}
-<style>
+    <style>
         body {
           margin: 0;
           font-family: Arial, Helvetica, sans-serif;
@@ -14,15 +14,10 @@
 
         .container {
           overflow: hidden;
-          background-color: white;
+          background-color: green;
+          margin-left: auto;
+            margin-right: auto;
         }
-
-    </style>
-
-{% endblock %}
-
-{% block content %}
-<style>
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -39,7 +34,26 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
     </style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="center">
+    <div class="container"> <!-- form to add in data -->
+    <form class="form-append" method="POST" action="/database">
+        {{ form.hidden_tag() }}
+        <h2 class="form-signin-heading">Please append data</h2>
+        {{wtf.form_field(form.name)}}
+        {{wtf.form_field(form.type)}}
+        {{wtf.form_field(form.price)}}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">appened</button>
+    </form>
+    </div>
+</div>
+
 <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
 
     <div class="row justify-content-center">
@@ -61,29 +75,15 @@
         {% for row in table %}
         <!-- build elements in table -->
         <tr>
-            <th>{{ row['id'] }}</th>
+            <th>{{row['id']}}</th>
             <th>{{ row['name'] }}</th>
             <th>{{ row['type'] }}</th>
             <th>{{ row['price'] }}</th>
-            <th><img src="../static/images/icon/delete_button2.jpg" alt="delete button" width="20"></th>
+            <th><form action={{url_for('.delete')}} method="post"><input type="number" id="userid" name="item_id" value={{row['id']}}><input type="submit" value="Delete"></form></th>
         </tr>
         {% endfor %}
     </table>
-
-
 </div>
 
-<div class="container">
-
-    <form class="form-append" method="POST" action="/database">
-        {{ form.hidden_tag() }}
-        <h2 class="form-signin-heading">Please append data</h2>
-        {{wtf.form_field(form.name)}}
-        {{wtf.form_field(form.type)}}
-        {{wtf.form_field(form.price)}}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">appened</button>
-    </form>
-
-</div> <!-- /container -->
 
 {% endblock %}

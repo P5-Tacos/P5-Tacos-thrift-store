@@ -1,5 +1,5 @@
 # https://flask.palletsprojects.com/en/1.1.x/api/
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
@@ -78,6 +78,20 @@ def shopowner():
         user_dict = {'id': new_item.id, 'name': new_item.name, 'type': new_item.type, 'price': new_item.price}
         records.append(user_dict)
     return render_template("Database test.html", form = form, table = records)
+print(records)
+
+# CRUD delete
+@app.route('/delete/', methods=['GET', "POST"])
+def delete():
+    #print("arrived to delete")
+
+    if request.method == "POST": #we know the item id
+        userid = request.form["item_id"]
+        print(userid)
+    else:
+        print("could not find the value")
+
+    return redirect(url_for('shopowner'))
 
 @app.route('/thriftythreads')
 def thriftythreads():

@@ -48,8 +48,6 @@
         </div>
     </div>
 
-
-
     <!-- Table block is dependent on table variable and dictionary setup -->
     <table>
         <tr>
@@ -57,6 +55,7 @@
             <th>Name</th>
             <th>Type</th>
             <th>Price</th>
+            <th></th><!-- this is the column with the delete button icons -->
         </tr>
         <!-- Loop through rows in table -->
         {% for row in table %}
@@ -66,6 +65,7 @@
             <th>{{ row['name'] }}</th>
             <th>{{ row['type'] }}</th>
             <th>{{ row['price'] }}</th>
+            <th><img src="../static/images/icon/delete_button2.jpg" alt="delete button" width="20"></th>
         </tr>
         {% endfor %}
     </table>

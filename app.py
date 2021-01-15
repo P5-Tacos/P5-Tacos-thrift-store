@@ -9,7 +9,6 @@ from wtforms.validators import InputRequired, Length
 import thriftythreadsdata
 import barbarelladata
 import contactimages
-import websitecards
 
 #create a Flask instance
 "Setting up the keys are needed for the database"
@@ -50,7 +49,7 @@ def index():
 @app.route('/')
 def index():
     #function use Flask import (Jinga) to render an HTML template
-    return render_template("home.html", cards=websitecards.CardsForStores())
+    return render_template("home.html", inventory_list=thriftythreadsdata.inventory_itemsTT())
 
 @app.route('/contactus')
 def contactus():

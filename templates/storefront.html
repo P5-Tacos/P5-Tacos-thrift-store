@@ -5,11 +5,12 @@
 
 <div class = "card" style = "box-shadow: 10px 20px;">
     {% set websitename = card['websitename'] %}
+    {% set hyperlinktopage = card['hyperlinktopage'] %}
     {% set PictureShop = card['PictureShop'] %}
     {% set Location = card['Location'] %}
     {% set linklocation = card['linklocation'] %}
     <option value={{route}}>{{title}}</option>
-    <b style = "center"> <center> {{websitename}} </center></b>
+    <b> <center> <a href="{{hyperlinktopage}}">{{websitename}}</center></b>
     <center><img src={{PictureShop}} width=50% height=50%></center>
     <br><a href="{{linklocation}}">{{Location}}</a></br>
 </div>

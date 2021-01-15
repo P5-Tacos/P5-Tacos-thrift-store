@@ -49,7 +49,7 @@ def index():
 @app.route('/')
 def index():
     #function use Flask import (Jinga) to render an HTML template
-    return render_template("home.html", inventory_list=thriftythreadsdata.inventory_itemsTT())
+    return render_template("home.html", inventory_list1=thriftythreadsdata.inventory_itemsTT(), inventory_list2=barbarelladata.inventory_itemsBB())
 
 @app.route('/contactus')
 def contactus():

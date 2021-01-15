@@ -39,7 +39,7 @@ def BB4():
     return info
 
 def BB5():
-    name ="Candel"
+    name ="Candle"
     tag = "decoration"
     description = "you wish you smelled as good as this"
     price = "45"

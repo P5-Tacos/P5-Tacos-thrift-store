@@ -29,40 +29,19 @@ div.scrollmenu a:hover {
 {% endblock %}
 
 {% block content %}
+
 <h1> Thrifty Threads</h1>
 <div class="scrollmenu">
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
+    {% for data in inventory_list1: %} <!-- Looping through each dictonary in the list-->
+    <a href="/"><img src="../static/images/thrifty_threads/item{{loop.index}}.jpg" width=100px></a>
+    {% endfor %}
 </div>
 
 <h1> Barbarella</h1>
 <div class="scrollmenu">
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
+    {% for data in inventory_list2: %} <!-- Looping through each dictonary in the list-->
+    <a href="/"><img src="../static/images/barbarella/item{{loop.index}}.jpg" width=100px></a>
+    {% endfor %}
 </div>
 
 {% endblock %}

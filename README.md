@@ -14,9 +14,6 @@
 ```pip install -r requirements.txt```
 
 ## Changes Log
-week 4 
-- this is an example [completed card](https://github.com/orgs/P5-Tacos/projects/1#card-52772529)
-
 Week 3
 - programed a web scraper to download all items with image tags into a specific directories
 	- see the [scraper](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/env/image_downloader.py)

@@ -1,9 +1,9 @@
 # https://flask.palletsprojects.com/en/1.1.x/api/
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField
+from wtforms import StringField
 from wtforms.validators import InputRequired, Length
 
 import thriftythreadsdata
@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
 Bootstrap(app)
 db = SQLAlchemy(app)
-records = []
+
 
 "Initialize Database with specific Items"
 class items(db.Model):
@@ -56,6 +56,11 @@ def index():
 def contactus():
     return render_template("contactus.html", images=contactimages.grouppictures()) #this is the app route to the contact us page
 
+records = []
+item = items.query.all()
+for item in item:
+    user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
+    records.append(user_dict) #Do the indent
 
 @app.route('/database', methods = ['GET','POST']) #contribution by Andrew
 def shopowner():
@@ -63,13 +68,11 @@ def shopowner():
     "Validate the forms"
 
     if form.validate_on_submit():
-        new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
-        db.session.add(new_item)
+        new = items(type = form.type.data, name = form.name.data, price = form.price.data)
+        db.session.add(new)
         db.session.commit()
-        item = items.query.all()
-        for item in item:
-            user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
-        records.append(user_dict)
+        user = {'id': new.id, 'name': new.name, 'type': new.type, 'price': new.price}
+        records.append(user)
 
     return render_template("Database test.html", form = form, table = records)
 

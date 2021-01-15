@@ -1,68 +1,47 @@
-{% extends "base.html" %}
-<html lang="en">
+
+ {% extends "base.html" %}
+ {% block content %}
+
+ {% for card in cards %}
 
 
-{% block title %}
-<title>Home Page</title>
-{% endblock %}
 
-{% block style %}
-<style>
-div.scrollmenu {
-  overflow: auto;
-  white-space: nowrap;
-}
-
-div.scrollmenu a {
-  display: inline-block;
-  color: black;
-  text-align: center;
-  padding: 50px;
-  text-decoration: none;
-}
-
-div.scrollmenu a:hover {
-  background-color: green;
-}
-
-</style>
-{% endblock %}
-
-{% block content %}
-<h1> Thrifty Threads</h1>
-<div class="scrollmenu">
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
+<div class = "card" style = "box-shadow: 10px 20px;">
+        {% set websitename = card['websitename'] %}
+        {% set PictureShop = card['PictureShop'] %}
+        {% set Location = card['Location'] %}
+        {% set linklocation = card['linklocation'] %}
+        <option value={{route}}>{{title}}</option>
+    <b style = "text-align:center;"> <center> {{websitename}} </center></b>
+    <center><img src={{PictureShop}} width=50% height=50%></center>
+    <br><a href="{{linklocation}}">{{Location}}</a></br>
 </div>
+{% endfor %}
 
-<h1> Barbarella</h1>
-<div class="scrollmenu">
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-    <a href="/">Item Here</a>
-</div>
+ <style>
+ .card {
+  width:250px;
+  height:250px;
+  background-color:gray;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+
+
+.card:nth-child(1){
+  border: 1px solid #dddddd;
+}
+.card:nth-child(2){
+  border-radius: 16px;
+  box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2);
+
+}
+.card:nth-child(3) {
+ box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+}
+ </style>
+
+
 
 {% endblock %}

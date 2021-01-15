@@ -60,23 +60,24 @@ def storefront():
 def contactus():
     return render_template("contactus.html", images=contactimages.grouppictures()) #this is the app route to the contact us page
 
+#displaying all the current items in the data bases
+item = items.query.all()
+for item in item:
+    user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
+    records.append(user_dict)
 
 @app.route('/database', methods = ['GET','POST']) #contribution by Andrew
 def shopowner():
     form = ItemForm()
     "Validate the forms"
 
-    if form.validate_on_submit():
+    if form.validate_on_submit(): #adding in all
         new_item = items(type = form.type.data, name = form.name.data, price = form.price.data)
         db.session.add(new_item)
         db.session.commit()
-        item = items.query.all()
-        for item in item:
-            user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
+        user_dict = {'id': new_item.id, 'name': new_item.name, 'type': new_item.type, 'price': new_item.price}
         records.append(user_dict)
-
     return render_template("Database test.html", form = form, table = records)
-
 
 @app.route('/thriftythreads')
 def thriftythreads():

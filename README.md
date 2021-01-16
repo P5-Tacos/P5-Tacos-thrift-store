@@ -23,7 +23,7 @@
 
 Scrum Master Overview  (17/20): The team created progress in the C and D aspects of  CRUD [databases](https://github.com/orgs/P5-Tacos/projects/1#card-52179958). The team has also been able to practice [usage of jinja in storefront application](https://github.com/orgs/P5-Tacos/projects/1#card-52847756) and [usage of jinja in displaying stock](https://github.com/orgs/P5-Tacos/projects/1#card-52772529). [Link to the live website](http://76.167.66.16/). Please see instructions down below to understand the testing for each contribution as well as the corresponding code. The team has yet to implement the provided JS error handling into the forms or yet to get an API key to more efficiently input more values into the code. However we were able to make good progress where we did
 
-Sam: [link to ticket](https://github.com/orgs/P5-Tacos/projects/1#card-52847756)
+Sam: [link to ticket](https://github.com/orgs/P5-Tacos/projects/1#card-52847756) **procedure of running code** clicking the name of each store redirects the user to the corresponding gallery of what is in stock in the store, the location redirects user to google maps
 - [link to tangible on website](http://76.167.66.16/storefront)
 	- [Link to CSS + Jinja - front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/edit/main/templates/storefront.html)
 	- [Link to storing the data -backend](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/websitecards.py)
@@ -37,7 +37,7 @@ Andrew: [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
 
 Colin: [ticket link - collaborated with Andrew](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
 - contributed Delete of CRUD see it on the [live site](http://76.167.66.16/database)
-	- **Guide on how to use:** click the remove button on the right column to delete the items within the database,**do not edit the values within the number fields** these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input.		
+	- **Guide on how to use:** click the remove button on the right column to delete the items within the database,**do not edit the values within the number fields** these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input. The row containing the information about that item will disapear off the page		
 		- see the code of displaying the delete buttons [front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/templates/Database%20test.html#L82)
 			- we are getting the id of the selection, in this case there are auto filled number fields,have not figured out away to automatically assign a value in a form when there was no user input, we then select the submit button to route the input into the backend
 		- see the code of deleting [back end of the deletion](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/app.py#L98-L130)
@@ -48,7 +48,7 @@ Brayden:
 	- see [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52868251)
 - [Completed Email](https://docs.google.com/document/d/1aYkOOmSYxCDvK-U_GJuIXZrs0-8BRxPiIlRUJOzCSfM/edit?usp=sharing) The Thrift shops do not have an email but I am planning on calling them when we have the appropriate code and asking for their email address. 	
 	- see [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52397885)
-- Proving knowledge of Jinja through preview of all items in stock on the home page
+- Proving knowledge of Jinja through preview of all items in stock on the home page **Procedure of tesing code** hover over each card 
 	- see card [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52772529)
 	- see the [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/35b21300c67817de0f51292b0db6db9e7778f1f5/templates/home.html#L33-L45)
 	- see it on the [live website](http://76.167.66.16/)

@@ -26,9 +26,11 @@ Andrew:[ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
 			- [see the code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/app.py#L84-L95)
 		- Data visualization: Completed. Use a list to append all the data from the database and display it through the HTML table. The loop outside displays all the items, the dictionary inside help display new data appended to the database. 
 
-Colin:[ticket link(collaborated with Andrew)](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
+Colin: [ticket link - collaborated with Andrew](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
 - contributed Delete of CRUD see it on the [live site](http://76.167.66.16/database)
-	- Guide on how to use: click the remove button on the right column to delete the items within the database, ```diff - do not edit the values within the number fields ```, these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input.		
+	- Guide on how to use: click the remove button on the right column to delete the items within the database, 
+	```diff - do not edit the values within the number fields ```
+	these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input.		
 		- see the code of displaying the delete buttons [front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/templates/Database%20test.html#L82)
 			- we are getting the id of the selection, in this case there are auto filled number fields,have not figured out away to automatically assign a value in a form when there was no user input, we then select the submit button to route the input into the backend
 		- see the code of deleting [back end of the deletion](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/app.py#L98-L130)

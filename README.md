@@ -14,6 +14,9 @@
 ```pip install -r requirements.txt```
 
 ## Changes Log
+
+![ASCII UI](https://media.giphy.com/media/FQYsVKJOJkP3kWrVNc/giphy.gif)
+
 Week 3
 - programed a web scraper to download all items with image tags into a specific directories
 	- see the [scraper](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/env/image_downloader.py)

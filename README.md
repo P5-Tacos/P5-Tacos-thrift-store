@@ -8,7 +8,7 @@
 |Brayden Basinger  |  BraydenBasinger| Pair 2|
 
 ```diff
-- \/ Link to the scrum board below \/
+@@\/ Link to the scrum board below \/@@
 ```
 #### Link to scrum board: https://github.com/orgs/P5-Tacos/projects/1
 #### Link to project plan and requirements: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit

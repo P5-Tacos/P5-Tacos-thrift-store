@@ -15,10 +15,19 @@
 
 ## Changes Log
 
-![ASCII UI](https://media.giphy.com/media/FQYsVKJOJkP3kWrVNc/giphy.gif)
 
+Week 4
 
-![Game Board](images/game_screen.JPG)
+Brayden:
+
+- further templated out what the site should look like, a stand alone MVP to be show to induvidual stores[here](https://docs.google.com/presentation/d/1xVco3WgpxcF6dC8JizWmhM1jISvFez5Wo6U4juvPNSQ/edit?usp=sharing) 
+	- see card [link](https://github.com/orgs/P5-Tacos/projects/1#card-52868251)
+- [Completed Email](https://docs.google.com/document/d/1aYkOOmSYxCDvK-U_GJuIXZrs0-8BRxPiIlRUJOzCSfM/edit?usp=sharing) The Thrift shops do not have an email but I am planning on calling them when we have the appropriate code and asking for their email address. 	
+	- see card [link](https://github.com/orgs/P5-Tacos/projects/1#card-52397885)
+- Proving knowledge of Jinja through preview of all items in stock on the home page
+	- see card [link](https://github.com/orgs/P5-Tacos/projects/1#card-52772529)
+	- see the [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/35b21300c67817de0f51292b0db6db9e7778f1f5/templates/home.html#L33-L45)
+	- see it on the [live website](http://76.167.66.16/)
 
 Week 3
 - programed a web scraper to download all items with image tags into a specific directories

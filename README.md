@@ -17,9 +17,12 @@
 
 
 Week 4
+Sam: [link to ticket](https://github.com/orgs/P5-Tacos/projects/1#card-52847756)
+- [link to tangible on website](http://76.167.66.16/storefront)
+	- [Link to CSS + Jinja - front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/edit/main/templates/storefront.html)
+	- [Link to storing the data -backend](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/websitecards.py)
 
-
-Andrew:[ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
+Andrew: [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
 - completed Database [see it on the live site](http://76.167.66.16/database)
 	- procedure on how to test it: Navigate to the database tab, can enter in values for fields, be sure to enter in string, string, float, no error handling implemented
 		- Database Initialization: Completed. The database is fully functional and currently stored 60 + test items. Also started trying to implement Filefield of Flask-WTF (error handeling is work in progress)

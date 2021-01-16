@@ -107,9 +107,9 @@ def delete():
             if (dictionary["id"] == float(userid)):
                 # print("we found it")
                 found_values.append(dictionary)
-                #items.query.filter(items.id == float(userid)).delete()  # deleting from the data base
-                #items.query.filter_by(id=float(userid)).delete()
-                db.session.query(items).filter(items.id == float(userid)).delete()
+                delete = items.query.filter_by(id=float(userid)).first()
+                db.session.delete(delete)
+                db.session.commit()
                 print("after delete")
 
             for i in range(len(records)):  # deleting the front end view of the data base

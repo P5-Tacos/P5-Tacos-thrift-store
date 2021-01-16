@@ -33,11 +33,11 @@ Colin: [ticket link - collaborated with Andrew](https://github.com/orgs/P5-Tacos
 - do not edit the values within the number fields
 ```
 
-these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input.		
-		- see the code of displaying the delete buttons [front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/templates/Database%20test.html#L82)
-			- we are getting the id of the selection, in this case there are auto filled number fields,have not figured out away to automatically assign a value in a form when there was no user input, we then select the submit button to route the input into the backend
-		- see the code of deleting [back end of the deletion](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/app.py#L98-L130)
-			- we recieve the values submitted by the user slecting the delete button, we first delete the row in the data base that corresponds with the item ID that the user selected, we then delete the dictonary within the list that the user sees (this list is itterated through in the front end using jinja to display all of the valuse in a table)
+- these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input.		
+	- see the code of displaying the delete buttons [front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/templates/Database%20test.html#L82)
+- we are getting the id of the selection, in this case there are auto filled number fields,have not figured out away to automatically assign a value in a form when there was no user input, we then select the submit button to route the input into the backend
+	- see the code of deleting [back end of the deletion](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/app.py#L98-L130)
+		- we recieve the values submitted by the user slecting the delete button, we first delete the row in the data base that corresponds with the item ID that the user selected, we then delete the dictonary within the list that the user sees (this list is itterated through in the front end using jinja to display all of the valuse in a table)
 
 Brayden:
 - further templated out what the site should look like, a stand alone MVP to be show to induvidual stores[here](https://docs.google.com/presentation/d/1xVco3WgpxcF6dC8JizWmhM1jISvFez5Wo6U4juvPNSQ/edit?usp=sharing) 

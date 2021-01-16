@@ -29,13 +29,8 @@ Andrew:[ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
 Colin: [ticket link - collaborated with Andrew](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
 - contributed Delete of CRUD see it on the [live site](http://76.167.66.16/database)
 	- Guide on how to use: click the remove button on the right column to delete the items within the database, 
-	```diff - do not edit the values within the number fields ```
 ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
+- do not edit the values within the number fields
 ```
 	these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input.		
 		- see the code of displaying the delete buttons [front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/templates/Database%20test.html#L82)

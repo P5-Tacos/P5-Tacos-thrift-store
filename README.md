@@ -17,9 +17,15 @@
 
 
 Week 4
+Andrew:
+- completed Database [see it on the live site](http://76.167.66.16/database)
+	- procedure on how to test it: Navigate to the database tab, can enter in values for fields, be sure to enter in string, string, float, no error handling implemented, click the remove button on the right column to delete the items within the database, do not edit the values within the number fields, these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input.
+		- Database Initialization: Completed. The database is fully functional and currently stored 60 + test items. Also started trying to implement Filefield of Flask-WTF (error handeling is work in progress)
+			- [see the code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/app.py#L84-L95)
+		- Data visualization: Completed. Use a list to append all the data from the database and display it through the HTML table. The loop outside displays all the items, the dictionary inside help display new data appended to the database. 
+
 
 Brayden:
-
 - further templated out what the site should look like, a stand alone MVP to be show to induvidual stores[here](https://docs.google.com/presentation/d/1xVco3WgpxcF6dC8JizWmhM1jISvFez5Wo6U4juvPNSQ/edit?usp=sharing) 
 	- see card [link](https://github.com/orgs/P5-Tacos/projects/1#card-52868251)
 - [Completed Email](https://docs.google.com/document/d/1aYkOOmSYxCDvK-U_GJuIXZrs0-8BRxPiIlRUJOzCSfM/edit?usp=sharing) The Thrift shops do not have an email but I am planning on calling them when we have the appropriate code and asking for their email address. 	

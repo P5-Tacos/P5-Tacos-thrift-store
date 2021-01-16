@@ -19,7 +19,7 @@
 ## Changes Log
 
 
-Week 4
+#### Week 4
 
 Scrum Master Overview  (17/20): The team created progress in the C and D aspects of  CRUD [databases](https://github.com/orgs/P5-Tacos/projects/1#card-52179958). The team has also been able to practice [usage of jinja in storefront application](https://github.com/orgs/P5-Tacos/projects/1#card-52847756) and [usage of jinja in displaying stock](https://github.com/orgs/P5-Tacos/projects/1#card-52772529). [Link to the live website](http://76.167.66.16/). Please see instructions down below to understand the testing for each contribution as well as the corresponding code. The team has yet to implement the provided JS error handling into the forms or yet to get an API key to more efficiently input more values into the code. However we were able to make good progress where we did
 

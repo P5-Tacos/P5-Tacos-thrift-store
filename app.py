@@ -161,7 +161,3 @@ def TT3():
 @app.route('/TT4')
 def TT4():
     return render_template("clothes_info.html", data=thriftythreadsdata.TT4())
-
-
-if __name__ == "__main__":
-    app.run(debug=True)

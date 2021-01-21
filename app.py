@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length
+import requests
 
 import thriftythreadsdata
 import barbarelladata
@@ -128,6 +129,11 @@ def delete():
         print("could not find the value")
 
     return redirect(url_for('shopowner'))
+
+@app.route('/amazon_api',  methods=['GET', 'POST'])
+def amazon():
+    imageUrlList = "this represents the data from the API"
+    return render_template("amazon_api.html", imageUrlList=imageUrlList)
 
 
 @app.route('/thriftythreads')

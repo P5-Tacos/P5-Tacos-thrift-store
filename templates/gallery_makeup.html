@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+<title>Top Thrift 30</title>
+{% endblock %}
+
+{% block content %}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="../static/images/style.css" type="text/css">-->
+    <link href="../static/css/style_gallery.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        html {
+          box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+          box-sizing: inherit;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div class="mid">
+<h1 style="text-align:center;">API page</h1><!--Reads store title form the app.py-->
+
+<!-- <p>{{text}}</p> -->
+
+<h3 style="text-align:center; color:red;">{{count|length}} dictionaries in list</h3>
+
+
+{% for data in imageUrlList %}
+
+{% set id = data["id"] %}
+{% set brand = data["brand"] %}
+{% set name = data["name"] %}
+{% set price = data["price"] %}
+{% set image_link = data["image_link"] %}
+{% set product_link = data["product_link"] %}
+{% set website_link = data["website_link"] %}
+{% set description = data["description"] %}
+{% set rating = data["rating"] %}
+{% set category = data["category"] %}
+{% set product_type = data["product_type"] %}
+{% set tag_list = data["tag_list"] %}
+
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <img src={{image_link}} width=200px%>
+            <div class="container">
+                <h2>ID: {{id}} Brand:{{brand}}</h2>
+                <h2>{{name}}</h2>
+                <p class="title" sytle="color:black;">{{tag}}</p>
+                <p sytle="color:black;">{{description}}</p>
+                <p sytle="color:black;">${{price}}</p>
+                <a href=item{{loop.index}}><button class="button">add to cart</button></a> <!-- references the iteration of the loop -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+</body>
+
+{% endblock%}

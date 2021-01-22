@@ -6,6 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length
 import requests
+import json
 
 import thriftythreadsdata
 import barbarelladata
@@ -132,9 +133,56 @@ def delete():
 
 @app.route('/amazon_api',  methods=['GET', 'POST'])
 def amazon():
-    imageUrlList = "this represents the data from the API"
-    return render_template("amazon_api.html", imageUrlList=imageUrlList)
+    #imageUrlList = "this represents the data from the API" #
+    url = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
 
+    querystring = {"product_category":"lipstick","brand":"colourpop"}
+
+    headers = {
+        'x-rapidapi-key': "5d6a7f4252msh63f17827aaa3826p1cce67jsn7ced6dd4e974",
+        'x-rapidapi-host': "makeup.p.rapidapi.com"
+    }
+    data_JSON = requests.request("GET", url, headers=headers, params=querystring)
+    response = requests.request("GET", url, headers=headers)
+    print(response.text)
+    response_list = response.text
+    #print(response[0])
+    #print(response.text[])
+
+    data_dict = json.loads(str(response.text))
+    print(data_dict)
+    """b = 0
+    #id = response.json().get('id')
+    print(response[0])
+    print("all the dictonaries in a new line") #from this test we understand that we are printing all the characters shown in the json file
+    for x in range(len(response.text)):  # this prints all values in the data base
+        print(response.text[b])
+        b = b+1
+    print(b)"""
+
+    display_list = [] #this is the list that is passed to the template
+    b = 0
+    for item in data_dict:
+        id = str(response.json()[b]['id'])
+        brand = response.json()[b]['brand']
+        name = response.json()[b]['name']
+        price = response.json()[b]['price']
+        image_link = response.json()[b]['image_link']
+        product_link = response.json()[b]['product_link']
+        website_link = response.json()[b]['website_link']
+        description = response.json()[b]['description']
+        rating = response.json()[b]['rating']
+        category = response.json()[b]['category']
+        product_type = response.json()[b]['product_type']
+        tag_list = response.json()[b]['tag_list']
+        info = {"id":id, "tag_list": tag_list, "product_type": product_type, "category":category, "rating": rating, "website_link": website_link, "product_link": product_link, "image_link":image_link,"name": name, "brand":brand, "description": description,"price": price}
+        display_list.append(info)
+        b = b + 1
+
+    test = [{},{},{}]
+    id = response.json()[0]['product_type']
+    print("printing id " + str(id))
+    return render_template("gallery_makeup.html", imageUrlList=display_list, text=response.text, count=data_dict)
 
 @app.route('/thriftythreads')
 def thriftythreads():

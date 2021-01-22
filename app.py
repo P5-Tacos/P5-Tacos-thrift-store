@@ -184,6 +184,67 @@ def amazon():
     print("printing id " + str(id))
     return render_template("gallery_makeup.html", imageUrlList=display_list, text=response.text, count=data_dict)
 
+
+@app.route('/makeup_landing', methods=['GET', 'POST'])
+def makeup_landing():
+    url = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline" #default
+    if request.method == 'POST':
+        option = request.form['makup_options']
+        url = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=" + str(option)
+
+        print(str(url))
+
+        querystring = {"product_category":"lipstick","brand":"colourpop"}
+
+        headers = {
+            'x-rapidapi-key': "5d6a7f4252msh63f17827aaa3826p1cce67jsn7ced6dd4e974",
+            'x-rapidapi-host': "makeup.p.rapidapi.com"
+        }
+        #data_JSON = requests.request("GET", url, headers=headers, params=querystring)
+        response = requests.request("GET", url, headers=headers)
+        print(response.text)
+        response_list = response.text
+        #print(response[0])
+        #print(response.text[])
+
+        data_dict = json.loads(str(response.text))
+        print(data_dict)
+        """b = 0
+        #id = response.json().get('id')
+        print(response[0])
+        print("all the dictonaries in a new line") #from this test we understand that we are printing all the characters shown in the json file
+        for x in range(len(response.text)):  # this prints all values in the data base
+            print(response.text[b])
+            b = b+1
+        print(b)"""
+
+        display_list = [] #this is the list that is passed to the template
+        b = 0
+        for item in data_dict:
+            id = str(response.json()[b]['id'])
+            brand = response.json()[b]['brand']
+            name = response.json()[b]['name']
+            price = response.json()[b]['price']
+            image_link = response.json()[b]['image_link']
+            product_link = response.json()[b]['product_link']
+            website_link = response.json()[b]['website_link']
+            description = response.json()[b]['description']
+            rating = response.json()[b]['rating']
+            category = response.json()[b]['category']
+            product_type = response.json()[b]['product_type']
+            tag_list = response.json()[b]['tag_list']
+            info = {"id":id, "tag_list": tag_list, "product_type": product_type, "category":category, "rating": rating, "website_link": website_link, "product_link": product_link, "image_link":image_link,"name": name, "brand":brand, "description": description,"price": price}
+            display_list.append(info)
+            b = b + 1
+
+        id = response.json()[0]['product_type']
+        print("printing id " + str(id))
+        return render_template("makeup_landing.html", imageUrlList=display_list, text=response.text, count=data_dict)
+
+
+    return render_template("makeup_landing.html")#, imageUrlList=display_list, text=response.text, count=data_dict  # Needs to be connected with jinja options
+
+
 @app.route('/thriftythreads')
 def thriftythreads():
     return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT(),

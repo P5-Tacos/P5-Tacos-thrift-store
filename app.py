@@ -215,3 +215,8 @@ def TT3():
 @app.route('/TT4')
 def TT4():
     return render_template("clothes_info.html", data=thriftythreadsdata.TT4())
+
+if __name__ == "__main__":
+    # runs the application on the repl development server
+    app.run(debug=True, host='192.168.0.12', port='5000')
+

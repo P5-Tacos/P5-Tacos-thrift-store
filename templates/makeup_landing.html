@@ -38,7 +38,7 @@
         {% set name = data["name"] %}
         {% set link = data["link"] %}
 
-        <input type="radio" name="makup_options" id="makup_options{{loop.index}}" value={{link}}> {{name}} </input><br>
+        <input type="radio" name="makup_options" id="makup_options{{loop.index}}" value={{link}} required> {{name}} </input><br>
 
         {% endfor %}
         <input type="submit" value="Submit">

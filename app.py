@@ -13,6 +13,7 @@ import barbarelladata
 import contactimages
 import websitecards
 import makeupdata
+import gallery_form
 
 # create a Flask instance
 "Setting up the keys are needed for the database"
@@ -239,6 +240,9 @@ def makeup_landing():
     # imageUrlList=test_list, text=testing_text, count=test_list,
     return render_template("makeup_landing.html", link_list=makeupdata.makeup_redirects())  # imageUrlList=display_list, text=response.text, count=data_dict  # Needs to be connected with jinja options
 
+@app.route('/database_form', methods=['GET', 'POST'])
+def database_forms():
+    return render_template("database_form.html", tag_list=gallery_form.gallery_tags())
 
 @app.route('/thriftythreads')
 def thriftythreads():

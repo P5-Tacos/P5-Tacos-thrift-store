@@ -7,6 +7,7 @@ from wtforms import StringField
 from wtforms.validators import InputRequired, Length
 import requests
 import json
+from flask_login import current_user, login_user, login_required, logout_user #for the login
 
 import thriftythreadsdata
 import barbarelladata
@@ -243,6 +244,10 @@ def makeup_landing():
 @app.route('/database_form', methods=['GET', 'POST'])
 def database_forms():
     return render_template("database_form.html", tag_list=gallery_form.gallery_tags())
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    return render_template("login.html")
 
 @app.route('/thriftythreads')
 def thriftythreads():

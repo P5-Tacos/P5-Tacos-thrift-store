@@ -61,6 +61,9 @@ def index():
     #  function use Flask import (Jinga) to render an HTML template
     return render_template("home.html", inventory_list1=thriftythreadsdata.inventory_itemsTT(),
                            inventory_list2=barbarelladata.inventory_itemsBB())
+@app.route('/home_egg') #easter egg home page
+def index_egg():
+    return render_template("home_egg.html")
 
 
 @app.route('/storefront')

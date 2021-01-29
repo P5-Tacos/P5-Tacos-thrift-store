@@ -42,6 +42,8 @@ div.scrollmenu a:hover {
     {% for data in inventory_list2: %} <!-- Looping through each dictonary in the list-->
     <a href="/"><img src="../static/images/barbarella/item{{loop.index}}.jpg" width=100px></a>
     {% endfor %}
+    <!-- access point to easter egg in the page -->
+    <a href="{{url_for('.index_egg')}}"><img src="../static/images/egg.jpg" width=100px></a>
 </div>
 
 

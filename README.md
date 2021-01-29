@@ -18,6 +18,12 @@
 
 ## Changes Log
 
+#### Week 6
+
+- [implemented DOM to allow for preview of form editing](http://timetothrift.cf/database_form)
+	- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/e2775f155fb96bf5845f93b70c25a9c17dbe5707/templates/database_form.html#L128-L158) implemented listener to allow for the card to be populated with what the user entered into the form fields
+- [easter egg link](http://timetothrift.cf/home_egg)
+
 #### Week 5 
 
 Implemented API as WOW factor

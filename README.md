@@ -24,6 +24,12 @@
 	- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/e2775f155fb96bf5845f93b70c25a9c17dbe5707/templates/database_form.html#L128-L158) implemented listener to allow for the card to be populated with what the user entered into the form fields
 - [easter egg link](http://timetothrift.cf/home_egg)
 
+Tickets for week 7:
+- [Colin Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53784984)
+- [Andrew Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785119)
+- [Sam Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785634)
+- [Brayden Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53786010)
+
 #### Week 5 
 
 Implemented API as WOW factor

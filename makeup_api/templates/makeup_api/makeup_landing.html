@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% extends "base.html" %}
 
 {% block title %}
 <title>Makeup Landing Page</title>
@@ -9,7 +8,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../static/css/style_gallery.css" rel="stylesheet" type="text/css" />
+    <link href="../../../static/css/style_gallery.css" rel="stylesheet" type="text/css" />
 </head>
 
 <style>
@@ -33,7 +32,7 @@
     <a href="https://makeup-api.herokuapp.com/">API DOCS</a><!-- this was the API that we used to enable this page -->
     <!--  https://makeup-api.herokuapp.com/-->
 
-    <form  method="POST" action={{url_for('.makeup_landing')}}
+    <form  method="POST" action={{url_for('makeup_api_bp.makeup_landing')}}
         {% for data in link_list %}
         {% set name = data["name"] %}
         {% set link = data["link"] %}

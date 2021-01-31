@@ -8,6 +8,7 @@ from wtforms.validators import InputRequired, Length
 import requests
 import json
 from flask_login import current_user, login_user, login_required, logout_user #for the login
+from makeup_api import makeup_api_bp
 
 import thriftythreadsdata
 import barbarelladata
@@ -53,6 +54,9 @@ class ItemForm(FlaskForm):
     name = StringField('name', validators=[InputRequired(), Length(min=1, max=15)])
     type = StringField('type', validators=[InputRequired(), Length(min=1, max=80)])
     price = StringField('price', validators=[InputRequired(), Length(min=1, max=80)])
+
+"""Defining routes"""
+app.register_blueprint(makeup_api_bp, url_prefix='/makeup_api')
 
 
 #  connects default URL of server to a python function
@@ -283,6 +287,10 @@ def TT3():
 @app.route('/TT4')
 def TT4():
     return render_template("clothes_info.html", data=thriftythreadsdata.TT4())
+
+"""@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('pages/404.html')"""
 
 if __name__ == "__main__":
     # runs the application on the repl development server

@@ -8,6 +8,7 @@ from wtforms.validators import InputRequired, Length
 import requests
 import json
 from makeup_api import makeup_api_bp  # blueprint not a module
+from easter_egg import easter_egg_bp
 
 import thriftythreadsdata
 import barbarelladata
@@ -56,6 +57,7 @@ class ItemForm(FlaskForm):
 
 """Defining routes"""
 app.register_blueprint(makeup_api_bp, url_prefix='/makeup_api')
+app.register_blueprint(easter_egg_bp, url_prefix='/easter_egg')
 
 
 #  connects default URL of server to a python function
@@ -66,9 +68,7 @@ def index():
                            inventory_list2=barbarelladata.inventory_itemsBB())
 
 
-@app.route('/home_egg')  # easter egg home page
-def index_egg():
-    return render_template("home_egg.html")
+
 
 
 @app.route('/storefront')

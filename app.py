@@ -7,7 +7,7 @@ from wtforms import StringField
 from wtforms.validators import InputRequired, Length
 import requests
 import json
-from makeup_api import makeup_api_bp #blueprint not a module
+from makeup_api import makeup_api_bp  # blueprint not a module
 
 import thriftythreadsdata
 import barbarelladata
@@ -53,6 +53,7 @@ class ItemForm(FlaskForm):
     type = StringField('type', validators=[InputRequired(), Length(min=1, max=80)])
     price = StringField('price', validators=[InputRequired(), Length(min=1, max=80)])
 
+
 """Defining routes"""
 app.register_blueprint(makeup_api_bp, url_prefix='/makeup_api')
 
@@ -63,13 +64,17 @@ def index():
     #  function use Flask import (Jinga) to render an HTML template
     return render_template("home.html", inventory_list1=thriftythreadsdata.inventory_itemsTT(),
                            inventory_list2=barbarelladata.inventory_itemsBB())
-@app.route('/home_egg') #easter egg home page
+
+
+@app.route('/home_egg')  # easter egg home page
 def index_egg():
     return render_template("home_egg.html")
+
 
 @app.route('/storefront')
 def storefront():
     return render_template("storefront.html", cards=websitecards.CardsForStores())
+
 
 @app.route('/contactus')
 def contactus():
@@ -86,7 +91,7 @@ def list_map():  # mapping the front end to the backend, put in the function so 
         records.append(user_dict)
 
 
-list_map()
+list_map()  # running once, appends database items into list user sees
 
 
 @app.route('/database', methods=['GET', 'POST'])  # contribution by Andrew
@@ -137,66 +142,16 @@ def delete():
 
     return redirect(url_for('shopowner'))
 
-@app.route('/amazon_api',  methods=['GET', 'POST'])
-def amazon():
-    #imageUrlList = "this represents the data from the API" #
-    url = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
-
-    querystring = {"product_category":"lipstick","brand":"colourpop"}
-
-    headers = {
-        'x-rapidapi-key': "5d6a7f4252msh63f17827aaa3826p1cce67jsn7ced6dd4e974",
-        'x-rapidapi-host': "makeup.p.rapidapi.com"
-    }
-    data_JSON = requests.request("GET", url, headers=headers, params=querystring)
-    response = requests.request("GET", url, headers=headers)
-    print(response.text)
-    response_list = response.text
-    #print(response[0])
-    #print(response.text[])
-
-    data_dict = json.loads(str(response.text))
-    print(data_dict)
-    """b = 0
-    #id = response.json().get('id')
-    print(response[0])
-    print("all the dictonaries in a new line") #from this test we understand that we are printing all the characters shown in the json file
-    for x in range(len(response.text)):  # this prints all values in the data base
-        print(response.text[b])
-        b = b+1
-    print(b)"""
-
-    display_list = [] #this is the list that is passed to the template
-    b = 0
-    for item in data_dict:
-        id = str(response.json()[b]['id'])
-        brand = response.json()[b]['brand']
-        name = response.json()[b]['name']
-        price = response.json()[b]['price']
-        image_link = response.json()[b]['image_link']
-        product_link = response.json()[b]['product_link']
-        website_link = response.json()[b]['website_link']
-        description = response.json()[b]['description']
-        rating = response.json()[b]['rating']
-        category = response.json()[b]['category']
-        product_type = response.json()[b]['product_type']
-        tag_list = response.json()[b]['tag_list']
-        info = {"id":id, "tag_list": tag_list, "product_type": product_type, "category":category, "rating": rating, "website_link": website_link, "product_link": product_link, "image_link":image_link,"name": name, "brand":brand, "description": description,"price": price}
-        display_list.append(info)
-        b = b + 1
-
-    test = [{},{},{}]
-    id = response.json()[0]['product_type']
-    print("printing id " + str(id))
-    return render_template("gallery_makeup.html", imageUrlList=display_list, text=response.text, count=data_dict)
 
 @app.route('/database_form', methods=['GET', 'POST'])
 def database_forms():
     return render_template("database_form.html", tag_list=gallery_form.gallery_tags())
 
+
 @app.route('/login', methods=["GET", "POST"])
 def login():
     return render_template("login.html")
+
 
 @app.route('/thriftythreads')
 def thriftythreads():
@@ -210,31 +165,6 @@ def barbarella():
                            Store_Title="Barbarella")  # this is the app route to Barbarella's page
 
 
-@app.route('/TT1')
-def TT1():
-    return render_template("clothes_info.html",
-                           data=thriftythreadsdata.TT1())  # takes the variables and sticks it in to the template
-
-
-@app.route('/TT2')
-def TT2():
-    return render_template("clothes_info.html", data=thriftythreadsdata.TT2())
-
-
-@app.route('/TT3')
-def TT3():
-    return render_template("clothes_info.html", data=thriftythreadsdata.TT3())
-
-
-@app.route('/TT4')
-def TT4():
-    return render_template("clothes_info.html", data=thriftythreadsdata.TT4())
-
-"""@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('pages/404.html')"""
-
 if __name__ == "__main__":
     # runs the application on the repl development server
     app.run(debug=True, host='192.168.0.12', port='5000')
-

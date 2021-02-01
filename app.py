@@ -5,10 +5,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length
-import requests
-import json
-from makeup_api import makeup_api_bp  # blueprint not a module
-from easter_egg import easter_egg_bp
+from views.makeup_api import makeup_api_bp  # blueprint not a module
+from views.easter_egg import easter_egg_bp
+from views.database import database_bp
+
 
 import thriftythreadsdata
 import barbarelladata
@@ -58,6 +58,7 @@ class ItemForm(FlaskForm):
 """Defining routes"""
 app.register_blueprint(makeup_api_bp, url_prefix='/makeup_api')
 app.register_blueprint(easter_egg_bp, url_prefix='/easter_egg')
+app.register_blueprint(database_bp, url_prefix='/database')
 
 
 #  connects default URL of server to a python function
@@ -66,9 +67,6 @@ def index():
     #  function use Flask import (Jinga) to render an HTML template
     return render_template("home.html", inventory_list1=thriftythreadsdata.inventory_itemsTT(),
                            inventory_list2=barbarelladata.inventory_itemsBB())
-
-
-
 
 
 @app.route('/storefront')

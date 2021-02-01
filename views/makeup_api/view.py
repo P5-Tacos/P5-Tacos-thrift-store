@@ -1,10 +1,10 @@
 #this is where all the routes will go
 
-from makeup_api import makeup_api_bp
-from flask import Flask, render_template, request, redirect, url_for
+from views.makeup_api import makeup_api_bp
+from flask import Flask, render_template, request
 import requests
 import json
-from makeup_api import model
+from views.makeup_api import model
 
 app = Flask(__name__)
 

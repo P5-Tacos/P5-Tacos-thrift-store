@@ -1,10 +1,7 @@
 #this is where all the routes will go
 
-from easter_egg import easter_egg_bp
-from flask import Flask, render_template, request, redirect, url_for
-import requests
-import json
-from easter_egg import model
+from views.easter_egg import easter_egg_bp
+from flask import Flask, render_template
 
 app = Flask(__name__)
 

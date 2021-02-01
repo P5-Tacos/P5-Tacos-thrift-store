@@ -39,12 +39,12 @@
 <body>
     <!-- this is the nav bar -->
     <div class="topnav">
-        <a class="home" href="{{url_for('.index')}}">Home</a>
-        <a href="{{url_for('.storefront')}}">Store Front</a>
-        <a href="{{url_for('.shopowner')}}">Database</a>
+        <a class="home" href="/">Home</a>
+        <a href="/storefront">Store Front</a>
+        <a href="/database">Database</a>
         <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up Landing</a>
         <!--<a href="{{url_for('makeup_api_bp.index')}}">Make Up Using BP</a>-->
-        <a href="{{url_for('.contactus')}}">Contact Us</a>
+        <a href="/contactus">Contact Us</a>
     </div>
 
 {% block content %}

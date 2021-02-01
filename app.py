@@ -109,19 +109,19 @@ def shopowner():
 # CRUD delete
 @app.route('/delete/', methods=['GET', "POST"])
 def delete():
-    # print("arrived to delete")
+    # print("arrived to delete")  # for debugging in the terminal
 
     if request.method == "POST":  # we know the item id
         userid = request.form["item_id"]
         found_values = []
-        for dictionary in records:
+        for dictionary in records:  # deleteing items from the data base
             if (dictionary["id"] == float(userid)):
-                # print("we found it")
+                # print("we found it")  # for debugging in the terminal
                 found_values.append(dictionary)
                 delete = items.query.filter_by(id=float(userid)).first()
                 db.session.delete(delete)
                 db.session.commit()
-                print("after delete")
+                print("after delete")  # for debuggin in the terminla
 
             for i in range(len(records)):  # deleting the front end view of the data base
                 if records[i]['id'] == float(userid):

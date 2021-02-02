@@ -18,40 +18,55 @@
 
 ## Changes Log
 
+#### Week 6
+
+- [implemented DOM to allow for preview of form editing](http://timetothrift.cf/database_form)
+	- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/e2775f155fb96bf5845f93b70c25a9c17dbe5707/templates/database_form.html#L128-L158) implemented listener to allow for the card to be populated with what the user entered into the form fields
+- [easter egg link](http://timetothrift.cf/easter_egg)
+
+Tickets for week 7:
+- [Colin Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53784984)
+- [Andrew Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785119)
+- [Sam Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785634)
+- [Brayden Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53786010)
+
+#### Week 5 
+
+Implemented API as WOW factor
 
 #### Week 4
 
-Scrum Master Overview  (17/20): The team created progress in the C and D aspects of  CRUD [databases](https://github.com/orgs/P5-Tacos/projects/1#card-52179958). The team has also been able to practice [usage of jinja in storefront application](https://github.com/orgs/P5-Tacos/projects/1#card-52847756) and [usage of jinja in displaying stock](https://github.com/orgs/P5-Tacos/projects/1#card-52772529). [Link to the live website](http://76.167.66.16/). Please see instructions down below to understand the testing for each contribution as well as the corresponding code. The team has yet to implement the provided JS error handling into the forms or yet to get an API key to more efficiently input more values into the code. However we were able to make good progress where we did
+Scrum Master Overview  (17/20): The team created progress in the C and D aspects of  CRUD [databases](https://github.com/orgs/P5-Tacos/projects/1#card-52179958). The team has also been able to practice [usage of jinja in storefront application](https://github.com/orgs/P5-Tacos/projects/1#card-52847756) and [usage of jinja in displaying stock](https://github.com/orgs/P5-Tacos/projects/1#card-52772529). [Link to the live website](http://timetothrift.cf/). Please see instructions down below to understand the testing for each contribution as well as the corresponding code. The team has yet to implement the provided JS error handling into the forms or yet to get an API key to more efficiently input more values into the code. However we were able to make good progress where we did
 
 Sam: [link to ticket](https://github.com/orgs/P5-Tacos/projects/1#card-52847756) **procedure of running code** clicking the name of each store redirects the user to the corresponding gallery of what is in stock in the store, the location redirects user to google maps
-- [link to tangible on website](http://76.167.66.16/storefront)
+- [link to tangible on website](http://timetothrift.cf/storefront)
 	- [Link to CSS + Jinja - front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/edit/main/templates/storefront.html)
 	- [Link to storing the data -backend](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/websitecards.py)
 
 Andrew: [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
-- completed Database [see it on the live site](http://76.167.66.16/database)
+- completed Database [see it on the live site](http://timetothrift.cf/database)
 	- **procedure on how to test it:** Navigate to the database tab, can enter in values for fields, be sure to enter in string, string, float, no error handling implemented
-		- Database Initialization: Completed. The database is fully functional and currently stored 60 + test items. Also started trying to implement Filefield of Flask-WTF (error handeling is work in progress)
+		- Database Initialization: Completed. The database is fully functional and currently stores 60 + test items. Also started trying to implement Filefield of Flask-WTF (error handling is work in progress)
 			- [see the code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/app.py#L84-L95)
-		- Data visualization: Completed. Use a list to append all the data from the database and display it through the HTML table. The loop outside displays all the items, the dictionary inside help display new data appended to the database. 
+		- Data visualization: Completed. Use a list to append all the data from the database and display it through the HTML table. The loop outside displays all the items, the dictionary inside helps display new data appended to the database. 
 
 Colin: [ticket link - collaborated with Andrew](https://github.com/orgs/P5-Tacos/projects/1#card-52179958)
-- contributed Delete of CRUD see it on the [live site](http://76.167.66.16/database)
-	- **Guide on how to use:** click the remove button on the right column to delete the items within the database,**do not edit the values within the number fields** these numbers correspond to the id of the item, have not figured out away to automatically assign a value in a form when there was no user input. The row containing the information about that item will disapear off the page		
+- contributed Delete of CRUD see it on the [live site](http://timetothrift.cf/database)
+	- **Guide on how to use:** click the remove button on the right column to delete the items within the database,**do not edit the values within the number fields** these numbers correspond to the id of the item, have not figured out a way to automatically assign a value in a form when there was no user input. The row containing the information about that item will disappear off the page		
 		- see the code of displaying the delete buttons [front end](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/templates/Database%20test.html#L82)
 			- we are getting the id of the selection, in this case there are auto filled number fields,have not figured out away to automatically assign a value in a form when there was no user input, we then select the submit button to route the input into the backend
 		- see the code of deleting [back end of the deletion](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/216c69ab1f7143c00dce36adf9464aeb3d3eb1d3/app.py#L98-L130)
-			- we recieve the values submitted by the user slecting the delete button, we first delete the row in the data base that corresponds with the item ID that the user selected, we then delete the dictonary within the list that the user sees (this list is itterated through in the front end using jinja to display all of the valuse in a table)
+			- we receive the values submitted by the user selecting the delete button, we first delete the row in the database that corresponds with the item ID that the user selected, we then delete the dictionary within the list that the user sees (this list is iterated through in the front end using jinja to display all of the values in a table)
 
 Brayden:
-- further templated out what the site should look like, a stand alone MVP to be show to induvidual stores[here](https://docs.google.com/presentation/d/1xVco3WgpxcF6dC8JizWmhM1jISvFez5Wo6U4juvPNSQ/edit?usp=sharing) 
+- further templated out what the site should look like, a stand alone MVP to be show to individual stores[here](https://docs.google.com/presentation/d/1xVco3WgpxcF6dC8JizWmhM1jISvFez5Wo6U4juvPNSQ/edit?usp=sharing) 
 	- see [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52868251)
 - [Completed Email](https://docs.google.com/document/d/1aYkOOmSYxCDvK-U_GJuIXZrs0-8BRxPiIlRUJOzCSfM/edit?usp=sharing) The Thrift shops do not have an email but I am planning on calling them when we have the appropriate code and asking for their email address. 	
 	- see [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52397885)
-- Proving knowledge of Jinja through preview of all items in stock on the home page **Procedure of tesing code** hover over each card 
+- Proving knowledge of Jinja through preview of all items in stock on the home page **Procedure of testing code** hover over each card 
 	- see card [ticket link](https://github.com/orgs/P5-Tacos/projects/1#card-52772529)
 	- see the [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/35b21300c67817de0f51292b0db6db9e7778f1f5/templates/home.html#L33-L45)
-	- see it on the [live website](http://76.167.66.16/)
+	- see it on the [live website](http://timetothrift.cf/)
 
 Week 3
 - programed a web scraper to download all items with image tags into a specific directories
@@ -70,11 +85,11 @@ Week 2
 
 Week 1
 - completed the project plan/schedule
-- started to look into implmentation of database by deploying Nighthawk Coding Society page onto pi
+- started to look into implementation of database by deploying Nighthawk Coding Society page onto pi
 
 Week 0 
 - created readme
-- created scrumboard
+- created scrum board
 - creating preliminary issues (assignments)
 
 #### Resources used 
@@ -87,7 +102,7 @@ Thrift store inventory and sale system. Creating a web based storefront for user
 The website application would need to differentiate between user and employee. The user could use the site to browse the items available without purchasing them online. The user would have to sign in with their personal information to purchase items online. The employee would sign into the website to identify what items need to be picked out to ship off to the customer as well as an interface to upload images to corresponding identifying numbers.
 
 # Ideation 
-here were the intial ideas for the project. see in depth big ticket items description here: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
+Here were the initial ideas for the project. see in depth big ticket items description here: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
 
 ### Database implementation
 
@@ -125,3 +140,6 @@ To replace the arduous task of manually going out to a thrift store to take phot
 - Using tensor flow to automatically crop images of clothing for a consistent look
 - Passing information through json files to integrate app solutions for the data gathering process
 - Creating a relationship with local thrift stores to implement the website with their product
+
+
+

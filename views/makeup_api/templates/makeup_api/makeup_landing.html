@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 {% extends "base.html" %}
 
 {% block title %}
@@ -6,6 +7,12 @@
 {% endblock %}
 
 {% block style %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../../static/css/style_gallery.css" rel="stylesheet" type="text/css" />
+</head>
+
 <style>
         html {
           box-sizing: border-box;
@@ -17,13 +24,7 @@
 
     </style>
 {% endblock %}
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" href="../static/images/style.css" type="text/css">-->
-    <link href="../static/css/style_gallery.css" rel="stylesheet" type="text/css" />
 
-
-</head>
 
 {% block content %}
 <body>
@@ -33,19 +34,20 @@
     <a href="https://makeup-api.herokuapp.com/">API DOCS</a><!-- this was the API that we used to enable this page -->
     <!--  https://makeup-api.herokuapp.com/-->
 
-    <!-- <p>{{text}}</p> -->
+    <form  method="POST" action={{url_for('makeup_api_bp.makeup_landing')}}>
+        {% for data in link_list %}
+        {% set name = data["name"] %}
+        {% set link = data["link"] %}
 
+        <input type="radio" name="makup_options" id="makup_options{{loop.index}}" value={{link}} required> {{name}} </input><br>
 
-    <form  method="POST" action={{url_for('.makeup_landing')}}> <!-- Need to replace with Jinja-->
-        <input type="radio" name="makup_options" id="makup_options1" value="alva"> alva </input><br>
-        <input type="radio" name="makup_options" id="makup_options2" value="annabelle"> annabelle </input><br>
-        <input type="radio" name="makup_options" id="makup_options3" value="benefit"> benefit </input><br>
-        <input type="radio" name="makup_options" id="makup_options4" value="maybelline" checked> maybelline </input><br>
-        <input type="submit" value="Submit"> <!-- checked -->
+        {% endfor %}
+        <input type="submit" value="Submit">
     </form>
 
-    <h3 style="text-align:center; color:red;">{{count|length}} dictionaries in list</h3>
+    <h3 style="text-align:center; color:red;">{{error_message}}</h3>
 
+    <!-- <h3 style="text-align:center; color:red;">{{count|length}} dictionaries in list</h3> -->
 
     {% for data in imageUrlList %}
 
@@ -89,62 +91,3 @@
 {% endblock %}
 
 
-<!--All the brands to go into the form -->
-<!-- almay
-alva
-anna sui
-annabelle
-benefit
-boosh
-burt's bees
-butter london
-c'est moi
-cargo cosmetics
-china glaze
-clinique
-coastal classic creation
-colourpop
-covergirl
-dalish
-deciem
-dior
-dr. hauschka
-e.l.f.
-essie
-fenty
-glossier
-green people
-iman
-l'oreal
-lotus cosmetics usa
-maia's mineral galaxy
-marcelle
-marienatie
-maybelline
-milani
-mineral fusion
-misa
-mistura
-moov
-nudus
-nyx
-orly
-pacifica
-penny lane organics
-physicians formula
-piggy paint
-pure anada
-rejuva minerals
-revlon
-sally b's skin yummies
-salon perfect
-sante
-sinful colours
-smashbox
-stila
-suncoat
-w3llpeople
-wet n wild
-zorah
-zorah biocosmetiques
--->

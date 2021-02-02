@@ -6,31 +6,7 @@
     <title></title>
     {% endblock %}
     <link rel="stylesheet" href="../static/css/style_base.css" type="text/css">
-    <style>
-            /*button[type=submit] {
-                color: #f2f2f2;
-                background-color: #333;
-                padding:0px;
-                border:0 none;
-                cursor:pointer;
-                border-radius: 0px;
-               padding: 14px 16px;
-                text-decoration: none;
-                font-size: 20px;
-            }*/
 
-            /* Change the color of links on hover */
-            /*button[type=submit]:hover {
-              background-color: #ddd;
-              color: black;
-            }*/
-
-            /*   Add a color to the active/current link */
-            /* button[type=submit].active {
-              background-color: #4CAF50;
-              color: white;
-            } */
-    </style>
     {% block style %}
 
     {% endblock %}
@@ -39,16 +15,11 @@
 <body>
     <!-- this is the nav bar -->
     <div class="topnav">
-        <a class="home" href="/">Home</a>
-        <a href="/storefront">Store Front</a>
-        <a href="/database">Database</a>
-        <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up Landing</a>
-        <!--<a href="{{url_for('makeup_api_bp.index')}}">Make Up Using BP</a>-->
-        <a href="/contactus">Contact Us</a>
+        <a class="home" href="{{url_for('.index')}}">Home</a>
+        <a href="{{url_for('.storefront')}}">Store Front</a>
+        <a href="{{url_for('.shopowner')}}">Database</a>
+        <a href="{{url_for('.contactus')}}">Contact Us</a>
     </div>
-
-{% block content %}
-{% endblock %}
-
+    {% block content %}{% endblock %}
 </body>
 </html>

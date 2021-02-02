@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}
+<title>Top Thrift 30</title>
+{% endblock %}
+
+
+{% block style %}
+    <style>
+        div.p1 {
+          margin: 20px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+<div class="p1">
+    <h1>API PAGE</h1>
+
+    <p>The objective of this page is to pull down information using an API</p>
+    <a href="http://api-doc.axesso.de/">API DOCS</a>
+    <p>{{imageUrlList}}</p>
+</div>
+{% endblock%}

@@ -1,10 +1,12 @@
 # https://flask.palletsprojects.com/en/1.1.x/api/
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, current_app
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import InputRequired, Length
+from wtforms import StringField, FileField, FloatField
+from wtforms.validators import InputRequired, Length, NumberRange
+import os
+from sqlalchemy.dialects.sqlite import BLOB
 
 import thriftythreadsdata
 import barbarelladata
@@ -31,11 +33,12 @@ class items(db.Model):
     price = db.Column(db.Float(200))
 
 
-def __init__(self, id, name, type, price):
+def __init__(self, id, name, type, price, image):
     self.name = name
     self.id = id
     self.type = type
     self.price = price
+
 
 
 "Create Database"
@@ -47,7 +50,8 @@ db.create_all()
 class ItemForm(FlaskForm):
     name = StringField('name', validators=[InputRequired(), Length(min=1, max=15)])
     type = StringField('type', validators=[InputRequired(), Length(min=1, max=80)])
-    price = StringField('price', validators=[InputRequired(), Length(min=1, max=80)])
+    price = StringField('price', validators=[InputRequired(), NumberRange(min = 0.01, max = 100000,message = "Please enter a proper price")])
+    image = FileField('image', validators=[InputRequired()])
 
 
 #  connects default URL of server to a python function
@@ -93,6 +97,13 @@ def shopowner():
         user_dict = {'id': new_item.id, 'name': new_item.name, 'type': new_item.type, 'price': new_item.price}
         records.append(user_dict)
     return render_template("Database test.html", form=form, table=records)
+
+@app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    # Appending app path to upload folder path within app root folder
+    uploads = os.path.join(current_app.root_path, app.config['owner_upload'])
+    # Returning file from appended path
+    return send_from_directory(directory=uploads, filename=filename)
 
 
 # CRUD delete

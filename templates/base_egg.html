@@ -34,12 +34,20 @@
     {% block style %}
 
     {% endblock %}
+
 </head>
 
 <body>
+
+<a href="/" target="_blank">Go back to TimetoThrift!</a>
+
+
+
 <!-- this is the nav bar -->
 <div class="topnav">
-    <a class="home" href="/">Back to Main Site</a>
+    <a class="home" href={{url_for('easter_egg_bp.index')}}>Order</a>
+    <a href="">Admin</a>
+    <a href={{url_for('easter_egg_bp.eastercontactus')}}>Contact Us</a>
     <a href="">Future Projects</a>
 </div>
 {% block content %}{% endblock %}

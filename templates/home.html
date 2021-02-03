@@ -7,12 +7,25 @@
 {% endblock %}
 
 {% block style %}
+<link rel="stylesheet" href="../static/css/style_home.css" type="text/css">
+<!-- Js for the preloading animation  -->
+<script
+src="https://code.jquery.com/jquery-3.5.1.js"
+integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+crossorigin="anonymous"
+</script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<script src="jquery-2.1.4.js"></script>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<!-- end of Js for the preloading animation  -->
+
 <style>
+    /* allows for scroll bar at bottom of div  */
 div.scrollmenu {
   overflow: auto;
   white-space: nowrap;
 }
-
+    /* style of cell within div  */
 div.scrollmenu a {
   display: inline-block;
   color: black;
@@ -20,14 +33,14 @@ div.scrollmenu a {
   padding: 50px;
   text-decoration: none;
 }
-
+    /* style of cell when hovered  */
 div.scrollmenu a:hover {
   background-color: green;
 }
-
 </style>
 {% endblock %}
 
+<!-- This is where the nav bar will be displayed-->
 {% block content %}
 
 <h1> Thrifty Threads</h1>
@@ -42,6 +55,46 @@ div.scrollmenu a:hover {
     {% for data in inventory_list2: %} <!-- Looping through each dictonary in the list-->
     <a href="/"><img src="../static/images/barbarella/item{{loop.index}}.jpg" width=100px></a>
     {% endfor %}
+    <!-- access point to easter egg in the page -->
+    <a href="{{url_for('easter_egg_bp.index')}}"><img src="../static/images/egg.jpg" width=100px></a>
 </div>
+
+<!-- Code for the fad out-->
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+
+<script>
+    $(".loader-wrapper").fadeOut(1000)
+</script>
+
+<script> //defining functions for the face in and out
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
 
 {% endblock %}

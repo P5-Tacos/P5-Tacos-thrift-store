@@ -7,11 +7,18 @@ from wtforms import StringField, FileField, FloatField
 from wtforms.validators import InputRequired, Length, NumberRange
 import os
 from sqlalchemy.dialects.sqlite import BLOB
+from wtforms import StringField
+from wtforms.validators import InputRequired, Length
+from views.makeup_api import makeup_api_bp  # blueprint not a module
+from views.easter_egg import easter_egg_bp
+from views.database import database_bp
+
 
 import thriftythreadsdata
 import barbarelladata
 import contactimages
 import websitecards
+import gallery_form
 
 # create a Flask instance
 "Setting up the keys are needed for the database"
@@ -54,6 +61,12 @@ class ItemForm(FlaskForm):
     image = FileField('image', validators=[InputRequired()])
 
 
+"""Defining routes"""
+app.register_blueprint(makeup_api_bp, url_prefix='/makeup_api')
+app.register_blueprint(easter_egg_bp, url_prefix='/easter_egg')
+app.register_blueprint(database_bp, url_prefix='/database')
+
+
 #  connects default URL of server to a python function
 @app.route('/')
 def index():
@@ -82,7 +95,7 @@ def list_map():  # mapping the front end to the backend, put in the function so 
         records.append(user_dict)
 
 
-list_map()
+list_map()  # running once, appends database items into list user sees
 
 
 @app.route('/database', methods=['GET', 'POST'])  # contribution by Andrew
@@ -109,19 +122,19 @@ def download(filename):
 # CRUD delete
 @app.route('/delete/', methods=['GET', "POST"])
 def delete():
-    # print("arrived to delete")
+    # print("arrived to delete")  # for debugging in the terminal
 
     if request.method == "POST":  # we know the item id
         userid = request.form["item_id"]
         found_values = []
-        for dictionary in records:
+        for dictionary in records:  # deleteing items from the data base
             if (dictionary["id"] == float(userid)):
-                # print("we found it")
+                # print("we found it")  # for debugging in the terminal
                 found_values.append(dictionary)
                 delete = items.query.filter_by(id=float(userid)).first()
                 db.session.delete(delete)
                 db.session.commit()
-                print("after delete")
+                print("after delete")  # for debuggin in the terminla
 
             for i in range(len(records)):  # deleting the front end view of the data base
                 if records[i]['id'] == float(userid):
@@ -141,6 +154,16 @@ def delete():
     return redirect(url_for('shopowner'))
 
 
+@app.route('/database_form', methods=['GET', 'POST'])
+def database_forms():
+    return render_template("database_form.html", tag_list=gallery_form.gallery_tags())
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    return render_template("login.html")
+
+
 @app.route('/thriftythreads')
 def thriftythreads():
     return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT(),
@@ -153,22 +176,6 @@ def barbarella():
                            Store_Title="Barbarella")  # this is the app route to Barbarella's page
 
 
-@app.route('/TT1')
-def TT1():
-    return render_template("clothes_info.html",
-                           data=thriftythreadsdata.TT1())  # takes the variables and sticks it in to the template
-
-
-@app.route('/TT2')
-def TT2():
-    return render_template("clothes_info.html", data=thriftythreadsdata.TT2())
-
-
-@app.route('/TT3')
-def TT3():
-    return render_template("clothes_info.html", data=thriftythreadsdata.TT3())
-
-
-@app.route('/TT4')
-def TT4():
-    return render_template("clothes_info.html", data=thriftythreadsdata.TT4())
+if __name__ == "__main__":
+    # runs the application on the repl development server
+    app.run(debug=True, host='192.168.0.12', port='5000')

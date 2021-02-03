@@ -14,3 +14,7 @@ def index():
 @easter_egg_bp.route('/theeastercontacts')
 def eastercontactus():
     return render_template("easter_egg/newcontactus.html", images=model.infoforthecontactsineaster())
+
+@easter_egg_bp.route('/image_map_dnhs')
+def image_map():
+    return render_template("easter_egg/image_map_dnhs.html", images=model.infoforthecontactsineaster())

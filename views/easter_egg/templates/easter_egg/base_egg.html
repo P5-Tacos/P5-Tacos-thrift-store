@@ -5,7 +5,7 @@
     {% block title %}
     <title></title>
     {% endblock %}
-    <link rel="stylesheet" href="../static/css/style_base.css" type="text/css">
+    <link rel="stylesheet" href="../../../../static/css/style_base.css" type="text/css">
     <style>
         /*button[type=submit] {
             color: #f2f2f2;
@@ -34,14 +34,23 @@
     {% block style %}
 
     {% endblock %}
+
 </head>
 
 <body>
+
+<a href="/" target="_blank">Go back to TimetoThrift!</a>
+
+
+
 <!-- this is the nav bar -->
 <div class="topnav">
-    <a class="home" href="/">Back to Main Site</a>
+    <a class="home" href={{url_for('easter_egg_bp.index')}}>Order</a>
+    <a href="">Admin</a>
+    <a href="javascript:void(window.open('https://form.jotform.com/210330529779156','blank','scrollbars=yes,toolbar=no,width=700,height=500') ) ">Contact Us</a>
     <a href="">Future Projects</a>
 </div>
 {% block content %}{% endblock %}
 </body>
 </html>
+

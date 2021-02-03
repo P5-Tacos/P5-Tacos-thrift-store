@@ -82,8 +82,7 @@ def storefront():
 
 @app.route('/contactus')
 def contactus():
-    return render_template("contactus.html",
-                           images=contactimages.grouppictures())  # this is the app route to the contact us page
+    return render_template("contactus.html", images=contactimages.grouppictures())  # this is the app route to the contact us page
 
 
 #  displaying all the current items in the data bases

@@ -40,7 +40,6 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="center">
     <div class="container"> <!-- form to add in data -->
     <form class="form-append" method="POST" action="/database">
@@ -49,7 +48,8 @@
         {{wtf.form_field(form.name)}}
         {{wtf.form_field(form.type)}}
         {{wtf.form_field(form.price)}}
-        <button class=  "btn btn-lg btn-primary btn-block" type="submit">appened</button>
+        {{wtf.form_field(form.image)}}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">appened</button>
     </form>
 
     </div>
@@ -80,6 +80,7 @@
             <th>{{ row['name'] }}</th>
             <th>{{ row['type'] }}</th>
             <th>{{ row['price'] }}</th>
+            <th>{{ row['image']}}</th>
             <th><form action={{url_for('.delete')}} method="post"><input type="number" id="userid" name="item_id" value={{row['id']}}><input type="submit" value="Delete"></form></th>
         </tr>
         {% endfor %}

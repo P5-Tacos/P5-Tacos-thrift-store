@@ -9,7 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SECRET_KEY'] = ':)'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eggbase_user'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eggbase_user.db'
 db = SQLAlchemy(app)
 
 class User(db.Model):

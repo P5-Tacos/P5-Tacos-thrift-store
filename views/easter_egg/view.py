@@ -6,6 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, FileField, FloatField,PasswordField
 from wtforms.validators import InputRequired, Length, NumberRange
 from views.easter_egg import model
+from flask_login import UserMixin, LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from views.easter_egg import db, User

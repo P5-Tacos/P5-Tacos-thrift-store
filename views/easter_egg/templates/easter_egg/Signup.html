@@ -12,12 +12,15 @@
 {% block content %}
 <div class="container">
 
-    <form class="form-signin" method="POST" action={{url_for('easter_egg_bp.private')}}>
+    <form class="form-signin" method="POST" action={{url_for('easter_egg_bp.signup')}}>
         {{ form.hidden_tag() }}
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">Please Enter</h2>
+        {{wtf.form_field(form.grade)}}
+        {{wtf.form_field(form.id)}}
         {{wtf.form_field(form.username)}}
         {{wtf.form_field(form.password)}}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
         <p class="mt-5 mb-3 text-muted">&copy; Team TACO 2020-2021</p>
     </form>
 

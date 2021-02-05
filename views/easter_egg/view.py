@@ -73,3 +73,6 @@ def login():
 
     return render_template("easter_egg/login.html",form = form)
 
+@easter_egg_bp.route('/ordernow')
+def timetoorder():
+    return render_template("easter_egg/ordernow.html")

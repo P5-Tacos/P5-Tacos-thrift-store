@@ -21,7 +21,7 @@ Bootstrap(app)
 
 app.config['SECRET_KEY'] = ':)'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eggbase_user.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eggbase_user.db' #path from repository root: views/easter_egg/eggbase_user.db
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -58,6 +58,10 @@ def eastercontactus():
 @easter_egg_bp.route('/image_map_dnhs')
 def image_map():
     return render_template("easter_egg/image_map_dnhs.html", images=model.infoforthecontactsineaster())
+
+@easter_egg_bp.route('/college_board_requirements')
+def college_req():
+    return render_template("easter_egg/college_board_requirements.html", images=model.infoforthecontactsineaster())
 
 @easter_egg_bp.route('/Login', methods = ['GET', 'POST'])
 def login():

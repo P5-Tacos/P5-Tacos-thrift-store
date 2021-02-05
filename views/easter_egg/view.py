@@ -76,3 +76,7 @@ def login():
 @easter_egg_bp.route('/auth_user', methods = ['GET','POST']) #this is the home page of the makeup API page
 def private():
     return render_template("easter_egg/auth_user.html")
+
+@easter_egg_bp.route('/ordernow')
+def timetoorder():
+    return render_template("easter_egg/ordernow.html")

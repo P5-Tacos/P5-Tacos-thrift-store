@@ -22,7 +22,7 @@
 Andrew
 Sam 
 Colin 
-Brayden
+Brayden - I worked on Image maps so that the person selecting the location can better see where they are picking their food.
 
 #### Week 6
 

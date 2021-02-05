@@ -1,5 +1,4 @@
 #this is where all the routes will go
-from flask_login import login_required, LoginManager, UserMixin, login_user,logout_user,current_user
 
 from views.easter_egg import easter_egg_bp
 from flask import Flask, render_template,redirect,url_for
@@ -17,6 +16,8 @@ Bootstrap(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+
 
 class LoginForm(FlaskForm):
     username = StringField('username',validators=[InputRequired(), Length(min=1,max=15)])

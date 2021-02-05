@@ -17,6 +17,12 @@
 ```pip install -r requirements.txt```
 
 ## Changes Log
+#### Week 7 
+
+Andrew
+Sam 
+Colin 
+Brayden
 
 #### Week 6
 

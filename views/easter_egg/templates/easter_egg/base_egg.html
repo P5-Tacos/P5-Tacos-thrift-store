@@ -5,9 +5,41 @@
     {% block title %}
     <title></title>
     {% endblock %}
-    <link rel="stylesheet" href="../../../../static/css/style_base.css" type="text/css">
+    <!--<link rel="stylesheet" href="../../../../static/css/style_base.css" type="text/css">-->
     <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
 
+        /* Add a black background color to the top navigation */
+        .topnav {
+            overflow: hidden;
+            background-color: #011842;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
     </style>
     {% block style %}
 
@@ -16,12 +48,12 @@
 </head>
 
 <body>
-<div style="margin-left: 20px; margin-bottom: 5px;">
-    <h1  style= "margin-bottom: 5px;"> Del Norte Eats</h1>
-    <a href="/">Go back to TimetoThrift!</a>
-</div>
 <!-- this is the nav bar -->
 <div class="topnav">
+    <div style="margin-left: 15px">
+    <h1  style= " color: #f2f2f2; margin-bottom: 5px;"> Del Norte Eats</h1>
+    <a style="  all: revert;" href="/">Go back to TimetoThrift!</a>
+    </div>
     <a class="home" href={{url_for('easter_egg_bp.index')}}>Home</a>
     <a href="">Admin</a>
     <a href="{{url_for('.login')}}">Login</a>

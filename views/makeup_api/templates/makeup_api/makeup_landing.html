@@ -48,7 +48,6 @@
     <h3 style="text-align:center; color:red;">{{error_message}}</h3>
 
     <!-- <h3 style="text-align:center; color:red;">{{count|length}} dictionaries in list</h3> -->
-
     {% for data in imageUrlList %}
 
     {% set id = data["id"] %}
@@ -64,7 +63,7 @@
     {% set product_type = data["product_type"] %}
     {% set tag_list = data["tag_list"] %}
 
-    <div class="row">
+
         <div class="column">
             <div class="card">
                 <img src={{image_link}} width=200px%>
@@ -79,9 +78,8 @@
             </div>
         </div>
     </div>
-</div>
-{% endfor %}
 
+{% endfor %}
 </body>
 
 </body>

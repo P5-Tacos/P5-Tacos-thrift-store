@@ -59,10 +59,6 @@ def eastercontactus():
 def image_map():
     return render_template("easter_egg/image_map_dnhs.html", images=model.infoforthecontactsineaster())
 
-@easter_egg_bp.route('/college_board_requirements')
-def college_req():
-    return render_template("easter_egg/college_board_requirements.html", images=model.infoforthecontactsineaster())
-
 @easter_egg_bp.route('/Login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()

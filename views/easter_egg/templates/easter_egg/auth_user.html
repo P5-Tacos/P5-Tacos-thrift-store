@@ -45,14 +45,15 @@
 
 <!-- this is the nav bar -->
 <div class="topnav">
-    <a class="home" href={{url_for('easter_egg_bp.index')}}>Order</a>
+    <a class="home" href={{url_for('easter_egg_bp.index')}}>Return</a>
     <a href="">Admin</a>
     <a href="{{url_for('.login')}}">Login</a>
-    <a href="{{url_for('.signup')}}">Sign up</a>
-    <a href="javascript:void(window.open('https://form.jotform.com/210330529779156','blank','scrollbars=yes,toolbar=no,width=700,height=500') ) ">Contact Us</a>
-    <a href="">Future Projects</a>
+    <a href="{{url_for('.private')}}">Priv</a>
 </div>
+
+<h1>
+    "YEEEEEEEEEEEEEEEEEEEEEEEEEEES"
+</h1>
 {% block content %}{% endblock %}
 </body>
 </html>
-

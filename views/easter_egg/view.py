@@ -1,4 +1,5 @@
 #this is where all the routes will go
+from flask_login import login_required, LoginManager, UserMixin, login_user,logout_user,current_user
 
 from views.easter_egg import easter_egg_bp
 from flask import Flask, render_template,redirect,url_for
@@ -8,35 +9,24 @@ from wtforms.validators import InputRequired, Length, NumberRange
 from views.easter_egg import model
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
-
-
+from views.easter_egg import db, User
 
 app = Flask(__name__)
 Bootstrap(app)
-app.config['SECRET_KEY'] = ':)'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eggbase_user.db'
-db = SQLAlchemy(app)
 
-class User(db.Model):
-    id = db.Column('item_id', db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    password = db.Column(db.String(50))
-    grade = db.Column(db.Integer())
-
-def __init__(self, id, name, password, grade):
-    self.name = name
-    self.id = id
-    self.password = password
-    self.grade = grade
-
-db.create_all()
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
 class LoginForm(FlaskForm):
-    username = StringField('username',validators=[InputRequired(), Length(min=4,max=15)])
-    password = PasswordField('password',validators=[InputRequired(), Length(min=8,max=80)])
+    username = StringField('username',validators=[InputRequired(), Length(min=1,max=15)])
+    password = PasswordField('password',validators=[InputRequired(), Length(min=1,max=80)])
 
-
+class RegisterForm(FlaskForm):
+    username = StringField('username',validators=[InputRequired(), Length(min=1,max=15)])
+    password = PasswordField('password',validators=[InputRequired(), Length(min=1,max=80)])
+    grade = FloatField('grade',validators=[InputRequired()])
+    id = FloatField('id',validators=[InputRequired()])
 
 @easter_egg_bp.route('/') #this is the home page of the makeup API page
 def index():
@@ -49,16 +39,38 @@ def eastercontactus():
 @easter_egg_bp.route('/image_map_dnhs')
 def image_map():
     return render_template("easter_egg/image_map_dnhs.html", images=model.infoforthecontactsineaster())
+
+@easter_egg_bp.route('/Signup/',methods = ['GET','POST'])
+def signup():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        new_user = User(name = form.username.data, id = form.id.data, password = form.password.data,grade = form.grade.data)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('easter_egg.login'))
+
+    return render_template("easter_egg/Signup.html",form = form)
+
 @easter_egg_bp.route('/Login', methods = ['GET', 'POST'])
 def login():
-    form = LoginForm()
+    logform = LoginForm()
 
-    if form.validate_on_submit():
-        user = User.query.filter_by(username = form.username.data).first()
+    if logform.validate_on_submit():
+        #exists = db.session.query(
+        #db.session.query(User).filter_by(username='AndrewZhang').exists()
+        #).scalar()
+        #if exists == True:
+        #return "Exists"
+        user = User.query.filter_by(username = logform.username.data).first()
         if user:
-            if user.password == form.password.data:
-                return redirect(url_for('easter_egg/login.html'))
+            if user.password == logform.password.data:
+                return redirect(url_for('private'))
 
         return '<h1>Invalid username or password</h1>'
 
-    return render_template("easter_egg/login.html",form = form)
+    return render_template("easter_egg/login.html",form = logform)
+
+
+@easter_egg_bp.route('/auth_user', methods = ['GET','POST']) #this is the home page of the makeup API page
+def private():
+    return render_template("easter_egg/auth_user.html")

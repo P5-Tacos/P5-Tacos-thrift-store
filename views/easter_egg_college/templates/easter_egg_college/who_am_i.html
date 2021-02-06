@@ -16,9 +16,9 @@
     /* Three columns side by side */
     .column {
         float: left;
-        width: 25%;
-        margin-bottom: 16px;
-        padding: 0 8px;
+        width: 24%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
     }
 
     /* Display the columns below each other instead of side by side on small screens */
@@ -31,7 +31,7 @@
 
     /* Add some shadows to create a card effect */
     .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
     }
 
     /* Some left and right padding inside the container */
@@ -40,11 +40,11 @@
     }
 
     /* Clear floats */
-    .container::after, .row::after {
+    /*.container::after, .row::after {
         content: "";
         clear: both;
         display: table;
-    }
+    }*/
 
     .title {
         color: grey;
@@ -56,7 +56,7 @@
         display: inline-block;
         padding: 8px;
         color: white;
-        background-color: #000;
+        background-color: #0077C8;
         text-align: center;
         cursor: pointer;
         width: 100%;
@@ -68,62 +68,87 @@
 </style>
 {% endblock %}
 
-
+<!--Used https://html-cleaner.com/ to take google docs and format them into html -->
 {% block content %} <!--<img src="cid:Image_0.png" alt="" /> -->
 
-<h2>Responsive "Meet The Team" Section</h2>
-<p>Resize the browser window to see the effect.</p>
-<br>
-<div class="row">
+<h2 class="margin_1">Who Am I in Coding?</h2>
+
     <div class="column">
         <div class="card">
-            <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+            <img src="../static/images/contactus/Samuel_Mahjouri.jpg" alt="Samuel" style="width:100%">
             <div class="container">
-                <h2>Jane Doe</h2>
-                <p class="title">CEO & Founder</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="button">Contact</button></p>
+                <h2>Samuel Mahjouri</h2>
+                <ul>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am adequate when it comes to python coding. I understand a moderate level, if not basic, when it comes to making strings of code, etc.&nbsp;</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am adept in html coding: FrontEnd, Backend, etc.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I know how to implement jinja into my html coding to save me time</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I know how to use CSS to create an aesthetically pleasing page</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I do not know precisely how to operate databases, but I understand the vague concepts behind them.&nbsp;</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I somewhat understand javascript.&nbsp;</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am familiar with using Bootstrap for frontends of websites</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">Plan on delving deeper into learning about databases&nbsp;</span></li>
+                    <li style="font-weight: 400;"></li>
+                </ul>
+                <p><span style="font-weight: 400;">Overall, I am competent in programming frontend pages with python, html, css, and a bit of javascript.</span></p>
             </div>
         </div>
     </div>
     <div class="column">
         <div class="card">
-            <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+            <img src="../static/images/contactus/Brayden_Profile.png" alt="Brayden" style="width:100%">
             <div class="container">
-                <h2>Jane Doe</h2>
-                <p class="title">CEO & Founder</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="button">Contact</button></p>
+                <h2>Brayden Basinger</h2>
+                <ul>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am competent in Python programming and am working on becoming an expert.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I can build a Python/Flask web server.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I can do the DevOps on Linux, namely setting up a&nbsp; Python/Flask server using services like Gunicorn, Nginx</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I have worked with Internet Service Provider DNS records to setup my own Domain.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I can develop web frontends&nbsp; using HTML, CSS, and BootStrap.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am now learning concepts of curating data, searching data, and starting to become competent in concepts like Data Analytics</span></li>
+                </ul>
+                <p><span style="font-weight: 400;">I am a competition python programmer which focused on the front end elements of html, css, js</span></p>
             </div>
         </div>
     </div>
     <div class="column">
         <div class="card">
-            <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+            <img src="../static/images/contactus/Andrew_Profile.jpg" alt="Andrew" style="width:100%">
             <div class="container">
-                <h2>Jane Doe</h2>
-                <p class="title">CEO & Founder</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="button">Contact</button></p>
+                <h2>Andrew Zhang</h2>
+                <ul>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am competent in Python programming and am working on becoming an expert.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I can build a Python/Flask web server.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I have worked with Internet Service Provider DNS records to set up my own Domain.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I can develop web front ends&nbsp; using HTML, CSS, and BootStrap.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I know the concepts of HTML forms, HTML5 validation, building Jinja templates, and exchanging data between frontend and backend using Flask framework and Jinja variables.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I can do backend work with SQL databases, specifically SQLite and SQLalchemy utilizing the Flask framework.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I know Database concepts like&nbsp; establishing tables to setup and manage user accounts. I know Flask services like login_required.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am now learning concepts of curating data, searching data, and starting to become competent in concepts like Data Analytics</span></li>
+                </ul>
+                <p><span style="font-weight: 400;">I am a competent python programmer which focused on the back end elements of database and data processing</span></p>
             </div>
         </div>
     </div>
     <div class="column">
         <div class="card">
-            <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+            <img src="../static/images/contactus/Colin_Profile.jpg" alt="Colin" style="width:100%">
             <div class="container">
-                <h2>Jane Doe</h2>
-                <p class="title">CEO & Founder</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>example@example.com</p>
-                <p><button class="button">Contact</button></p>
+                <h2>Colin Szeto</h2>
+                <ul>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am competent in Python programming and am working on becoming an expert.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I can build a Python/Flask web server</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I can do the DevOps on Linux, namely setting up a&nbsp; Python/Flask server using services like Gunicorn, Nginx</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I have even used raspberry pi to deploy my web server</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I have worked with Internet Service Provider DNS records to set up my own Domain.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I know the concepts of HTML forms, HTML5 validation, building Jinja templates, and exchanging data between frontend and backend using Flask framework and Jinja variables.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I have an understanding of JavaScript and how to use it to work with the HTML Document Object Model (DOM)</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I understand REST APIs capabilities, Flask request and parsing resulting data from JSON.</span></li>
+                    <li style="font-weight: 400;"><span style="font-weight: 400;">I am now learning concepts of curating data, searching data, and starting to become competent in concepts like Data Analytics</span></li>
+                </ul>
+                <p><span style="font-weight: 400;">I look forward to learn about databases and implement sessions to provided a richer user experience after the front end</span></p>
             </div>
         </div>
     </div>
-</div>
 
 
 {% endblock %}

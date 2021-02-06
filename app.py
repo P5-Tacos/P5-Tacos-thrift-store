@@ -108,7 +108,7 @@ def shopowner():
         db.session.commit()
         user_dict = {'id': new_item.id, 'name': new_item.name, 'type': new_item.type, 'price': new_item.price}
         records.append(user_dict)
-    return render_template("Database test.html", form=form, table=records)
+    return render_template("Database test.html", form=form, table=records, gallery=records)
 
 @app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
 def download(filename):

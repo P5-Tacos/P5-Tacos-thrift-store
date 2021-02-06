@@ -21,7 +21,7 @@
 #### Week 7 
 
 - Andrew
-	- Worked on the login and the sign-in page of the [Del Norte Eats] (https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/view.py)
+	- Worked on the login and the [sign-in page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/view.py) of the Del Norte Eats
 	- Started constructing the order histories for the [Customers](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/auth_user.html)
 
 - Sam - I worked on adding to user flow so I could begin implementing jinja into our project. 

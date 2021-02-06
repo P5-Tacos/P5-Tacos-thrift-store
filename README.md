@@ -19,10 +19,14 @@
 ## Changes Log
 #### Week 7 
 
-Andrew
-Sam 
-Colin 
-Brayden - I worked on Image maps so that the person selecting the location can better see where they are picking their food.
+-Andrew
+
+-Sam - I worked on adding to user flow so I could begin implementing jinja into our project. 
+[Link to User flow page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/ordernow.html); I also used CSS. Then after that I created a contactus form [Link to contact form](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/newcontactus.html)
+
+-Colin 
+
+-Brayden - I worked on  Image maps [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/50954ea9ae2594d6aa3cf8ec3cac23e95bf3c855/views/easter_egg/templates/easter_egg/home.html#L26) so that the person selecting the location can better see where they are picking their food.
 
 #### Week 6
 

@@ -20,14 +20,14 @@
 ## Changes Log
 #### Week 7 
 
-- Andrew
+- Andrew [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785119)
 	- Worked on the login and the [sign-in page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/view.py) of the Del Norte Eats
 	- Started constructing the order histories for the [Customers](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/auth_user.html)
 
-- Sam - I worked on adding to user flow so I could begin implementing jinja into our project. 
-[Link to User flow page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/ordernow.html); I also used CSS. Then after that I created a contactus form [Link to contact form](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/newcontactus.html)
+- Sam [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785634)
+	- I worked on adding to user flow so I could begin implementing jinja into our project. [Link to User flow page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/ordernow.html); I also used CSS. Then after that I created a contactus form [Link to contact form](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/newcontactus.html)
 
-- Colin
+- Colin [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53784984)
 	- started the week off storyboarding the next project out, see [embedded google slide](http://timetothrift.cf/easter_egg/) 
 	- utilized [Image Map Generator](https://www.image-map.net/) to create a [rough image map](http://timetothrift.cf/easter_egg/image_map_dnhs) of buttons grouping specific buildings togehter (a, p, d buildings etc)
 		- click the administration building and a dialog box will appear to denote that the map reacted to the selection 
@@ -42,7 +42,8 @@
 	- was able to utilize [blueprints](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views) to better section off the code for easier debugging and maintenece 
 		- allowed the team to create diffrent nav bars for the two easter eggs within the project
 
-- Brayden - I worked on  Image maps [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/50954ea9ae2594d6aa3cf8ec3cac23e95bf3c855/views/easter_egg/templates/easter_egg/home.html#L26) so that the person selecting the location can better see where they are picking their food.
+- Brayden [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53786010)
+	- I worked on  Image maps [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/50954ea9ae2594d6aa3cf8ec3cac23e95bf3c855/views/easter_egg/templates/easter_egg/home.html#L26) so that the person selecting the location can better see where they are picking their food.
 
 #### Week 6
 

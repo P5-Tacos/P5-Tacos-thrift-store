@@ -14,9 +14,6 @@
 #### Link to project plan and requirements: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
 #### Link to easter egg: http://timetothrift.cf/easter_egg_college/
 
-#### when downloading need to execute:
-```pip install -r requirements.txt```
-
 ## Changes Log
 #### Week 7 
 
@@ -169,4 +166,6 @@ To replace the arduous task of manually going out to a thrift store to take phot
 - Creating a relationship with local thrift stores to implement the website with their product
 
 
+#### when downloading need to execute:
+```pip install -r requirements.txt```
 

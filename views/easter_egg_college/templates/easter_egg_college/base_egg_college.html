@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% block title %}
-    <title></title>
-    {% endblock %}
+
+    <title>Easter Egg College Board - {% block title %}{% endblock %}</title>
+
     <!--<link rel="stylesheet" href="../../../../static/css/style_base.css" type="text/css">-->
+    <link rel="icon" href="../static/images/acorn_noback.gif">
     <style>
     body {
     margin: 0;
@@ -50,7 +51,9 @@
 <div class="topnav">
     <a class="home" href="/">Back to Home Page</a>
     <a href="{{url_for('easter_egg_college_bp.college_req')}}">Requirements - Thrift Shop</a>
-    </div>
+    <a href="{{url_for('easter_egg_college_bp.who_am_i')}}">Who am I?</a>
+
+</div>
 {% block content %}{% endblock %}
 </body>
 </html>

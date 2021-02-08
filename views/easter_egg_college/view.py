@@ -13,3 +13,6 @@ def index():
 @easter_egg_college_bp.route('/college_board_requirements')
 def college_req():
     return render_template("easter_egg_college/college_board_requirements.html")
+@easter_egg_college_bp.route('/who_am_i')
+def who_am_i():
+    return render_template("easter_egg_college/who_am_i.html")

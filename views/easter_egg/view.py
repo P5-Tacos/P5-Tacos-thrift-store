@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, FileField, FloatField,PasswordField
 from wtforms.validators import InputRequired, Length, NumberRange
 from views.easter_egg import model
-from flask_login import UserMixin, LoginManager
+from flask_login import UserMixin, LoginManager, login_required
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from views.easter_egg import db, User
@@ -46,10 +46,10 @@ def image_map():
 def signup():
     form = RegisterForm()
     if form.validate_on_submit():
-        new_user = User(name = form.username.data, id = form.id.data, password = form.password.data,grade = form.grade.data)
+        new_user = User(name = form.username.data, Stu_id = form.id.data, password = form.password.data,grade = form.grade.data)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('easter_egg.login'))
+        return redirect(url_for('easter_egg_bp.login'))
 
     return render_template("easter_egg/Signup.html",form = form)
 
@@ -77,6 +77,7 @@ def login():
 def private():
     return render_template("easter_egg/auth_user.html")
 
+@login_required
 @easter_egg_bp.route('/ordernow')
 def timetoorder():
     return render_template("easter_egg/ordernow.html")

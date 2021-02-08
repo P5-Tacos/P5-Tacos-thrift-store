@@ -19,7 +19,8 @@ class Order(db.Model):
 class User(db.Model):
 
     __tablename__ = 'Customer'
-    id = db.Column('student_id', db.Integer, primary_key=True)
+    id = db.Column('id',db.Integer, primary_key = True)
+    Stu_id = db.Column(db.Integer)
     name = db.Column(db.String(100))
     password = db.Column(db.String(50))
     grade = db.Column(db.Integer)
@@ -27,8 +28,8 @@ class User(db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.name)
 
-
 db.create_all()
+
 
 
 easter_egg_bp = Blueprint('easter_egg_bp',__name__,

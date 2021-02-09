@@ -80,3 +80,7 @@ def private():
 @easter_egg_bp.route('/ordernow')
 def timetoorder():
     return render_template("easter_egg/ordernow.html")
+
+@easter_egg_bp.route('/multipage_form')
+def multipage_from():
+    return render_template("easter_egg/multipage_form.html")

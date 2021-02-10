@@ -9,6 +9,10 @@ Order Form
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style>
+
+.number_input {
+    width: 20px;
+}
 .margin_1 {
     margin-left: 10px;
 }
@@ -59,7 +63,7 @@ button {
     border: none;
     padding: 10px 20px;
     font-size: 17px;
-    font-family: Raleway;
+    /*font-family: Raleway;*/
     cursor: pointer;
 }
 
@@ -104,8 +108,18 @@ button:hover {
         <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
         <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
     </div>
-    <div class="tab">Name:
-        <p>placeholer</p>
+    <div class="tab">Select Quanity of Food:
+        <div>
+            <button onclick="dec('qty')">-</button>
+            <input class="number_input" name="qty" type="text" readonly value="0">
+            <button onclick="inc('qty')">+</button>
+        </div>
+
+        <div>
+            <button onclick="dec('amount')">-</button>
+            <input class="number_input" name="amount" type="text" readonly value="0">
+            <button onclick="inc('amount')">+</button>
+        </div>
     </div>
     <div class="tab">Contact Info:
         <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
@@ -217,6 +231,18 @@ button:hover {
         }
         //... and adds the "active" class on the current step:
         x[n].className += " active";
+    }
+
+    function inc(element) {
+        let el = document.querySelector(`[name="${element}"]`);
+        el.value = parseInt(el.value) + 1;
+    }
+
+    function dec(element) {
+        let el = document.querySelector(`[name="${element}"]`);
+        if (parseInt(el.value) > 0) {
+            el.value = parseInt(el.value) - 1;
+        }
     }
 </script>
 {% endblock %}

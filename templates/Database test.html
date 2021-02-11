@@ -100,7 +100,6 @@ Database
             <th>{{ row['name'] }}</th>
             <th>{{ row['type'] }}</th>
             <th>{{ row['price'] }}</th>
-            <th>{{ row['image']}}</th>
             <th><form action={{url_for('.delete')}} method="post"><input type="number" id="userid" name="item_id" value={{row['id']}}><input type="submit" value="Delete"></form></th>
         </tr>
         {% endfor %}

@@ -106,6 +106,8 @@ def shopowner():
         new_item = items(type=form.type.data, name=form.name.data, price=form.price.data)
         db.session.add(new_item)
         db.session.commit()
+        filename = new_item.id
+        form.file.data.save('uploads/' + filename)
         user_dict = {'id': new_item.id, 'name': new_item.name, 'type': new_item.type, 'price': new_item.price}
         records.append(user_dict)
     return render_template("Database test.html", form=form, table=records, gallery=records)

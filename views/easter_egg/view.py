@@ -6,6 +6,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, FileField, FloatField,PasswordField
 from wtforms.validators import InputRequired, Length, NumberRange
 from views.easter_egg import model
+from views.easter_egg import food
+from flask_login import UserMixin, LoginManager
 from flask_login import UserMixin, LoginManager, login_required
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
@@ -81,3 +83,7 @@ def private():
 @easter_egg_bp.route('/ordernow')
 def timetoorder():
     return render_template("easter_egg/ordernow.html")
+
+@easter_egg_bp.route('/multipage_form')
+def multipage_from():
+    return render_template("easter_egg/multipage_form.html", snack_list=food.inventory_stack())

@@ -52,16 +52,17 @@
 <!-- this is the nav bar -->
 <div class="topnav">
     <div style="margin-left: 15px">
-    <h1  style= " color: #f2f2f2; margin-bottom: 5px;"> Del Norte Eats</h1>
+    <h1  style= " color: #f2f2f2; margin-bottom: 5px; text-align:revert;"> Del Norte Eats</h1>
     <a style="  all: revert;" href="/">Go back to TimetoThrift!</a>
     </div>
     <a class="home" href={{url_for('easter_egg_bp.index')}}>Home</a>
-    <a href="">Admin</a>
+    <!--<a href="">Admin</a>-->
     <a href="{{url_for('.login')}}">Login</a>
     <a href="{{url_for('.signup')}}">Sign up</a>
     <a href="javascript:void(window.open('https://form.jotform.com/210330529779156','blank','scrollbars=yes,toolbar=no,width=700,height=500') ) ">Contact Us</a>
-    <a href="">Future Projects</a>
+    <!--<a href="">Future Projects</a>-->
     <a href="{{url_for('.timetoorder')}}">Order Now</a>
+    <a href="{{url_for('.multipage_from')}}">Multipage Form</a>
 
 </div>
 {% block content %}{% endblock %}

@@ -10,9 +10,6 @@ Order Form
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style>
 
-.number_input {
-    width: 20px;
-}
 .margin_1 {
     margin-left: 10px;
 }
@@ -40,6 +37,7 @@ h1 {
 }
 
 input {
+    color: black;
     padding: 10px;
     width: 100%;
     font-size: 17px;
@@ -95,13 +93,79 @@ button:hover {
 .step.finish {
     background-color: #4CAF50;
 }
+
+#regForm a {
+    color: #ddd;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* Change the color of links on hover */
+#regForm a:hover {
+    background-color: #4CAF50;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+#regForm a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.dec{
+    position: relative;
+    left-margin: 100px;
+    border-radius: 50%;
+    font-size: 200%;
+    width: 50px;
+    height: 50px;
+    background-color: #bbbbbb;
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.inc{
+    border-radius: 50%;
+    font-size: 200%;
+    width: 50px;
+    height: 50px;
+    background-color: #bbbbbb;
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.number_input {
+    width: 50px;
+    text-align: center;
+}
+
+.counter_margin {
+    margin-left: 300px;
+}
+
+.food_name{
+
+}
 </style>
 {% endblock %}
 
 
 {% block content %}
 
-<form id="regForm" action="/action_page.php">
+<form id="regForm" action="">
     <h1>Register:</h1>
     <!-- One "tab" for each step in the form: -->
     <div class="tab">Name:
@@ -109,17 +173,27 @@ button:hover {
         <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
     </div>
     <div class="tab">Select Quanity of Food:
-        <div>
-            <button onclick="dec('qty')">-</button>
-            <input class="number_input" name="qty" type="text" readonly value="0">
-            <button onclick="inc('qty')">+</button>
-        </div>
+        <br><br>
+        <table>
+        {% for data in snack_list %}
+        {% set name = data["name"] %}
+        {% set tag = data["price"] %}
+        {% set max_count = data["max_count"] %}
 
-        <div>
-            <button onclick="dec('amount')">-</button>
-            <input class="number_input" name="amount" type="text" readonly value="0">
-            <button onclick="inc('amount')">+</button>
-        </div>
+            <tr>
+                <td>{{name}}</td>
+                <td>
+                    <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}})">&zwnj; - &zwnj;</span>
+                    <input class="number_input" name="qty{{loop.index}}" type="text" readonly value="0">
+                    <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}})">&zwnj; + &zwnj;</span>
+                </td>
+                <td>
+                    <span id="error_msg{{loop.index}}" style="color:red;"></span>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </table>
     </div>
     <div class="tab">Contact Info:
         <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
@@ -160,6 +234,37 @@ button:hover {
 </form>
 
 <script>
+    function inc(element, increment_numb, item, max) {
+        let el = document.querySelector(`[name="${element}"]`); //differentiates between items
+        if (el.value >= max){ //when the input is maxed pressed one over max
+
+            //max number of items that one can purchase
+            el.value = max;
+
+            //constructs the error message based on the item that was passed in
+            document.getElementById("error_msg" + increment_numb).innerHTML = "cannot purchase more than "+ max + " "+ item +"(s)";
+
+            //allows error messages to fade out after a certain time
+            setTimeout(function(){ document.getElementById("error_msg" + increment_numb).innerHTML =""; }, 3000);
+        } else {
+
+            //incrementing by +1
+            el.value = parseInt(el.value) + 1;
+        }
+    }
+
+    function dec(element, increment_numb) {
+        let el = document.querySelector(`[name="${element}"]`); //differentiates between items
+        if (parseInt(el.value) > 0) { //if the item count is greater than 0
+
+            //decrement the count by 1
+            el.value = parseInt(el.value) - 1;
+
+            //takes away the error message
+            document.getElementById("error_msg" + increment_numb).innerHTML = "";
+        }
+    }
+
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
 
@@ -232,7 +337,7 @@ button:hover {
         //... and adds the "active" class on the current step:
         x[n].className += " active";
     }
-
+/*
     function inc(element) {
         let el = document.querySelector(`[name="${element}"]`);
         el.value = parseInt(el.value) + 1;
@@ -243,6 +348,6 @@ button:hover {
         if (parseInt(el.value) > 0) {
             el.value = parseInt(el.value) - 1;
         }
-    }
+    }*/
 </script>
 {% endblock %}

@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileRequired, FileAllowed
+from werkzeug.utils import secure_filename
 from wtforms import StringField, FileField, FloatField
 from wtforms.validators import InputRequired, Length, NumberRange
 import os
@@ -37,10 +39,10 @@ class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     type = db.Column(db.String(50))
-    price = db.Column(db.Float(200))
+    price = db.Column(db.String(200))
 
 
-def __init__(self, id, name, type, price, image):
+def __init__(self, id, name, type, price):
     self.name = name
     self.id = id
     self.type = type
@@ -57,8 +59,9 @@ db.create_all()
 class ItemForm(FlaskForm):
     name = StringField('name', validators=[InputRequired(), Length(min=1, max=15)])
     type = StringField('type', validators=[InputRequired(), Length(min=1, max=80)])
-    price = StringField('price', validators=[InputRequired(), NumberRange(min = 0.01, max = 100000,message = "Please enter a proper price")])
-    image = FileField('image', validators=[InputRequired()])
+    price = StringField('price', validators=[InputRequired()])
+    image = FileField('image', validators=[FileRequired(),FileAllowed(['png', 'pdf', 'jpg'], "Nerd")])
+
 
 
 """Defining routes"""
@@ -106,10 +109,13 @@ def shopowner():
         new_item = items(type=form.type.data, name=form.name.data, price=form.price.data)
         db.session.add(new_item)
         db.session.commit()
-        filename = new_item.id
-        form.file.data.save('uploads/' + filename)
         user_dict = {'id': new_item.id, 'name': new_item.name, 'type': new_item.type, 'price': new_item.price}
         records.append(user_dict)
+        f = form.image.data
+        filename = str(new_item.id) + ".jpg"
+        f.save(os.path.join(
+        app.instance_path, '../static/images/owner_upload', filename))
+
     return render_template("Database test.html", form=form, table=records, gallery=records)
 
 @app.route('/uploads/<path:filename>', methods=['GET', 'POST'])

@@ -59,7 +59,7 @@ Database
 {% block content %}
 <div class="center">
     <div class="container"> <!-- form to add in data -->
-    <form class="form-append" method="POST" action="/database">
+    <form class="form-append" method="POST" action="/database"enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <h2 class="form-signin-heading">Please append data</h2>
         {{wtf.form_field(form.name)}}
@@ -70,6 +70,7 @@ Database
     </form>
 
     </div>
+
 </div>
 
 <button id="toggle_button" type="button" onclick="toggle()">show content of gallery</button>

@@ -101,7 +101,7 @@ Database
             <th>{{ row['name'] }}</th>
             <th>{{ row['type'] }}</th>
             <th>{{ row['price'] }}</th>
-            <th><form action={{url_for('.delete')}} method="post"><input type="number" id="userid" name="item_id" value={{row['id']}}><input type="submit" value="Delete"></form></th>
+            <th><form action={{url_for('.delete')}} method="post"><input type="number" id="userid" name="item_id" value={{row['id']}} style="visibility: hidden; width: 0px;"><input type="submit" value="Delete"></form></th>
         </tr>
         {% endfor %}
     </table>

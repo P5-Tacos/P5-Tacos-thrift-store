@@ -169,3 +169,21 @@ To replace the arduous task of manually going out to a thrift store to take phot
 #### when downloading need to execute:
 ```pip install -r requirements.txt```
 
+#### Pull code from Github and update packages
+#### In console/terminal (every update: pull code and check package dependencies)...
+
+```pi@raspberrypi:~ $ sudo apt update; sudo apt upgrade```
+
+```pi@raspberrypi:~ $ cd ~/P5-Tacos-thrift-store```
+
+```pi@raspberrypi:~/P5-Tacos-thrift-store $ git pull```
+
+```pi@raspberrypi:~/P5-Tacos-thrift-store $ source homesite/bin/activate```
+
+In console/terminal with virtualenv activitate (every time: check and update packages)...
+
+```(homesite) pi@raspberrypi:~/P5-Tacos-thrift-store $ sudo pip install -r requirements.txt```
+
+In console/terminal (every time AFTER initial setup: restart gunicorn)...
+
+```pi@raspberrypi:~ $ sudo systemctl restart homesite.service```

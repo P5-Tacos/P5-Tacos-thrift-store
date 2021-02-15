@@ -15,6 +15,17 @@
 #### Link to easter egg: http://timetothrift.cf/easter_egg_college/
 
 ## Changes Log
+#### Week 8 
+- Andrew 
+	- worked on uploading images to the [database](http://timetothrift.cf/database)
+	- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/69e606a41f10d1dcab6fa717f2e94fce20958995/app.py#L124-L126)
+	
+- Colin 
+	- worked on multi [page form](http://timetothrift.cf/easter_egg/multipage_form)
+	- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/multipage_form.html)
+		- [link to view](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/69e606a41f10d1dcab6fa717f2e94fce20958995/views/easter_egg/templates/easter_egg/multipage_form.html#L30-L47) of the code, itterating to display the avalible food options for the user 
+		- [link to model](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/food.py) storing all of the information for all of the food items
+
 #### Week 7 
 
 - Andrew [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785119)

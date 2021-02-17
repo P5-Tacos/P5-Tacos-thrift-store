@@ -32,7 +32,17 @@ Bootstrap(app)
 db = SQLAlchemy(app)
 records = []
 
-"Initialize Database with specific Items"
+#to ensure that the directory is made each time the program is run
+MYDIR = ("static\images\owner_upload")
+CHECK_FOLDER = os.path.isdir(MYDIR)
+
+# If folder doesn't exist, then create it.
+if not CHECK_FOLDER:
+    os.makedirs(MYDIR)
+    print("created folder : ", MYDIR)
+
+else:
+    print(MYDIR, "folder already exists.")
 
 
 class items(db.Model):
@@ -113,8 +123,7 @@ def shopowner():
         records.append(user_dict)
         f = form.image.data
         filename = str(new_item.id) + ".jpg"
-        f.save(os.path.join(
-        app.instance_path, '../static/images/owner_upload', filename))
+        f.save(os.path.join(MYDIR, filename))
 
     return render_template("Database test.html", form=form, table=records, gallery=records)
 

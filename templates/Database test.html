@@ -91,8 +91,6 @@ Database
             <th>Name</th>
             <th>Type</th>
             <th>Price</th>
-            <th> Remove </th>
-            <th> Image </th>
             <th></th><!-- this is the column with the delete button icons -->
         </tr>
         <!-- Loop through rows in table -->
@@ -103,8 +101,7 @@ Database
             <th>{{ row['name'] }}</th>
             <th>{{ row['type'] }}</th>
             <th>{{ row['price'] }}</th>
-
-            <th><form action={{url_for('.delete')}} method="post"><input type="number" id="userid" name="item_id" value={{row['id']}}><input type="submit" value="Delete"></form></th>
+            <th><form action={{url_for('.delete')}} method="post"><input type="number" id="userid" name="item_id" value={{row['id']}} style="visibility: hidden; width: 0px;"><input type="submit" value="Delete"></form></th>
         </tr>
         {% endfor %}
     </table>
@@ -120,7 +117,7 @@ Database
 <!--<p>item {{loop.index}}</p>-->
 <div class="column">
     <div class="card">
-        <img src={{image_link}} width=200px%>
+        <img src='../static/images/owner_upload/{{id}}.jpg' width=200px%> <!--static/images/owner_upload/9.jpg-->
         <div class="container" style="background-color: revert;">
             <h2>ID: {{id}}</h2>
             <h2>{{name}}</h2>

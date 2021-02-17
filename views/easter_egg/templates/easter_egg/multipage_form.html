@@ -1,0 +1,93 @@
+{% extends 'easter_egg/base_egg.html' %}
+<html lang="en">
+
+{% block title %}
+Order Form
+{% endblock %}
+
+{% block style %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('easter_egg_bp.static', filename='multiPageForm.css') }}" type="text/css">
+
+<style>
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<form id="regForm" action="">
+    <h1>Register:</h1>
+    <!-- One "tab" for each step in the form: -->
+    <div class="tab">Name:
+        <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+        <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+    </div>
+    <div class="tab">Select Quanity of Food:
+        <br><br>
+        <table>
+        {% for data in snack_list %}
+        {% set name = data["name"] %}
+        {% set tag = data["price"] %}
+        {% set max_count = data["max_count"] %}
+
+            <tr>
+                <td>{{name}}</td>
+                <td>
+                    <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}})">&zwnj; - &zwnj;</span>
+                    <input class="number_input" readonly value="0" oninput="this.className = ''" name="qty{{loop.index}}">
+                    <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}})">&zwnj; + &zwnj;</span>
+                </td>
+                <td>
+                    <span id="error_msg{{loop.index}}" style="color:red;"></span>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </table>
+    </div>
+    <div class="tab">Contact Info:
+        <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+        <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+    </div>
+    <div class="tab">Name:
+        <p>placeholder</p>
+    </div>
+    <div class="tab">Contact Info:
+        <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+        <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+    </div>
+    <div class="tab">Birthday:
+        <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+        <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+        <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+    </div>
+    <div class="tab">Login Info:
+        <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
+        <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+    </div>
+    <div style="overflow:auto;">
+        <div style="float:right;">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+    </div>
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+    </div>
+</form>
+
+<script src="../easter_egg/static/formValScript.js">
+
+</script>
+
+
+{% endblock %}

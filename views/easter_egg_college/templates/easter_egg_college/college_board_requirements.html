@@ -1,0 +1,82 @@
+{% extends "easter_egg_college/base_egg_college.html" %}
+<html lang="en">
+
+
+{% block title %}
+Requirements
+{% endblock %}
+
+{% block style %}
+<style>
+    .margin_1 {
+        margin-left: 10px;
+        }
+</style>
+{% endblock %}
+
+
+{% block content %} <!--<img src="cid:Image_0.png" alt="" /> -->
+<div class="margin_1" style="max-width: 700px;">
+<p>Examples of submissions: <a href="https://apstudents.collegeboard.org/courses/ap-computer-science-principles/free-response-questions-by-year" rel="nofollow">https://apstudents.collegeboard.org/courses/ap-computer-science-principles/free-response-questions-by-year</a></p>
+<p>Time to Thrift</p>
+<p>Input</p>
+<ul>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/database_form.html">form intake of information</a>, tied together with java script to create rich user experience</li>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/templates/Database%20test.html#L43-L56">Taking information from the user through a form </a>and passing it to display into the database</li>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/app.py#L100-L111">Route receiving the form input </a>and rerouting to display the gathered information into a table on the html link</li>
+</ul>
+<p>Program functinatoy</p>
+<ul>
+    <li><a href="http://timetothrift.cf/">live runtime link</a></li>
+    <li>The user will navigate to the Url and is greeted by the first line of functionality, the navigation bar, these are simple hyperlinks that redirect the user deeper into the webpage on click</li>
+</ul>
+<p>Output</p>
+<ul>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/templates/Database%20test.html#L76-L86">Displaying the data in a table using jinja loops </a>this is the final step of the process in curating user input and displaying back to the user in the front end</li>
+</ul>
+<p>Program code segment</p>
+<p>List</p>
+<ul>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/websitecards.py">Example of list</a>. By using a list, we are organizing our code. We are keeping information within a certain file, this information will be stored as a list, in which this list will be called upon to fill in any template</li>
+</ul>
+<p>Data stored</p>
+<p>Collection type</p>
+<ul>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/barbarelladata.py">Example of a dictionary</a>. In this example, there is a dictionary that contains information that will be plugged into our template html files.</li>
+</ul>
+<p>List being used</p>
+<ul>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/storefront.html">Example of List being USED. </a>In this case, the list is being called upon to display the information on the frontend.</li>
+    <li></li>
+</ul>
+<p>Student developed procedure</p>
+<p>Procedure</p>
+<ul>
+    <li>We are using <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/templates/database_form.html#L129-L140">javascript functions</a>&nbsp;to listen to the user interactions with the form and displaying their input directly on a preview of what the result will yield</li>
+    <li>As we are using flask templates to assemble our web server, we are using a function after a route to redirect users to the desired page, in <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L16-L66">this function</a>&nbsp;the user is automatically directed to the <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L66">page with no information displayed </a>if the user provided a selection and user input, the <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L62">page will rerender with the selected information</a></li>
+</ul>
+<p>Parameter</p>
+<ul>
+    <li>We use <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L44-L56">many variables</a>&nbsp;to designate information taken out of json files into useable strings that our program is able to then take and display on the front end of the user</li>
+</ul>
+<p>Algorithm</p>
+<ul>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/contactus.html">Example of algorithim</a>. Here there is jinja being used to to execute information in a specific manner on the webpage.</li>
+</ul>
+<p>Sequencing</p>
+<p>Selections</p>
+<ul>
+    <li>As we are using flask templates to assemble our web server, we are using a function after a route to redirect users to the desired page, in <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L16-L66">this function </a>the user is automatically directed to the<a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L66"> page with no information displayed </a>(the else condition/default condition )if the user provided a selection and user input (if user selects desired input and presses the submit button), the <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L62">page will rerender with the selected information</a></li>
+</ul>
+<p>Iteration</p>
+<ul>
+    <li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/templates/Database%20test.html#L76-L86">We use jinja loops</a> to iterate through the list that we pass in to display all of the data labeled by tags into each row of the table</li>
+    <li>We use <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L42-L58">iteration </a>to pull out all and label all of the necessary information out of the Json file from the api</li>
+</ul>
+<p>Argument</p>
+<ul>
+    <li>Here is an <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/28c3cfa85735787f37a18a34994a0129774a9040/views/makeup_api/view.py#L18-L20">implementation of selecting different apis</a><u>&nbsp;</u>to sample from by taking the user input and appending it onto the end of the url to request from. This allows for the user to provided an input of what API they want to sample from and it will then respond to the user input</li>
+</ul>
+<p>&nbsp;</p>
+</div>
+{% endblock %}

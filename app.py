@@ -92,6 +92,10 @@ def index():
 def storefront():
     return render_template("storefront.html", cards=websitecards.CardsForStores())
 
+@app.route('/reactiontest')
+def reactiontest():
+    return render_template("reactiontest.html")
+
 
 @app.route('/contactus')
 def contactus():

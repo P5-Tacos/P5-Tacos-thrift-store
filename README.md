@@ -26,7 +26,7 @@
 		- [link to view](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/69e606a41f10d1dcab6fa717f2e94fce20958995/views/easter_egg/templates/easter_egg/multipage_form.html#L30-L47) of the code, itterating to display the avalible food options for the user 
 		- [link to model](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/food.py) storing all of the information for all of the food items
 - Brayden
-	-This week I worked on making a reaction test game since we already were happy with our website. I plan to add a scoreboard to store user info just like how Trish showed 	us in class in Thursday.
+	- This week I worked on making a reaction test game since we already were happy with our website. I plan to add a scoreboard to store user info just like how Trish showed us in class in Thursday.
 
 #### Week 7 
 

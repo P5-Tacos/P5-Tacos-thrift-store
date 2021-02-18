@@ -17,7 +17,8 @@
 ## Changes Log
 #### Week 9
 - Brayden
-	- This week I worked on making a reaction test game [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/76136fb252475a2090279eff1f0d395f0f9e92c3/templates/reactiontest.html#L1) since we already were happy with our website. I plan to add a scoreboard to store user info just like how Trish showed us in class on Thursday. One of the College Board requirements I met was the Big Idea 1 - Creative Development. I did this when I developed my code with my group members and added functions like get random color that I did not know about before.
+	- This week I worked on making a reaction test game [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/76136fb252475a2090279eff1f0d395f0f9e92c3/templates/reactiontest.html#L1) since we already were happy with our website. I plan to add a scoreboard to store user info just like how Trish showed us in class on Thursday. One of the College Board requirements I met was the Big Idea 1 - Creative Development. I did this when I developed my code with my group members and added functions like get random color that I did not know about before. I also learned how to add tabs on a NavBar from the crossover group that did that. I incorporated that into our project by adding the tab ReactionTest
+
 
 #### Week 8 
 - Andrew 

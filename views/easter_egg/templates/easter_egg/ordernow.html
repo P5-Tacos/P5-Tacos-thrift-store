@@ -3,47 +3,42 @@
 
 
 {% block content %}
-<head>
-    <meta charset="UTF-8">
+<table style="width:100%">
+    <tr>
+        <th>Food</th>
+        <th>Image</th>
+        <th>Cost</th>
+        <th>Add to Cart</th>
+    </tr>
+    <tr>
+        <td>Pepperoni Pizza</td>
+        <td>Soon</td>
+        <td>$3.50</td>
+        <td> <button> + </button> </td>
+    </tr>
+    <tr>
+        <td>Cheese Pizza</td>
+        <td>Soon</td>
+        <td>$3.50</td>
+        <td> <button> + </button> </td>
+    </tr>
+</table>
 
-
-    <div class="horizontal-scroll-wrapper squares">
-        <div>item 1</div>
-        <div>item 2</div>
-        <div>item 3</div>
-        <div>item 4</div>
-        <div>item 5</div>
-        <div>item 6</div>
-        <div>item 7</div>
-        <div>item 8</div>
-    </div>
-
-    <style>
-        .horizontal-scroll-wrapper {
-  width: 100px;
-  height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
+<style>
+    table, th, td {
+  border: 1px solid black;
 }
-.horizontal-scroll-wrapper > div {
-  width: 100px;
-  height: 100px;
+th, td {
+  padding: 15px;
 }
-.horizontal-scroll-wrapper {
-  ...
-  transform: rotate(-90deg);
-  transform-origin: right top;
+th {
+  text-align: left;
 }
-.horizontal-scroll-wrapper {
-  ...
-  transform:rotate(-90deg) translateY(-100px);
-  ...
+table {
+  border-spacing: 5px;
 }
 
-    </style>
 
-</head>
-<body>
 
-</body>
+</style>
 {% endblock %}

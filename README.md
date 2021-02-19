@@ -20,7 +20,7 @@
 [AP Requirement Doc](https://docs.google.com/document/d/13WzGAZ40KE8HZguGc2O9igHdUENnmVyBys2u7PRZuns/edit)
 
 - Andrew
-	- This week I mainly worked on finishing up the login session with Colin. [link to the user system](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py) [Link to Logged in page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/logged_in.html). The login system allows the program to recognize the logged in users.  
+	- This week I mainly worked on finishing up the login session with Colin. [link to the user system](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py) and [ink to Logged in page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/logged_in.html). The login system allows the program to recognize the logged in users.  
 	- 1. Ability to clearly review tickets and suggestions 5pts
 	After our crossovers from last week, we decided to improve our login system to add in a session. As the database for the items is fixed, I decided to work on session with Colin and make the login system working. 
 	- 2. College Board and Crossover visibility in project 4pts

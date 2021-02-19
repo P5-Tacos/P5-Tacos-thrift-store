@@ -33,6 +33,7 @@ Order Form
         {% set max_count = data["max_count"] %}
 
             <tr>
+                <td style="column-width: 100px;"><img src="../static/images/delnorteeatsfood/snack{{loop.index}}.jpg" width=50px></td>
                 <td>{{name}}</td>
                 <td>
                     <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}})">&zwnj; - &zwnj;</span>

@@ -15,6 +15,25 @@
 #### Link to easter egg: http://timetothrift.cf/easter_egg_college/
 
 ## Changes Log
+#### Week 9
+- Sam
+	- This week I mainly worked on finishing up our multi page form. [link to image directory](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/static/images/delnorteeatsfood). The link takes you to the image directory which contains all the images i used for our multipage form. Besides that, I worked on creating another table for the form and was able to incorporate buttons: which i plan on connecting to an actual system that will work as a cart where users can "buy now". I also helped out Brayden a bit with his project. 
+	- 1. Ability to clearly review tickets and suggestions 5pts
+	After our crossovers from last week, we were suggested to improve our UI. That has been the focus for this week as I have now incorporated images with a loop. Also, the ticket from this week was for me to do that very thing --improve UI-- which is what I have somewhat done using buttons and loops for images. 
+	- 2. College Board and Crossover visibility in project 3pts
+	I learned how to use another type of loop through the help of colin. In this case, the loop that colin taught me was much quicker for me to use rather than what I had previously known. I demonstrated meeting the criteria of CB requirements by simply uisng more jinja. However, I did not do everything I had wanted to for this week, so that is why I am deducting 2 points off myself.
+	
+- Brayden
+	- This week I worked on making a reaction test game [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/76136fb252475a2090279eff1f0d395f0f9e92c3/templates/reactiontest.html#L1) since we already were happy with our website. 
+	- 1. Ability to clearly review tickets and suggestions 5pts
+	On the README I elaborated on why I did this reaction test. There are also explanations on how to play the game on the actual page. My ticket this week was to do the 	reaction test, and I did that.
+	- 2. College Board and Crossover visibility in project 5pts
+	I learned many functions that are on the college board requirements. I also learned how to do more jinja and passing data, etc… One of the College Board requirements I met was the Big Idea 1 - Creative Development. I did this when I developed my code with my group members and added functions like get random color that I did not know about before. I also learned how to add tabs on a NavBar from the crossover group that did that. I incorporated that into our project by adding the tab ReactionTest
+	- 3. Mini code Review focus on tickets and project.
+	(Self explanatory) Look at what I made. Also look at the README on GitHub and there are directions on how to work the reaction test and how to start it on the page. For example, when I game is over I had a pop up that said “CTRL + R” to play again. This will reload the page
+
+
+
 #### Week 8 
 - Andrew 
 	- worked on uploading images to the [database](http://timetothrift.cf/database)

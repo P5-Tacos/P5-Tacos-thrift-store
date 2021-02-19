@@ -183,7 +183,7 @@ def delete():
                 delete = items.query.filter_by(id=float(userid)).first()
                 db.session.delete(delete)
                 db.session.commit()
-                print("after delete")  # for debuggin in the terminla
+                #print("after delete")  # for debuggin in the terminla
 
             for i in range(len(records)):  # deleting the front end view of the data base
                 if records[i]['id'] == float(userid):
@@ -195,7 +195,7 @@ def delete():
                         print(records[index][key])"""
             """else:
                 print("we could not find it", end="")"""
-        print("this is the row contents" + str(found_values))
+        #print("this is the row contents" + str(found_values))
 
     else:
         print("could not find the value")
@@ -282,9 +282,9 @@ def shopping_cart_remove():
 def shopping_cart_save():
     if request.method == 'POST':
         username = request.form['username']
-        print(shopping_cart)
+        #print(shopping_cart)
         jsonStr = json.dumps(shopping_cart)
-        print(jsonStr)
+        #print(jsonStr)
 
         db.session.query(UserTT).filter_by(username=username).update({"shopping_cart_column":jsonStr})
         db.session.commit()

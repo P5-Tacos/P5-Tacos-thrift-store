@@ -16,6 +16,7 @@ from views.easter_egg import easter_egg_bp
 from views.database import database_bp
 from views.easter_egg_college import easter_egg_college_bp
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+import json
 
 import thriftythreadsdata
 import barbarelladata
@@ -37,7 +38,8 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 records = []
 shopping_cart = [] #list to append values for each item to display on the user dashboard
-
+window_y_value = 0
+#print(window_y_value)
 #to ensure that the directory is made each time the program is run
 MYDIR = ("static\images\owner_upload")
 CHECK_FOLDER = os.path.isdir(MYDIR)
@@ -236,39 +238,22 @@ def signup():
 
     return render_template("SU.html", form = form)
 
-
-
-@app.route('/thriftythreads')
-def thriftythreads():
-    return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT(),
-                           Store_Title="Thrifty Threads", route="/thriftythreads")  # this is the app route to the ThriftTHreads's page
-
-
-@app.route('/barbarella')
-def barbarella():
-    return render_template("gallery.html", inventory_list=barbarelladata.inventory_itemsBB(),
-                           Store_Title="Barbarella", route="/barbarella")  # this is the app route to Barbarella's page
-
-@app.route('/logout', methods=["GET", "POST"])
-@login_required
-def logout():
-    if request.method == "POST" :
-        logout_user()
-        return redirect(url_for('login'))
-@app.route('/admin')
-def admin_display():
-    return render_template("admin_page.html", table=user_records)
-
 @app.route('/purchase', methods=["GET", "POST"])
 def purchase():
     if request.method == 'POST':
+        scroll_poss = request.form['scroll_poss']
         store_route = request.form['store_route']
         item_name = request.form['item_name']
         item_price = request.form['item_price']
         item_location = request.form['item_location']
 
-        print(store_route)
+        #print("scroll pos: "+str(scroll_poss))
+        print(scroll_poss)
         store_route = str(store_route)
+        global window_y_value
+        window_y_value = float(scroll_poss)
+
+
         """print("theses were the hidden values:") #testing pourposes
         print(item_name)
         print(item_price)
@@ -277,11 +262,34 @@ def purchase():
         pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location}
         shopping_cart.append(pass_info)
         #get the id of the item (done)
-            #get the page of the item
-            #append the id of the item into the shopping cart
-            #redirect user to the page that they were just at
+        #get the page of the item
+        #append the id of the item into the shopping cart
+        #redirect user to the page that they were just at
 
         return redirect(store_route)
+
+@app.route('/thriftythreads')
+def thriftythreads():
+    return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT(),
+                           Store_Title="Thrifty Threads", route="/thriftythreads", window_y_value=json.dumps(window_y_value))  # this is the app route to the ThriftTHreads's page
+
+
+@app.route('/barbarella')
+def barbarella():
+    return render_template("gallery.html", inventory_list=barbarelladata.inventory_itemsBB(),
+                           Store_Title="Barbarella", route="/barbarella", window_y_value=json.dumps(window_y_value))  # this is the app route to Barbarella's page
+
+@app.route('/logout', methods=["GET", "POST"])
+@login_required
+def logout():
+    if request.method == "POST" :
+        logout_user()
+        return redirect(url_for('login'))
+
+@app.route('/admin')
+def admin_display():
+    return render_template("admin_page.html", table=user_records)
+
 
 if __name__ == "__main__":
     user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")

@@ -49,6 +49,7 @@ Gallery
                     <p sytle="color:black;">{{description}}</p>
                     <p sytle="color:black;">${{price}}.00</p>
                     <form action="/purchase" method="post">
+                        <input type="number" step="0.01" class="scroll_poss" name="scroll_poss" value="0" style="visibility: hidden;"><br>
                         <input type="text" id="store_route" name="store_route" value="{{route}}" style="visibility: hidden;"><br>
                         <input type="text" id="item_name" name="item_name" value="{{name}}" style="visibility: hidden;"><br>
                         <input type="text" id="item_price" name="item_price" value="{{price}}.00" style="visibility: hidden;"><br>
@@ -61,5 +62,42 @@ Gallery
     {% endfor %}
 
 </body>
+
+<script>
+    // from here: https://stackoverflow.com/questions/29203312/how-can-i-retain-the-scroll-position-of-a-scrollable-area-when-pressing-back-but/46461016#46461016
+
+    //ensures when reloading page maintians scroll height
+    $(function() {
+        $(window).unload(function() {
+            var scrollPosition = $("div#element").scrollTop();
+            localStorage.setItem("scrollPosition", scrollPosition);
+        });
+        if(localStorage.scrollPosition) {
+            $("div#element").scrollTop(localStorage.getItem("scrollPosition"));
+        }
+    });
+
+</script>
+
+<script type="text/javascript">
+    //on load we set the postion of the page to what is passed into the page (deafult 0)
+    function test_func(window_y_value) {
+        console.log("on load: " + String(window_y_value));
+        window.scrollTo(0,window_y_value)
+    }
+    test_func({{ window_y_value|safe }})
+</script>
+
+<script>
+    var nameEls = document.getElementsByClassName("scroll_poss");
+
+    window.addEventListener('scroll',(event) => {
+        console.log(window.pageYOffset);
+        for (var i = 0; i < nameEls.length; i++) {
+            nameEls[i].value = window.pageYOffset;
+        }
+    });
+</script>
+
 </html>
 {% endblock%}

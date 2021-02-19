@@ -48,8 +48,8 @@ else:
 
 class UserTT(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(15), unique=True)
-    email = db.Column(db.String(50), unique=True)
+    username = db.Column(db.String(15))
+    email = db.Column(db.String(50))
     password = db.Column(db.String(80))
 
 class items(db.Model):
@@ -82,7 +82,7 @@ class ItemForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     username = StringField('username',validators=[InputRequired(), Length(min=1,max=15)])
-    password = PasswordField('password',validators=[InputRequired(), Length(min=8,max=80)])
+    password = PasswordField('password',validators=[InputRequired(), Length(min=1,max=80)])
     email = StringField('email',validator=[InputRequired(), Length(min = 1, max = 100)])
 
 class RegisterForm(FlaskForm):
@@ -197,15 +197,33 @@ def database_forms():
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user = UserTT.query.filter_by(username = username).first()
+        if user:
+            if user.password == password:
+
+                return redirect(url_for('logged_in'))
+
+        return '<h1>Invalid username or password</h1>'
+
     return render_template("login.html")
 
+@app.route('/logged_in', methods=["GET", "POST"])
+def logged_in():
+    return render_template("logged_in.html")
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     form = RegisterForm()
     if form.validate_on_submit():
-        x = 1
+        new_user = UserTT(username = form.username.data, email = form.email.data, password = form.password.data)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('login'))
 
     return render_template("SU.html", form = form)
+
 
 
 @app.route('/thriftythreads')
@@ -221,5 +239,8 @@ def barbarella():
 
 
 if __name__ == "__main__":
+    user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")
+    db.session.add(user1)
+    db.session.commit()
     # runs the application on the repl development server
     app.run(debug=True, host='192.168.0.12', port='5000')

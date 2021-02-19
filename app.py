@@ -27,7 +27,8 @@ import gallery_form
 app = Flask(__name__)
 app.config['SECRET_KEY'] = ':)'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///UsersTT.db'
 Bootstrap(app)
 db = SQLAlchemy(app)
 records = []
@@ -44,6 +45,12 @@ if not CHECK_FOLDER:
 else:
     print(MYDIR, "folder already exists.")
 
+
+class UserTT(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(15), unique=True)
+    email = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(80))
 
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key=True)

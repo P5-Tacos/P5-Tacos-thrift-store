@@ -25,13 +25,13 @@
 	After our crossovers from last week, we decided to improve our login system to add in a session. As the database for the items is fixed, I decided to work on session with Colin and make the login system working. 
 	- 2. College Board and Crossover visibility in project 4pts
 	We improved the asthetics for the project and added in more control over the user systems which align for the college board requirements on data and visuals. I added in more algorithms and data management into the project. I can do these things with a more timely fashion, so I will deduct one poing from me. 
-	
+
+### Colin Contributions demo: https://youtu.be/EViKxyIv7CE
+- I am currently unable to get post working on the rpi and have recorded a demo of the features on my local machine
 - Colin 
 	- [link to ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55258546)
 	- [Link to admin page](http://timetothrift.cf/admin) where all user information is stored
 	- This week I was focused in making the add to cart system work:
-		- demo: https://youtu.be/EViKxyIv7CE
-			- I am currently unable to get post working on the rpi and have recorded a demo of the features on my local machine
 		- procedure:
 			- open up [Link to admin page](http://timetothrift.cf/admin)in parrallel window to see the saved shopping list update when you eventutaly save shopping list to database
 			- slected any item from the gallery pages to add to cart 

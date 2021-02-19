@@ -15,6 +15,7 @@ from views.makeup_api import makeup_api_bp  # blueprint not a module
 from views.easter_egg import easter_egg_bp
 from views.database import database_bp
 from views.easter_egg_college import easter_egg_college_bp
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 import thriftythreadsdata
 import barbarelladata
@@ -31,6 +32,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///UsersTT.db'
 Bootstrap(app)
 db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 records = []
 
 #to ensure that the directory is made each time the program is run
@@ -46,11 +50,15 @@ else:
     print(MYDIR, "folder already exists.")
 
 
-class UserTT(db.Model):
+class UserTT(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15))
     email = db.Column(db.String(50))
     password = db.Column(db.String(80))
+
+@login_manager.user_loader
+def load_user(user_id):
+    return UserTT.query.get(int(user_id))
 
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key=True)
@@ -203,7 +211,7 @@ def login():
         user = UserTT.query.filter_by(username = username).first()
         if user:
             if user.password == password:
-
+                login_user(user)
                 return redirect(url_for('logged_in'))
 
         return '<h1>Invalid username or password</h1>'
@@ -211,8 +219,9 @@ def login():
     return render_template("login.html")
 
 @app.route('/logged_in', methods=["GET", "POST"])
+@login_required
 def logged_in():
-    return render_template("logged_in.html")
+    return render_template("logged_in.html", name = current_user.username)
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     form = RegisterForm()
@@ -237,6 +246,12 @@ def barbarella():
     return render_template("gallery.html", inventory_list=barbarelladata.inventory_itemsBB(),
                            Store_Title="Barbarella")  # this is the app route to Barbarella's page
 
+@app.route('/logout', methods=["GET", "POST"])
+@login_required
+def logout():
+    if request.method == "POST" :
+        logout_user()
+        return redirect(url_for('login'))
 
 if __name__ == "__main__":
     user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")

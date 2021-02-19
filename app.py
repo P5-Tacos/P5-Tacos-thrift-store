@@ -59,20 +59,16 @@ class items(db.Model):
     price = db.Column(db.String(200))
 
 
-
 def __init__(self, id, name, type, price):
     self.name = name
     self.id = id
     self.type = type
     self.price = price
 
-
-
 "Create Database"
 db.create_all()
 
 "Initialize the form that will retrieve data from the HTML page,flaskwtf form"
-
 
 class ItemForm(FlaskForm):
     name = StringField('name', validators=[InputRequired(), Length(min=1, max=15)])
@@ -96,6 +92,24 @@ app.register_blueprint(easter_egg_bp, url_prefix='/easter_egg')
 app.register_blueprint(database_bp, url_prefix='/database')
 app.register_blueprint(easter_egg_college_bp, url_prefix='/easter_egg_college')
 
+#  displaying all the current items in the data bases
+
+def list_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste this all the time
+    item = items.query.all()
+    for item in item:
+        user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
+        records.append(user_dict)
+
+user_records= []
+def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste this all the time
+    user = UserTT.query.all()
+    for user in user:
+        user_tt_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password}
+        user_records.append(user_tt_dict)
+
+
+list_map()  # running once, appends database items into list user sees
+list_user_map()
 
 #  connects default URL of server to a python function
 @app.route('/')
@@ -116,19 +130,6 @@ def reactiontest():
 @app.route('/contactus')
 def contactus():
     return render_template("contactus.html", images=contactimages.grouppictures())  # this is the app route to the contact us page
-
-
-#  displaying all the current items in the data bases
-
-def list_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste this all the time
-    item = items.query.all()
-    for item in item:
-        user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
-        records.append(user_dict)
-
-
-list_map()  # running once, appends database items into list user sees
-
 
 @app.route('/database', methods=['GET', 'POST'])  # contribution by Andrew
 def shopowner():
@@ -237,6 +238,9 @@ def barbarella():
     return render_template("gallery.html", inventory_list=barbarelladata.inventory_itemsBB(),
                            Store_Title="Barbarella")  # this is the app route to Barbarella's page
 
+@app.route('/admin')
+def admin_display():
+    return render_template("admin_page.html", table=user_records)
 
 if __name__ == "__main__":
     user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")

@@ -25,15 +25,41 @@
 	After our crossovers from last week, we decided to improve our login system to add in a session. As the database for the items is fixed, I decided to work on session with Colin and make the login system working. 
 	- 2. College Board and Crossover visibility in project 4pts
 	We improved the asthetics for the project and added in more control over the user systems which align for the college board requirements on data and visuals. I added in more algorithms and data management into the project. I can do these things with a more timely fashion, so I will deduct one poing from me. 
+	
+- Colin 
+	- [link to ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55258546)
+	- [Link to admin page](http://timetothrift.cf/admin) where all user information is stored
+	- This week I was focused in making the add to cart system work:
+		- procedure:
+			- open up [Link to admin page](http://timetothrift.cf/admin)in parrallel window to see the saved shopping list update when you eventutaly save shopping list to database
+			- slected any item from the gallery pages to add to cart 
+				- [Thrifty Threads](http://timetothrift.cf/thriftythreads)
+				- [Barbarella](http://timetothrift.cf/barbarella)
+			- navigate to [shoping cart icon](http://timetothrift.cf/barbarella) at right side of nav bar to see the items in shopping car
+			- remove item from shopping cart with the remove from cart button 
+			- press the save shopping list button, notice how the admin page will now update it's final column to reflect the information in the current shopping cart
+			- log out to log out and see that the items are contianed within the database
+		- implmenting a system to track where was the location the user was on the page(to get rid of needing to scroll back down to where you were last at)
+			- [to protect scroll position in reloading the page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/templates/gallery.html#L70-L78)
+			- [to set the scroll position when the page is loaded](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/templates/gallery.html#L83-L88)
+			- [to measure where the current position of the scroll bar]https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/templates/gallery.html#L92-L99) this measurement is connected to a [loabl variable](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L254-L255) when the corresponding gallery page is reopened the user is placed where they last were
+				- notice as we need to pass this global variable into a javascript function, we are passing this variable in through a [son format](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L303)
+		- implmenting a system to track which item was added to cart [hidden feild connected to add to cart button](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L247)
+		- system to redirect user to page they selected item from [hidden feild connected to add to cart button](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L246)
+		- system to display items in cart
+			- we store information about each item in a [itonary which is appended onto a list](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L263-L264)
+			- this information is passed into the [ser profile page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L229)
+		- system to save the items in cart to data base	[using jinja to display contents of database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L318-L320)
+		- I am still working on the R part of CRUD to automatically populate the shopping cart with previous data stored in the JSON file in the data base
 
-- Sam
+- Sam [runtime link](http://timetothrift.cf/easter_egg/multipage_form) type in giberish for the first two feilds and press next
 	- This week I mainly worked on finishing up our multi page form. [link to image directory](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/static/images/delnorteeatsfood). The link takes you to the image directory which contains all the images i used for our multipage form. Besides that, I worked on creating another table for the form and was able to incorporate buttons: which i plan on connecting to an actual system that will work as a cart where users can "buy now". I also helped out Brayden a bit with his project. 
 	- 1. Ability to clearly review tickets and suggestions 5pts
 	After our crossovers from last week, we were suggested to improve our UI. That has been the focus for this week as I have now incorporated images with a loop. Also, the ticket from this week was for me to do that very thing --improve UI-- which is what I have somewhat done using buttons and loops for images. 
 	- 2. College Board and Crossover visibility in project 3pts
 	I learned how to use another type of loop through the help of colin. In this case, the loop that colin taught me was much quicker for me to use rather than what I had previously known. I demonstrated meeting the criteria of CB requirements by simply uisng more jinja. However, I did not do everything I had wanted to for this week, so that is why I am deducting 2 points off myself.
 	
-- Brayden
+- Brayden [run time](http://timetothrift.cf/reactiontest)
 	- This week I worked on making a reaction test game [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/76136fb252475a2090279eff1f0d395f0f9e92c3/templates/reactiontest.html#L1) since we already were happy with our website. 
 	- 1. Ability to clearly review tickets and suggestions 5pts
 	On the README I elaborated on why I did this reaction test. There are also explanations on how to play the game on the actual page. My ticket this week was to do the 	reaction test, and I did that.

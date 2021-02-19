@@ -36,6 +36,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 records = []
+shopping_cart = [] #list to append values for each item to display on the user dashboard
 
 #to ensure that the directory is made each time the program is run
 MYDIR = ("static\images\owner_upload")
@@ -222,7 +223,8 @@ def login():
 @app.route('/logged_in', methods=["GET", "POST"])
 @login_required
 def logged_in():
-    return render_template("logged_in.html", name = current_user.username)
+    return render_template("logged_in.html", name = current_user.username, display_cart=shopping_cart)
+
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     form = RegisterForm()
@@ -264,13 +266,14 @@ def purchase():
         item_price = request.form['item_price']
         item_location = request.form['item_location']
 
-        print("theses were the hidden values:")
+        """print("theses were the hidden values:") #testing pourposes
         print(item_name)
         print(item_price)
-        print(item_location)
+        print(item_location)"""
 
         pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location}
-            #get the id of the item
+        shopping_cart.append(pass_info)
+        #get the id of the item (done)
             #get the page of the item
             #append the id of the item into the shopping cart
             #redirect user to the page that they were just at

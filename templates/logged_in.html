@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block style %}
+<link href="../static/css/style_gallery.css" rel="stylesheet" type="text/css" /> <!-- this is a temporary style -->
+{% endblock %}
+
 {% block content %}
-<h1>SIR {{name}}</h1>
-<form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
+<div style="margin-left: 15px;">
+    <h1>{{name}}'s Dashboard</h1>
+    <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
+
+    <p>Items in your cart:</p>
+
+    {% for info in display_cart %} <!-- Looping through each dictionary in the list-->
+        {% set name = info["item_name"] %}
+        {% set price = info["item_price"] %}
+        {% set image_location = info["item_location"] %}
+        <!-- need to place the cards here -->
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="{{image_location}}" width=100px>
+                    <div class="container">
+                        <h2>{{name}}</h2>
+                        <p sytle="color:black;">${{price}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

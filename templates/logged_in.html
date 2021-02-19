@@ -14,8 +14,8 @@ Dashboard
     <h1>{{name}}'s Dashboard</h1>
     <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
 
+    <h3>{{display_cart|length}} Items in your cart</h3>
     <p>Items in your cart:</p>
-
     {% for info in display_cart %} <!-- Looping through each dictionary in the list-->
         {% set name = info["item_name"] %}
         {% set price = info["item_price"] %}
@@ -24,11 +24,16 @@ Dashboard
         <div class="row">
             <div class="column">
                 <div class="card">
+                    <p>{{loop.index0}}</p>
                     <img src="{{image_location}}" width=100px>
                     <div class="container">
                         <h2>{{name}}</h2>
                         <p sytle="color:black;">${{price}}</p>
                     </div>
+                    <form action="/shopping_cart_remove" method="post">
+                        <input type="number" id="item_pos_list" name="item_pos_list" value="{{loop.index0}}" style="visibility: hidden;"><br>
+                        <button class="button">remove from cart</button>
+                    </form>
                 </div>
             </div>
         {% endfor %}

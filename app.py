@@ -261,12 +261,21 @@ def purchase():
 
         pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location}
         shopping_cart.append(pass_info)
-        #get the id of the item (done)
-        #get the page of the item
-        #append the id of the item into the shopping cart
-        #redirect user to the page that they were just at
+        #get the id of the item (Done)
+        #get the page of the item (Done)
+        #append the id of the item into the shopping cart (Done)
+        #redirect user to the page that they were just at (Done)
 
         return redirect(store_route)
+
+@app.route('/shopping_cart_remove', methods=["GET", "POST"])
+def shopping_cart_remove():
+    if request.method == 'POST':
+        #takes the postiion of the item within the list
+        item_pos_list = request.form['item_pos_list']
+        #pops out the list in the corresponding postition
+        shopping_cart.pop(int(item_pos_list))
+        return redirect(url_for('logged_in'))
 
 @app.route('/thriftythreads')
 def thriftythreads():

@@ -292,8 +292,8 @@ def admin_display():
 
 
 if __name__ == "__main__":
-    user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")
+    """user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")
     db.session.add(user1)
-    db.session.commit()
+    db.session.commit()"""
     # runs the application on the repl development server
     app.run(debug=True, host='192.168.0.12', port='5000')

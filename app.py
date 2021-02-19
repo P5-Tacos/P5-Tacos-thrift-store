@@ -58,7 +58,7 @@ class UserTT(UserMixin, db.Model):
     username = db.Column(db.String(15))
     email = db.Column(db.String(50))
     password = db.Column(db.String(80))
-    #shopping_cart_column = db.Column(db.String(8000))
+    shopping_cart_column = db.Column(db.String(8000))
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -116,7 +116,7 @@ user_records= []
 def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste this all the time
     user = UserTT.query.all()
     for user in user:
-        user_tt_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password}#, 'shopping cart':user.shopping_cart_column
+        user_tt_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password, 'shopping_cart_column':user.shopping_cart_column}
         user_records.append(user_tt_dict)
 
 
@@ -281,11 +281,20 @@ def shopping_cart_remove():
 @app.route('/shopping_cart_save', methods=["GET", "POST"])
 def shopping_cart_save():
     if request.method == 'POST':
+        username = request.form['username']
         print(shopping_cart)
         jsonStr = json.dumps(shopping_cart)
         print(jsonStr)
-        #convert the shopping cart to json
-        #commit the shopping cart json into the data base
+
+        db.session.query(UserTT).filter_by(username=username).update({"shopping_cart_column":jsonStr})
+        db.session.commit()
+
+        #records[1]['shopping_cart_column'] = str(jsonStr)
+        for i in range(len(user_records)):  # updating the front end view of the data base
+            if user_records[i]['username'] == username:
+                user_records[i]['shopping_cart_column'] = str(jsonStr) #set the value of the json string to to the json file
+                break
+
         return redirect(url_for('logged_in'))
 
 @app.route('/thriftythreads')

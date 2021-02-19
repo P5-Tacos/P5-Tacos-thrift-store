@@ -14,7 +14,8 @@ Dashboard
     <h1>{{name}}'s Dashboard</h1>
     <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
     <form action="/shopping_cart_save" method="post">
-        <input type="submit" value="save shopping list">
+        <input type="text" id="username" name="username" value="{{name}}" style="visibility: hidden; margin: 0px;">
+        <input style="margin: 0px; position: absolute;" type="submit" value="save shopping list">
     </form>
     <h3>{{display_cart|length}} Items in your cart</h3>
     <p>Items in your cart:</p>
@@ -33,7 +34,7 @@ Dashboard
                         <p sytle="color:black;">${{price}}</p>
                     </div>
                     <form action="/shopping_cart_remove" method="post">
-                        <input type="number" id="item_pos_list" name="item_pos_list" value="{{loop.index0}}" style="visibility: hidden;"><br>
+                        <input type="number" id="item_pos_list" name="item_pos_list" value="{{loop.index0}}" style="visibility: hidden;">
                         <button class="button">remove from cart</button>
                     </form>
                 </div>

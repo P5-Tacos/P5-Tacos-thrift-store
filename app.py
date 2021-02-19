@@ -249,7 +249,7 @@ def purchase():
         item_location = request.form['item_location']
 
         #print("scroll pos: "+str(scroll_poss))
-        print(scroll_poss)
+        #print(scroll_poss)
         store_route = str(store_route)
         global window_y_value
         window_y_value = float(scroll_poss)

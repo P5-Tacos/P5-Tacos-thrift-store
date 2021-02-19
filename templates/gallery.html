@@ -49,6 +49,7 @@ Gallery
                     <p sytle="color:black;">{{description}}</p>
                     <p sytle="color:black;">${{price}}.00</p>
                     <form action="/purchase" method="post">
+                        <input type="text" id="store_route" name="store_route" value="{{route}}" style="visibility: hidden;"><br>
                         <input type="text" id="item_name" name="item_name" value="{{name}}" style="visibility: hidden;"><br>
                         <input type="text" id="item_price" name="item_price" value="{{price}}.00" style="visibility: hidden;"><br>
                         <input type="text" id="item_location" name="item_location" value="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg" style="visibility: hidden;"><br>

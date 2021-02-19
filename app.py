@@ -241,13 +241,13 @@ def signup():
 @app.route('/thriftythreads')
 def thriftythreads():
     return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT(),
-                           Store_Title="Thrifty Threads")  # this is the app route to the ThriftTHreads's page
+                           Store_Title="Thrifty Threads", route="/thriftythreads")  # this is the app route to the ThriftTHreads's page
 
 
 @app.route('/barbarella')
 def barbarella():
     return render_template("gallery.html", inventory_list=barbarelladata.inventory_itemsBB(),
-                           Store_Title="Barbarella")  # this is the app route to Barbarella's page
+                           Store_Title="Barbarella", route="/barbarella")  # this is the app route to Barbarella's page
 
 @app.route('/logout', methods=["GET", "POST"])
 @login_required
@@ -262,10 +262,13 @@ def admin_display():
 @app.route('/purchase', methods=["GET", "POST"])
 def purchase():
     if request.method == 'POST':
+        store_route = request.form['store_route']
         item_name = request.form['item_name']
         item_price = request.form['item_price']
         item_location = request.form['item_location']
 
+        print(store_route)
+        store_route = str(store_route)
         """print("theses were the hidden values:") #testing pourposes
         print(item_name)
         print(item_price)
@@ -278,7 +281,7 @@ def purchase():
             #append the id of the item into the shopping cart
             #redirect user to the page that they were just at
 
-        return render_template("display_info.html", info=pass_info)#redirect()
+        return redirect(store_route)
 
 if __name__ == "__main__":
     user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")

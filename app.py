@@ -242,6 +242,26 @@ def barbarella():
 def admin_display():
     return render_template("admin_page.html", table=user_records)
 
+@app.route('/purchase', methods=["GET", "POST"])
+def purchase():
+    if request.method == 'POST':
+        item_name = request.form['item_name']
+        item_price = request.form['item_price']
+        item_location = request.form['item_location']
+
+        print("theses were the hidden values:")
+        print(item_name)
+        print(item_price)
+        print(item_location)
+
+        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location}
+            #get the id of the item
+            #get the page of the item
+            #append the id of the item into the shopping cart
+            #redirect user to the page that they were just at
+
+        return render_template("display_info.html", info=pass_info)#redirect()
+
 if __name__ == "__main__":
     user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")
     db.session.add(user1)

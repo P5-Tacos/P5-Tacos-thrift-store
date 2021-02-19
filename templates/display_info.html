@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+<html lang="en">
+
+{% block title %}
+display info{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block content %}
+{% set name = info["item_name"] %}
+{% set price = info["item_price"] %}
+{% set image_location = info["item_location"] %}
+
+    <p>{{name}}</p>
+    <p>price: {{price}}</p>
+    <img src="{{image_location}}" width=100px>
+
+{% endblock %}

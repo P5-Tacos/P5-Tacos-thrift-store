@@ -35,14 +35,14 @@
 			- slected any item from the gallery pages to add to cart 
 				- [Thrifty Threads](http://timetothrift.cf/thriftythreads)
 				- [Barbarella](http://timetothrift.cf/barbarella)
-			- navigate to [shoping cart icon](http://timetothrift.cf/barbarella) at right side of nav bar to see the items in shopping car
+			- navigate to [shoping cart icon](http://timetothrift.cf/logged_in) at right side of nav bar to see the items in shopping cart
 			- remove item from shopping cart with the remove from cart button 
 			- press the save shopping list button, notice how the admin page will now update it's final column to reflect the information in the current shopping cart
 			- log out to log out and see that the items are contianed within the database
 		- implmenting a system to track where was the location the user was on the page(to get rid of needing to scroll back down to where you were last at)
 			- [to protect scroll position in reloading the page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/templates/gallery.html#L70-L78)
 			- [to set the scroll position when the page is loaded](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/templates/gallery.html#L83-L88)
-			- [to measure where the current position of the scroll bar]https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/templates/gallery.html#L92-L99) this measurement is connected to a [loabl variable](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L254-L255) when the corresponding gallery page is reopened the user is placed where they last were
+			- [to measure where the current position of the scroll bar](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/templates/gallery.html#L92-L99) this measurement is connected to a [global variable](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L254-L255) when the corresponding gallery page is reopened the user is placed where they last were
 				- notice as we need to pass this global variable into a javascript function, we are passing this variable in through a [son format](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L303)
 		- implmenting a system to track which item was added to cart [hidden feild connected to add to cart button](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L247)
 		- system to redirect user to page they selected item from [hidden feild connected to add to cart button](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/dc1b1e125df824cd88d04e18acb7bf7a92efbaa8/app.py#L246)

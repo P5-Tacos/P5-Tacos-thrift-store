@@ -16,6 +16,16 @@
 
 ## Changes Log
 #### Week 9
+
+[AP Requirement Doc](https://docs.google.com/document/d/13WzGAZ40KE8HZguGc2O9igHdUENnmVyBys2u7PRZuns/edit)
+
+- Andrew
+	- This week I mainly worked on finishing up the login session with Colin. [link to the user system](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py) [Link to Logged in page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/logged_in.html). The login system allows the program to recognize the logged in users.  
+	- 1. Ability to clearly review tickets and suggestions 5pts
+	After our crossovers from last week, we decided to improve our login system to add in a session. As the database for the items is fixed, I decided to work on session with Colin and make the login system working. 
+	- 2. College Board and Crossover visibility in project 4pts
+	We improved the asthetics for the project and added in more control over the user systems which align for the college board requirements on data and visuals. I added in more algorithms and data management into the project. I can do these things with a more timely fashion, so I will deduct one poing from me. 
+
 - Sam
 	- This week I mainly worked on finishing up our multi page form. [link to image directory](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/static/images/delnorteeatsfood). The link takes you to the image directory which contains all the images i used for our multipage form. Besides that, I worked on creating another table for the form and was able to incorporate buttons: which i plan on connecting to an actual system that will work as a cart where users can "buy now". I also helped out Brayden a bit with his project. 
 	- 1. Ability to clearly review tickets and suggestions 5pts

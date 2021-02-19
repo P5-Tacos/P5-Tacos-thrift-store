@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 <html lang="en">
 
-
 {% block title %}
-<title>Home Page</title>
+Home Page
 {% endblock %}
 
 {% block style %}
@@ -22,6 +21,8 @@ crossorigin="anonymous">
 <style>
     /* allows for scroll bar at bottom of div  */
 div.scrollmenu {
+    max-width: 1920px;
+    min-width: 600px;
   overflow: auto;
   white-space: nowrap;
 }
@@ -43,20 +44,21 @@ div.scrollmenu a:hover {
 <!-- This is where the nav bar will be displayed-->
 {% block content %}
 
-<h1> Thrifty Threads</h1>
+<h1 style="margin-left: 15px;"> Thrifty Threads</h1>
 <div class="scrollmenu">
     {% for data in inventory_list1: %} <!-- Looping through each dictonary in the list-->
     <a href="/"><img src="../static/images/thrifty_threads/item{{loop.index}}.jpg" width=100px></a>
     {% endfor %}
 </div>
 
-<h1> Barbarella</h1>
+<h1  style="margin-left: 15px;"> Barbarella</h1>
 <div class="scrollmenu">
     {% for data in inventory_list2: %} <!-- Looping through each dictonary in the list-->
     <a href="/"><img src="../static/images/barbarella/item{{loop.index}}.jpg" width=100px></a>
     {% endfor %}
     <!-- access point to easter egg in the page -->
-    <a href="{{url_for('easter_egg_bp.index')}}"><img src="../static/images/egg.jpg" width=100px></a>
+    <a href="{{url_for('easter_egg_bp.index')}}"><img src="../static/images/favicons/uber-eats-logo-1.jpg" width=100px></a>
+    <a href="{{url_for('easter_egg_college_bp.index')}}"><img src="../static/images/favicons/egg.jpg" width=100px></a>
 </div>
 
 <script>

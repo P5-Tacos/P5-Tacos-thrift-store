@@ -12,17 +12,58 @@
 ```
 #### Link to scrum board: https://github.com/orgs/P5-Tacos/projects/1
 #### Link to project plan and requirements: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
-
-#### when downloading need to execute:
-```pip install -r requirements.txt```
+#### Link to easter egg: http://timetothrift.cf/easter_egg_college/
 
 ## Changes Log
+#### Week 9
+- Brayden
+	- This week I worked on making a reaction test game [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/76136fb252475a2090279eff1f0d395f0f9e92c3/templates/reactiontest.html#L1) since we already were happy with our website. 
+	- 1. Ability to clearly review tickets and suggestions 5pts
+	On the README I elaborated on why I did this reaction test. There are also explanations on how to play the game on the actual page. My ticket this week was to do the 	reaction test, and I did that.
+	- 2. College Board and Crossover visibility in project 5pts
+	I learned many functions that are on the college board requirements. I also learned how to do more jinja and passing data, etc… One of the College Board requirements I met was the Big Idea 1 - Creative Development. I did this when I developed my code with my group members and added functions like get random color that I did not know about before. I also learned how to add tabs on a NavBar from the crossover group that did that. I incorporated that into our project by adding the tab ReactionTest
+	- 3. Mini code Review focus on tickets and project.
+	(Self explanatory) Look at what I made. Also look at the README on GitHub and there are directions on how to work the reaction test and how to start it on the page. For example, when I game is over I had a pop up that said “CTRL + R” to play again. This will reload the page
+
+
+
+#### Week 8 
+- Andrew 
+	- worked on uploading images to the [database](http://timetothrift.cf/database)
+	- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/69e606a41f10d1dcab6fa717f2e94fce20958995/app.py#L124-L126)
+	
+- Colin 
+	- worked on multi [page form](http://timetothrift.cf/easter_egg/multipage_form)
+	- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/multipage_form.html)
+		- [link to view](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/69e606a41f10d1dcab6fa717f2e94fce20958995/views/easter_egg/templates/easter_egg/multipage_form.html#L30-L47) of the code, itterating to display the avalible food options for the user 
+		- [link to model](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/food.py) storing all of the information for all of the food items
+
 #### Week 7 
 
-Andrew
-Sam 
-Colin 
-Brayden - I worked on Image maps so that the person selecting the location can better see where they are picking their food.
+- Andrew [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785119)
+	- Worked on the login and the [sign-in page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/view.py) of the Del Norte Eats
+	- Started constructing the order histories for the [Customers](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/auth_user.html)
+
+- Sam [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53785634)
+	- I worked on adding to user flow so I could begin implementing jinja into our project. [Link to User flow page](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/ordernow.html); I also used CSS. Then after that I created a contactus form [Link to contact form](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/newcontactus.html)
+
+- Colin [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53784984)
+	- started the week off storyboarding the next project out, see [embedded google slide](http://timetothrift.cf/easter_egg/) 
+	- utilized [Image Map Generator](https://www.image-map.net/) to create a [rough image map](http://timetothrift.cf/easter_egg/image_map_dnhs) of buttons grouping specific buildings togehter (a, p, d buildings etc)
+		- click the administration building and a dialog box will appear to denote that the map reacted to the selection 
+		- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg/templates/easter_egg/image_map_dnhs.html)
+	- was able to construct the [Who am I page](http://timetothrift.cf/easter_egg_college/who_am_i) 
+	- [link to code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/easter_egg_college/templates/easter_egg_college/who_am_i.html)
+		- sources [How To Cleanly Export From Google Docs To HTML](https://www.techjunkie.com/google-docs-to-html/)
+			- this will allow the user to maintain image locations throughout the doucument, however it was unable to preserve all of my hyper links
+		- specifically used [HTML Cleaner](https://html-cleaner.com/)
+			- this allowed me to copy and paste the contents of the team's google docs into the feild to then convert them into html to paste into the project
+	- placed in the [college board requirements](http://timetothrift.cf/easter_egg_college/college_board_requirements) that our Makeup Project Satisfied utilized [HTML Cleaner](https://html-cleaner.com/)
+	- was able to utilize [blueprints](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views) to better section off the code for easier debugging and maintenece 
+		- allowed the team to create diffrent nav bars for the two easter eggs within the project
+
+- Brayden [Ticket](https://github.com/orgs/P5-Tacos/projects/1#card-53786010)
+	- I worked on  Image maps [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/50954ea9ae2594d6aa3cf8ec3cac23e95bf3c855/views/easter_egg/templates/easter_egg/home.html#L26) so that the person selecting the location can better see where they are picking their food.
 
 #### Week 6
 
@@ -148,4 +189,24 @@ To replace the arduous task of manually going out to a thrift store to take phot
 - Creating a relationship with local thrift stores to implement the website with their product
 
 
+#### when downloading need to execute:
+```pip install -r requirements.txt```
 
+#### Pull code from Github and update packages
+#### In console/terminal (every update: pull code and check package dependencies)...
+
+```pi@raspberrypi:~ $ sudo apt update; sudo apt upgrade```
+
+```pi@raspberrypi:~ $ cd ~/P5-Tacos-thrift-store```
+
+```pi@raspberrypi:~/P5-Tacos-thrift-store $ git pull```
+
+```pi@raspberrypi:~/P5-Tacos-thrift-store $ source homesite/bin/activate```
+
+In console/terminal with virtualenv activitate (every time: check and update packages)...
+
+```(homesite) pi@raspberrypi:~/P5-Tacos-thrift-store $ sudo pip install -r requirements.txt```
+
+In console/terminal (every time AFTER initial setup: restart gunicorn)...
+
+```pi@raspberrypi:~ $ sudo systemctl restart homesite.service```

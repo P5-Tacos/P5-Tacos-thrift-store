@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% block title %}
-    <title></title>
-    {% endblock %}
+
+    <title>Time to Thrift - {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="../static/css/style_base.css" type="text/css">
+    <link rel="icon" href="../static/images/favicons/shirt_noback.gif">
 
     {% block style %}
 
@@ -15,10 +15,15 @@
 <body>
     <!-- this is the nav bar -->
     <div class="topnav">
-        <a class="home" href="{{url_for('.index')}}">Home</a>
-        <a href="{{url_for('.storefront')}}">Store Front</a>
-        <a href="{{url_for('.shopowner')}}">Database</a>
-        <a href="{{url_for('.contactus')}}">Contact Us</a>
+        <h1 style="color: #f2f2f2; margin-left: 15px; margin-bottom: 10px"> Time to Thrift</h1>
+
+        <a class="home" href="/">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+        <a href="/storefront">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+        <a href="/database">Database</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+        <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up</a>
+        <a href="/contactus">Contact Us</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+        <a href="/reactiontest">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->
+
     </div>
     {% block content %}{% endblock %}
 </body>

@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-<title>Makeup Landing Page</title>
+Makeup Landing Page
 {% endblock %}
 
 {% block style %}
@@ -22,6 +22,30 @@
           box-sizing: inherit;
         }
 
+        /* reference for css styles: https://stackoverflow.com/questions/4641752/css-how-to-style-a-selected-radio-buttons-label */
+        .radio-toolbar input[type="radio"] {
+            display: none;
+        }
+
+        .radio-toolbar label {
+            display: inline-block;
+            background-color: #ddd;
+            padding: 4px 11px;
+            font-family: Arial;
+            font-size: 16px;
+            cursor: pointer;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+        }
+
+        .radio-toolbar input[type="radio"]:checked+label {
+            background-color: #bbb;
+        }
     </style>
 {% endblock %}
 
@@ -33,22 +57,23 @@
     <h1 style="text-align:center;">API page</h1><!--Reads store title form the app.py-->
     <a href="https://makeup-api.herokuapp.com/">API DOCS</a><!-- this was the API that we used to enable this page -->
     <!--  https://makeup-api.herokuapp.com/-->
-
-    <form  method="POST" action={{url_for('makeup_api_bp.makeup_landing')}}>
+    <br><br>
+    <form class="radio-toolbar" method="POST" action={{url_for('makeup_api_bp.makeup_landing')}}>
         {% for data in link_list %}
         {% set name = data["name"] %}
         {% set link = data["link"] %}
 
-        <input type="radio" name="makup_options" id="makup_options{{loop.index}}" value={{link}} required> {{name}} </input><br>
+        <input type="radio" name="makup_options" id="makup_options{{loop.index}}" value={{link}} required>
+        <label for="makup_options{{loop.index}}">{{name}}</label>
 
         {% endfor %}
+        <br><br>
         <input type="submit" value="Submit">
     </form>
 
     <h3 style="text-align:center; color:red;">{{error_message}}</h3>
 
     <!-- <h3 style="text-align:center; color:red;">{{count|length}} dictionaries in list</h3> -->
-
     {% for data in imageUrlList %}
 
     {% set id = data["id"] %}
@@ -64,7 +89,7 @@
     {% set product_type = data["product_type"] %}
     {% set tag_list = data["tag_list"] %}
 
-    <div class="row">
+
         <div class="column">
             <div class="card">
                 <img src={{image_link}} width=200px%>
@@ -79,9 +104,8 @@
             </div>
         </div>
     </div>
-</div>
-{% endfor %}
 
+{% endfor %}
 </body>
 
 </body>

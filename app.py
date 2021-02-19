@@ -5,12 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired, FileAllowed
 from werkzeug.utils import secure_filename
-from wtforms import StringField, FileField, FloatField
+from wtforms import StringField, FileField, FloatField, PasswordField
 from wtforms.validators import InputRequired, Length, NumberRange
 import os
 from sqlalchemy.dialects.sqlite import BLOB
 from wtforms import StringField
-from wtforms.validators import InputRequired, Length
+from wtforms.validators import InputRequired, Length, Email
 from views.makeup_api import makeup_api_bp  # blueprint not a module
 from views.easter_egg import easter_egg_bp
 from views.database import database_bp
@@ -52,6 +52,7 @@ class items(db.Model):
     price = db.Column(db.String(200))
 
 
+
 def __init__(self, id, name, type, price):
     self.name = name
     self.id = id
@@ -72,7 +73,15 @@ class ItemForm(FlaskForm):
     price = StringField('price', validators=[InputRequired()])
     image = FileField('image', validators=[FileRequired(),FileAllowed(['png', 'pdf', 'jpg'], "Nerd")])
 
+class LoginForm(FlaskForm):
+    username = StringField('username',validators=[InputRequired(), Length(min=1,max=15)])
+    password = PasswordField('password',validators=[InputRequired(), Length(min=8,max=80)])
+    email = StringField('email',validator=[InputRequired(), Length(min = 1, max = 100)])
 
+class RegisterForm(FlaskForm):
+    email = StringField('email', validators=[InputRequired(), Email(message='Invalid Email'),Length(max=50)])
+    username = StringField('username',validators=[InputRequired(), Length(min=4,max=15)])
+    password = PasswordField('password',validators=[InputRequired(), Length(min=8,max=80)])
 
 """Defining routes"""
 app.register_blueprint(makeup_api_bp, url_prefix='/makeup_api')
@@ -182,6 +191,14 @@ def database_forms():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     return render_template("login.html")
+
+@app.route('/signup', methods=["GET", "POST"])
+def signup():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        x = 1
+
+    return render_template("SU.html", form = form)
 
 
 @app.route('/thriftythreads')

@@ -53,7 +53,7 @@ def signup():
         db.session.commit()
         return redirect(url_for('easter_egg_bp.login'))
 
-    return render_template("easter_egg/Signup.html",form = form)
+    return render_template("easter_egg/SU.html",form = form)
 
 @easter_egg_bp.route('/Login', methods = ['GET', 'POST'])
 def login():

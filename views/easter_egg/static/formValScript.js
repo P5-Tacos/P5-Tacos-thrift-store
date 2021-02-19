@@ -1,7 +1,8 @@
+console.log("it is alive");
 function inc(element, increment_numb, item, max) {
     let el = document.querySelector(`[name="${element}"]`); //differentiates between items
     if (el.value >= max){ //when the input is maxed pressed one over max
-
+        console.log(String(el));
         //max number of items that one can purchase
         el.value = max;
 
@@ -11,7 +12,7 @@ function inc(element, increment_numb, item, max) {
         //allows error messages to fade out after a certain time
         setTimeout(function(){ document.getElementById("error_msg" + increment_numb).innerHTML =""; }, 3000);
     } else {
-
+        console.log(String(el));
         //incrementing by +1
         el.value = parseInt(el.value) + 1;
     }
@@ -20,6 +21,7 @@ function inc(element, increment_numb, item, max) {
 function dec(element, increment_numb) {
     let el = document.querySelector(`[name="${element}"]`); //differentiates between items
     if (parseInt(el.value) > 0) { //if the item count is greater than 0
+        console.log(String(el));
 
         //decrement the count by 1
         el.value = parseInt(el.value) - 1;

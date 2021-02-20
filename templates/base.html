@@ -23,20 +23,26 @@
 <body>
     <!-- this is the nav bar -->
     <div class="sticky">
-    <div class="topnav">
-        <h1 style="color: #f2f2f2; margin-left: 15px; margin-bottom: 10px"> Time to Thrift</h1>
+        <div class="topnav">
+            <h1 style="color: #f2f2f2; margin-left: 15px; margin-bottom: 10px"> Time to Thrift</h1>
 
-        <a class="home" href="/">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-        <a href="/storefront">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-        <a href="/database">Database</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-        <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up</a>
-        <a href="/contactus">Contact Us</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-        <a href="/reactiontest">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->
-        <a href="/login">Login</a>
-        <a href="/signup">Sign Up</a>
-        <a href="/logged_in"><img src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px"></a>
+            <a class="home" href="/">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <a href="/storefront">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <a href="/database">Database</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up</a>
+            <a href="/contactus">Contact Us</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <a href="/reactiontest">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+            <a href="/logged_in"><img src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px"><span> {{display_cart|length}} </span></a>
+        </div>
     </div>
-    </div>
+
     {% block content %}{% endblock %}
+
 </body>
+
+<script>
+
+</script>
 </html>

@@ -127,12 +127,13 @@ list_user_map()
 @app.route('/')
 def index():
     #  function use Flask import (Jinga) to render an HTML template
+    print("from the home page" +str(shopping_cart))
     return render_template("home.html", inventory_list1=thriftythreadsdata.inventory_itemsTT(),
-                           inventory_list2=barbarelladata.inventory_itemsBB())
+                           inventory_list2=barbarelladata.inventory_itemsBB(), display_cart=shopping_cart)
 
 @app.route('/storefront')
 def storefront():
-    return render_template("storefront.html", cards=websitecards.CardsForStores())
+    return render_template("storefront.html", cards=websitecards.CardsForStores(), display_cart=shopping_cart)
 
 @app.route('/reactiontest')
 def reactiontest():
@@ -141,7 +142,7 @@ def reactiontest():
 
 @app.route('/contactus')
 def contactus():
-    return render_template("contactus.html", images=contactimages.grouppictures())  # this is the app route to the contact us page
+    return render_template("contactus.html", images=contactimages.grouppictures(), display_cart=shopping_cart)  # this is the app route to the contact us page
 
 @app.route('/database', methods=['GET', 'POST'])  # contribution by Andrew
 def shopowner():
@@ -158,7 +159,7 @@ def shopowner():
         filename = str(new_item.id) + ".jpg"
         f.save(os.path.join(MYDIR, filename))
 
-    return render_template("Database test.html", form=form, table=records, gallery=records)
+    return render_template("Database test.html", form=form, table=records, gallery=records, display_cart=shopping_cart)
 
 @app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
@@ -205,7 +206,7 @@ def delete():
 
 @app.route('/database_form', methods=['GET', 'POST'])
 def database_forms():
-    return render_template("database_form.html", tag_list=gallery_form.gallery_tags())
+    return render_template("database_form.html", tag_list=gallery_form.gallery_tags(), display_cart=shopping_cart)
 
 
 @app.route('/login', methods=["GET", "POST"])
@@ -221,7 +222,7 @@ def login():
 
         return '<h1>Invalid username or password</h1>'
 
-    return render_template("login.html")
+    return render_template("login.html", display_cart=shopping_cart)
 
 @app.route('/logged_in', methods=["GET", "POST"])
 @login_required
@@ -237,7 +238,7 @@ def signup():
         db.session.commit()
         return redirect(url_for('login'))
 
-    return render_template("SU.html", form = form)
+    return render_template("SU.html", form = form, display_cart=shopping_cart)
 
 @app.route('/purchase', methods=["GET", "POST"])
 def purchase():
@@ -262,6 +263,7 @@ def purchase():
 
         pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location}
         shopping_cart.append(pass_info)
+        print("from the gallery page" +str(shopping_cart))
         #get the id of the item (Done)
         #get the page of the item (Done)
         #append the id of the item into the shopping cart (Done)
@@ -300,13 +302,13 @@ def shopping_cart_save():
 @app.route('/thriftythreads')
 def thriftythreads():
     return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT(),
-                           Store_Title="Thrifty Threads", route="/thriftythreads", window_y_value=json.dumps(window_y_value))  # this is the app route to the ThriftTHreads's page
+                           Store_Title="Thrifty Threads", route="/thriftythreads", window_y_value=json.dumps(window_y_value), display_cart=shopping_cart)  # this is the app route to the ThriftTHreads's page
 
 
 @app.route('/barbarella')
 def barbarella():
     return render_template("gallery.html", inventory_list=barbarelladata.inventory_itemsBB(),
-                           Store_Title="Barbarella", route="/barbarella", window_y_value=json.dumps(window_y_value))  # this is the app route to Barbarella's page
+                           Store_Title="Barbarella", route="/barbarella", window_y_value=json.dumps(window_y_value), display_cart=shopping_cart)  # this is the app route to Barbarella's page
 
 @app.route('/logout', methods=["GET", "POST"])
 @login_required
@@ -317,7 +319,7 @@ def logout():
 
 @app.route('/admin')
 def admin_display():
-    return render_template("admin_page.html", table=user_records)
+    return render_template("admin_page.html", table=user_records, display_cart=shopping_cart)
 
 
 if __name__ == "__main__":

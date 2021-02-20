@@ -2,7 +2,7 @@
 def CC1():
     info = {
     "name" : "Samuel Mahjouri",
-    "linkedin" : "https://www.linkedin.com/mynetwork/",
+    "linkedin" : "https://www.linkedin.com/in/sam-mahjouri-bb0854201/",
     "picture" : "../static/images/contactus/Samuel_Mahjouri.jpg",
     }
     return info

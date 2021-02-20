@@ -8,12 +8,21 @@
     <link rel="icon" href="../static/images/favicons/shirt_noback.gif">
 
     {% block style %}
+    <style>
+        div.sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            font-size: 20px;
+        }
+    </style>
 
     {% endblock %}
 </head>
 
 <body>
     <!-- this is the nav bar -->
+    <div class="sticky">
     <div class="topnav">
         <h1 style="color: #f2f2f2; margin-left: 15px; margin-bottom: 10px"> Time to Thrift</h1>
 
@@ -26,6 +35,7 @@
         <a href="/login">Login</a>
         <a href="/signup">Sign Up</a>
         <a href="/logged_in"><img src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px"></a>
+    </div>
     </div>
     {% block content %}{% endblock %}
 </body>

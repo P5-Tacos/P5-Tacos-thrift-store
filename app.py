@@ -177,6 +177,7 @@ def purchase():
         #print("scroll pos: "+str(scroll_poss))
         #print(scroll_poss)
         store_route = str(store_route)
+        print(store_route)
         global window_y_value
         window_y_value = float(scroll_poss)
 
@@ -249,6 +250,19 @@ def thriftythreads():
 def barbarella():
     return render_template("gallery.html", inventory_list=barbarelladata.inventory_itemsBB(),
                            Store_Title="Barbarella", route="/barbarella", window_y_value=json.dumps(window_y_value), display_cart=shopping_cart)  # this is the app route to Barbarella's page
+
+@app.route('/clothes_info', methods=["GET", "POST"])
+def clothes_info():
+    if request.method == 'POST':
+        store_route = request.form['store_route']
+        item_name = request.form['item_name']
+        item_price = request.form['item_price']
+        item_location = request.form['item_location']
+
+        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location}
+
+        return render_template("clothes_info.html", pass_info=pass_info)  # this is the app route to Barbarella's page
+
 
 @app.route('/logout', methods=["GET", "POST"])
 @login_required

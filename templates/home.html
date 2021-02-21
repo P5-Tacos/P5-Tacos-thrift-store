@@ -21,8 +21,6 @@ crossorigin="anonymous">
 <style>
     /* allows for scroll bar at bottom of div  */
 div.scrollmenu {
-    max-width: 1920px;
-    min-width: 600px;
   overflow: auto;
   white-space: nowrap;
 }
@@ -47,6 +45,10 @@ div.scrollmenu a:hover {
         height: 100vh;
         background-color: #ffffff;
     }
+    .button_display{
+        border: none;
+        background-color: white;
+    }
 </style>
 {% endblock %}
 
@@ -55,19 +57,53 @@ div.scrollmenu a:hover {
 
 <h1 style="margin-left: 15px;"> Thrifty Threads</h1>
 <div class="scrollmenu">
+    <table>
     {% for data in inventory_list1: %} <!-- Looping through each dictonary in the list-->
-    <a href="/"><img src="../static/images/thrifty_threads/item{{loop.index}}.jpg" height='200px' ></a>
+        {% set name = data["name"] %}
+        {% set tag = data["tag"] %}
+        {% set description = data["description"] %}
+        {% set price = data["price"] %}
+        {% set size = data["size"] %}
+        {% set store_folder_name = data["folder"] %}
+
+            <td><form action="/clothes_info" method="post">
+                <input type="hidden" step="0.0001" class="scroll_poss" name="scroll_poss" value="0">
+                <input type="hidden" id="store_route" name="store_route" value="{{route}}">
+                <input type="hidden" id="item_name" name="item_name" value="{{name}}">
+                <input type="hidden" id="item_price" name="item_price" value="{{price}}.00">
+                <input type="hidden" id="item_location" name="item_location" value="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg">
+                <a href=item{{loop.index}}><button class="button_display"><img src="../static/images/thrifty_threads/item{{loop.index}}.jpg" height='200px' ></button></a> <!-- references the iteration of the loop -->
+            </form></td>
+
     {% endfor %}
+    </table>
 </div>
 
 <h1  style="margin-left: 15px;"> Barbarella</h1>
 <div class="scrollmenu">
+    <table>
     {% for data in inventory_list2: %} <!-- Looping through each dictonary in the list-->
-    <a href="/"><img src="../static/images/barbarella/item{{loop.index}}.jpg" height="200px" ></a>
+        {% set name = data["name"] %}
+        {% set tag = data["tag"] %}
+        {% set description = data["description"] %}
+        {% set price = data["price"] %}
+        {% set size = data["size"] %}
+        {% set store_folder_name = data["folder"] %}
+
+        <td><form action="/clothes_info" method="post">
+            <input type="hidden" step="0.0001" class="scroll_poss" name="scroll_poss" value="0">
+            <input type="hidden" id="store_route2" name="store_route" value="{{route}}">
+            <input type="hidden" id="item_name2" name="item_name" value="{{name}}">
+            <input type="hidden" id="item_price2" name="item_price" value="{{price}}.00">
+            <input type="hidden" id="item_location2" name="item_location" value="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg">
+            <a href=item{{loop.index}}><button class="button_display"><img src="../static/images/barbarella/item{{loop.index}}.jpg" height='200px' ></button></a> <!-- references the iteration of the loop -->
+        </form></td>
+
     {% endfor %}
-    <!-- access point to easter egg in the page -->
-    <a href="{{url_for('easter_egg_bp.index')}}"><img src="../static/images/favicons/uber-eats-logo-1.jpg" height='200px'></a>
-    <a href="{{url_for('easter_egg_college_bp.index')}}"><img src="../static/images/favicons/egg.jpg" height='200px'></a>
+        <!-- access point to easter egg in the page -->
+        <td><a href="{{url_for('easter_egg_bp.index')}}"><img src="../static/images/favicons/uber-eats-logo-1.jpg" height='200px'></a></td>
+        <td><a href="{{url_for('easter_egg_college_bp.index')}}"><img src="../static/images/favicons/egg.jpg" height='200px'></a></td>
+    </table>
 </div>
 
 <script>

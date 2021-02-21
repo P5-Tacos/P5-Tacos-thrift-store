@@ -16,31 +16,56 @@ Login
     }
 
     td, th {
-        border: 1px solid #dddddd;
         text-align: left;
-        padding: 8px;
+        padding: 4px;
     }
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
+    #all_in {
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #2E4785;
+        background-color: #e7e393;
+        border-radius: 10%;
+        width: 225px;
+    }
+
+    .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: #2E4785;
+        background-color: #E98A62;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .button:hover {
+        color: #E98A62;
+        background-color: #2E4785;
     }
 </style>
 {% endblock %}
 
 {% block content %}
 
-<h1 style="text-align:center;">Login</h1>
+<h1 style="text-align:center; color: #2E4785;">Login</h1>
 <div class="row courses-buttons justify-content-center">
+    <div id="all_in">
     <form action={{url_for('.login')}} method="post">
         <table border="0">
             <tr><th>Username</th></tr>
             <tr><td><input name="username" type="text" size="20"></td></tr>
             <tr><th>Password</th></tr>
             <tr><td><input name="password" type="password" size="20"></td></tr>
-            <tr><td><input type="submit" value="Submit"></td></tr>
+            <tr><td><input type="submit" class="button" value="Submit"></td></tr>
 
         </table>
     </form>
+    </div>
 </div>
 
 {% endblock %}

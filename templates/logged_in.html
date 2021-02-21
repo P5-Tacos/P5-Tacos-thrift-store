@@ -14,7 +14,7 @@ Dashboard
     <h1>{{name}}'s Dashboard</h1>
     <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
     <form action="/shopping_cart_save" method="post">
-        <input type="text" id="username" name="username" value="{{name}}" style="visibility: hidden; margin: 0px;">
+        <input type="hidden" id="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
         <input style="margin: 0px; position: absolute;" type="submit" value="save shopping list">
     </form>
     <h3>{{display_cart|length}} Items in your cart</h3>

@@ -49,11 +49,11 @@ Gallery
                     <p sytle="color:black;">{{description}}</p>
                     <p sytle="color:black;">${{price}}.00</p>
                     <form action="/purchase" method="post">
-                        <input type="number" step="0.01" class="scroll_poss" name="scroll_poss" value="0" style="visibility: hidden;"><br>
-                        <input type="text" id="store_route" name="store_route" value="{{route}}" style="visibility: hidden;"><br>
-                        <input type="text" id="item_name" name="item_name" value="{{name}}" style="visibility: hidden;"><br>
-                        <input type="text" id="item_price" name="item_price" value="{{price}}.00" style="visibility: hidden;"><br>
-                        <input type="text" id="item_location" name="item_location" value="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg" style="visibility: hidden;"><br>
+                        <input type="hidden" step="0.0001" class="scroll_poss" name="scroll_poss" value="0">
+                        <input type="hidden" id="store_route" name="store_route" value="{{route}}">
+                        <input type="hidden" id="item_name" name="item_name" value="{{name}}">
+                        <input type="hidden" id="item_price" name="item_price" value="{{price}}.00">
+                        <input type="hidden" id="item_location" name="item_location" value="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg">
                         <a href=item{{loop.index}}><button class="button">add to cart</button></a> <!-- references the iteration of the loop -->
                     </form>
                 </div>

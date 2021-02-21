@@ -1,14 +1,10 @@
 # https://flask.palletsprojects.com/en/1.1.x/api/
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory, current_app
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired, FileAllowed
-from werkzeug.utils import secure_filename
-from wtforms import StringField, FileField, FloatField, PasswordField
-from wtforms.validators import InputRequired, Length, NumberRange
-import os
-from sqlalchemy.dialects.sqlite import BLOB
+from wtforms import FileField, PasswordField
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length, Email
 from views.makeup_api import makeup_api_bp  # blueprint not a module
@@ -18,11 +14,7 @@ from views.easter_egg_college import easter_egg_college_bp
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import json
 
-import thriftythreadsdata
-import barbarelladata
-import contactimages
-import websitecards
-import gallery_form
+from models import thriftythreadsdata, barbarelladata, contactimages, websitecards
 
 # create a Flask instance
 "Setting up the keys are needed for the database"

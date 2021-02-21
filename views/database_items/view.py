@@ -23,7 +23,7 @@ records = []
 app = Flask(__name__)
 #app.config['SECRET_KEY'] = ':)'
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3' #note this database is contianed within the UsersTT database
 db = SQLAlchemy(app)
 
 class items(db.Model):

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../static/css/style_base.css" type="text/css">
     <link rel="icon" href="../static/images/favicons/shirt_noback.gif">
 
-    {% block style %}
     <style>
         div.sticky {
             position: -webkit-sticky;
@@ -16,15 +15,13 @@
             font-size: 20px;
         }
     </style>
-
-    {% endblock %}
 </head>
 
 <body>
     <!-- this is the nav bar -->
     <div class="sticky">
         <div class="topnav">
-            <h1 style="color: #f2f2f2; margin-left: 15px; margin-bottom: 10px"> Time to Thrift</h1>
+            <h1 style="color: #f2f2f2;  margin-left: 15px;  margin-bottom: 10px;"> Time to Thrift</h1>
 
             <a class="home" href="/">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="/storefront">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
@@ -37,9 +34,11 @@
             <a href="/logged_in"><img src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px"><div style="margin-top: -30px; margin-left: 40px;"> {{display_cart|length}} </div></a>
         </div>
     </div>
+</body>
 
-    {% block content %}{% endblock %}
-
+{% block style %}{% endblock %}
+<body>
+{% block content %}{% endblock %}
 </body>
 
 <script>

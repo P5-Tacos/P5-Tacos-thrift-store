@@ -26,9 +26,9 @@ Gallery
 </head>
 <body>
 <div class="mid">
-<h2 style="text-align:center;">{{Store_Title}}</h2><!--Reads store title form the app.py-->
-<h3 style="text-align:center; color:red;"> Only {{inventory_list|length}} Left!</h3>
-<p style="text-align:center;">see the top items for _____ (location) this week. Come soon, not guaranteed to stay stocked for long!</p>
+<h1 style="text-align:center;">{{Store_Title}}</h1><!--Reads store title form the app.py-->
+<!--<h3 style="text-align:center; color:red;"> Only {{inventory_list|length}} Left!</h3>-->
+<p style="text-align:center;">see the top items for {{Store_Title}} this week. Come soon, not guaranteed to stay stocked for long!</p>
 </div>
     {% for data in inventory_list %} <!-- Looping through each dictionary in the list-->
     {% set name = data["name"] %}

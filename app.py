@@ -321,6 +321,11 @@ def logout():
 def admin_display():
     return render_template("admin_page.html", table=user_records, display_cart=shopping_cart)
 
+@app.route('/testing_home')
+def testing_home():
+    return render_template("testing_home.html")
+
+
 
 if __name__ == "__main__":
     """user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")

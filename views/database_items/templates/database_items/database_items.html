@@ -6,12 +6,13 @@ Database
 {% endblock %}
 
 {% block style %}
-    <link href="../../../../static/css/style_database_gallery.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../static/css/style_database_gallery_new.css" rel="stylesheet" type="text/css" />
     <style>
         #itemTable {
             position: relative;
             top: 0px;
             left: 0px;
+            z-index: -1;
         }
 
         #itemGallery {
@@ -53,6 +54,11 @@ Database
             height: 6000px;
             overflow: hidden;
         }
+
+        .button:hover {
+            color: #E98A62;
+            background-color: #2E4785;
+        }
     </style>
 
 {% endblock %}
@@ -80,7 +86,7 @@ Database
 <button id="toggle_button" type="button" onclick="toggle()">show content of gallery</button>
 <p id="testingNumber"></p>
 
-<div class="jumbotron jumbotron-fluid" style="height: 50%; ">
+<div style="height: 50%;">
 
     <div class="row justify-content-center">
         <div class="col-10" style="text-align: center;">
@@ -89,7 +95,7 @@ Database
     </div>
 
     <!-- Table block is dependent on table variable and dictionary setup -->
-    <table id="itemTable">
+    <table id="itemTable" >
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -111,7 +117,7 @@ Database
     </table>
 </div>
 
-<div id="itemGallery">
+<div id="itemGallery" style="z-index: -6;">
 <!-- displaying the items in a card format -->
 {% for data in gallery %}
 {% set id = data["id"] %}

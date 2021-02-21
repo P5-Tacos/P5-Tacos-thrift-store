@@ -87,3 +87,8 @@ def timetoorder():
 @easter_egg_bp.route('/multipage_form')
 def multipage_from():
     return render_template("easter_egg/multipage_form.html", snack_list=food.inventory_stack())
+
+@easter_egg_bp.route('/singlepage_form')
+def singlepage_form():
+    return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack())
+

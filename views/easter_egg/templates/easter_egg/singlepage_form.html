@@ -1,0 +1,51 @@
+{% extends 'easter_egg/base_egg.html' %}
+<html lang="en">
+
+{% block title %}
+Single page form
+{% endblock %}
+
+{% block style %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('easter_egg_bp.static', filename='singlepage_form.css') }}" type="text/css">
+
+<style>
+    .margin_1 {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="margin_1">
+    <p>To test out all the inputs without needing to deal with javasript problems</p>
+    <form>
+
+        <!-- this is the snack selection area -->
+        <table>
+        {% for data in snack_list %}
+        {% set name = data["name"] %}
+        {% set tag = data["price"] %}
+        {% set max_count = data["max_count"] %}
+
+        <tr>
+            <td style="column-width: 100px;"><img src="../static/images/delnorteeatsfood/snack{{loop.index}}.jpg" width=50px></td>
+            <td>{{name}}</td>
+            <td>
+                <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}})">&zwnj; - &zwnj;</span>
+                <input class="number_input" readonly value="0" oninput="this.className = ''" name="qty{{loop.index}}">
+                <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}})">&zwnj; + &zwnj;</span>
+            </td>
+            <td>
+                <span id="error_msg{{loop.index}}" style="color:red;"></span>
+            </td>
+        </tr>
+
+        {% endfor %}
+        </table>
+
+    </form>
+</div>
+{% endblock %}

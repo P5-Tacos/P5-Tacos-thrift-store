@@ -31,7 +31,7 @@ div.scrollmenu a {
   display: inline-block;
   color: black;
   text-align: center;
-  padding: 50px;
+  padding: 10px;
   text-decoration: none;
 }
     /* style of cell when hovered  */
@@ -47,18 +47,18 @@ div.scrollmenu a:hover {
 <h1 style="margin-left: 15px;"> Thrifty Threads</h1>
 <div class="scrollmenu">
     {% for data in inventory_list1: %} <!-- Looping through each dictonary in the list-->
-    <a href="/"><img src="../static/images/thrifty_threads/item{{loop.index}}.jpg" width=100px></a>
+    <a href="/"><img src="../static/images/thrifty_threads/item{{loop.index}}.jpg" height='200px' ></a>
     {% endfor %}
 </div>
 
 <h1  style="margin-left: 15px;"> Barbarella</h1>
 <div class="scrollmenu">
     {% for data in inventory_list2: %} <!-- Looping through each dictonary in the list-->
-    <a href="/"><img src="../static/images/barbarella/item{{loop.index}}.jpg" width=100px></a>
+    <a href="/"><img src="../static/images/barbarella/item{{loop.index}}.jpg" height="200px" ></a>
     {% endfor %}
     <!-- access point to easter egg in the page -->
-    <a href="{{url_for('easter_egg_bp.index')}}"><img src="../static/images/favicons/uber-eats-logo-1.jpg" width=100px></a>
-    <a href="{{url_for('easter_egg_college_bp.index')}}"><img src="../static/images/favicons/egg.jpg" width=100px></a>
+    <a href="{{url_for('easter_egg_bp.index')}}"><img src="../static/images/favicons/uber-eats-logo-1.jpg" height='200px'></a>
+    <a href="{{url_for('easter_egg_college_bp.index')}}"><img src="../static/images/favicons/egg.jpg" height='200px'></a>
 </div>
 
 <script>

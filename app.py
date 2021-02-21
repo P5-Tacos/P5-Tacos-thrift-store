@@ -13,7 +13,7 @@ from wtforms import StringField
 from wtforms.validators import InputRequired, Length, Email
 from views.makeup_api import makeup_api_bp  # blueprint not a module
 from views.easter_egg import easter_egg_bp
-from views.database import database_bp
+from views.database_items import database_items_bp
 from views.easter_egg_college import easter_egg_college_bp
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import json
@@ -101,7 +101,7 @@ class RegisterForm(FlaskForm):
 """Defining routes"""
 app.register_blueprint(makeup_api_bp, url_prefix='/makeup_api')
 app.register_blueprint(easter_egg_bp, url_prefix='/easter_egg')
-app.register_blueprint(database_bp, url_prefix='/database')
+app.register_blueprint(database_items_bp, url_prefix='/database_items')
 app.register_blueprint(easter_egg_college_bp, url_prefix='/easter_egg_college')
 
 #  displaying all the current items in the data bases

@@ -25,7 +25,7 @@
 
             <a class="home" href="/">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="/storefront">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-            <a href="/database">Database</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <a href="{{url_for('database_items_bp.index')}}">Database</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up</a>
             <a href="/contactus">Contact Us</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="/reactiontest">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->

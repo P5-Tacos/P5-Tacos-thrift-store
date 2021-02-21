@@ -31,7 +31,7 @@ def snack5():
     info = {"name": name, "price":price, "max_count":max_count}
     return info
 def snack6():
-    name = "Fresh Seasonal/Specialty Fruit"
+    name = "Fresh Seasonal / Specialty Fruit"
     price = 0.75
     max_count = 5
     info = {"name": name, "price":price, "max_count":max_count}

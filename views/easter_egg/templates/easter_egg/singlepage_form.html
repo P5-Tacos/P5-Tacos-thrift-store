@@ -32,13 +32,13 @@ Single page form
 
         <tr>
             <td style="column-width: 100px;"><img src="../static/images/delnorteeatsfood/snack{{loop.index}}.jpg" width=50px></td>
-            <td>{{name}}</td>
+            <td style="max-width: 100px">{{name}}</td>
             <td>
                 <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}})">&zwnj; - &zwnj;</span>
                 <input class="number_input" readonly value="0" oninput="this.className = ''" name="qty{{loop.index}}">
                 <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}})">&zwnj; + &zwnj;</span>
             </td>
-            <td>
+            <td style="max-width: 180px;">
                 <span id="error_msg{{loop.index}}" style="color:red;"></span>
             </td>
         </tr>
@@ -48,4 +48,39 @@ Single page form
 
     </form>
 </div>
+
+
+<script>
+    function inc(element, increment_numb, item, max) {
+        let el = document.querySelector(`[name="${element}"]`); //differentiates between items
+        if (el.value >= max){ //when the input is maxed pressed one over max
+            console.log(String(el));
+            //max number of items that one can purchase
+            el.value = max;
+
+            //constructs the error message based on the item that was passed in
+            document.getElementById("error_msg" + increment_numb).innerHTML = "cannot purchase more than "+ max + " "+ item +"(s)";
+
+            //allows error messages to fade out after a certain time
+            setTimeout(function(){ document.getElementById("error_msg" + increment_numb).innerHTML =""; }, 3000);
+        } else {
+            console.log(String(el));
+            //incrementing by +1
+            el.value = parseInt(el.value) + 1;
+        }
+    }
+
+    function dec(element, increment_numb) {
+        let el = document.querySelector(`[name="${element}"]`); //differentiates between items
+        if (parseInt(el.value) > 0) { //if the item count is greater than 0
+            console.log(String(el));
+
+            //decrement the count by 1
+            el.value = parseInt(el.value) - 1;
+
+            //takes away the error message
+            document.getElementById("error_msg" + increment_numb).innerHTML = "";
+        }
+    }
+</script>
 {% endblock %}

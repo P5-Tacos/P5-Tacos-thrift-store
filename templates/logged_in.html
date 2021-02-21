@@ -14,9 +14,16 @@ Dashboard
     <h1>{{name}}'s Dashboard</h1>
     <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
     <form action="/shopping_cart_save" method="post">
-        <input type="hidden" id="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
+        <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
         <input style="margin: 0px; position: absolute;" type="submit" value="save shopping list">
     </form>
+    <br>
+    <form action="/shopping_cart_load" method="post">
+        <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
+        <input style="margin: 0px; position: absolute;" type="submit" value="load shopping list">
+    </form>
+    <br>
+
     <h3>{{display_cart|length}} Items in your cart</h3>
     <p>Items in your cart:</p>
     {% for info in display_cart %} <!-- Looping through each dictionary in the list-->

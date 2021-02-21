@@ -154,14 +154,16 @@ def logged_in():
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
-    form = RegisterForm()
-    if form.validate_on_submit():
-        new_user = UserTT(username = form.username.data, email = form.email.data, password = form.password.data)
+    if request.method == 'POST':
+        email = request.form['email']
+        username = request.form['username']
+        password = request.form['password']
+        new_user = UserTT(username = username, email = email, password = password)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
 
-    return render_template("SU.html", form = form, display_cart=shopping_cart)
+    return render_template("SU.html", display_cart=shopping_cart)#form = form,
 
 @app.route('/purchase', methods=["GET", "POST"])
 def purchase():
@@ -251,8 +253,5 @@ def testing_home():
 
 
 if __name__ == "__main__":
-    """user1 = UserTT(username = "John",password = "111111", email = "John@gmail.com")
-    db.session.add(user1)
-    db.session.commit()"""
     # runs the application on the repl development server
     app.run(debug=True, host='192.168.0.12', port='5000')

@@ -4,44 +4,48 @@
 Storefronts
 {% endblock %}
 
+{% block style %}
+
+<style>
+    .card {
+        width:250px;
+        height:250px;
+        background-color:gray;
+        margin: 10px;
+        border-radius: 8px;
+    }
+
+    .card:nth-child(1){
+        border: 1 px solid #dddddd;
+    }
+    .card:nth-child(2){
+        border-radius: 16px;
+        box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2);
+
+    }
+    .card:nth-child(3) {
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+    }
+</style>
+
+{% endblock %}
+
 {% block content %}
 
 {% for card in cards %}
-
-<div class = "card" style = "box-shadow: 10px 20px;">
-    {% set websitename = card['websitename'] %}
-    {% set hyperlinktopage = card['hyperlinktopage'] %}
-    {% set PictureShop = card['PictureShop'] %}
-    {% set Location = card['Location'] %}
-    {% set linklocation = card['linklocation'] %}
-    <option value={{route}}>{{title}}</option>
-    <b> <center> <a href="{{hyperlinktopage}}">{{websitename}}</center></b>
-    <center><img src={{PictureShop}} width=50% height=50%></center>
-    <br><a href="{{linklocation}}">{{Location}}</a></br>
-</div>
+    <div class = "card" style = "box-shadow: 10px 20px;">
+        {% set websitename = card['websitename'] %}
+        {% set hyperlinktopage = card['hyperlinktopage'] %}
+        {% set PictureShop = card['PictureShop'] %}
+        {% set Location = card['Location'] %}
+        {% set linklocation = card['linklocation'] %}
+        <option value={{route}}>{{title}}</option>
+        <b> <center> <a href="{{hyperlinktopage}}">{{websitename}}</center></b>
+        <center><img src={{PictureShop}} width=50% height=50%></center>
+        <br><a href="{{linklocation}}">{{Location}}</a></br>
+    </div>
 {% endfor %}
 
-  <style>
-  .card {
-  width:250px;
-  height:250px;
-  background-color:gray;
-  margin: 10px;
-  border-radius: 8px;
-}
-
-  .card:nth-child(1){
-    border: 1 px solid #dddddd;
-   }
-   .card:nth-child(2){
-     border-radius: 16px;
-     box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2);
-
-   }
-   .card:nth-child(3) {
-     box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
-   }
-   </style>
 
 {% endblock %}
 

@@ -13,6 +13,7 @@ Dashboard
 <div style="margin-left: 15px;">
     <h1>{{name}}'s Dashboard</h1>
     <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
+
     <form action="/shopping_cart_save" method="post">
         <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
         <input style="margin: 0px; position: absolute;" type="submit" value="save shopping list">

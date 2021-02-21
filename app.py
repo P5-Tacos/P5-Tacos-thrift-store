@@ -224,6 +224,21 @@ def shopping_cart_save():
 
         return redirect(url_for('logged_in'))
 
+@app.route('/shopping_cart_load', methods=["GET", "POST"])
+def shopping_cart_load():
+    if request.method == 'POST':
+        #print("load my shopping cart from json")
+        username = request.form['username']
+        previous_list = db.session.query(UserTT).filter_by(username=username).first()
+        #print(previous_list.shopping_cart_column)
+        json_previous_list = previous_list.shopping_cart_column
+        #converting from JSON to python
+        loaded_list = json.loads(json_previous_list)
+        #print("list of list" + str(loaded_list))
+        for i in loaded_list:
+            shopping_cart.append(i)
+        return redirect(url_for('logged_in'))
+
 @app.route('/thriftythreads')
 def thriftythreads():
     return render_template("gallery.html", inventory_list=thriftythreadsdata.inventory_itemsTT(),

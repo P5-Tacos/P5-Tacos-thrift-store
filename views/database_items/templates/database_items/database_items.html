@@ -60,7 +60,8 @@ Database
 {% block content %}
 <div class="center">
     <div class="container"> <!-- form to add in data -->
-    <form class="form-append" method="POST" action="/database"enctype="multipart/form-data">
+
+    <form class="form-append" method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <h2 class="form-signin-heading">Please append data</h2>
         {{wtf.form_field(form.name)}}
@@ -133,6 +134,11 @@ Database
 </div>
 {% endfor %}
 </div>
+<script>
+    function alert_hello() {
+        alert("Hello! I am an alert box!");
+    }
+</script>
 
 <script>
     var tableEl = document.getElementById("itemTable");

@@ -40,6 +40,8 @@ records = []
 shopping_cart = [] #list to append values for each item to display on the user dashboard
 window_y_value = 0
 #print(window_y_value)
+
+"""
 #to ensure that the directory is made each time the program is run
 MYDIR = ("static\images\owner_upload")
 CHECK_FOLDER = os.path.isdir(MYDIR)
@@ -50,7 +52,7 @@ if not CHECK_FOLDER:
     print("created folder : ", MYDIR)
 
 else:
-    print(MYDIR, "folder already exists.")
+    print(MYDIR, "folder already exists.")"""
 
 
 class UserTT(UserMixin, db.Model):
@@ -105,13 +107,13 @@ app.register_blueprint(database_items_bp, url_prefix='/database_items')
 app.register_blueprint(easter_egg_college_bp, url_prefix='/easter_egg_college')
 
 #  displaying all the current items in the data bases
-
+"""
 def list_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste this all the time
     item = items.query.all()
     for item in item:
         user_dict = {'id': item.id, 'name': item.name, 'type': item.type, 'price': item.price}
         records.append(user_dict)
-
+"""
 user_records= []
 def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste this all the time
     user = UserTT.query.all()
@@ -120,7 +122,7 @@ def list_user_map():  # mapping the front end to the backend, put in the functio
         user_records.append(user_tt_dict)
 
 
-list_map()  # running once, appends database items into list user sees
+#list_map()  # running once, appends database items into list user sees
 list_user_map()
 
 #  connects default URL of server to a python function
@@ -143,71 +145,6 @@ def reactiontest():
 @app.route('/contactus')
 def contactus():
     return render_template("contactus.html", images=contactimages.grouppictures(), display_cart=shopping_cart)  # this is the app route to the contact us page
-
-@app.route('/database', methods=['GET', 'POST'])  # contribution by Andrew
-def shopowner():
-    form = ItemForm()
-    "Validate the forms"
-
-    if form.validate_on_submit():  # adding in all
-        new_item = items(type=form.type.data, name=form.name.data, price=form.price.data)
-        db.session.add(new_item)
-        db.session.commit()
-        user_dict = {'id': new_item.id, 'name': new_item.name, 'type': new_item.type, 'price': new_item.price}
-        records.append(user_dict)
-        f = form.image.data
-        filename = str(new_item.id) + ".jpg"
-        f.save(os.path.join(MYDIR, filename))
-
-    return render_template("Database test.html", form=form, table=records, gallery=records, display_cart=shopping_cart)
-
-@app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
-def download(filename):
-    # Appending app path to upload folder path within app root folder
-    uploads = os.path.join(current_app.root_path, app.config['owner_upload'])
-    # Returning file from appended path
-    return send_from_directory(directory=uploads, filename=filename)
-
-
-# CRUD delete
-@app.route('/delete/', methods=['GET', "POST"])
-def delete():
-    # print("arrived to delete")  # for debugging in the terminal
-
-    if request.method == "POST":  # we know the item id
-        userid = request.form["item_id"]
-        found_values = []
-        for dictionary in records:  # deleteing items from the data base
-            if (dictionary["id"] == float(userid)):
-                # print("we found it")  # for debugging in the terminal
-                found_values.append(dictionary)
-                delete = items.query.filter_by(id=float(userid)).first()
-                db.session.delete(delete)
-                db.session.commit()
-                #print("after delete")  # for debuggin in the terminla
-
-            for i in range(len(records)):  # deleting the front end view of the data base
-                if records[i]['id'] == float(userid):
-                    del records[i]
-                    break
-                """for index in range(len(records)):  # this prints all values in the data base
-                    print("---------")
-                    for key in records[index]:
-                        print(records[index][key])"""
-            """else:
-                print("we could not find it", end="")"""
-        #print("this is the row contents" + str(found_values))
-
-    else:
-        print("could not find the value")
-
-    return redirect(url_for('shopowner'))
-
-
-@app.route('/database_form', methods=['GET', 'POST'])
-def database_forms():
-    return render_template("database_form.html", tag_list=gallery_form.gallery_tags(), display_cart=shopping_cart)
-
 
 @app.route('/login', methods=["GET", "POST"])
 def login():

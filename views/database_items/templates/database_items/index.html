@@ -1,10 +1,18 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
-</head>
-<body>
+
+{% block title %}
+Hello there
+{% endblock %}
+
+{% block style %}
+<style>
+</style>
+{% endblock %}
+
+<!-- This is where the nav bar will be displayed-->
+{% block content %}
+
 <p>hello there</p>
-</body>
-</html>
+
+{% endblock %}

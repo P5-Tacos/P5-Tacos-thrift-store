@@ -41,20 +41,6 @@ shopping_cart = [] #list to append values for each item to display on the user d
 window_y_value = 0
 #print(window_y_value)
 
-"""
-#to ensure that the directory is made each time the program is run
-MYDIR = ("static\images\owner_upload")
-CHECK_FOLDER = os.path.isdir(MYDIR)
-
-# If folder doesn't exist, then create it.
-if not CHECK_FOLDER:
-    os.makedirs(MYDIR)
-    print("created folder : ", MYDIR)
-
-else:
-    print(MYDIR, "folder already exists.")"""
-
-
 class UserTT(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15))

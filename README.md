@@ -15,6 +15,16 @@
 #### Link to easter egg: http://timetothrift.cf/easter_egg_college/
 
 ## Changes Log
+#### Week 10 
+- Colin 
+	- enable website usage as guest [ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55469455)
+		- [refrence](https://flask-login.readthedocs.io/en/latest/#anonymous-users)
+
+	- embedded collegeboard [requirement reflection](http://timetothrift.cf/easter_egg_college/AP_CSP_Requirements) on live site
+	- added in js for the [snack form](http://timetothrift.cf/easter_egg/singlepage_form)
+		- highlighting the total cost through js
+		- the dynamic options opend based on specific selection 
+
 #### Week 9
 
 [AP Requirement Doc](https://docs.google.com/document/d/13WzGAZ40KE8HZguGc2O9igHdUENnmVyBys2u7PRZuns/edit)

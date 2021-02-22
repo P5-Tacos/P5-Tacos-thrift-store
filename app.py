@@ -35,7 +35,7 @@ window_y_value = 0
 
 class UserTT(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(15))
+    username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50))
     password = db.Column(db.String(80))
     shopping_cart_column = db.Column(db.String(8000))

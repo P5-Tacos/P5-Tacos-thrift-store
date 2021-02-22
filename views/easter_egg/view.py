@@ -12,6 +12,7 @@ from flask_login import UserMixin, LoginManager, login_required
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from views.easter_egg import db, User
+from views.easter_egg import del_norte_buildings
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -90,5 +91,5 @@ def multipage_from():
 
 @easter_egg_bp.route('/singlepage_form')
 def singlepage_form():
-    return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack())
+    return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack(), building_list=del_norte_buildings.all_buildings_dict_str())
 

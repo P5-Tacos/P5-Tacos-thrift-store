@@ -10,6 +10,9 @@ Single page form
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('easter_egg_bp.static', filename='singlepage_form.css') }}" type="text/css">
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
 <style>
     .margin_1 {
         margin-left: 10px;
@@ -45,7 +48,50 @@ Single page form
 
         {% endfor %}
         </table>
+        <br>
+        <label>Items in Shopping Cart:</label>
+        <!-- need display here to with javascript-->
+        <br>
 
+        <label> Location to deliever to:</label>
+        <p>{{building_list|length}}  locations</p>
+        {% for building in building_list %}
+            {% for room in building %}
+            <p>{{room}}</p>
+            {% endfor %}
+        {% endfor %}
+
+<!--        <label for="db">Choose type</label>
+        <select name="dbType" id="dbType">
+            <option>Choose Building</option>
+            <option value="mysql">Food Court</option>
+            <option value="mysql">Library</option>
+            <option value="oracle">(Tech Electives) A buildings</option>
+            <option value="mssql">(Arts Buildings) P buildings</option>
+            <option value="mysql">L buildings</option>
+            <option value="mysql">K buildings</option>
+            <option value="mysql">L buildings</option>
+            <option value="mysql">J buildings</option>
+            <option value="mysql">G buildings</option>
+            <option value="mysql">E buildings</option>
+            <option value="mysql">D buildings</option>
+            <option value="mysql">R buildings</option>
+            <option value="mysql">(Gym) B Buildings</option>
+            <option value="other">Other</option>
+        </select>
+        <div id="otherType" style="display:none;">
+            <label for="specify">Specify</label>
+            <input type="text" name="specify" placeholder="Specify Databse Type"/>
+        </div>
+        <div id="otherType" style="display:none;">
+            <label for="specify">Specify</label>
+            <input type="text" name="specify" placeholder="Specify Databse Type"/>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+-->
     </form>
 </div>
 
@@ -82,5 +128,17 @@ Single page form
             document.getElementById("error_msg" + increment_numb).innerHTML = "";
         }
     }
+</script>
+<script>
+    $('#dbType').on('change',function(){
+        var selection = $(this).val();
+        switch(selection){
+            case "other":
+                $("#otherType").show()
+                break;
+            default:
+                $("#otherType").hide()
+        }
+    });
 </script>
 {% endblock %}

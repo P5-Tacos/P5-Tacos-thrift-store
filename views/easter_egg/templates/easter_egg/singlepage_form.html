@@ -44,7 +44,10 @@ Single page form
                 <input class="number_input" readonly value="0" oninput="this.className = ''" name="qty{{loop.index}}">
                 <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}})">&zwnj; + &zwnj;</span>
             </td>
-            <td style="width: 100px"><input id="item_cost{{loop.index}}" value="0"></td></td>
+            <td style="width: 25px">
+                <input type="hidden" id="item_cost{{loop.index}}" value="0">
+                <span id="item_cost{{loop.index}}_frontend">0</span>
+            </td>
             <td style="max-width: 180px;">
                 <span id="error_msg{{loop.index}}" style="color:red;"></span>
             </td>
@@ -96,7 +99,9 @@ Single page form
     function cost_calc(multiplier, increment_numb){
         var unit_cost = document.getElementById('unit_cost'+ increment_numb);
         var item_cost = document.getElementById('item_cost'+increment_numb);
+        var item_cost_frontend = document.getElementById('item_cost'+increment_numb+"_frontend");
         item_cost.value = String(multiplier * unit_cost.value);
+        item_cost_frontend.innerHTML = String(multiplier * unit_cost.value);
     };
 
     function inc(element, increment_numb, item, max) {

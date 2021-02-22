@@ -55,7 +55,9 @@ Single page form
 
         {% endfor %}
         </table>
-        <div style="color: red" onclick="total_cost_func(19)">Total cost: <span id="total_cost"></span></div>
+        <div style="background-color: #342F2F; padding: 10px; color: white; border-radius: 10px; width: 150px" onclick="reset_all_selection()">Clear all selection</div>
+        <div style="color: black" onclick="total_cost_func(19)">Total cost: <span id="total_cost"></span></div>
+        <span style="color: #ff0000; visibility: visible;" id="total_cost_msg">testing</span>
         <br>
         <label>Items in Shopping Cart:</label>
         <!-- need display here to with javascript-->
@@ -96,6 +98,7 @@ Single page form
 </body>
 
 <script>
+
     function cost_calc(multiplier, increment_numb){
         var unit_cost = document.getElementById('unit_cost'+ increment_numb);
         var item_cost = document.getElementById('item_cost'+increment_numb);
@@ -125,7 +128,7 @@ Single page form
             el.value = parseInt(el.value) + 1;
             cost_calc(el.value, increment_numb);
         }
-    }
+    };
 
     function dec(element, increment_numb) {
         let el = document.querySelector(`[name="${element}"]`); //differentiates between items
@@ -139,9 +142,23 @@ Single page form
             document.getElementById("error_msg" + increment_numb).innerHTML = "";
             cost_calc(el.value, increment_numb);
         }
-    }
+    };
 
     var total_cost = document.getElementById('total_cost');
+    var slides = document.getElementsByClassName("number_input");
+
+    function reset_all_selection(){
+        console.log('reset_all_selection');
+        for (var i = 0; i < slides.length; i++) {
+            slides.item(i).value = 0;
+        }
+        for (i = 1; i <= slides.length; i++) {
+            //console.log(i);
+            document.getElementById('item_cost' + String(i)).value = 0; //resetting the backend
+            document.getElementById('item_cost'+String(i)+"_frontend").innerHTML = 0; //resetting the frontend
+            //item_cost_frontend
+        }
+    }
 
     function total_cost_func(quanity){
         var result = 0;
@@ -155,6 +172,15 @@ Single page form
         //console.log(result)
         //this is the value that the user sees
         total_cost.innerHTML = result;
+
+        if (total_cost.innerHTML < 1){
+            console.log('less than 1');
+            document.getElementById('total_cost').style.color = 'red'; //to ensure that the fields that are red are incorrect/need notice
+            document.getElementById('total_cost_msg').innerHTML = 'You need to select at least one of the items';
+        } else {
+            document.getElementById('total_cost').style.color = 'black';
+            document.getElementById('total_cost_msg').innerHTML = '';
+        }
     };
     //run on init (19) because there are 19 items
     total_cost_func(19);
@@ -174,7 +200,7 @@ Single page form
         //result.textContent = `Rooms for ${event.target.value}`;
 
         //only show the rooms that corresponds with the building
-        var room_el = document.getElementById(String(event.target.value))
+        var room_el = document.getElementById(String(event.target.value));
         room_el.style.visibility = 'visible';
     });
 

@@ -1,0 +1,28 @@
+{% extends 'easter_egg_college/base_egg_college.html' %}
+<html lang="en">
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block style %}
+<style>
+    .margin_1 {
+    }
+    #embed {
+        margin-top: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 800px;
+
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="margin_1">
+    <iframe id="embed" src="https://docs.google.com/document/d/e/2PACX-1vQtUxCzuvcWSQiGVL7GiuNvweJYSdPmAYQbOxv_-7RWEtaOuTuXrzUEA7emlDA6l6egvkBOpzhRX04S/pub?embedded=true" width="100%" height="600"></iframe>
+</div>
+{% endblock %}

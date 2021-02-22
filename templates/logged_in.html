@@ -10,10 +10,9 @@ Dashboard
 {% endblock %}
 
 {% block content %}
-
-{% if name != "guest" %}
+{% if current_user.is_authenticated %}<!-- If the user has logged in-->
 <div style="margin-left: 15px;">
-    <h1>{{name}}'s Dashboard</h1>
+    <h1>{{name }} Dashboard</h1>
     <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
 
     <form action="/shopping_cart_save" method="post">
@@ -52,7 +51,8 @@ Dashboard
         {% endfor %}
     </div>
 </div>
-{% else %}
+{% endif %}
+{% if current_user.is_anonymous  %} <!-- If the user is a guest-->
 <div style="margin-left: 15px;">
     <h1>Welcome guest</h1>
     <p>Have an existing account?</p> <span><a href="/login">Login</a></span>

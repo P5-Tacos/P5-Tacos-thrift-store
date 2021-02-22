@@ -72,7 +72,7 @@ div.scrollmenu a:hover {
                 <input type="hidden" id="item_name" name="item_name" value="{{name}}">
                 <input type="hidden" id="item_price" name="item_price" value="{{price}}.00">
                 <input type="hidden" id="item_location" name="item_location" value="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg">
-                <a href=item{{loop.index}}><button class="button_display"><img src="../static/images/thrifty_threads/item{{loop.index}}.jpg" height='200px' ></button></a> <!-- references the iteration of the loop -->
+                <a><button class="button_display"><img src="../static/images/thrifty_threads/item{{loop.index}}.jpg" height='200px' ></button></a> <!-- references the iteration of the loop -->
             </form></td>
 
     {% endfor %}
@@ -96,7 +96,7 @@ div.scrollmenu a:hover {
             <input type="hidden" id="item_name2" name="item_name" value="{{name}}">
             <input type="hidden" id="item_price2" name="item_price" value="{{price}}.00">
             <input type="hidden" id="item_location2" name="item_location" value="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg">
-            <a href=item{{loop.index}}><button class="button_display"><img src="../static/images/barbarella/item{{loop.index}}.jpg" height='200px' ></button></a> <!-- references the iteration of the loop -->
+            <a><button class="button_display"><img src="../static/images/barbarella/item{{loop.index}}.jpg" height='200px' ></button></a> <!-- references the iteration of the loop -->
         </form></td>
 
     {% endfor %}

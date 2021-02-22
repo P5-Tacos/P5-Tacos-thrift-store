@@ -1,3 +1,5 @@
+import json
+
 a_buildings = [101, 102, 107, 124, 125, 126, 136, 135, 148, 144, 150, 151]
 p_buildings = [101, 104, 107, 108,111, 116]
 n_buildings = [113, 122]
@@ -88,24 +90,29 @@ for i in all_buildings_dict:
 
 #this dict can be replaced with a loop that itteratrs through the list wtih str values to rplace each dict value
 all_buildings_dict_str = {
-    "a_buildings": a_buildings_str,
-    "p_buildings": p_buildings_str,
-    "n_buildings": n_buildings_str,
-    "m_buildings": m_buildings_str,
-    "l1_buildings": l1_buildings_str,
-    "l2_buildings": l2_buildings_str,
-    "k2_buildings": k2_buildings_str,
-    "j1_buildings": j1_buildings_str,
-    "j2_buildings": j2_buildings_str,
-    "g1_buildings": g1_buildings_str,
-    "g2_buildings": g2_buildings_str,
-    "e2_buildings": e2_buildings_str,
-    "d1_buildings": d1_buildings_str,
-    "d2_buildings": d2_buildings_str,
-    "b_buildings": b_buildings_str
+    "a_buildings": {"room": a_buildings_str},
+    "p_buildings": {"room": p_buildings_str},
+    "n_buildings": {"room": n_buildings_str},
+    "m_buildings": {"room": m_buildings_str},
+    "l1_buildings": {"room": l1_buildings_str},
+    "l2_buildings": {"room": l2_buildings_str},
+    "k2_buildings": {"room": k2_buildings_str},
+    "j1_buildings": {"room": j1_buildings_str},
+    "j2_buildings": {"room": j2_buildings_str},
+    "g1_buildings": {"room": g1_buildings_str},
+    "g2_buildings": {"room": g2_buildings_str},
+    "e2_buildings": {"room": e2_buildings_str},
+    "d1_buildings": {"room": d1_buildings_str},
+    "d2_buildings": {"room": d2_buildings_str},
+    "b_buildings": {"room": b_buildings_str}
 }
 
 #print(all_buildings_dict_str)
+
+#from python to JSON
+json_all_building = json.dumps(all_buildings_dict_str)
+#print(json_all_building)
+
 def all_buildings_dict_str():
     return [a_buildings_str, p_buildings_str, n_buildings_str, m_buildings_str, l1_buildings_str, l2_buildings_str, k2_buildings_str, j1_buildings_str, j2_buildings_str, g1_buildings_str, g2_buildings_str, e2_buildings_str, d1_buildings_str, d2_buildings_str, b_buildings_str]
 #print(str([a_buildings_str, p_buildings_str, n_buildings_str, m_buildings_str, l1_buildings_str, l2_buildings_str, k2_buildings_str, j1_buildings_str, j2_buildings_str, g1_buildings_str, g2_buildings_str, e2_buildings_str, d1_buildings_str, d2_buildings_str, b_buildings_str]))

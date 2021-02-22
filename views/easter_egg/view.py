@@ -13,6 +13,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from views.easter_egg import db, User
 from views.easter_egg import del_norte_buildings
+import json
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -91,5 +92,14 @@ def multipage_from():
 
 @easter_egg_bp.route('/singlepage_form')
 def singlepage_form():
-    return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack(), building_list=del_norte_buildings.all_buildings_dict_str())
+    #print(del_norte_buildings.json_all_building)
+    #from JSON to python
+    dict_buildings = json.loads(del_norte_buildings.json_all_building)
+    #print(dict_buildings)
+    class_rooms = []
+    for i in dict_buildings:
+        print(dict_buildings[i])
+        class_rooms.append(dict_buildings[i])
+    #print(class_rooms)
+    return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack(), building_list=dict_buildings, class_rooms=class_rooms)
 

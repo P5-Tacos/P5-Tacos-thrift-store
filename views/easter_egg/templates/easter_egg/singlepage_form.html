@@ -54,13 +54,41 @@ Single page form
         <br>
 
         <label> Location to deliever to:</label>
+        <!--
         <p>{{building_list|length}}  locations</p>
         {% for building in building_list %}
-            {% for room in building %}
-            <p>{{room}}</p>
-            {% endfor %}
+            <p>{{building}}<p>
         {% endfor %}
 
+        <p>number of class_rooms: {{class_rooms|length}}</p>
+        {% for room in class_rooms %}}
+        <div>
+            {% set room = room["room"] %}
+                {% for number in room %}
+                <span>{{number}}</span>
+                {% endfor %}
+        </div>
+        {% endfor %}
+        -->
+
+        <select name="buildings_group" id="buildings_group">
+            {% for building in building_list %}
+            <option value="{{building}}">{{building}}</option>
+            {% endfor %}
+        </select>
+
+        <!-- hidden options, will be revealed when selected the above selector-->
+        {% for room in class_rooms %}
+        <div>
+            {% set room = room["room"] %}
+            <select name="{{room}}" id="{{room}}" style="visibility: hidden;">
+                {% for number in room %}
+                <option value="{{number}}">{{number}}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+        {% endfor %}
 <!--        <label for="db">Choose type</label>
         <select name="dbType" id="dbType">
             <option>Choose Building</option>

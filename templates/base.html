@@ -14,6 +14,11 @@
             top: 0;
             font-size: 20px;
         }
+        /* this is the id for the items within the cart*/
+        #quanity_1 {
+            margin-top: -30px;
+            margin-left: 40px;
+        }
     </style>
 </head>
 
@@ -31,7 +36,11 @@
             <a href="/reactiontest">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->
             <a href="/login">Login</a>
             <a href="/signup">Sign Up</a>
-            <a href="/logged_in"><img src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px"><div style="margin-top: -30px; margin-left: 40px;"> {{display_cart|length}} </div></a>
+            <a id="shopping_cart_alt" href="/logged_in" onmouseover="onHover();" onmouseout="offHover();" >
+                <img id="menuImg1" src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px">
+                <div id="quanity_1"> {{display_cart|length}} </div>
+            </a>
+            <!--<a href="/logged_in"><img src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px"><div style="margin-top: -30px; margin-left: 40px;"> {{display_cart|length}} </div></a>-->
         </div>
     </div>
 </body>
@@ -41,7 +50,18 @@
 {% block content %}{% endblock %}
 </body>
 
-<script>
 
+<script>
+    //code to ensure that the shopping cart contrasts with the on hover actions
+    var onHover = function (){
+        //changes the shopping cart to black
+        document.getElementById("menuImg1").src = "../static/images/user_dashboard/shopping-cart-black.svg";
+        document.getElementById("shopping_cart").style.color = "black";
+    };
+
+    var offHover = function (){
+        //changes the shooting cart to wheel
+        document.getElementById("menuImg1").src = "../static/images/user_dashboard/shopping-cart-white.svg";
+    };
 </script>
 </html>

@@ -100,7 +100,10 @@ Single page form
         var unit_cost = document.getElementById('unit_cost'+ increment_numb);
         var item_cost = document.getElementById('item_cost'+increment_numb);
         var item_cost_frontend = document.getElementById('item_cost'+increment_numb+"_frontend");
+        //calculating the value used for back end calculations
         item_cost.value = String(multiplier * unit_cost.value);
+
+        //front end display
         item_cost_frontend.innerHTML = String(multiplier * unit_cost.value);
     };
 
@@ -142,6 +145,7 @@ Single page form
 
     function total_cost_func(quanity){
         var result = 0;
+        //iterate through all 19 items to add up the total cost
         for (i = 1; i <= quanity; i++) {
             //console.log(i);
             var el_add = document.getElementById('item_cost' + String(i) );
@@ -149,36 +153,27 @@ Single page form
             var result = result + Number(el_add.value)
         };
         //console.log(result)
+        //this is the value that the user sees
         total_cost.innerHTML = result;
     };
-    //run on init
+    //run on init (19) because there are 19 items
     total_cost_func(19);
 </script>
 <script>
+    var quanity_room = 15;
     const selectElement = document.querySelector('.buildings_group');
 
     selectElement.addEventListener('change', (event) => {
         //first set all of the items to hidden
-        document.getElementById('room1').style.visibility = 'hidden';
-        document.getElementById('room2').style.visibility = 'hidden';
-        document.getElementById('room3').style.visibility = 'hidden';
-        document.getElementById('room4').style.visibility = 'hidden';
-        document.getElementById('room5').style.visibility = 'hidden';
-        document.getElementById('room6').style.visibility = 'hidden';
-        document.getElementById('room7').style.visibility = 'hidden';
-        document.getElementById('room8').style.visibility = 'hidden';
-        document.getElementById('room9').style.visibility = 'hidden';
-        document.getElementById('room10').style.visibility = 'hidden';
-        document.getElementById('room11').style.visibility = 'hidden';
-        document.getElementById('room12').style.visibility = 'hidden';
-        document.getElementById('room13').style.visibility = 'hidden';
-        document.getElementById('room14').style.visibility = 'hidden';
-        document.getElementById('room15').style.visibility = 'hidden';
+        for (var i = 1; i <= quanity_room; i++) {
+            //console.log('room' + String(i));
+            document.getElementById('room' + String(i)).style.visibility = 'hidden';
+        };
 
         //const result = document.querySelector('.result');
         //result.textContent = `Rooms for ${event.target.value}`;
 
-        //only show the rooms that corrrespond with the building
+        //only show the rooms that corresponds with the building
         var room_el = document.getElementById(String(event.target.value))
         room_el.style.visibility = 'visible';
     });

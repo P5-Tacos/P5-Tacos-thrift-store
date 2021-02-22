@@ -98,7 +98,7 @@ def singlepage_form():
     #print(dict_buildings)
     class_rooms = []
     for i in dict_buildings:
-        print(dict_buildings[i])
+        #print(dict_buildings[i])
         class_rooms.append(dict_buildings[i])
     #print(class_rooms)
     return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack(), building_list=dict_buildings, class_rooms=class_rooms)

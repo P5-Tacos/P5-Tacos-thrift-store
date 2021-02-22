@@ -58,7 +58,7 @@ Sign Up
 <div class="row courses-buttons justify-content-center">
     <div id="all_in">
 
-        <form action={{url_for('.signup')}} method="post">
+        <form name="signUp" action={{url_for('.signup')}} onsubmit="return validateForm()" method="post">
             <table border="0">
                 <tr><th>Email</th></tr>
                 <tr><td><input name="email" type="text" size="20"></td></tr>
@@ -67,11 +67,20 @@ Sign Up
                 <tr><th>Password</th></tr>
                 <tr><td><input name="password" type="password" size="20"></td></tr>
                 <tr><td><input type="submit" class="button" value="Submit"></td></tr>
-
+                <tr><td><a href="/guest">continue as guest</a></td></tr>
             </table>
         </form>
     </div>
 
 </div>
 
+<script>
+    function validateForm() {
+        var x = document.forms["signUp"]["username"].value;
+        if (x == "guest") {
+            alert("username GUEST already taken");
+            return false;
+        }
+    }
+</script>
 {% endblock %}

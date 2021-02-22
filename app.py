@@ -142,7 +142,12 @@ def login():
 @app.route('/logged_in', methods=["GET", "POST"])
 @login_required
 def logged_in():
+    print(current_user.username)
     return render_template("logged_in.html", name = current_user.username, display_cart=shopping_cart)
+
+@app.route('/guest', methods=["GET", "POST"])
+def guest_in():
+    return render_template("logged_in.html", name = 'guest', display_cart=shopping_cart)
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():

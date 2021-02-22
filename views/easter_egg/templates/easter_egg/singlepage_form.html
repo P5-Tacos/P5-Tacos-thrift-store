@@ -30,17 +30,19 @@ Single page form
         <table>
         {% for data in snack_list %}
         {% set name = data["name"] %}
-        {% set tag = data["price"] %}
+        {% set price = data["price"] %}
         {% set max_count = data["max_count"] %}
 
         <tr>
-            <td style="column-width: 100px;"><img src="../static/images/delnorteeatsfood/snack{{loop.index}}.jpg" width=50px></td>
+            <td style="column-width: 50px;"><img src="../static/images/delnorteeatsfood/snack{{loop.index}}.jpg" width=50px></td>
             <td style="max-width: 100px">{{name}}</td>
+            <td style="width: 25px">${{price}}</td>
             <td>
                 <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}})">&zwnj; - &zwnj;</span>
                 <input class="number_input" readonly value="0" oninput="this.className = ''" name="qty{{loop.index}}">
                 <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}})">&zwnj; + &zwnj;</span>
             </td>
+            <td id="price{{loop.index}}" style="width: 25px"></td>
             <td style="max-width: 180px;">
                 <span id="error_msg{{loop.index}}" style="color:red;"></span>
             </td>
@@ -71,55 +73,35 @@ Single page form
         {% endfor %}
         -->
 
-        <select name="buildings_group" id="buildings_group">
+        <select name="buildings_group" class="buildings_group">
             {% for building in building_list %}
-            <option value="{{building}}">{{building}}</option>
+            <option value="room{{loop.index}}">{{building}}</option>
             {% endfor %}
         </select>
 
+        <div class="result"></div>
+
         <!-- hidden options, will be revealed when selected the above selector-->
+        <label id="room_label">Room Number:</label>
         {% for room in class_rooms %}
-        <div>
+        <span>
             {% set room = room["room"] %}
-            <select name="{{room}}" id="{{room}}" style="visibility: hidden;">
+            <!--<label>room {{loop.index}}</label>-->
+            <select name="room" id="room{{loop.index}}" style="visibility: hidden; position: absolute;">
                 {% for number in room %}
                 <option value="{{number}}">{{number}}</option>
                 {% endfor %}
             </select>
 
-        </div>
+        </span>
         {% endfor %}
-<!--        <label for="db">Choose type</label>
-        <select name="dbType" id="dbType">
-            <option>Choose Building</option>
-            <option value="mysql">Food Court</option>
-            <option value="mysql">Library</option>
-            <option value="oracle">(Tech Electives) A buildings</option>
-            <option value="mssql">(Arts Buildings) P buildings</option>
-            <option value="mysql">L buildings</option>
-            <option value="mysql">K buildings</option>
-            <option value="mysql">L buildings</option>
-            <option value="mysql">J buildings</option>
-            <option value="mysql">G buildings</option>
-            <option value="mysql">E buildings</option>
-            <option value="mysql">D buildings</option>
-            <option value="mysql">R buildings</option>
-            <option value="mysql">(Gym) B Buildings</option>
-            <option value="other">Other</option>
-        </select>
-        <div id="otherType" style="display:none;">
-            <label for="specify">Specify</label>
-            <input type="text" name="specify" placeholder="Specify Databse Type"/>
-        </div>
-        <div id="otherType" style="display:none;">
-            <label for="specify">Specify</label>
-            <input type="text" name="specify" placeholder="Specify Databse Type"/>
-        </div>
+
+
         <br>
         <br>
         <br>
         <br>
--->
+        <br>
     </form>
 </div>
 
@@ -158,15 +140,36 @@ Single page form
     }
 </script>
 <script>
-    $('#dbType').on('change',function(){
-        var selection = $(this).val();
-        switch(selection){
-            case "other":
-                $("#otherType").show()
-                break;
-            default:
-                $("#otherType").hide()
-        }
+    const selectElement = document.querySelector('.buildings_group');
+
+    selectElement.addEventListener('change', (event) => {
+        //first set all of the items to hidden
+        document.getElementById('room1').style.visibility = 'hidden';
+        document.getElementById('room2').style.visibility = 'hidden';
+        document.getElementById('room3').style.visibility = 'hidden';
+        document.getElementById('room4').style.visibility = 'hidden';
+        document.getElementById('room5').style.visibility = 'hidden';
+        document.getElementById('room6').style.visibility = 'hidden';
+        document.getElementById('room7').style.visibility = 'hidden';
+        document.getElementById('room8').style.visibility = 'hidden';
+        document.getElementById('room9').style.visibility = 'hidden';
+        document.getElementById('room10').style.visibility = 'hidden';
+        document.getElementById('room11').style.visibility = 'hidden';
+        document.getElementById('room12').style.visibility = 'hidden';
+        document.getElementById('room13').style.visibility = 'hidden';
+        document.getElementById('room14').style.visibility = 'hidden';
+        document.getElementById('room15').style.visibility = 'hidden';
+
+        //const result = document.querySelector('.result');
+        //result.textContent = `Rooms for ${event.target.value}`;
+
+        //only show the rooms that corrrespond with the building
+        var room_el = document.getElementById(String(event.target.value))
+        room_el.style.visibility = 'visible';
     });
+
+    //consider looking in here: https://stackoverflow.com/questions/21306134/iterating-over-multiple-lists-in-python-flask-jinja2-templates
+    //for multiple lists itterated over in one loop
+
 </script>
 {% endblock %}

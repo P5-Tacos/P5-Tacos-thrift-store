@@ -107,7 +107,7 @@ list_user_map()
 @app.route('/')
 def index():
     #  function use Flask import (Jinga) to render an HTML template
-    print("from the home page" +str(shopping_cart))
+    # print("from the home page" +str(shopping_cart))
     return render_template("home.html", inventory_list1=thriftythreadsdata.inventory_itemsTT(),
                            inventory_list2=barbarelladata.inventory_itemsBB(), display_cart=shopping_cart)
 

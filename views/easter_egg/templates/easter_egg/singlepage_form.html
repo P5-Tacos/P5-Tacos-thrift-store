@@ -17,6 +17,16 @@ Single page form
     .margin_1 {
         margin-left: 10px;
     }
+    .dec{
+        font-family: Courier New;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .inc{
+        font-family: Courier New;
+        font-size: 24px;
+        font-weight: bold;
+    }
 </style>
 {% endblock %}
 
@@ -24,11 +34,12 @@ Single page form
 {% block content %}
 <body onmousedown="total_cost_func({{snack_list|length}})">
 <div class="margin_1">
-    <p>To test out all the inputs without needing to deal with javasript problems</p>
-    <form>
+    <p>To test out all the inputs without needing to deal without extra javascript dependencies problems</p>
+    <form name="order_food" action={{url_for('.after_form')}} onsubmit="return validateForm()" method="post"> <!-- action={{url_for('.after_form')}} -->
 
         <!-- this is the snack selection area -->
         <!--{{snack_list|length}}-->
+        <p>Please select at least one item to purchase</p>
         <table>
         {% for data in snack_list %}
         {% set name = data["name"] %}
@@ -58,6 +69,7 @@ Single page form
         <div style="background-color: #342F2F; padding: 10px; color: white; border-radius: 10px; width: 150px" onclick="reset_all_selection()">Clear all selection</div>
         <div style="color: black" onclick="total_cost_func(19)">Total cost: <span id="total_cost"></span></div>
         <span style="color: #ff0000; visibility: visible;" id="total_cost_msg">testing</span>
+        <input type="hidden" name="total_cost_input" id="total_cost_input" value="0">
         <br>
         <label>Items in Shopping Cart:</label>
         <!-- need display here to with javascript-->
@@ -78,7 +90,7 @@ Single page form
         <span>
             {% set room = room["room"] %}
             <!--<label>room {{loop.index}}</label>-->
-            <select name="room" id="room{{loop.index}}" style="visibility: hidden; position: absolute;">
+            <select name="room{{loop.index}}" id="room{{loop.index}}" style="visibility: hidden; position: absolute;">
                 {% for number in room %}
                 <option value="{{number}}">{{number}}</option>
                 {% endfor %}
@@ -91,6 +103,9 @@ Single page form
         <br>
         <br>
         <br>
+        <br>
+        <br>
+        <button type="submit">Place Order</button>
         <br>
         <br>
     </form>
@@ -145,6 +160,7 @@ Single page form
     };
 
     var total_cost = document.getElementById('total_cost');
+    var total_cost_backend = document.getElementById('total_cost_input');//this is rewritting the input field total cost for the form format
     var slides = document.getElementsByClassName("number_input");
 
     function reset_all_selection(){
@@ -156,6 +172,8 @@ Single page form
             //console.log(i);
             document.getElementById('item_cost' + String(i)).value = 0; //resetting the backend
             document.getElementById('item_cost'+String(i)+"_frontend").innerHTML = 0; //resetting the frontend
+            document.getElementById('total_cost').innerHTML = '0';
+            total_cost_backend.innerHTML = 0;
             //item_cost_frontend
         }
     }
@@ -172,6 +190,8 @@ Single page form
         //console.log(result)
         //this is the value that the user sees
         total_cost.innerHTML = result;
+        total_cost_backend.value = result;
+        console.log('total cost:' + total_cost_backend.value);
 
         if (total_cost.innerHTML < 1){
             console.log('less than 1');
@@ -188,6 +208,9 @@ Single page form
 <script>
     var quanity_room = 15;
     const selectElement = document.querySelector('.buildings_group');
+
+    //show the default selected
+    document.getElementById('room1').style.visibility = 'visible';
 
     selectElement.addEventListener('change', (event) => {
         //first set all of the items to hidden
@@ -207,5 +230,21 @@ Single page form
     //consider looking in here: https://stackoverflow.com/questions/21306134/iterating-over-multiple-lists-in-python-flask-jinja2-templates
     //for multiple lists itterated over in one loop
 
+</script>
+<script>
+    function validateForm() {
+        if (total_cost.innerHTML < 1) {
+            console.log('less than 1');
+            document.getElementById('total_cost').style.color = 'red'; //to ensure that the fields that are red are incorrect/need notice
+            document.getElementById('total_cost_msg').innerHTML = 'You need to select at least one of the items';
+            alert("You need to select at least one of the items to purchase");
+            return false;
+        }
+        /*
+        if at least one item has been selected
+        see if there was a classroom specified
+        if the current about of money will not put the student in debt
+        */
+    }
 </script>
 {% endblock %}

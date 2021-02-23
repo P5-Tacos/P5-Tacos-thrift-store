@@ -1,7 +1,7 @@
 #this is where all the routes will go
 
 from views.easter_egg import easter_egg_bp
-from flask import Flask, render_template,redirect,url_for
+from flask import Flask, render_template,redirect,url_for, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, FileField, FloatField,PasswordField
 from wtforms.validators import InputRequired, Length, NumberRange
@@ -21,8 +21,6 @@ Bootstrap(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-
-
 
 class LoginForm(FlaskForm):
     username = StringField('username',validators=[InputRequired(), Length(min=1,max=15)])
@@ -76,7 +74,6 @@ def login():
 
     return render_template("easter_egg/login.html",form = logform)
 
-
 @easter_egg_bp.route('/auth_user', methods = ['GET','POST']) #this is the home page of the makeup API page
 def private():
     return render_template("easter_egg/auth_user.html")
@@ -90,16 +87,43 @@ def timetoorder():
 def multipage_from():
     return render_template("easter_egg/multipage_form.html", snack_list=food.inventory_stack())
 
+#  from JSON to python
+dict_buildings = json.loads(del_norte_buildings.json_all_building)
+class_rooms = []
+for i in dict_buildings:
+    class_rooms.append(dict_buildings[i])
+
 @easter_egg_bp.route('/singlepage_form')
 def singlepage_form():
-    #print(del_norte_buildings.json_all_building)
-    #from JSON to python
-    dict_buildings = json.loads(del_norte_buildings.json_all_building)
-    #print(dict_buildings)
-    class_rooms = []
-    for i in dict_buildings:
-        #print(dict_buildings[i])
-        class_rooms.append(dict_buildings[i])
-    #print(class_rooms)
     return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack(), building_list=dict_buildings, class_rooms=class_rooms)
+
+@easter_egg_bp.route('/after_form', methods = ['GET','POST'])
+def after_form():
+    if request.method == 'POST':
+        total_cost = request.form['total_cost_input']
+        building_group = request.form.get('buildings_group')
+        all_rooms = []
+
+        #  starting at 1 to ensure that we start at the correct value. This is because we have loop index define the name of the inputs
+        b = 1
+        for i in class_rooms:
+            room_number = request.form.get('room'+str(b))
+            all_rooms.append(room_number)
+            b = b + 1
+
+        #  getting the last number of the groups
+        if len(building_group) == 5:
+            #  form "room1" to "room9"
+            last_char = building_group[-1]
+        else:
+            #  from "room10" to "room15"
+            last_char = building_group[-2:]
+
+        # decrement by one to select the correct group of numbers
+        item_number = int(last_char) - 1
+        # select the selected item for the hidden displays
+        room = all_rooms[item_number]
+
+        information = {"total cost": total_cost, "building group": building_group, "room number": room}
+        return render_template("easter_egg/after_form.html", information=information)
 

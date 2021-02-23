@@ -1,0 +1,28 @@
+{% extends 'easter_egg/base_egg.html' %}
+<html lang="en">
+
+{% set total_cost = information["total cost"] %}
+{% set room_number = information["room number"] %}
+
+{% block title %}
+After Form
+{% endblock %}
+
+{% block style %}
+<style>
+    .margin_1 {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="margin_1">
+    <p> Thanks for filling out the form</p>
+    <p>total cost:</p><span>{{total_cost}}</span>
+    <p>delivery location</p><span>{{room_number}}</span>
+
+
+</div>
+{% endblock %}

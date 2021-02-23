@@ -21,7 +21,7 @@
 		- [refrence](https://flask-login.readthedocs.io/en/latest/#anonymous-users)
 
 	- embedded collegeboard [requirement reflection](http://timetothrift.cf/easter_egg_college/AP_CSP_Requirements) on live site
-	- added in js for the [snack form](http://timetothrift.cf/easter_egg/singlepage_form)
+	- added in js for the [snack form](http://timetothrift.cf/easter_egg/singlepage_form) [ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55471330)
 		- highlighting the total cost through js
 		- the dynamic options opend based on specific selection 
 

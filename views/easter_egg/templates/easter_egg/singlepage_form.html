@@ -51,9 +51,9 @@ Single page form
             <td style="max-width: 100px">{{name}}</td>
             <td style="width: 25px"><input id="unit_cost{{loop.index}}" value="{{price}}" type="hidden">{{price}}</td>
             <td>
-                <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}})">&zwnj; - &zwnj;</span>
+                <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}}, 'food_quantity'+String({{loop.index}}))">&zwnj; - &zwnj;</span>
                 <input class="number_input" readonly value="0" oninput="this.className = ''" name="qty{{loop.index}}">
-                <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}})">&zwnj; + &zwnj;</span>
+                <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}},'food_quantity'+String({{loop.index}}))">&zwnj; + &zwnj;</span>
             </td>
             <td style="width: 25px">
                 <input type="hidden" id="item_cost{{loop.index}}" value="0">
@@ -72,7 +72,12 @@ Single page form
         <input type="hidden" name="total_cost_input" id="total_cost_input" value="0">
         <br>
         <label>Items in Shopping Cart:</label>
-        <!-- need display here to with javascript-->
+        <!-- this is the backend section of the code where it counts the quantities per item -->
+        {% for data in snack_list %}
+        {% set name = data["name"] %}
+        <input type="hidden" name="food_item{{loop.index}}" value="{{name}}"><!-- To specify the item name -->
+        <input type="hidden" name="food_quantity{{loop.index}}" value="0"><!-- To specify the quantity of the item-->
+        {% endfor %}
         <br>
 
         <label> Location to deliever to:</label>
@@ -83,7 +88,6 @@ Single page form
         </select>
 
         <div class="result"></div>
-
         <!-- hidden options, will be revealed when selected the above selector-->
         <label id="room_label">Room Number:</label>
         {% for room in class_rooms %}
@@ -98,16 +102,10 @@ Single page form
 
         </span>
         {% endfor %}
-
-
-        <br>
-        <br>
-        <br>
         <br>
         <br>
         <button type="submit">Place Order</button>
-        <br>
-        <br>
+
     </form>
 </div>
 </body>
@@ -125,8 +123,9 @@ Single page form
         item_cost_frontend.innerHTML = String(multiplier * unit_cost.value);
     };
 
-    function inc(element, increment_numb, item, max) {
+    function inc(element, increment_numb, item, max, element_backend) {
         let el = document.querySelector(`[name="${element}"]`); //differentiates between items
+        let el_backend = document.querySelector(`[name="${element_backend}"]`);//this represents the backend item name
         if (el.value >= max){ //when the input is maxed pressed one over max
             //console.log(String(el));
             //max number of items that one can purchase
@@ -141,21 +140,23 @@ Single page form
             //console.log(String(el));
             //incrementing by +1
             el.value = parseInt(el.value) + 1;
-            cost_calc(el.value, increment_numb);
+            el_backend.value = parseInt(el_backend.value) + 1;
+            cost_calc(el.value, increment_numb);//calculates the unitcost * quanity selected
         }
     };
 
-    function dec(element, increment_numb) {
+    function dec(element, increment_numb, element_backend) {
         let el = document.querySelector(`[name="${element}"]`); //differentiates between items
+        let el_backend = document.querySelector(`[name="${element_backend}"]`);//this represents the backend item name
         if (parseInt(el.value) > 0) { //if the item count is greater than 0
             console.log(String(el));
 
             //decrement the count by 1
             el.value = parseInt(el.value) - 1;
-
+            el_backend = parseInt(el_backend.value) - 1;
             //takes away the error message
             document.getElementById("error_msg" + increment_numb).innerHTML = "";
-            cost_calc(el.value, increment_numb);
+            cost_calc(el.value, increment_numb);//calculates the unitcost * quanity selected
         }
     };
 
@@ -206,6 +207,7 @@ Single page form
     total_cost_func(19);
 </script>
 <script>
+    //in this script block we show which rooms correspond with the group of buildings selected
     var quanity_room = 15;
     const selectElement = document.querySelector('.buildings_group');
 

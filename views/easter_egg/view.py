@@ -102,7 +102,36 @@ def after_form():
     if request.method == 'POST':
         list_dict_food = food.inventory_stack()
         food_items = []
+        food_quanities = []
+        trash_quanities = []
+        trash_items = []
+        pass_info = []
 
+        """b = 1
+        for i in list_dict_food:
+            food_name = request.form.get('food_item'+str(b))
+            food_items.append(food_name)
+            b = b + 1"""
+        #print(food_items)
+        b = 1
+        for i in list_dict_food:
+            food_name = request.form.get('food_item'+str(b))
+            food_count = request.form.get('food_quantity'+str(b))
+            if food_count == '0':
+                trash_items.append(food_name)
+                trash_quanities.append(food_count)
+            else:
+                #food_items.append(food_name) #induvidual list for the database
+                #food_quanities.append(food_count) #induvidual list for the database
+                pass_info.append(food_count) #pass the quanity of the item first
+                pass_info.append(food_name) #pass the name of the item second
+            b = b + 1
+        #print(food_items)
+        #print(food_quanities)
+
+        #dict_food_quant = dict(zip(food_items, food_quanities))
+        #print(dict_food_quant)
+        """
         #  started at 1
         a = 1
         for i in list_dict_food:
@@ -119,6 +148,8 @@ def after_form():
         print(food_items)#quanity
         res = dict(zip(name_food, food_items))
         print(res)
+        """
+
         total_cost = request.form['total_cost_input']
         building_group = request.form.get('buildings_group')
         all_rooms = []
@@ -144,5 +175,5 @@ def after_form():
         room = all_rooms[item_number]
 
         information = {"total cost": total_cost, "building group": building_group, "room number": room}
-        return render_template("easter_egg/after_form.html", information=information)
+        return render_template("easter_egg/after_form.html", information=information, pass_info=pass_info)
 

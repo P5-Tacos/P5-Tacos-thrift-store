@@ -24,5 +24,15 @@ After Form
     <p>delivery location</p><span>{{room_number}}</span>
 
 
+    <p> Purchased items:</p>
+
+
+    {% for info in pass_info %}
+    {% if loop.index is divisibleby 2 %}
+    <span>{{info}}(s)</span><br>
+    {% else %}
+    <span>{{info}}</span>
+    {% endif %}
+    {% endfor %}
 </div>
 {% endblock %}

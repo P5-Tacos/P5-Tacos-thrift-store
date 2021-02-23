@@ -20,6 +20,7 @@
 	- enable website usage as guest [ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55469455)
 		- [refrence](https://flask-login.readthedocs.io/en/latest/#anonymous-users)
 
+	- created [read functionality](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/f99db669d9521fac7bbfae77843a075a68be326b/app.py#L221-L234) for shopping cart from database
 	- embedded collegeboard [requirement reflection](http://timetothrift.cf/easter_egg_college/AP_CSP_Requirements) on live site
 	- added in js for the [snack form](http://timetothrift.cf/easter_egg/singlepage_form) [ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55471330)
 		- highlighting the total cost through js

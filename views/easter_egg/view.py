@@ -100,6 +100,25 @@ def singlepage_form():
 @easter_egg_bp.route('/after_form', methods = ['GET','POST'])
 def after_form():
     if request.method == 'POST':
+        list_dict_food = food.inventory_stack()
+        food_items = []
+
+        #  started at 1
+        a = 1
+        for i in list_dict_food:
+            food_item = request.form['qty'+str(a)]
+            food_items.append(int(food_item))
+            a = a + 1
+
+        name_food = []
+        for item_food in list_dict_food:
+            name = item_food["name"]
+            name_food.append(name)
+
+        print(name_food)#key
+        print(food_items)#quanity
+        res = dict(zip(name_food, food_items))
+        print(res)
         total_cost = request.form['total_cost_input']
         building_group = request.form.get('buildings_group')
         all_rooms = []

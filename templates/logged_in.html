@@ -55,8 +55,8 @@ Dashboard
 {% if current_user.is_anonymous  %} <!-- If the user is a guest-->
 <div style="margin-left: 15px;">
     <h1>Welcome guest</h1>
-    <p>Have an existing account?</p> <span><a href="/login">Login</a></span>
-    <p>Don't an existing account?</p> <span><a href="/signup">Sign Up</a></span>
+    <p>Have an existing account? <span><a href="/login">Login</a></span></p>
+    <p>Don't an existing account? <span><a href="/signup">Sign Up</a></span></p>
     <h3>{{display_cart|length}} Items in your cart</h3>
     <p>Items in your cart:</p>
     {% for info in display_cart %} <!-- Looping through each dictionary in the list-->

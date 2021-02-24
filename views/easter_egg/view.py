@@ -32,17 +32,19 @@ class RegisterForm(FlaskForm):
     grade = FloatField('grade',validators=[InputRequired()])
     id = FloatField('id',validators=[InputRequired()])
 
+user_type = 'user'
+
 @easter_egg_bp.route('/') #this is the home page of the makeup API page
 def index():
-    return render_template("easter_egg/home.html")
+    return render_template("easter_egg/home.html",user_type=user_type)
 
 @easter_egg_bp.route('/theeastercontacts')
 def eastercontactus():
-    return render_template("easter_egg/newcontactus.html", images=model.infoforthecontactsineaster())
+    return render_template("easter_egg/newcontactus.html", images=model.infoforthecontactsineaster(),user_type=user_type)
 
 @easter_egg_bp.route('/image_map_dnhs')
 def image_map():
-    return render_template("easter_egg/image_map_dnhs.html", images=model.infoforthecontactsineaster())
+    return render_template("easter_egg/image_map_dnhs.html", images=model.infoforthecontactsineaster(),user_type=user_type)
 
 @easter_egg_bp.route('/Signup/',methods = ['GET','POST'])
 def signup():
@@ -53,7 +55,7 @@ def signup():
         db.session.commit()
         return redirect(url_for('easter_egg_bp.login'))
 
-    return render_template("easter_egg/SU.html",form = form)
+    return render_template("easter_egg/SU.html",form = form,user_type=user_type)
 
 @easter_egg_bp.route('/Login', methods = ['GET', 'POST'])
 def login():
@@ -72,20 +74,20 @@ def login():
 
         return '<h1>Invalid username or password</h1>'
 
-    return render_template("easter_egg/login.html",form = logform)
+    return render_template("easter_egg/login.html",form = logform,user_type=user_type)
 
 @easter_egg_bp.route('/auth_user', methods = ['GET','POST']) #this is the home page of the makeup API page
 def private():
-    return render_template("easter_egg/auth_user.html")
+    return render_template("easter_egg/auth_user.html",user_type=user_type)
 
 @login_required
 @easter_egg_bp.route('/ordernow')
 def timetoorder():
-    return render_template("easter_egg/ordernow.html")
+    return render_template("easter_egg/ordernow.html",user_type=user_type)
 
 @easter_egg_bp.route('/multipage_form')
 def multipage_from():
-    return render_template("easter_egg/multipage_form.html", snack_list=food.inventory_stack())
+    return render_template("easter_egg/multipage_form.html", snack_list=food.inventory_stack(),user_type=user_type)
 
 #  from JSON to python
 dict_buildings = json.loads(del_norte_buildings.json_all_building)
@@ -95,7 +97,7 @@ for i in dict_buildings:
 
 @easter_egg_bp.route('/singlepage_form')
 def singlepage_form():
-    return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack(), building_list=dict_buildings, class_rooms=class_rooms)
+    return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack(), building_list=dict_buildings, class_rooms=class_rooms, user_type=user_type)
 
 @easter_egg_bp.route('/after_form', methods = ['GET','POST'])
 def after_form():
@@ -175,8 +177,14 @@ def after_form():
         room = all_rooms[item_number]
 
         information = {"total cost": total_cost, "building group": building_group, "room number": room}
-        return render_template("easter_egg/after_form.html", information=information, pass_info=pass_info)
+        return render_template("easter_egg/after_form.html", information=information, pass_info=pass_info, user_type=user_type)
 
 @easter_egg_bp.route('/runner_dashboard')#  will eventually be post , methods = ['GET','POST']
 def runner_dashboard():
-    return render_template('easter_egg/runner_dashboard.html', user_type = 'runner')
+    user_type = 'runner'
+    return render_template('easter_egg/runner_dashboard.html', user_type=user_type)
+
+@easter_egg_bp.route('/user_dashboard')#  will eventually be post , methods = ['GET','POST']
+def user_dashboard():
+    user_type = 'user'
+    return render_template('easter_egg/user_dashboard.html', user_type=user_type)

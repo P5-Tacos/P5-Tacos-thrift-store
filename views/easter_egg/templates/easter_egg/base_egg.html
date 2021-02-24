@@ -68,22 +68,36 @@
         {% if user_type == 'runner' %}
         <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats<span> - Runner</span></h1></a>
         {% else %}
-        <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats</h1></a>
+            {% if user_type == 'user' %}
+            <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats<span> - User</span></h1></a>
+            {% else %}
+            <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats</h1></a>
+            {% endif %}
         {% endif %}
         <a id="return_link" href="/">Go back to TimetoThrift!</a> <!-- style="all: revert;" -->
     </div>
-    <a class="home" href={{url_for('easter_egg_bp.index')}}>Home</a>
+    {% if user_type == 'runner' %}
+
+    <a href="{{url_for('easter_egg_bp.index')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/shopping-cart-yellow.svg');" onmouseout="onHover('/easter_egg/static/images/shopping-cart-white.svg');">
+        <img id="menuImg1" src="{{url_for('easter_egg_bp.static', filename='images/shopping-cart-white.svg')}}" alt="Running Man" width="25px">
+    </a>
+    <a> Orders </a>
+    {% else %}
+    <a href="{{url_for('.runner_dashboard')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/running_man_yellow.svg');" onmouseout="onHover('/easter_egg/static/images/running_man_white.svg');">
+        <img id="menuImg1" src="{{url_for('easter_egg_bp.static', filename='images/running_man_white.svg')}}" alt="Running Man" width="25px">
+    </a>
+    <a class="home" href={{url_for('easter_egg_bp.user_dashboard')}}>Home</a>
+    <a href="{{url_for('.singlepage_form')}}">Order</a>
     <!--<a href="">Admin</a>-->
     <!--<a href="{{url_for('.login')}}">Login</a>-->
     <!--<a href="{{url_for('.signup')}}">Sign up</a>-->
     <!--<a href="javascript:void(window.open('https://form.jotform.com/210330529779156','blank','scrollbars=yes,toolbar=no,width=700,height=500') ) ">Contact Us</a>-->
     <!--<a href="">Future Projects</a>-->
-    <a href="{{url_for('.timetoorder')}}">Order Now</a>
-    <a href="{{url_for('.multipage_from')}}">Multipage Form</a>
-    <a href="{{url_for('.singlepage_form')}}">Singlepage Form</a>
-    <a href="{{url_for('.runner_dashboard')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/running_man_yellow.svg');" onmouseout="onHover('/easter_egg/static/images/running_man_white.svg');">
-        <img id="menuImg1" src="{{url_for('easter_egg_bp.static', filename='images/running_man_white.svg')}}" alt="Running Man" width="25px">
-    </a>
+    <!--<a href="{{url_for('.timetoorder')}}">Order Now</a>-->
+    <!--<a href="{{url_for('.multipage_from')}}">Multipage Form</a>-->
+
+
+    {% endif %}
 </div>
 
 {% block content %}{% endblock %}

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Del Norte Eats - {% block title %}{% endblock %}</title>
 
@@ -53,6 +54,11 @@
             color: #f2f2f2;
             margin-bottom: 5px;
             text-align:revert;
+        }
+        @media screen and (max-width: 600px) {
+            .topnav.responsive {
+                position: relative;
+            }
         }
     </style>
     {% block style %}

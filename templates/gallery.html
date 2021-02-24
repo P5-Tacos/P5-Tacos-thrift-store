@@ -48,7 +48,7 @@ Gallery
                     <p class="title" sytle="color:black;">{{tag}}</p>
                     <p sytle="color:black;">{{description}}</p>
                     <p sytle="color:black;">${{price}}.00</p>
-                    <form action="/purchase" method="post">
+                    <form action="{{url_for('.purchase')}}" method="post">
                         <input type="hidden" step="0.0001" class="scroll_poss" name="scroll_poss" value="0">
                         <input type="hidden" id="store_route" name="store_route" value="{{route}}">
                         <input type="hidden" id="item_name" name="item_name" value="{{name}}">

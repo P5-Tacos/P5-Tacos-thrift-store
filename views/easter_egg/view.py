@@ -46,6 +46,10 @@ def eastercontactus():
 def image_map():
     return render_template("easter_egg/image_map_dnhs.html", images=model.infoforthecontactsineaster(),user_type=user_type)
 
+@easter_egg_bp.route('/image_map_dnhs2')
+def image_map2():
+    return render_template("easter_egg/image_map_dnhs2.html", images=model.infoforthecontactsineaster(),user_type=user_type)
+
 @easter_egg_bp.route('/Signup/',methods = ['GET','POST'])
 def signup():
     form = RegisterForm()

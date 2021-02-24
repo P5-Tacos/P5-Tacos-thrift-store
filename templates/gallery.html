@@ -26,9 +26,9 @@ Gallery
 </head>
 <body>
 <div class="mid">
-<h2 style="text-align:center;">{{Store_Title}}</h2><!--Reads store title form the app.py-->
-<h3 style="text-align:center; color:red;"> Only {{inventory_list|length}} Left!</h3>
-<p style="text-align:center;">see the top items for _____ (location) this week. Come soon, not guaranteed to stay stocked for long!</p>
+<h1 style="text-align:center;">{{Store_Title}}</h1><!--Reads store title form the app.py-->
+<!--<h3 style="text-align:center; color:red;"> Only {{inventory_list|length}} Left!</h3>-->
+<p style="text-align:center;">see the top items for {{Store_Title}} this week. Come soon, not guaranteed to stay stocked for long!</p>
 </div>
     {% for data in inventory_list %} <!-- Looping through each dictionary in the list-->
     {% set name = data["name"] %}
@@ -48,12 +48,56 @@ Gallery
                     <p class="title" sytle="color:black;">{{tag}}</p>
                     <p sytle="color:black;">{{description}}</p>
                     <p sytle="color:black;">${{price}}.00</p>
-                    <a href=item{{loop.index}}><button class="button">add to cart</button></a> <!-- references the iteration of the loop -->
+                    <form action="{{url_for('.purchase')}}" method="post">
+                        <input type="hidden" step="0.0001" class="scroll_poss" name="scroll_poss" value="0">
+                        <input type="hidden" id="store_route" name="store_route" value="{{route}}">
+                        <input type="hidden" id="item_name" name="item_name" value="{{name}}">
+                        <input type="hidden" id="item_price" name="item_price" value="{{price}}.00">
+                        <input type="hidden" id="item_location" name="item_location" value="../static/images/{{store_folder_name}}/item{{loop.index}}.jpg">
+                        <button class="button">add to cart</button> <!-- references the iteration of the loop -->
+                    </form>
                 </div>
             </div>
         </div>
     {% endfor %}
 
 </body>
+
+<script>
+    // from here: https://stackoverflow.com/questions/29203312/how-can-i-retain-the-scroll-position-of-a-scrollable-area-when-pressing-back-but/46461016#46461016
+
+    //ensures when reloading page maintians scroll height
+    $(function() {
+        $(window).unload(function() {
+            var scrollPosition = $("div#element").scrollTop();
+            localStorage.setItem("scrollPosition", scrollPosition);
+        });
+        if(localStorage.scrollPosition) {
+            $("div#element").scrollTop(localStorage.getItem("scrollPosition"));
+        }
+    });
+
+</script>
+
+<script type="text/javascript">
+    //on load we set the postion of the page to what is passed into the page (deafult 0)
+    function test_func(window_y_value) {
+        console.log("on load: " + String(window_y_value));
+        window.scrollTo(0,window_y_value)
+    }
+    test_func({{ window_y_value|safe }})
+</script>
+
+<script>
+    var nameEls = document.getElementsByClassName("scroll_poss");
+
+    window.addEventListener('scroll',(event) => {
+        console.log(window.pageYOffset);
+        for (var i = 0; i < nameEls.length; i++) {
+            nameEls[i].value = window.pageYOffset;
+        }
+    });
+</script>
+
 </html>
 {% endblock%}

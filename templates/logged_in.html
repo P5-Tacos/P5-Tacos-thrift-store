@@ -1,6 +1,87 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block style %}
+<link href="../static/css/style_dashboard.css" rel="stylesheet" type="text/css" /> <!-- this is a temporary style -->
+{% endblock %}
+
 {% block content %}
-<h1>SIR {{name}}</h1>
-<form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
+{% if current_user.is_authenticated %}<!-- If the user has logged in-->
+<div style="margin-left: 15px;">
+    <h1>{{name }} Dashboard</h1>
+    <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
+
+    <form action="/shopping_cart_save" method="post">
+        <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
+        <input style="margin: 0px; position: absolute;" type="submit" value="save shopping list">
+    </form>
+    <br>
+    <form action="/shopping_cart_load" method="post">
+        <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
+        <input style="margin: 0px; position: absolute;" type="submit" value="load shopping list">
+    </form>
+    <br>
+
+    <h3>{{display_cart|length}} Items in your cart</h3>
+    <p>Items in your cart:</p>
+    {% for info in display_cart %} <!-- Looping through each dictionary in the list-->
+    {% set name = info["item_name"] %}
+    {% set price = info["item_price"] %}
+    {% set image_location = info["item_location"] %}
+    <!-- need to place the cards here -->
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <!--<p>{{loop.index0}}</p>--><!-- to display positition of item in shopping cart-->
+                <img src="{{image_location}}" width=100px>
+                <div class="container">
+                    <h2>{{name}}</h2>
+                    <p sytle="color:black;">${{price}}</p>
+                </div>
+                <form action="/shopping_cart_remove" method="post">
+                    <input type="number" id="item_pos_list" name="item_pos_list" value="{{loop.index0}}" style="visibility: hidden;">
+                    <button class="button">remove from cart</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% if current_user.is_anonymous  %} <!-- If the user is a guest-->
+<div style="margin-left: 15px;">
+    <h1>Welcome guest</h1>
+    <p>Have an existing account? <span><a href="/login">Login</a></span></p>
+    <p>Don't an existing account? <span><a href="/signup">Sign Up</a></span></p>
+    <h3>{{display_cart|length}} Items in your cart</h3>
+    <p>Items in your cart:</p>
+    {% for info in display_cart %} <!-- Looping through each dictionary in the list-->
+    {% set name = info["item_name"] %}
+    {% set price = info["item_price"] %}
+    {% set image_location = info["item_location"] %}
+    <!-- need to place the cards here -->
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <!--<p>{{loop.index0}}</p>--><!-- to display positition of item in shopping cart-->
+                <img src="{{image_location}}" width=100px>
+                <div class="container">
+                    <h2>{{name}}</h2>
+                    <p sytle="color:black;">${{price}}</p>
+                </div>
+                <form action="/shopping_cart_remove" method="post">
+                    <input type="number" id="item_pos_list" name="item_pos_list" value="{{loop.index0}}" style="visibility: hidden;">
+                    <button class="button">remove from cart</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
 {% endblock %}

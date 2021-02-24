@@ -6,12 +6,13 @@ Database
 {% endblock %}
 
 {% block style %}
-    <link href="../static/css/style_database_gallery.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../static/css/style_database_gallery_new.css" rel="stylesheet" type="text/css" />
     <style>
         #itemTable {
             position: relative;
             top: 0px;
             left: 0px;
+            z-index: -1;
         }
 
         #itemGallery {
@@ -23,11 +24,12 @@ Database
         body {
           margin: 0;
           font-family: Arial, Helvetica, sans-serif;
+            color: #2E4785;
         }
 
         .container {
           overflow: hidden;
-          background-color: green;
+          background-color: #E98A62;
           margin-left: auto;
             margin-right: auto;
         }
@@ -52,6 +54,11 @@ Database
             height: 6000px;
             overflow: hidden;
         }
+
+        .button:hover {
+            color: #E98A62;
+            background-color: #2E4785;
+        }
     </style>
 
 {% endblock %}
@@ -59,16 +66,19 @@ Database
 {% block content %}
 <div class="center">
     <div class="container"> <!-- form to add in data -->
-    <form class="form-append" method="POST" action="/database"enctype="multipart/form-data">
+
+    <form class="form-append" method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <h2 class="form-signin-heading">Please append data</h2>
         {{wtf.form_field(form.name)}}
         {{wtf.form_field(form.type)}}
         {{wtf.form_field(form.price)}}
         {{wtf.form_field(form.image)}}
+        <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">appened</button>
     </form>
 
+        <br>
     </div>
 
 </div>
@@ -76,7 +86,7 @@ Database
 <button id="toggle_button" type="button" onclick="toggle()">show content of gallery</button>
 <p id="testingNumber"></p>
 
-<div class="jumbotron jumbotron-fluid" style="height: 50%; ">
+<div style="height: 50%;">
 
     <div class="row justify-content-center">
         <div class="col-10" style="text-align: center;">
@@ -85,7 +95,7 @@ Database
     </div>
 
     <!-- Table block is dependent on table variable and dictionary setup -->
-    <table id="itemTable">
+    <table id="itemTable" >
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -107,7 +117,7 @@ Database
     </table>
 </div>
 
-<div id="itemGallery">
+<div id="itemGallery" style="z-index: -6;">
 <!-- displaying the items in a card format -->
 {% for data in gallery %}
 {% set id = data["id"] %}
@@ -124,12 +134,17 @@ Database
             <!--<p class="title" style="color:black;">{{tag}}</p>
             <p style="color:black;">{{description}}</p>-->
             <p style="color:black;">${{price}}</p>
-            <a href=item{{loop.index}}><button class="button">add to cart</button></a> <!-- references the iteration of the loop -->
+            <!--<a href=item{{loop.index}}><button class="button">add to cart</button></a>--> <!-- references the iteration of the loop -->
         </div>
     </div>
 </div>
 {% endfor %}
 </div>
+<script>
+    function alert_hello() {
+        alert("Hello! I am an alert box!");
+    }
+</script>
 
 <script>
     var tableEl = document.getElementById("itemTable");

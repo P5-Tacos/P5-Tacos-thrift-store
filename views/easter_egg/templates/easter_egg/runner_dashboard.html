@@ -1,0 +1,51 @@
+{% extends 'easter_egg/base_egg.html' %}
+<html lang="en">
+
+{% block title %}
+Runner Dashboard
+{% endblock %}
+
+{% block style %}
+<style>
+    .margin_1 {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="margin_1">
+    <!--<h1>Runner Dashboard</h1>-->
+    <p>Pending Orders</p>
+    <div>
+        <button id="toggle_button" type="button" onclick="toggle()">Set Active</button>
+        <p id="testingNumber"></p>
+    </div>
+
+</div>
+
+<script>
+    var testEl = document.getElementById("testingNumber");
+    var buttonEl = document.getElementById("toggle_button")
+
+    //toggling effect of button
+    var i = 0;
+    var toggle = function(){
+        i++;
+        var b_mod = 1 & i;
+        testEl.textContent = b_mod;
+
+        if (b_mod != 0){
+            //deactivated state
+            buttonEl.innerText = "Set Active"
+        } else {
+            //activated state
+            buttonEl.innerText = "Deactivate"
+        }
+
+    };
+
+    toggle();
+</script>
+{% endblock %}

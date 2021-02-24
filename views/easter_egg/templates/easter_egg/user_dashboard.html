@@ -1,0 +1,28 @@
+{% extends 'easter_egg/base_egg.html' %}
+<html lang="en">
+
+{% block title %}
+User Dashboard
+{% endblock %}
+
+{% block style %}
+<style>
+    .margin_1 {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="margin_1">
+    <!--<h1>User Dashboard</h1>-->
+    <p>Total Number of Available Runners</p>
+    <p>15 avalible runners</p>
+    <a href="{{url_for('.singlepage_form')}}">Place an Order</a>
+    <p>See Past Orders</p>
+    <p>Log Out</p>
+
+</div>
+
+{% endblock %}

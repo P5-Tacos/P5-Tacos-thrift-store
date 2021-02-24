@@ -38,8 +38,17 @@ def TT4():
     info = {"name": name,"tag":tag, "description": description, "size":size, "price": price, "folder": folder}
     return info
 
+def TT5():
+    name = "boxing shirt"
+    tag = "shirt"
+    description = "square up mate"
+    price = "10"
+    size = "mens 10"
+    folder = "thrifty_threads" #name of folder file is stored in
+    info = {"name": name,"tag":tag, "description": description, "size":size, "price": price, "folder": folder}
+    return info
 
 def inventory_itemsTT():
-    return [TT1(), TT2(), TT3(), TT4()]
+    return [TT1(), TT2(), TT3(), TT4(), TT5()]
 
 

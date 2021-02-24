@@ -19,6 +19,7 @@ Admin
             <th>Name</th>
             <th>Email</th>
             <th>Password</th>
+            <th>Shopping Cart</th>
         </tr>
         <!-- Loop through rows in table -->
         {% for row in table %}
@@ -28,6 +29,7 @@ Admin
             <th>{{ row['username'] }}</th>
             <th>{{ row['email'] }}</th>
             <th>{{ row['password'] }}</th>
+            <th>{{ row['shopping_cart_column'] }}</th>
         </tr>
         {% endfor %}
     </table>

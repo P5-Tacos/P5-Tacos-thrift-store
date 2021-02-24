@@ -177,3 +177,6 @@ def after_form():
         information = {"total cost": total_cost, "building group": building_group, "room number": room}
         return render_template("easter_egg/after_form.html", information=information, pass_info=pass_info)
 
+@easter_egg_bp.route('/runner_dashboard')#  will eventually be post , methods = ['GET','POST']
+def runner_dashboard():
+    return render_template('easter_egg/runner_dashboard.html')

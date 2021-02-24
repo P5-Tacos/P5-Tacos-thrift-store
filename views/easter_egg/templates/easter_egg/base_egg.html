@@ -64,9 +64,27 @@
     <a href="{{url_for('.timetoorder')}}">Order Now</a>
     <a href="{{url_for('.multipage_from')}}">Multipage Form</a>
     <a href="{{url_for('.singlepage_form')}}">Singlepage Form</a>
-
+    <a id="shopping_cart_alt" onmouseover="onHover('/easter_egg/static/images/running_man_black.svg');" onmouseout="onHover('/easter_egg/static/images/running_man_white.svg');">
+        <img id="menuImg1" src="{{url_for('easter_egg_bp.static', filename='images/running_man_white.svg')}}" alt="Running Man" width="25px">
+    </a>
 </div>
+
 {% block content %}{% endblock %}
+
+<script>
+    //code to ensure that the shopping cart contrasts with the on hover actions
+    var onHover = function (path){
+        //changes the shopping cart to black
+        console.log("black")
+        document.getElementById("menuImg1").src = String(path);
+        //document.getElementById("shopping_cart").style.color = "black";
+    };
+
+    var offHover = function (path){
+        //changes the shooting cart to white
+        document.getElementById("menuImg1").src = path;
+    };
+</script>
 </body>
 </html>
 

@@ -36,11 +36,9 @@ user_type = 'user'
 
 @easter_egg_bp.route('/') #this is the home page of the makeup API page
 def index():
-    return render_template("easter_egg/home.html",user_type=user_type)
-
-@easter_egg_bp.route('/theeastercontacts')
-def eastercontactus():
-    return render_template("easter_egg/newcontactus.html", images=model.infoforthecontactsineaster(),user_type=user_type)
+    #return render_template("easter_egg/home.html",user_type=user_type)
+    user_type = 'user'
+    return render_template('easter_egg/user_dashboard.html', user_type=user_type)
 
 @easter_egg_bp.route('/image_map_dnhs')
 def image_map():
@@ -50,35 +48,33 @@ def image_map():
 def image_map2():
     return render_template("easter_egg/image_map_dnhs2.html", images=model.infoforthecontactsineaster(),user_type=user_type)
 
-@easter_egg_bp.route('/Signup/',methods = ['GET','POST'])
-def signup():
-    form = RegisterForm()
-    if form.validate_on_submit():
-        new_user = User(name = form.username.data, Stu_id = form.id.data, password = form.password.data,grade = form.grade.data)
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect(url_for('easter_egg_bp.login'))
-
-    return render_template("easter_egg/SU.html",form = form,user_type=user_type)
-
-@easter_egg_bp.route('/Login', methods = ['GET', 'POST'])
+"""@app.route('/login', methods=["GET", "POST"])
 def login():
-    logform = LoginForm()
-
-    if logform.validate_on_submit():
-        #exists = db.session.query(
-        #db.session.query(User).filter_by(username='AndrewZhang').exists()
-        #).scalar()
-        #if exists == True:
-        #return "Exists"
-        user = User.query.filter_by(username = logform.username.data).first()
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user = UserTT.query.filter_by(username = username).first()
         if user:
-            if user.password == logform.password.data:
-                return redirect(url_for('private'))
+            if user.password == password:
+                login_user(user)
+                return redirect(url_for('logged_in'))
 
         return '<h1>Invalid username or password</h1>'
 
-    return render_template("easter_egg/login.html",form = logform,user_type=user_type)
+    return render_template("login.html")
+
+@app.route('/signup', methods=["GET", "POST"])
+def signup():
+    if request.method == 'POST':
+        email = request.form['email']
+        username = request.form['username']
+        password = request.form['password']
+        new_user = UserTT(username = username, email = email, password = password)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('login'))
+
+    return render_template("SU.html")"""
 
 @easter_egg_bp.route('/auth_user', methods = ['GET','POST']) #this is the home page of the makeup API page
 def private():
@@ -107,17 +103,10 @@ def singlepage_form():
 def after_form():
     if request.method == 'POST':
         list_dict_food = food.inventory_stack()
-        food_items = []
-        food_quanities = []
         trash_quanities = []
         trash_items = []
         pass_info = []
 
-        """b = 1
-        for i in list_dict_food:
-            food_name = request.form.get('food_item'+str(b))
-            food_items.append(food_name)
-            b = b + 1"""
         #print(food_items)
         b = 1
         for i in list_dict_food:
@@ -127,34 +116,9 @@ def after_form():
                 trash_items.append(food_name)
                 trash_quanities.append(food_count)
             else:
-                #food_items.append(food_name) #induvidual list for the database
-                #food_quanities.append(food_count) #induvidual list for the database
                 pass_info.append(food_count) #pass the quanity of the item first
                 pass_info.append(food_name) #pass the name of the item second
             b = b + 1
-        #print(food_items)
-        #print(food_quanities)
-
-        #dict_food_quant = dict(zip(food_items, food_quanities))
-        #print(dict_food_quant)
-        """
-        #  started at 1
-        a = 1
-        for i in list_dict_food:
-            food_item = request.form['qty'+str(a)]
-            food_items.append(int(food_item))
-            a = a + 1
-
-        name_food = []
-        for item_food in list_dict_food:
-            name = item_food["name"]
-            name_food.append(name)
-
-        print(name_food)#key
-        print(food_items)#quanity
-        res = dict(zip(name_food, food_items))
-        print(res)
-        """
 
         total_cost = request.form['total_cost_input']
         building_group = request.form.get('buildings_group')
@@ -192,3 +156,9 @@ def runner_dashboard():
 def user_dashboard():
     user_type = 'user'
     return render_template('easter_egg/user_dashboard.html', user_type=user_type)
+
+
+"""@easter_egg_bp.route('/theeastercontacts')
+def eastercontactus():
+    return render_template("easter_egg/newcontactus.html", images=model.infoforthecontactsineaster(),user_type=user_type)
+"""

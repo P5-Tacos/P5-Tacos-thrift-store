@@ -61,10 +61,6 @@
             }
         }
     </style>
-    {% block style %}
-
-    {% endblock %}
-
 </head>
 
 <body>
@@ -94,18 +90,9 @@
     </a>
     <a class="home" href={{url_for('easter_egg_bp.user_dashboard')}}>Home</a>
     <a href="{{url_for('.singlepage_form')}}">Order</a>
-    <!--<a href="">Admin</a>-->
-    <!--<a href="{{url_for('.login')}}">Login</a>-->
-    <!--<a href="{{url_for('.signup')}}">Sign up</a>-->
-    <!--<a href="javascript:void(window.open('https://form.jotform.com/210330529779156','blank','scrollbars=yes,toolbar=no,width=700,height=500') ) ">Contact Us</a>-->
-    <!--<a href="">Future Projects</a>-->
-    <!--<a href="{{url_for('.timetoorder')}}">Order Now</a>-->
-    <!--<a href="{{url_for('.multipage_from')}}">Multipage Form</a>-->
-
-
     {% endif %}
 </div>
-
+{% block style%}{% endblock %}
 {% block content %}{% endblock %}
 
 <script>

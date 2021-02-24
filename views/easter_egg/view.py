@@ -179,4 +179,4 @@ def after_form():
 
 @easter_egg_bp.route('/runner_dashboard')#  will eventually be post , methods = ['GET','POST']
 def runner_dashboard():
-    return render_template('easter_egg/runner_dashboard.html')
+    return render_template('easter_egg/runner_dashboard.html', user_type = 'runner')

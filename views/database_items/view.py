@@ -76,7 +76,7 @@ def index():
 def shop_owner():
     form = ItemForm()
     "Validate the forms"
-    print("arrived to items_bluprint")
+    #print("arrived to items_bluprint")
 
     if form.validate_on_submit():  # adding in all
         #getting the information from the form, formating it in a way to pass into database

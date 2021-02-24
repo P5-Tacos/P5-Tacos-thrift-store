@@ -32,14 +32,27 @@
 
         /* Change the color of links on hover */
         .topnav a:hover {
-            background-color: #ddd;
-            color: black;
+            color: #efcf1a;
         }
 
         /* Add a color to the active/current link */
         .topnav a.active {
-            background-color: #4CAF50;
+            color: #efcf1a;
+        }
+
+        #return_link, #return_link:visited {
+            all: revert;
+            text-decoration: none;
             color: white;
+        }
+        #return_link:hover, #return_link:active{
+            text-decoration: none;
+            color: #efcf1a;
+        }
+        #header_title {
+            color: #f2f2f2;
+            margin-bottom: 5px;
+            text-align:revert;
         }
     </style>
     {% block style %}
@@ -52,8 +65,12 @@
 <!-- this is the nav bar -->
 <div class="topnav">
     <div style="margin-left: 15px">
-    <h1  style= " color: #f2f2f2; margin-bottom: 5px; text-align:revert;"> Del Norte Eats</h1>
-    <a style="  all: revert;" href="/">Go back to TimetoThrift!</a>
+        {% if user_type == 'runner' %}
+        <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats<span> - Runner</span></h1></a>
+        {% else %}
+        <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats</h1></a>
+        {% endif %}
+        <a id="return_link" href="/">Go back to TimetoThrift!</a> <!-- style="all: revert;" -->
     </div>
     <a class="home" href={{url_for('easter_egg_bp.index')}}>Home</a>
     <!--<a href="">Admin</a>-->
@@ -64,7 +81,7 @@
     <a href="{{url_for('.timetoorder')}}">Order Now</a>
     <a href="{{url_for('.multipage_from')}}">Multipage Form</a>
     <a href="{{url_for('.singlepage_form')}}">Singlepage Form</a>
-    <a id="shopping_cart_alt" onmouseover="onHover('/easter_egg/static/images/running_man_black.svg');" onmouseout="onHover('/easter_egg/static/images/running_man_white.svg');">
+    <a href="{{url_for('.runner_dashboard')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/running_man_yellow.svg');" onmouseout="onHover('/easter_egg/static/images/running_man_white.svg');">
         <img id="menuImg1" src="{{url_for('easter_egg_bp.static', filename='images/running_man_white.svg')}}" alt="Running Man" width="25px">
     </a>
 </div>

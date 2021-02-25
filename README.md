@@ -248,6 +248,32 @@ To replace the arduous task of manually going out to a thrift store to take phot
 #### when downloading need to execute:
 ```pip install -r requirements.txt```
 
+#### Structure of code
+- Databases
+	- [Users Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/UsersTT.db)
+	- [Items in Database Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/UsersTT.db)
+	- [Archived items in database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/env/items.sqlite3)
+- Models
+	- [Models for Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/models)
+		- here we have stored the python files which contains the information which populates the pages within the time to thrift store
+			- [info for landing cards of the stores](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/websitecards.py)
+			- [images for barbarella gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/barbarelladata.py)
+			- [images for thrifty threads gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/thriftythreadsdata.py)
+- Views
+	- [app.py](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py)
+		- contains the CRUD logic to manage user login and the shopping cart which is tied to the Time to Thrift webpage. this logic is intertwined with the routes that enable the user to navigate around the home page. 
+- Blue Prints 
+	- we have many projects within the same repository, this was to provide a single location for our teacher to access all of our code and to keep track of student participation through monitoring our commits to the project 
+		- we use blueprints to organize all of the files for each large section of the code [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views)
+			- [database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/database_items)
+				- this folder contains the CRUD backend which helps supports the database page in the website. This was the first proof of concept of CRUD in the repo
+			- [Del Norte Eats](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg)
+				- our second largest project on the repository, the blueprint contains its own model view control, we are working on paring it with an independent database to what we are currently using for time to thrift 	 
+			- [College Board Journal](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg_college)
+				- mainly contains specialized front end focused templates to address college board specific requirements 	
+			- [Demonstration of API](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/makeup_api)
+				- this location contains the front end of pulling from the api of choice
+
 #### Pull code from Github and update packages
 #### In console/terminal (every update: pull code and check package dependencies)...
 

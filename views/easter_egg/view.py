@@ -2,27 +2,59 @@
 
 from views.easter_egg import easter_egg_bp
 from flask import Flask, render_template,redirect,url_for, request
+from views.easter_egg import model, food, del_norte_buildings
 from flask_wtf import FlaskForm
 from wtforms import StringField, FileField, FloatField,PasswordField
 from wtforms.validators import InputRequired, Length, NumberRange
-from views.easter_egg import model
-from views.easter_egg import food
+
 from flask_login import UserMixin, LoginManager
 from flask_login import UserMixin, LoginManager, login_required
+from sqlalchemy import create_engine, exc, event
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
-from views.easter_egg import db, User
-from views.easter_egg import del_norte_buildings
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+import requests
 import json
+import sqlite3
 
 app = Flask(__name__)
-Bootstrap(app)
+app.config['SECRET_KEY'] = 'hey hey hey'
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+#app.config['SQLALCHEMY_DATABASE_URI'] = r'sqlite:///D:\IntellijProjects\P5-Tacos-thrift-store\views\easter_egg\EatsDB.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////EatsDB.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////userDN.db'
+bootstrap = Bootstrap(app)
+db = SQLAlchemy(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-class LoginForm(FlaskForm):
+class userDN(db.Model):
+    ID = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, unique=True)
+    username = db.Column(db.String(15), unique=True)
+    email = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(80))
+
+class OrderEE(db.Model):
+    ID = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, unique=True)
+    Price = db.Column(db.Integer, unique=False, nullable=False)
+    order_contents = db.Column(db.String(1000), unique=False, nullable=False)
+    Time = db.Column(db.DateTime, primary_key=True)
+
+
+"""conn = sqlite3.connect('userDN.db')
+c = conn.cursor()
+c.execute('''CREATE TABLE USER_DN
+             ([generated_id] INTEGER PRIMARY KEY, [user_id] integer,[username] text, [email] text,[password] text)''')
+c.execute('''CREATE TABLE ORDER_DN
+             ([generated_id] INTEGER PRIMARY KEY,[user_id] integer, [price] text, [order_contents] text, [order_time] DAILY_STATUS)''')
+conn.commit()"""
+
+#db.create_all()
+"""class LoginForm(FlaskForm):
     username = StringField('username',validators=[InputRequired(), Length(min=1,max=15)])
     password = PasswordField('password',validators=[InputRequired(), Length(min=1,max=80)])
 
@@ -30,7 +62,7 @@ class RegisterForm(FlaskForm):
     username = StringField('username',validators=[InputRequired(), Length(min=1,max=15)])
     password = PasswordField('password',validators=[InputRequired(), Length(min=1,max=80)])
     grade = FloatField('grade',validators=[InputRequired()])
-    id = FloatField('id',validators=[InputRequired()])
+    id = FloatField('id',validators=[InputRequired()])"""
 
 user_type = 'user'
 
@@ -48,46 +80,51 @@ def image_map():
 def image_map2():
     return render_template("easter_egg/image_map_dnhs2.html", images=model.infoforthecontactsineaster(),user_type=user_type)
 
-"""@app.route('/login', methods=["GET", "POST"])
+@easter_egg_bp.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user = UserTT.query.filter_by(username = username).first()
+        user = userDN.query.filter_by(username = username).first()
         if user:
             if user.password == password:
                 login_user(user)
                 return redirect(url_for('logged_in'))
 
-        return '<h1>Invalid username or password</h1>'
+        return '<h1>Invalid username or password</h1>' #this should be replaced with a page instead of just a message
 
-    return render_template("login.html")
+    return render_template("easter_egg/login.html")
 
-@app.route('/signup', methods=["GET", "POST"])
+@easter_egg_bp.route('/signup', methods=["GET", "POST"])
 def signup():
+    #on submit
     if request.method == 'POST':
+        #getting information from the form
         email = request.form['email']
+        user_id = request.form['user_id']
         username = request.form['username']
         password = request.form['password']
-        new_user = UserTT(username = username, email = email, password = password)
+        #user_id = int(user_id) #ensure that user id is within the correct form (type int)
+        """print(email)
+         print(user_id)
+         print(username)
+         print(password)"""
+
+        #new_user = user(username = username, user_id = user_id, email = email, password = password)
+        new_user = userDN(username ='billy', user_id =1111111, email = '123@gmail.com', password = 'password')
+        #adding information into the database
         db.session.add(new_user)
         db.session.commit()
+
+        #redirecting the user to the login page
         return redirect(url_for('login'))
 
-    return render_template("SU.html")"""
+    #default will be rendering the page
+    return render_template("easter_egg/sign_up.html")
 
 @easter_egg_bp.route('/auth_user', methods = ['GET','POST']) #this is the home page of the makeup API page
 def private():
     return render_template("easter_egg/auth_user.html",user_type=user_type)
-
-@login_required
-@easter_egg_bp.route('/ordernow')
-def timetoorder():
-    return render_template("easter_egg/ordernow.html",user_type=user_type)
-
-@easter_egg_bp.route('/multipage_form')
-def multipage_from():
-    return render_template("easter_egg/multipage_form.html", snack_list=food.inventory_stack(),user_type=user_type)
 
 #  from JSON to python
 dict_buildings = json.loads(del_norte_buildings.json_all_building)
@@ -161,4 +198,15 @@ def user_dashboard():
 """@easter_egg_bp.route('/theeastercontacts')
 def eastercontactus():
     return render_template("easter_egg/newcontactus.html", images=model.infoforthecontactsineaster(),user_type=user_type)
+    
+    
+@login_required
+@easter_egg_bp.route('/ordernow')
+def timetoorder():
+    return render_template("easter_egg/ordernow.html",user_type=user_type)
+
+@easter_egg_bp.route('/multipage_form')
+def multipage_from():
+    return render_template("easter_egg/multipage_form.html", snack_list=food.inventory_stack(),user_type=user_type)
+
 """

@@ -35,12 +35,17 @@
 
             <a class="home" href="/">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="/storefront">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-            <a href="{{url_for('database_items_bp.shop_owner')}}">Database</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up</a>
             <a href="/contactus">Contact Us</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="/reactiontest">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->
+            {% if current_user.is_anonymous  %}
             <a href="/login">Login</a>
             <a href="/signup">Sign Up</a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <a href="{{url_for('database_items_bp.shop_owner')}}">Upload</a>
+            <a href="{{ url_for('logoutt') }}">Logout</a>
+            {% endif %}<!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a id="shopping_cart_alt" href="/logged_in" onmouseover="onHover();" onmouseout="offHover();" >
                 <img id="menuImg1" src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px">
                 <div id="quanity_1"> {{display_cart|length}} </div>

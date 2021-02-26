@@ -17,14 +17,16 @@ class UserTT(UserMixin, db.Model):
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50))
     password = db.Column(db.String(80))
-    shopping_cart_column = db.Column(db.String(8000))
+    shopping_cart_column = db.Column(db.String(8000), nullable=False)
 
     def __init__(self, username, email, password, shopping_cart_column):
         self.username = username
         self.email = email
         self.password = password
         self.shopping_cart_column = shopping_cart_column
+
     pass
+
 
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key=True)

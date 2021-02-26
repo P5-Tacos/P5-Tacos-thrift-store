@@ -126,7 +126,7 @@ def signup():
         email = request.form['email']
         username = request.form['username']
         password = request.form['password']
-        new_user = UserTT(username=username, email=email, password=password, shopping_cart_column='')
+        new_user = UserTT(username=username, email=email, password=password,shopping_cart_column='[]')
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('time_to_thrift_bp.login'))
@@ -214,6 +214,9 @@ def shopping_cart_load():
         # print("load my shopping cart from json")
         username = request.form['username']
         previous_list = db.session.query(UserTT).filter_by(username=username).first()
+        if previous_list == None:
+            return '<h1>None in Shopping Cart</h1>'
+        print(previous_list)
         # print(previous_list.shopping_cart_column)
         json_previous_list = previous_list.shopping_cart_column
         # converting from JSON to python

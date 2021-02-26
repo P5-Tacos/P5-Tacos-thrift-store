@@ -15,22 +15,21 @@ from flask_bootstrap import Bootstrap
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import requests
 import json
+#from app import db
 import sqlite3
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'hey hey hey'
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-#app.config['SQLALCHEMY_DATABASE_URI'] = r'sqlite:///D:\IntellijProjects\P5-Tacos-thrift-store\views\easter_egg\EatsDB.db'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////EatsDB.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////userDN.db'
-bootstrap = Bootstrap(app)
+app.config['SECRET_KEY'] = ':)'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///UsersTT.db'
+Bootstrap(app)
 db = SQLAlchemy(app)
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-class userDN(db.Model):
+"""class userDN(db.Model):
     ID = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, unique=True)
     username = db.Column(db.String(15), unique=True)
@@ -42,7 +41,7 @@ class OrderEE(db.Model):
     user_id = db.Column(db.Integer, unique=True)
     Price = db.Column(db.Integer, unique=False, nullable=False)
     order_contents = db.Column(db.String(1000), unique=False, nullable=False)
-    Time = db.Column(db.DateTime, primary_key=True)
+    Time = db.Column(db.DateTime, primary_key=True)"""
 
 
 """conn = sqlite3.connect('userDN.db')
@@ -85,7 +84,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user = userDN.query.filter_by(username = username).first()
+        user = UserDN.query.filter_by(username = username).first()
         if user:
             if user.password == password:
                 login_user(user)

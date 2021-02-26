@@ -1,7 +1,8 @@
-import os
+"""import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+"""
 """from flask import Flask
 app = Flask(__name__)
 
@@ -24,6 +25,7 @@ def __init__(self, id, name, type, price):
     self.id = id
     self.type = type
     self.price = price
+"""
 """
 #db.create_all()
 
@@ -73,7 +75,7 @@ class OrderEE(db.Model):
 
     def __repr__(self):
         return f"{self.user_id},{self.price}, {self.order_contents}, {self.time}"
-
+"""
 """
 class Score(db.Model):
     __tablename__ = 'scores'
@@ -92,7 +94,4 @@ class Score(db.Model):
         return f"{self.p_name},{self.p_score}, {self.p_game}"
 """
 #must go after 'models'
-db.create_all();
-
-
-
+#db.create_all();

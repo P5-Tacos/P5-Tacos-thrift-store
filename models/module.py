@@ -18,6 +18,12 @@ class UserTT(UserMixin, db.Model):
     email = db.Column(db.String(50))
     password = db.Column(db.String(80))
     shopping_cart_column = db.Column(db.String(8000))
+
+    def __init__(self, username, email, password, shopping_cart_column):
+        self.username = username
+        self.email = email
+        self.password = password
+        self.shopping_cart_column = shopping_cart_column
     pass
 
 class items(db.Model):
@@ -27,9 +33,8 @@ class items(db.Model):
     price = db.Column(db.String(200))
 
 
-    def __init__(self, id, name, type, price):
+    def __init__(self, name, type, price):
         self.name = name
-        self.id = id
         self.type = type
         self.price = price
     pass
@@ -41,14 +46,10 @@ class UserDN(db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
 
-    def __init__(self, user_id, username, email, password):
-        self.user_id = user_id
+    def __init__(self, username, email, password):
         self.username = username
         self.email = email
         self.password = password
-
-    def __repr__(self):
-        return f"{self.user_id},{self.username}, {self.email}, {self.password}"
     pass
 
 class OrderEE(db.Model):
@@ -63,9 +64,6 @@ class OrderEE(db.Model):
         self.price = price
         self.order_contents = order_contents
         self.time = time
-
-    def __repr__(self):
-        return f"{self.user_id},{self.price}, {self.order_contents}, {self.time}"
     pass
 "Create Database"
 db.create_all()

@@ -9,8 +9,11 @@ from flask_wtf.file import FileRequired, FileAllowed
 from wtforms import FileField, PasswordField
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length, Email
-import json
 
+from models.login import load_user_all, model_logout_all
+
+import json
+from views import app
 # from app import app
 app = Flask(__name__)
 from models.module import UserTT, db
@@ -49,7 +52,8 @@ class RegisterForm(FlaskForm):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return UserTT.query.get(int(user_id))
+    var = load_user_all(user_id)
+    return var
 
 
 user_records = []
@@ -122,7 +126,7 @@ def signup():
         email = request.form['email']
         username = request.form['username']
         password = request.form['password']
-        new_user = UserTT(username=username, email=email, password=password)
+        new_user = UserTT(username=username, email=email, password=password, shopping_cart_column='')
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('time_to_thrift_bp.login'))
@@ -184,6 +188,7 @@ def shopping_cart_remove():
 @time_to_thrift_bp.route('/shopping_cart_save', methods=["GET", "POST"])
 def shopping_cart_save():
     if request.method == 'POST':
+        print('saving')
         username = request.form['username']
         # print(shopping_cart)
         jsonStr = json.dumps(shopping_cart)
@@ -205,6 +210,7 @@ def shopping_cart_save():
 @time_to_thrift_bp.route('/shopping_cart_load', methods=["GET", "POST"])
 def shopping_cart_load():
     if request.method == 'POST':
+        print('loading')
         # print("load my shopping cart from json")
         username = request.form['username']
         previous_list = db.session.query(UserTT).filter_by(username=username).first()
@@ -251,7 +257,8 @@ def clothes_info():
 @login_required
 def logout():
     if request.method == "POST":
-        logout_user()
+        model_logout_all()
+        #logout_user()
         return redirect(url_for('time_to_thrift_bp.login'))
 
 

@@ -13,14 +13,14 @@ Dashboard
 {% if current_user.is_authenticated %}<!-- If the user has logged in-->
 <div style="margin-left: 15px;">
     <h1>{{current_user.username}} Dashboard</h1>
-    <form action="{{ url_for('time_to_thrift_bp.logout') }}" method="post"><input type="submit" value="Log Out"></form>
+    <form action={{url_for('time_to_thrift_bp.logout')}} method="post"><input type="submit" value="Log Out"></form>
 
-    <form action="/shopping_cart_save" method="post">
+    <form action={{url_for('time_to_thrift_bp.shopping_cart_save')}} method="post">
         <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
         <input style="margin: 0px; position: absolute;" type="submit" value="save shopping list">
     </form>
     <br>
-    <form action="/shopping_cart_load" method="post">
+    <form action={{url_for('time_to_thrift_bp.shopping_cart_load')}} method="post">
         <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
         <input style="margin: 0px; position: absolute;" type="submit" value="load shopping list">
     </form>
@@ -55,8 +55,8 @@ Dashboard
 {% if current_user.is_anonymous  %} <!-- If the user is a guest-->
 <div style="margin-left: 15px;">
     <h1>Welcome guest</h1>
-    <p>Have an existing account? <span><a href="/login">Login</a></span></p>
-    <p>Don't an existing account? <span><a href="/signup">Sign Up</a></span></p>
+    <p>Have an existing account? <span><a href="{{url_for('time_to_thrift_bp.login')}}">Login</a></span></p>
+    <p>Don't an existing account? <span><a href="{{url_for('time_to_thrift_bp.signup')}}">Sign Up</a></span></p>
     <h3>{{display_cart|length}} Items in your cart</h3>
     <p>Items in your cart:</p>
     {% for info in display_cart %} <!-- Looping through each dictionary in the list-->

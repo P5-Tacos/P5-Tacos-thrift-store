@@ -33,15 +33,15 @@
         <div class="topnav">
             <h1 id="title_top"> Time to Thrift</h1>
 
-            <a class="home" href="{{url_for('time_to_thrift_bp.index_TT')}}">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-            <a href="{{url_for('time_to_thrift_bp.storefront')}}">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <a class="home" href="/">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <a href="/storefront">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="{{url_for('database_items_bp.shop_owner')}}">Database</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up</a>
-            <a href="{{url_for('time_to_thrift_bp.contactus')}}">Contact Us</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-            <a href="{{url_for('time_to_thrift_bp.reactiontest')}}">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->
-            <a href="{{url_for('time_to_thrift_bp.login')}}">Login</a>
-            <a href="{{url_for('time_to_thrift_bp.signup')}}">Sign Up</a>
-            <a id="shopping_cart_alt" href="{{url_for('time_to_thrift_bp.logged_in')}}" onmouseover="onHover();" onmouseout="offHover();" >
+            <a href="/contactus">Contact Us</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <a href="/reactiontest">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+            <a id="shopping_cart_alt" href="/logged_in" onmouseover="onHover();" onmouseout="offHover();" >
                 <img id="menuImg1" src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px">
                 <div id="quanity_1"> {{display_cart|length}} </div>
             </a>

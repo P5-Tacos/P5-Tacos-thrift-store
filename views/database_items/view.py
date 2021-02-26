@@ -1,15 +1,16 @@
+from flask_bootstrap import Bootstrap
+
 from views.database_items import database_items_bp
+# https://flask.palletsprojects.com/en/1.1.x/api/
 # https://flask.palletsprojects.com/en/1.1.x/api/
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired, FileAllowed
 from wtforms import FileField
-import os
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length
-from sqlalchemy.dialects.sqlite import BLOB
-
+import os
 
 
 records = []
@@ -25,6 +26,7 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///items.sqlite3' #note this database is contianed within the UsersTT database
 db = SQLAlchemy(app)
+Bootstrap(app)
 
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key=True)

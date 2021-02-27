@@ -176,6 +176,17 @@ def after_form():
         room = all_rooms[item_number]
 
         information = {"total cost": total_cost, "building group": building_group, "room number": room}
+
+        #the information that will be stored into the database
+        into_json = {"total cost": total_cost, "building group": building_group, "room number": room, "order_contents": pass_info}
+        order_json = json.dumps(into_json)
+        #print(order_json)
+
+        #formating into the database
+        #need user id
+        #price
+        #order contents
+        #order time
         return render_template("easter_egg/after_form.html", information=information, pass_info=pass_info,
                                user_type=user_type)
 

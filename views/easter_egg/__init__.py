@@ -3,7 +3,7 @@ from flask import Blueprint
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, inspect
-
+"""
 app = Flask(__name__)
 app.config['SECRET_KEY'] = ':)'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -28,7 +28,7 @@ class User(db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.name)
 
-db.create_all()
+db.create_all()"""
 
 
 

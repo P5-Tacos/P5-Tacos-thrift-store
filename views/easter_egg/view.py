@@ -2,23 +2,16 @@
 
 from views.easter_egg import easter_egg_bp
 from flask import Flask, render_template, redirect, url_for, request
-from views.easter_egg import model, food, del_norte_buildings
-from flask_wtf import FlaskForm
-from wtforms import StringField, FileField, FloatField, PasswordField
-from wtforms.validators import InputRequired, Length, NumberRange
+from views.easter_egg.model import food, del_norte_buildings, model
 
-from flask_login import UserMixin, LoginManager
-from flask_login import UserMixin, LoginManager, login_required
-from sqlalchemy import create_engine, exc, event
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-import requests
+from flask_login import LoginManager, login_user
 import json
 
 # importing databases form the module.py file
 app = Flask(__name__)
-from models.module import db, UserDN, OrderEE
+from models.module import db, UserDN
 
 db.init_app(app)
 

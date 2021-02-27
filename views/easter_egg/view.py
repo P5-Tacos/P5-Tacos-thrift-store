@@ -6,25 +6,35 @@ from views.easter_egg.model import food, del_norte_buildings, model
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, login_required,current_user
 import json
 
 # importing databases form the module.py file
 app = Flask(__name__)
 from models.module import db, UserDN, OrderEE
+from models.login import load_user_DN, model_logout_all
 
 db.init_app(app)
-
+"""
 app.config['SECRET_KEY'] = ':)'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///UsersTT.db'
 Bootstrap(app)
-db = SQLAlchemy(app)
+db = SQLAlchemy(app)"""
 
 #  for the login page
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+"""@login_manager.user_loader
+def load_user(user_id):
+    var = load_user_DN(user_id)
+    return var"""
+
+@login_manager.user_loader
+def load_user(user_id):
+    return UserDN.query.get(user_id)
 
 user_type = 'user'
 
@@ -35,7 +45,7 @@ order_records = []
 def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
     user = UserDN.query.all()
     for user in user:
-        user_dn_dict = {'id': user.ID,'user id': user.user_id,  'username': user.username, 'email': user.email, 'password': user.password}
+        user_dn_dict = {'id': user.id,'user id': user.user_id,  'username': user.username, 'email': user.email, 'password': user.password}
         user_records.append(user_dn_dict)
 
 def order_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
@@ -72,16 +82,22 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        print(username)
+        print(password)
         user = UserDN.query.filter_by(username=username).first()
+        print(user)
         if user:
             if user.password == password:
                 login_user(user)
-                return redirect(url_for('logged_in'))
+                return redirect(url_for('easter_egg_bp.logged_in'))
 
         return '<h1>Invalid username or password</h1>'  # this should be replaced with a page instead of just a message
 
     return render_template("easter_egg/login.html")
 
+@easter_egg_bp.route('/logged_in')
+def logged_in():
+    return render_template("easter_egg/user_dashboard.html")
 
 @easter_egg_bp.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -215,4 +231,20 @@ def admin_page():
 
     return render_template('easter_egg/admin_page.html',table=user_records)#, user_quanity=b
 
+@easter_egg_bp.route('/logout_return')
+def home():
+    if current_user.is_authenticated:
+        model_logout_all()
+        return render_template("index.html")
+    else:
+        return render_template("index.html")
+
+
+@easter_egg_bp.route('/logout', methods=["GET", "POST"])
+@login_required
+def logout():
+    if request.method == "POST":
+        model_logout_all()
+        #logout_user()
+        return redirect(url_for('easter_egg_bp.login'))
 

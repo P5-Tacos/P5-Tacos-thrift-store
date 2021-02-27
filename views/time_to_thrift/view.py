@@ -10,7 +10,7 @@ from wtforms import FileField, PasswordField
 from wtforms import StringField
 from wtforms.validators import InputRequired, Length, Email
 
-from models.login import load_user_all, model_logout_all
+from models.login import load_user_TT, model_logout_all
 
 import json
 from views import app
@@ -52,8 +52,13 @@ class RegisterForm(FlaskForm):
 
 @login_manager.user_loader
 def load_user(user_id):
-    var = load_user_all(user_id)
-    return var
+    return UserTT.query.get(user_id)
+
+"""def load_user(user.id):
+    user = UserTT.query.get(int(user.id))
+    #var = load_user_TT(user_id)
+    #print(user)
+    return user"""
 
 
 user_records = []

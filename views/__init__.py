@@ -3,7 +3,7 @@ from app import app
 from flask import render_template
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager, login_user, login_required, logout_user
-from models.module import UserTT, UserDN
+from models.module import UserTT
 from views.makeup_api import makeup_api_bp  # blueprint not a module
 from views.easter_egg import easter_egg_bp
 from views.database_items import database_items_bp

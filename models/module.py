@@ -41,12 +41,12 @@ class items(db.Model):
         self.price = price
     pass
 
-class UserDN(db.Model):
-    ID = db.Column(db.Integer, primary_key=True)
+class UserDN(db.Model, UserMixin): #
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, unique=True)
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(80))
+    password = db.Column(db.String(80), nullable=False)
 
     def __init__(self, username,user_id, email, password):
         self.user_id = user_id

@@ -61,13 +61,13 @@ Sign Up
         <form name="signUp" action={{url_for('.signup')}} onsubmit="return validateForm()" method="post">
             <table border="0">
                 <tr><th>Email</th></tr>
-                <tr><td><input name="email" type="text" size="15" maxlength="50"></td></tr>
+                <tr><td><input name="email" type="text" size="15" minlength="1" maxlength="50"></td></tr>
                 <tr><th>User Id</th></tr>
-                <tr><td><input name="user_id" type="number" size="15" maxlength="7"></td></tr>
+                <tr><td><input name="user_id" type="number" size="15" minlength="1" maxlength="7"></td></tr>
                 <tr><th>Username</th></tr>
-                <tr><td><input name="username" type="text" size="15" maxlength="15"></td></tr>
+                <tr><td><input name="username" type="text" size="15" minlength="1" maxlength="15"></td></tr>
                 <tr><th>Password</th></tr>
-                <tr><td><input name="password" type="password" size="15" maxlength="80"></td></tr>
+                <tr><td><input name="password" type="password" size="15" minlength="1" maxlength="80"></td></tr>
                 <tr><td><input type="submit" class="button" value="Submit"></td></tr>
                 <tr><td><a href="/logged_in">continue as guest</a></td></tr>
             </table>

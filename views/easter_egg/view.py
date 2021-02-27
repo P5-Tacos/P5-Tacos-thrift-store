@@ -11,7 +11,7 @@ import json
 
 # importing databases form the module.py file
 app = Flask(__name__)
-from models.module import db, UserDN
+from models.module import db, UserDN, OrderEE
 
 db.init_app(app)
 
@@ -28,6 +28,25 @@ login_manager.login_view = 'login'
 
 user_type = 'user'
 
+
+user_records = []
+order_records = []
+
+def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
+    user = UserDN.query.all()
+    for user in user:
+        user_dn_dict = {'id': user.ID,'user id': user.user_id,  'username': user.username, 'email': user.email, 'password': user.password}
+        user_records.append(user_dn_dict)
+
+def order_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
+    orders = OrderEE.query.all()
+    for order in orders:
+        order_dn_dict = {'user id': order.user_id,'price': order.price,  'order contents': order.order_contents, 'time': order.time}
+        order_records.append(order_dn_dict)
+
+# running once, appends database items into list user sees
+list_user_map()
+order_map()
 
 @easter_egg_bp.route('/')  # this is the home page of the makeup API page
 def index():
@@ -73,20 +92,21 @@ def signup():
         user_id = request.form['user_id']
         username = request.form['username']
         password = request.form['password']
+        #user_id = int(user_id)
         # user_id = int(user_id) #ensure that user id is within the correct form (type int)
         """print(email)
          print(user_id)
          print(username)
          print(password)"""
 
-        # new_user = user(username = username, user_id = user_id, email = email, password = password)
-        new_user = UserDN(username='billy', user_id=1111111, email='123@gmail.com', password='password')
+        new_user = UserDN(username = username, user_id = user_id, email = email, password = password)
+        #new_user = UserDN(username='billy', user_id=1111111, email='123@gmail.com', password='password')
         # adding information into the database
         db.session.add(new_user)
         db.session.commit()
 
         # redirecting the user to the login page
-        return redirect(url_for('login'))
+        return redirect(url_for('easter_egg_bp.login'))
 
     # default will be rendering the page
     return render_template("easter_egg/sign_up.html")
@@ -170,4 +190,18 @@ def runner_dashboard():
 def user_dashboard():
     user_type = 'user'
     return render_template('easter_egg/user_dashboard.html', user_type=user_type)
+
+@easter_egg_bp.route('/admin')
+def admin_page():
+    #user_dn_dict = {'id': user.ID,'user id': user.user_id,  'username': user.username, 'email': user.email, 'password': user.password}
+    #counter for user Admin
+    #b = 0
+
+    """print(user_records)
+    for i in user_records:
+        for v in i:
+            print(str(v))"""
+
+    return render_template('easter_egg/admin_page.html',table=user_records)#, user_quanity=b
+
 

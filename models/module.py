@@ -48,7 +48,8 @@ class UserDN(db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
 
-    def __init__(self, username, email, password):
+    def __init__(self, username,user_id, email, password):
+        self.user_id = user_id
         self.username = username
         self.email = email
         self.password = password

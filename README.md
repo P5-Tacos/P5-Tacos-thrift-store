@@ -34,6 +34,12 @@
 	- I included a color changing shape to tap because thi would make the UI more appealing
 	- I used some CSS [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/15731442800c96308670211066674ada679fc715/templates/reactiontest.html#L11)
 
+- Sam
+	- This week I worked on adding more CSS into our DelNorteEats site 
+	- I worked on experimenting with creating a new way (for me) to loop
+	- I also worked with Brayden on putting CSS into his game. 
+	- Here is some of my attempts at functions 
+
 #### Week 9
 
 [AP Requirement Doc](https://docs.google.com/document/d/13WzGAZ40KE8HZguGc2O9igHdUENnmVyBys2u7PRZuns/edit)

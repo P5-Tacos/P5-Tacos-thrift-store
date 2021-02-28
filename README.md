@@ -16,6 +16,9 @@
 
 ## Changes Log
 #### Week 10 
+- Andrew
+- 	- Finshed the Login system user experience [update](http://timetothrift.cf/admin)
+- 	- Started Login differentiation. 
 - Colin 
 	- enable website usage as guest [ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55469455)
 		- [refrence](https://flask-login.readthedocs.io/en/latest/#anonymous-users)

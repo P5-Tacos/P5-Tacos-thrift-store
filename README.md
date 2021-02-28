@@ -36,7 +36,7 @@
 
 - Sam
 	- This week I worked on adding more CSS into our DelNorteEats site 
-	- I worked on experimenting with creating a new way (for me) to loop [Link](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/clothes_info.html)
+	- I worked on experimenting with creating a new way (for me) to loop [Link to template that will be defined with the values from the list](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/clothes_info.html) [link to app route where the list will be called upon -- lines 247 to 257](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py)
 	- I also worked with Brayden on putting some CSS into his game. 
 
 #### Week 9

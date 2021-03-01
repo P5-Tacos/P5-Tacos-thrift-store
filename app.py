@@ -166,6 +166,7 @@ def purchase():
         item_name = request.form['item_name']
         item_price = request.form['item_price']
         item_location = request.form['item_location']
+        item_description = request.form['item_description']
 
         #print("scroll pos: "+str(scroll_poss))
         #print(scroll_poss)
@@ -251,9 +252,9 @@ def clothes_info():
         item_name = request.form['item_name']
         item_price = request.form['item_price']
         item_location = request.form['item_location']
+        item_description = request.form['item_description']
 
-        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location}
-
+        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location, "item_description": item_description}
         return render_template("clothes_info.html", pass_info=pass_info)  # this is the app route to Barbarella's page
 
 

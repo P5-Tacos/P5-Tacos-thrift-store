@@ -4,7 +4,7 @@
 {% set name = pass_info["item_name"] %}
 {% set price = pass_info["item_price"] %}
 {% set image_location = pass_info["item_location"] %}
-
+{% set description = pass_info["item_description"] %}
 {% block title %}
 {{name}}
 {% endblock %}
@@ -12,17 +12,21 @@
 {% block content %}
 <div style="margin-left: 15px;">
 <h2>{{name}}</h2>
-<p sytle="color:black;">${{price}}</p>
+<p style="color:black;">${{price}}</p>
 <img src="{{image_location}}" height="400px">
+    <p>{{description}}</p>
 <form action="/purchase" method="post">
     <input type="hidden" step="0.0001" class="scroll_poss" name="scroll_poss" value="0">
     <input type="hidden" id="store_route" name="store_route" value="/logged_in">
     <input type="hidden" id="item_name" name="item_name" value="{{name}}">
     <input type="hidden" id="item_price" name="item_price" value="{{price}}">
     <input type="hidden" id="item_location" name="item_location" value="{{image_location}}">
+    <input type="hidden" id="item_description" name="item_description" value="{{description}}">
     <button class="button">add to cart</button><!-- references the iteration of the loop -->
 </form>
 </div>
+
+
 
 <h2><b>More Like This</b></h2>
 

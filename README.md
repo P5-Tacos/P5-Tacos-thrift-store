@@ -26,6 +26,11 @@
 		- highlighting the total cost through js
 		- the dynamic options opend based on specific selection 
 
+- Brayden
+	- This week I included some CSS into my reaction test game. I did this to make the game more fun for the user. 
+	- I included a color changing shape to tap because thi would make the UI more appealing
+	- I used some CSS [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/15731442800c96308670211066674ada679fc715/templates/reactiontest.html#L11)
+
 #### Week 9
 
 [AP Requirement Doc](https://docs.google.com/document/d/13WzGAZ40KE8HZguGc2O9igHdUENnmVyBys2u7PRZuns/edit)

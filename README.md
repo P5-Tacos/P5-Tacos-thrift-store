@@ -16,6 +16,9 @@
 
 ## Changes Log
 #### Week 10 
+- Andrew
+- 	- Finshed the Login system user experience [update](http://timetothrift.cf/admin)
+- 	- Started Login differentiation. 
 - Colin 
 	- enable website usage as guest [ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55469455)
 		- [refrence](https://flask-login.readthedocs.io/en/latest/#anonymous-users)
@@ -25,6 +28,16 @@
 	- added in js for the [snack form](http://timetothrift.cf/easter_egg/singlepage_form) [ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55471330)
 		- highlighting the total cost through js
 		- the dynamic options opend based on specific selection 
+
+- Brayden
+	- This week I included some CSS into my reaction test game. I did this to make the game more fun for the user. 
+	- I included a color changing shape to tap because thi would make the UI more appealing
+	- I used some CSS [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/15731442800c96308670211066674ada679fc715/templates/reactiontest.html#L11)
+
+- Sam
+	- This week I worked on adding more CSS into our DelNorteEats site 
+	- I worked on experimenting with creating a new way (for me) to loop [Link to template that will be defined with the values from the list](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/clothes_info.html) [link to app route where the list will be called upon -- lines 247 to 257](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py)
+	- I also worked with Brayden on putting some CSS into his game. 
 
 #### Week 9
 
@@ -247,6 +260,32 @@ To replace the arduous task of manually going out to a thrift store to take phot
 
 #### when downloading need to execute:
 ```pip install -r requirements.txt```
+
+#### Structure of code
+- Databases
+	- [Users Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/UsersTT.db)
+	- [Items in Database Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/UsersTT.db)
+	- [Archived items in database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/env/items.sqlite3)
+- Models
+	- [Models for Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/models)
+		- here we have stored the python files which contains the information which populates the pages within the time to thrift store
+			- [info for landing cards of the stores](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/websitecards.py)
+			- [images for barbarella gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/barbarelladata.py)
+			- [images for thrifty threads gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/thriftythreadsdata.py)
+- Views
+	- [app.py](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py)
+		- contains the CRUD logic to manage user login and the shopping cart which is tied to the Time to Thrift webpage. this logic is intertwined with the routes that enable the user to navigate around the home page. 
+- Blue Prints 
+	- we have many projects within the same repository, this was to provide a single location for our teacher to access all of our code and to keep track of student participation through monitoring our commits to the project 
+		- we use blueprints to organize all of the files for each large section of the code [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views)
+			- [database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/database_items)
+				- this folder contains the CRUD backend which helps supports the database page in the website. This was the first proof of concept of CRUD in the repo
+			- [Del Norte Eats](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg)
+				- our second largest project on the repository, the blueprint contains its own model view control, we are working on paring it with an independent database to what we are currently using for time to thrift 	 
+			- [College Board Journal](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg_college)
+				- mainly contains specialized front end focused templates to address college board specific requirements 	
+			- [Demonstration of API](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/makeup_api)
+				- this location contains the front end of pulling from the api of choice
 
 #### Pull code from Github and update packages
 #### In console/terminal (every update: pull code and check package dependencies)...

@@ -265,6 +265,12 @@ def logout():
         logout_user()
         return redirect(url_for('login'))
 
+@app.route('/logoutt')
+@login_required
+def logoutt():
+    logout_user()
+    return redirect(url_for('login'))
+
 @app.route('/admin')
 def admin_display():
     return render_template("admin_page.html", table=user_records, display_cart=shopping_cart)

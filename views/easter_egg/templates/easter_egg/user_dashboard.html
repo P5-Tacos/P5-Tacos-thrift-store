@@ -2,7 +2,7 @@
 <html lang="en">
 
 {% block title %}
-User Dashboard
+{{current_user.username}}'s Dashboard
 {% endblock %}
 
 {% block style %}
@@ -16,13 +16,6 @@ User Dashboard
 
 {% block content %}
 <div class="margin_1">
-    <!--<h1>User Dashboard</h1>-->
-    <p>Total Number of Available Runners</p>
-    <p>15 avalible runners</p>
-    <a href="{{url_for('.singlepage_form')}}">Place an Order</a>
-    <p>See Past Orders</p>
-    <p>Log Out</p>
-
+    <p>Welcome <span>{{current_user.username}}</span></p>
 </div>
-
 {% endblock %}

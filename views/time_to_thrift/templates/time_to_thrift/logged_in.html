@@ -12,17 +12,17 @@ Dashboard
 {% block content %}
 {% if current_user.is_authenticated %}<!-- If the user has logged in-->
 <div style="margin-left: 15px;">
-    <h1>{{name }} Dashboard</h1>
-    <form action="{{ url_for('logout') }}" method="post"><input type="submit" value="Log Out"></form>
-
-    <form action="/shopping_cart_save" method="post">
-        <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
-        <input style="margin: 0px; position: absolute;" type="submit" value="save shopping list">
-    </form>
+    <h1>{{current_user.username}} Dashboard</h1>
+    <form action={{url_for('time_to_thrift_bp.logout')}} method="post"><input type="submit" value="Log Out"></form>
     <br>
-    <form action="/shopping_cart_load" method="post">
-        <input type="hidden" class="username" name="username" value="{{name}}" style=" margin: 0px; width: 0px; padding: 0px;">
-        <input style="margin: 0px; position: absolute;" type="submit" value="load shopping list">
+    <form action={{url_for('time_to_thrift_bp.shopping_cart_save')}} method="post">
+        <input type="hidden" class="username" name="username" value="{{current_user.username}}" style=" margin: 0px; width: 0px; padding: 0px;">
+        <input style="margin: 0px; position: absolute; z-index: revert" type="submit" value="save shopping list">
+    </form>
+    <br><br>
+    <form action={{url_for('time_to_thrift_bp.shopping_cart_load')}} method="post">
+        <input type="hidden" class="username" name="username" value="{{current_user.username}}" style=" margin: 0px; width: 0px; padding: 0px;">
+        <input style="margin: 0px; position: absolute; z-index: revert" type="submit" value="load shopping list">
     </form>
     <br>
 
@@ -42,7 +42,7 @@ Dashboard
                     <h2>{{name}}</h2>
                     <p sytle="color:black;">${{price}}</p>
                 </div>
-                <form action="/shopping_cart_remove" method="post">
+                <form action="{{url_for('time_to_thrift_bp.shopping_cart_remove')}}" method="post">
                     <input type="number" id="item_pos_list" name="item_pos_list" value="{{loop.index0}}" style="visibility: hidden;">
                     <button class="button">remove from cart</button>
                 </form>
@@ -53,10 +53,10 @@ Dashboard
 </div>
 {% endif %}
 {% if current_user.is_anonymous  %} <!-- If the user is a guest-->
-<div style="margin-left: 15px;">
+<div style="margin-left: 15px; z-index: -10">
     <h1>Welcome guest</h1>
-    <p>Have an existing account? <span><a href="/login">Login</a></span></p>
-    <p>Don't an existing account? <span><a href="/signup">Sign Up</a></span></p>
+    <p>Have an existing account? <span><a href="{{url_for('time_to_thrift_bp.login')}}">Login</a></span></p>
+    <p>Don't an existing account? <span><a href="{{url_for('time_to_thrift_bp.signup')}}">Sign Up</a></span></p>
     <h3>{{display_cart|length}} Items in your cart</h3>
     <p>Items in your cart:</p>
     {% for info in display_cart %} <!-- Looping through each dictionary in the list-->
@@ -73,7 +73,7 @@ Dashboard
                     <h2>{{name}}</h2>
                     <p sytle="color:black;">${{price}}</p>
                 </div>
-                <form action="/shopping_cart_remove" method="post">
+                <form action="{{url_for('time_to_thrift_bp.shopping_cart_remove')}}" method="post">
                     <input type="number" id="item_pos_list" name="item_pos_list" value="{{loop.index0}}" style="visibility: hidden;">
                     <button class="button">remove from cart</button>
                 </form>

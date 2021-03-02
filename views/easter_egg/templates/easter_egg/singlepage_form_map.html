@@ -1,0 +1,322 @@
+{% extends 'easter_egg/base_egg.html' %}
+<html lang="en">
+
+{% block title %}
+Single page form
+{% endblock %}
+
+{% block style %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('easter_egg_bp.static', filename='singlepage_form.css') }}" type="text/css">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+<style>
+    .margin_1 {
+        margin-left: 10px;
+    }
+    .dec{
+        font-family: Courier New;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .inc{
+        font-family: Courier New;
+        font-size: 24px;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<body onmousedown="total_cost_func({{snack_list|length}})">
+<div class="margin_1">
+    <p>To test out all the inputs without needing to deal without extra javascript dependencies problems</p>
+    <form name="order_food" action={{url_for('.after_form')}} onsubmit="return validateForm()" method="post"> <!-- action={{url_for('.after_form')}} -->
+
+        <!-- this is the snack selection area -->
+        <!--{{snack_list|length}}-->
+        <p>Please select at least one item to purchase</p>
+        <table>
+        {% for data in snack_list %}
+        {% set name = data["name"] %}
+        {% set price = data["price"] %}
+        {% set max_count = data["max_count"] %}
+
+        <tr>
+            <td style="column-width: 50px;"><img src="../static/images/delnorteeatsfood/snack{{loop.index}}.jpg" width=50px></td>
+            <td style="max-width: 100px">{{name}}</td>
+            <td style="width: 25px"><input id="unit_cost{{loop.index}}" value="{{price}}" type="hidden">{{price}}</td>
+            <td>
+                <span class="dec" onclick="dec('qty'+String({{loop.index}}), {{loop.index}}, 'food_quantity'+String({{loop.index}}))">&zwnj; - &zwnj;</span>
+                <input class="number_input" readonly value="0" oninput="this.className = ''" name="qty{{loop.index}}">
+                <span class="inc" onclick="inc('qty'+String({{loop.index}}), {{loop.index}}, '{{name}}', {{max_count}},'food_quantity'+String({{loop.index}}))">&zwnj; + &zwnj;</span>
+            </td>
+            <td style="width: 25px">
+                <input type="hidden" id="item_cost{{loop.index}}" value="0">
+                <span id="item_cost{{loop.index}}_frontend">0</span>
+            </td>
+            <td style="max-width: 180px;">
+                <span id="error_msg{{loop.index}}" style="color:red;"></span>
+            </td>
+        </tr>
+
+        {% endfor %}
+        </table>
+        <div style="background-color: #342F2F; padding: 10px; color: white; border-radius: 10px; width: 150px" onclick="reset_all_selection()">Clear all selection</div>
+        <div style="color: black" onclick="total_cost_func(19)">Total cost: <span id="total_cost"></span></div>
+        <span style="color: #ff0000; visibility: visible;" id="total_cost_msg">testing</span>
+        <input type="hidden" name="total_cost_input" id="total_cost_input" value="0">
+        <br>
+        <label>Items in Shopping Cart:</label>
+        <!-- this is the backend section of the code where it counts the quantities per item -->
+        {% for data in snack_list %}
+        {% set name = data["name"] %}
+        <input type="hidden" name="food_item{{loop.index}}" value="{{name}}"><!-- To specify the item name -->
+        <input type="hidden" name="food_quantity{{loop.index}}" value="0"><!-- To specify the quantity of the item-->
+        {% endfor %}
+        <br>
+
+        <div style="background-color: red; width: 100px" onclick="showMap()">Show Map</div>
+
+        <div id="showMap">
+            <div style="width:100%;">
+                <img id="img_ID" src="../static/images/DNHSpitures/DNHS-Campus-Map.jpg" usemap="#map" border="0" width="100%" alt="" />
+            </div>
+            <map id="map_ID" name="map">
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="Library" title="Library"  coords="1262,593,1410,666,1447,628,1321,517,1309,536,1282,513,1247,554,1282,573"  ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="A-Buildings" title="A-Buildings"  coords="1323,506,1439,615,1494,576,1571,566,1599,413,1503,413,1400,440"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="P-Buildings" title="P-Buildings"  coords="1595,371,1698,441,1838,530,1980,437,1884,321,1733,243,1632,208"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="L-Buildings" title="L-Buildings"  coords="1739,602,1770,682,1988,602,1954,521"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="K-Buildings" title="K-Buildings"  coords="1861,679,1859,747,2001,764,2005,675"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="J-Buildings" title="J-Buildings"  coords="1770,759,1743,831,1953,912,1984,831"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="G-Buildings" title="G-Buildings"  coords="1723,852,1665,907,1816,1087,1883,1023"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="E-Buildings" title="E-Buildings"  coords="1630,1026,1675,1162,1754,1123,1692,997"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="D-Buildings" title="D-Buildings"  coords="1521,936,1513,1163,1599,1159,1601,946"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="Admin" title="Admin"  coords="1410,724,1420,666,1267,596,1251,627,1239,625,1224,675,1253,687,1233,736"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="Food-Service" title="Food-Service"  coords="1366,731,1408,824,1294,894,1232,731"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="Food-Court" title="Food-Court"  coords="1412,841,1338,899,1465,994,1494,905"   ></div>
+                <div class="border_me"><area shape="poly" href="javascript:;" alt="Gym" title="Gym"  coords="1309,921,1171,1041,1226,1088,1241,1076,1348,1142,1344,1162,1404,1185,1451,1069,1471,1072,1484,1047,1410,999,1391,1020,1329,985,1338,954"   ></div>
+            </map>
+
+        </div>
+
+        <label> Location to deliever to:</label>
+        <select name="buildings_group" class="buildings_group">
+            {% for building in building_list %}
+            <option value="room{{loop.index}}">{{building}}</option>
+            {% endfor %}
+        </select>
+
+        <div class="result"></div>
+        <!-- hidden options, will be revealed when selected the above selector-->
+        <label id="room_label">Room Number:</label>
+        {% for room in class_rooms %}
+        <span>
+            {% set room = room["room"] %}
+            <!--<label>room {{loop.index}}</label>-->
+            <select name="room{{loop.index}}" id="room{{loop.index}}" style="visibility: hidden; position: absolute;">
+                {% for number in room %}
+                <option value="{{number}}">{{number}}</option>
+                {% endfor %}
+            </select>
+
+        </span>
+        {% endfor %}
+        <br>
+        <br>
+        <button type="submit">Place Order</button>
+
+    </form>
+</div>
+</body>
+
+<script>
+
+    function cost_calc(multiplier, increment_numb){
+        var unit_cost = document.getElementById('unit_cost'+ increment_numb);
+        var item_cost = document.getElementById('item_cost'+increment_numb);
+        var item_cost_frontend = document.getElementById('item_cost'+increment_numb+"_frontend");
+        //calculating the value used for back end calculations
+        item_cost.value = String(multiplier * unit_cost.value);
+
+        //front end display
+        item_cost_frontend.innerHTML = String(multiplier * unit_cost.value);
+    };
+
+    function inc(element, increment_numb, item, max, element_backend) {
+        let el = document.querySelector(`[name="${element}"]`); //differentiates between items
+        let el_backend = document.querySelector(`[name="${element_backend}"]`);//this represents the backend item name
+        if (el.value >= max){ //when the input is maxed pressed one over max
+            //console.log(String(el));
+            //max number of items that one can purchase
+            el.value = max;
+
+            //constructs the error message based on the item that was passed in
+            document.getElementById("error_msg" + increment_numb).innerHTML = "cannot purchase more than "+ max + " "+ item +"(s)";
+
+            //allows error messages to fade out after a certain time
+            setTimeout(function(){ document.getElementById("error_msg" + increment_numb).innerHTML =""; }, 3000);
+        } else {
+            //console.log(String(el));
+            //incrementing by +1
+            el.value = parseInt(el.value) + 1;
+            el_backend.value = parseInt(el_backend.value) + 1;
+            cost_calc(el.value, increment_numb);//calculates the unitcost * quanity selected
+        }
+    };
+
+    function dec(element, increment_numb, element_backend) {
+        let el = document.querySelector(`[name="${element}"]`); //differentiates between items
+        let el_backend = document.querySelector(`[name="${element_backend}"]`);//this represents the backend item name
+        if (parseInt(el.value) > 0) { //if the item count is greater than 0
+            console.log(String(el));
+
+            //decrement the count by 1
+            el.value = parseInt(el.value) - 1;
+            el_backend = parseInt(el_backend.value) - 1;
+            //takes away the error message
+            document.getElementById("error_msg" + increment_numb).innerHTML = "";
+            cost_calc(el.value, increment_numb);//calculates the unitcost * quanity selected
+        }
+    };
+
+    var total_cost = document.getElementById('total_cost');
+    var total_cost_backend = document.getElementById('total_cost_input');//this is rewritting the input field total cost for the form format
+    var slides = document.getElementsByClassName("number_input");
+
+    function reset_all_selection(){
+        console.log('reset_all_selection');
+        for (var i = 0; i < slides.length; i++) {
+            slides.item(i).value = 0;
+        }
+        for (i = 1; i <= slides.length; i++) {
+            //console.log(i);
+            document.getElementById('item_cost' + String(i)).value = 0; //resetting the backend
+            document.getElementById('item_cost'+String(i)+"_frontend").innerHTML = 0; //resetting the frontend
+            document.getElementById('total_cost').innerHTML = '0';
+            total_cost_backend.innerHTML = 0;
+            //item_cost_frontend
+        }
+    }
+
+    function total_cost_func(quanity){
+        var result = 0;
+        //iterate through all 19 items to add up the total cost
+        for (i = 1; i <= quanity; i++) {
+            //console.log(i);
+            var el_add = document.getElementById('item_cost' + String(i) );
+            //console.log(el_add);
+            var result = result + Number(el_add.value)
+        };
+        //console.log(result)
+        //this is the value that the user sees
+        total_cost.innerHTML = result;
+        total_cost_backend.value = result;
+        console.log('total cost:' + total_cost_backend.value);
+
+        if (total_cost.innerHTML < 1){
+            console.log('less than 1');
+            document.getElementById('total_cost').style.color = 'red'; //to ensure that the fields that are red are incorrect/need notice
+            document.getElementById('total_cost_msg').innerHTML = 'You need to select at least one of the items';
+        } else {
+            document.getElementById('total_cost').style.color = 'black';
+            document.getElementById('total_cost_msg').innerHTML = '';
+        }
+    };
+    //run on init (19) because there are 19 items
+    total_cost_func(19);
+</script>
+<script>
+    //in this script block we show which rooms correspond with the group of buildings selected
+    var quanity_room = 15;
+    const selectElement = document.querySelector('.buildings_group');
+
+    //show the default selected
+    document.getElementById('room1').style.visibility = 'visible';
+
+    selectElement.addEventListener('change', (event) => {
+        //first set all of the items to hidden
+        for (var i = 1; i <= quanity_room; i++) {
+            //console.log('room' + String(i));
+            document.getElementById('room' + String(i)).style.visibility = 'hidden';
+        };
+
+        //const result = document.querySelector('.result');
+        //result.textContent = `Rooms for ${event.target.value}`;
+
+        //only show the rooms that corresponds with the building
+        var room_el = document.getElementById(String(event.target.value));
+        room_el.style.visibility = 'visible';
+    });
+
+    //consider looking in here: https://stackoverflow.com/questions/21306134/iterating-over-multiple-lists-in-python-flask-jinja2-templates
+    //for multiple lists itterated over in one loop
+
+</script>
+<script>
+    function validateForm() {
+        if (total_cost.innerHTML < 1) {
+            console.log('less than 1');
+            document.getElementById('total_cost').style.color = 'red'; //to ensure that the fields that are red are incorrect/need notice
+            document.getElementById('total_cost_msg').innerHTML = 'You need to select at least one of the items';
+            alert("You need to select at least one of the items to purchase");
+            return false;
+        }
+        /*
+        if at least one item has been selected
+        see if there was a classroom specified
+        if the current about of money will not put the student in debt
+        */
+    }
+</script>
+
+<script>
+    window.onload = function () {
+        var ImageMap = function (map, img) {
+                var n,
+                    areas = map.getElementsByTagName('area'),
+                    len = areas.length,
+                    coords = [],
+                    previousWidth = 2200; //width of the map is the innerWidth of the browser window.innerWidth.value
+                for (n = 0; n < len; n++) {
+                    coords[n] = areas[n].coords.split(',');
+                }
+                this.resize = function () {
+                    var n, m, clen,
+                        x = img.offsetWidth / previousWidth;
+                    for (n = 0; n < len; n++) {
+                        clen = coords[n].length;
+                        for (m = 0; m < clen; m++) {
+                            coords[n][m] *= x;
+                        }
+                        areas[n].coords = coords[n].join(',');
+                    }
+                    previousWidth = document.body.clientWidth;
+                    return true;
+                };
+                window.onresize = this.resize;
+            },
+            imageMap = new ImageMap(document.getElementById('map_ID'), document.getElementById('img_ID'));
+        imageMap.resize();
+        return;
+    }
+</script>
+
+
+<script>
+    function showMap() {
+        var x = document.getElementById("showMap");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+    //  setTimeout(showMap(), 3000);
+
+</script>
+{% endblock %}

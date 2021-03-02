@@ -10,7 +10,7 @@ def TT1():
 
 def TT2():
     name = "blue polo"
-    tag = "shirt"
+    tag = "shirts"
     description = "great for any look"
     price = "10"
     size = "Female Large"
@@ -20,7 +20,7 @@ def TT2():
 
 def TT3():
     name = "Fo Leather Jacket"
-    tag = "jacket"
+    tag = "jackets"
     description = "Looks like leather"
     price = "30"
     size = "Mens medium"
@@ -30,7 +30,7 @@ def TT3():
 
 def TT4():
     name = "sandals"
-    tag = "footwear"
+    tag = "shoes"
     description = "studded with jewels"
     price = "10"
     size = "kids 10"
@@ -40,7 +40,7 @@ def TT4():
 
 def TT5():
     name = "boxing shirt"
-    tag = "shirt"
+    tag = "shirts"
     description = "square up mate"
     price = "10"
     size = "mens 10"

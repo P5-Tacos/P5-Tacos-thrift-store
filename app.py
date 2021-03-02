@@ -154,7 +154,7 @@ def signup():
         new_user = UserTT(username = username, email = email, password = password)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('login'))
+        return redirect(url_for('admin_display'))
 
     return render_template("SU.html", display_cart=shopping_cart)#form = form,
 

@@ -65,7 +65,7 @@ div.scrollmenu a:hover {
         {% set size = data["size"] %}
         {% set store_folder_name = data["folder"] %}
 
-            <td><form action="{{url_for('.clothes_info')}}" method="post">
+            <td><form action="{{url_for('time_to_thrift_bp.clothes_info')}}" method="post">
                 <input type="hidden" step="0.0001" class="scroll_poss" name="scroll_poss" value="0">
                 <input type="hidden" id="store_route" name="store_route" value="{{route}}">
                 <input type="hidden" id="item_name" name="item_name" value="{{name}}">
@@ -89,7 +89,7 @@ div.scrollmenu a:hover {
         {% set size = data["size"] %}
         {% set store_folder_name = data["folder"] %}
 
-        <td><form action="{{url_for('.clothes_info')}}" method="post">
+        <td><form action="{{url_for('time_to_thrift_bp.clothes_info')}}" method="post">
             <input type="hidden" step="0.0001" class="scroll_poss" name="scroll_poss" value="0">
             <input type="hidden" id="store_route2" name="store_route" value="{{route}}">
             <input type="hidden" id="item_name2" name="item_name" value="{{name}}">

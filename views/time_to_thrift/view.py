@@ -67,7 +67,7 @@ user_records = []
 def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
     user = UserTT.query.all()
     for user in user:
-        user_tt_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,
+        user_tt_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,'authen':user.authen,
                         'shopping_cart_column': user.shopping_cart_column}
         user_records.append(user_tt_dict)
 

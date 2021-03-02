@@ -16,6 +16,9 @@
 
 ## Changes Log
 #### Week 10 
+- Andrew
+- 	- Finshed the Login system user experience [update](http://timetothrift.cf/admin)
+- 	- Started Login differentiation. 
 - Colin 
 	- enable website usage as guest [ticket](https://github.com/orgs/P5-Tacos/projects/1#card-55469455)
 		- [refrence](https://flask-login.readthedocs.io/en/latest/#anonymous-users)
@@ -30,6 +33,11 @@
 	- This week I included some CSS into my reaction test game. I did this to make the game more fun for the user. 
 	- I included a color changing shape to tap because thi would make the UI more appealing
 	- I used some CSS [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/15731442800c96308670211066674ada679fc715/templates/reactiontest.html#L11)
+
+- Sam
+	- This week I worked on adding more CSS into our DelNorteEats site 
+	- I worked on experimenting with creating a new way (for me) to loop [Link to template that will be defined with the values from the list](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/templates/clothes_info.html) [link to app route where the list will be called upon -- lines 247 to 257](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py)
+	- I also worked with Brayden on putting some CSS into his game. 
 
 #### Week 9
 

@@ -36,12 +36,18 @@
 
             <a class="home" href="{{url_for('time_to_thrift_bp.index_TT')}}">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="{{url_for('time_to_thrift_bp.storefront')}}">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-            <a href="{{url_for('database_items_bp.shop_owner')}}">Database</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
+            <!--<a href="{{url_for('database_items_bp.shop_owner')}}">Database</a>--> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="{{url_for('makeup_api_bp.makeup_landing')}}">Make Up</a>
             <a href="{{url_for('time_to_thrift_bp.contactus')}}">Contact Us</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="{{url_for('time_to_thrift_bp.reactiontest')}}">Reaction Test</a><!-- Brayden actually did some work here, can you believe it ?!?!?!-->
+            {% if current_user.is_anonymous  %}
             <a href="{{url_for('time_to_thrift_bp.login')}}">Login</a>
             <a href="{{url_for('time_to_thrift_bp.signup')}}">Sign Up</a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <a href="{{url_for('database_items_bp.shop_owner')}}">Upload</a>
+            <a href="{{ url_for('time_to_thrift_bp.logoutt') }}">Logout</a> <!-- logoutt-->
+            {% endif %}<!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a id="shopping_cart_alt" href="{{url_for('time_to_thrift_bp.logged_in')}}" onmouseover="onHover();" onmouseout="offHover();" >
                 <img id="menuImg1" src="../static/images/user_dashboard/shopping-cart-white.svg" alt="Shopping Cart" width="25px">
                 <div id="quanity_1"> {{display_cart|length}} </div>

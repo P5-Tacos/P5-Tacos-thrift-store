@@ -278,3 +278,9 @@ def admin_display():
 @time_to_thrift_bp.route('/testing_home')
 def testing_home():
     return render_template("time_to_thrift/testing_home.html")
+
+@time_to_thrift_bp.route('/logoutt')
+@login_required
+def logoutt():
+    logout_user()
+    return redirect(url_for('time_to_thrift_bp.login'))

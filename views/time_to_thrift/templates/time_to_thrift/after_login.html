@@ -8,7 +8,27 @@ After Login
 {% block style %}
 {% endblock %}
 
+{% block meta %}
+<meta http-equiv = "refresh" content = "3; url = {{url_for('time_to_thrift_bp.login')}}" />
+{% endblock %}
 <!-- This is where the nav bar will be displayed-->
 {% block content %}
-<h1>Login Failed</h1>
+<div style="margin-left: 15px">
+    <h1>Login Failed</h1>
+    <p class="loading invalid-redirect">Redirecting to login form in <span id="count_down">3</span></p>
+
+</div>
+
+<script>
+    var timeleft = 3;
+
+
+    var downloadTimer = setInterval(function(){
+        if(timeleft <= 0){
+            clearInterval(downloadTimer);
+        }
+        document.getElementById("count_down").innerText = timeleft;
+        timeleft = timeleft-1;
+    }, 1000);
+</script>
 {% endblock %}

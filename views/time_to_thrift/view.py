@@ -100,22 +100,6 @@ def contactus():
     return render_template("time_to_thrift/contactus.html", images=contactimages.grouppictures(),
                            display_cart=shopping_cart)  # this is the app route to the contact us page
 
-
-"""@time_to_thrift_bp.route('/login', methods=["GET", "POST"])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        user = UserTT.query.filter_by(username=username).first()
-        if user:
-            if user.password == password:
-                login_user(user)
-                return redirect(url_for('time_to_thrift_bp.logged_in'))
-
-        return '<h1>Invalid username or password</h1>'
-
-    return render_template("time_to_thrift/login.html", display_cart=shopping_cart)"""
-
 @time_to_thrift_bp.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
@@ -149,20 +133,20 @@ def login():
                 x = x + 1
 
         #print("user:" + str(user))
-        print( "users_in_data: " +str(users_in_data))
+        #print( "users_in_data: " +str(users_in_data))
         #print("these are all the user ids in the system that have registered for time to thrift:"  + str(id))
-        print("these are the information for the users within the system" +str(all_user_info))
+        #print("these are the information for the users within the system" +str(all_user_info))
 
         for user in all_user_info:
-            print(user)
+            #print(user)
             #if the information from the login matches the information that was sttored in the data base
             if form_user == user:
                 #username = str(form_user[0])
                 user_in_db = userDN.query.filter_by(username=form_username).first()
-                print(user_in_db)
+                #print(user_in_db)
                 #print(user)
                 login_user(user_in_db)
-                print('redirecting')
+                #print('redirecting')
                 return redirect(url_for('time_to_thrift_bp.logged_in'))
 
 
@@ -177,20 +161,6 @@ def logged_in():
     #print(current_user.username)
     # views/time_to_thrift/templates/time_to_thrift/logged_in.html
     return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart)
-
-
-"""@time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
-def signup():
-    if request.method == 'POST':
-        email = request.form['email']
-        username = request.form['username']
-        password = request.form['password']
-        new_user = UserTT(username=username, email=email, password=password,shopping_cart_column='[]')
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect(url_for('time_to_thrift_bp.login'))
-
-    return render_template("time_to_thrift/SU.html", display_cart=shopping_cart)  # form = form,"""
 
 @time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
 def signup():

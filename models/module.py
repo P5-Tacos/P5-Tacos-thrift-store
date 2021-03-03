@@ -18,11 +18,13 @@ class UserTT(db.Model):
     email = db.Column(db.String(50))
     password = db.Column(db.String(80))
     shopping_cart_column = db.Column(db.String(8000), nullable=False)
+    authen = db.Column(db.String(50))
 
-    def __init__(self, username, email, password, shopping_cart_column):
+    def __init__(self, username, email, password,authen, shopping_cart_column):
         self.username = username
         self.email = email
         self.password = password
+        self.authen = authen
         self.shopping_cart_column = shopping_cart_column
 
     pass

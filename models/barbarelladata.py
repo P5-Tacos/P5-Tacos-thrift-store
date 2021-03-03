@@ -1,6 +1,6 @@
 def BB1():
     name = "Vintage socks"
-    tag = "footwear"
+    tag = "shoes"
     description = "cool design/logo"
     price = "5"
     size = "Men's M"
@@ -10,7 +10,7 @@ def BB1():
 
 def BB2():
     name ="Vintage Jacket"
-    tag = "jacket"
+    tag = "jackets"
     description = "bomber jacket 94"
     price = "45"
     size = "Men's XL"
@@ -20,7 +20,7 @@ def BB2():
 
 def BB3():
     name ="Ring"
-    tag = "Jewelery"
+    tag = "jewelry"
     description = "grants invisibility"
     price = "45"
     size = "mediums sized"
@@ -30,7 +30,7 @@ def BB3():
 
 def BB4():
     name ="Blue Sweater"
-    tag = "sweater"
+    tag = "sweaters"
     description = "for all your cozy needs"
     price = "45"
     size = "Women's L"
@@ -40,7 +40,7 @@ def BB4():
 
 def BB5():
     name ="Candle"
-    tag = "decoration"
+    tag = "other"
     description = "you wish you smelled as good as this"
     price = "45"
     size = "-"
@@ -50,7 +50,7 @@ def BB5():
 
 def BB6():
     name ="flowers"
-    tag = "decoration"
+    tag = "other"
     description = "buy them before they wilt"
     price = "10"
     size = "-"
@@ -60,7 +60,7 @@ def BB6():
 
 def BB7():
     name ="computer stand"
-    tag = "decoration"
+    tag = "other"
     description = "works for all opperating systems!"
     price = "10"
     size = "-"
@@ -70,7 +70,7 @@ def BB7():
 
 def BB8():
     name ="painting"
-    tag = "decoration"
+    tag = "other"
     description = "imma blue aba di abida"
     price = "10"
     size = "-"
@@ -80,7 +80,7 @@ def BB8():
 
 def BB9():
     name ="cards and suclents"
-    tag = "decoration"
+    tag = "other"
     description = "for all your hand crafted needs"
     price = "10"
     size = "-"
@@ -90,7 +90,7 @@ def BB9():
 
 def BB10():
     name ="yeezus shirt"
-    tag = "t-shirt"
+    tag = "shirts"
     description = "god wants you"
     price = "100"
     size = "M-L"
@@ -100,7 +100,7 @@ def BB10():
 
 def BB11():
     name ="J.Cole"
-    tag = "t-shirt"
+    tag = "shirts"
     description = "immortal"
     price = "50"
     size = "M-M"
@@ -110,7 +110,7 @@ def BB11():
 
 def BB12():
     name ="Peaches"
-    tag = "t-shirt"
+    tag = "shirts"
     description = "faded for the thrifty look"
     price = "50"
     size = "W-M"
@@ -120,7 +120,7 @@ def BB12():
 
 def BB13():
     name ="Mystery Pack"
-    tag = "t-shirt(s)"
+    tag = "shirts"
     description = "its a mystery what you get"
     price = "50"
     size = "W-M"
@@ -130,7 +130,7 @@ def BB13():
 
 def BB14():
     name ="Snoop Dogg T"
-    tag = "t-shirt(s)"
+    tag = "shirts"
     description = "what it do?"
     price = "50"
     size = "M-L"
@@ -140,7 +140,7 @@ def BB14():
 
 def BB15():
     name ="ASAP Rocky T"
-    tag = "t-shirt(s)"
+    tag = "shirts"
     description = "Fashion is almost like a religion, for me at least"
     price = "50"
     size = "M-L"
@@ -150,7 +150,7 @@ def BB15():
 
 def BB16():
     name ="Budweiser T"
-    tag = "t-shirt(s)"
+    tag = "shirts"
     description = "what is your favorite drink?"
     price = "50"
     size = "M-L"
@@ -160,7 +160,7 @@ def BB16():
 
 def BB17():
     name ="MotorCycle T"
-    tag = "t-shirt(s)"
+    tag = "shirts"
     description = "The need for speed"
     price = "50"
     size = "M-L"
@@ -170,7 +170,7 @@ def BB17():
 
 def BB18():
     name ="Abstract T"
-    tag = "t-shirt(s)"
+    tag = "shirts"
     description = "I love painting"
     price = "50"
     size = "M-L"
@@ -180,7 +180,7 @@ def BB18():
 
 def BB19():
     name ="Marlboro Red"
-    tag = "t-shirt(s)"
+    tag = "shirts"
     description = "Howdy Partner"
     price = "50"
     size = "M-L"

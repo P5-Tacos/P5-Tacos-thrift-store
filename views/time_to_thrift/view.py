@@ -67,7 +67,7 @@ user_records = []
 def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
     user = UserTT.query.all()
     for user in user:
-        user_tt_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,
+        user_tt_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,'authen':user.authen,
                         'shopping_cart_column': user.shopping_cart_column}
         user_records.append(user_tt_dict)
 
@@ -222,6 +222,7 @@ def purchase():
         item_name = request.form['item_name']
         item_price = request.form['item_price']
         item_location = request.form['item_location']
+        item_description = request.form['item_description']
 
         # print("scroll pos: "+str(scroll_poss))
         # print(scroll_poss)
@@ -329,8 +330,9 @@ def clothes_info():
         item_name = request.form['item_name']
         item_price = request.form['item_price']
         item_location = request.form['item_location']
+        item_description = request.form['item_description']
 
-        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location}
+        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location, "item_description": item_description}
 
         return render_template("time_to_thrift/clothes_info.html",
                                pass_info=pass_info)  # this is the app route to Barbarella's page

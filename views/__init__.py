@@ -36,3 +36,7 @@ app.register_blueprint(time_to_thrift_bp, url_prefix='/time_to_thrift')
 def index():
     return render_template("index.html")
 
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404

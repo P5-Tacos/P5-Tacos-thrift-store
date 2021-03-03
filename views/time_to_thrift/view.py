@@ -206,9 +206,9 @@ def signup():
         db.session.commit()
 
         #adding user into the UserTT database
-        """new_user_2 = UserTT(username=username, email=email, password=password,shopping_cart_column='[]')
+        new_user_2 = UserTT(username=username, email=email, password=password,shopping_cart_column='[]')
         db.session.add(new_user_2)
-        db.session.commit()"""
+        db.session.commit()
 
         return redirect(url_for('time_to_thrift_bp.login'))
 

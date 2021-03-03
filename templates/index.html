@@ -16,7 +16,7 @@
             color: grey;
         }
         /* Create three equal columns that floats next to each other */
-        .column0 {
+        .column {
             text-align: center;
             float: left;
             height: 100%;
@@ -24,23 +24,6 @@
             padding: 10px;
             transition: 1s ;
         }
-        .column1 {
-            text-align: center;
-            float: left;
-            height: 100%;
-            width: 33.33%;
-            padding: 10px;
-            transition: 1s ;
-        }
-        .column2 {
-            text-align: center;
-            float: left;
-            height: 100%;
-            width: 33.33%;
-            padding: 10px;
-            transition: 1s ;
-        }
-
         /* Clear floats after the columns */
         .row:after {
             content: "";
@@ -48,19 +31,11 @@
             clear: both;
         }
 
-        .column0:hover{
+        .column:hover{
             color: black;
             background-color: #e3dfdf;
         }
 
-        .column1:hover{
-            color: black;
-            background-color: #e3dfdf;
-        }
-        .column2:hover{
-            color: black;
-            background-color: #e3dfdf;
-        }
 
 
         </style>
@@ -75,17 +50,17 @@
 -->
 <div class="row">
     <a href="{{url_for('time_to_thrift_bp.index_TT')}}">
-    <div class="column0">
+    <div class="column">
        <h2>Time To Thrift</h2>
     </div>
     </a>
     <a href="{{url_for('easter_egg_bp.index')}}">
-    <div class="column1">
+    <div class="column">
         <h2>Del Norte Eats</h2>
     </div>
     </a>
     <a href="{{url_for('easter_egg_college_bp.index')}}">
-    <div class="column2">
+    <div class="column">
         <h2>Easter Egg</h2>
     </div>
     </a>

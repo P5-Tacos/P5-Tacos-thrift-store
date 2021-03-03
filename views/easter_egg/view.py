@@ -11,7 +11,7 @@ import json
 
 # importing databases form the module.py file
 app = Flask(__name__)
-from models.module import db, UserDN, OrderEE
+from models.module import db, UserDN, OrderEE, all_user
 from models.login import load_user_DN, model_logout_all
 
 db.init_app(app)
@@ -34,7 +34,7 @@ def load_user(user_id):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return UserDN.query.get(user_id)
+    return all_user.query.get(user_id)
 
 user_type = 'user'
 

@@ -11,26 +11,15 @@ import json
 
 # importing databases form the module.py file
 app = Flask(__name__)
-from models.module import db, userEE, OrderEE
+from models.module import db, userEE, OrderEE, userDN
 from models.login import load_user_DN, model_logout_all
 
 db.init_app(app)
-"""
-app.config['SECRET_KEY'] = ':)'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///UsersTT.db'
-Bootstrap(app)
-db = SQLAlchemy(app)"""
 
 #  for the login page
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-
-"""@login_manager.user_loader
-def load_user(user_id):
-    var = load_user_DN(user_id)
-    return var"""
 
 @login_manager.user_loader
 def load_user(user_id):

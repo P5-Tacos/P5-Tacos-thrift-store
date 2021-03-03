@@ -41,8 +41,21 @@ class items(db.Model):
         self.price = price
     pass
 
-class UserDN(db.Model): #
+class userDN(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(15), unique=True)
+    email = db.Column(db.String(50))
+    password = db.Column(db.String(80))
+    program = db.Column(db.String(50))
+
+    def __init__(self, username, email, password, program):
+        self.username = username
+        self.email = email
+        self.password = password
+        self.program = program
+
+    pass
+    """id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, unique=True)
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50), unique=True)
@@ -53,7 +66,7 @@ class UserDN(db.Model): #
         self.username = username
         self.email = email
         self.password = password
-    pass
+    pass"""
 
 class OrderEE(db.Model):
     ID = db.Column(db.Integer, primary_key=True)
@@ -69,8 +82,20 @@ class OrderEE(db.Model):
         self.time = time
     pass
 
-class all_user(db.Model, UserMixin):
+class userEE(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, unique=True)
+    username = db.Column(db.String(15), unique=True)
+    email = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(80), nullable=False)
+
+    def __init__(self, username,user_id, email, password):
+        self.user_id = user_id
+        self.username = username
+        self.email = email
+        self.password = password
+    pass
+    """id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50))
     password = db.Column(db.String(80))
@@ -82,6 +107,6 @@ class all_user(db.Model, UserMixin):
         self.password = password
         self.program = program
 
-    pass
+    pass"""
 "Create Database"
 db.create_all()

@@ -16,7 +16,7 @@ import json
 from views import app
 # from app import app
 app = Flask(__name__)
-from models.module import UserTT, db, all_user
+from models.module import UserTT, db, userDN, userEE
 
 db.init_app(app)
 
@@ -52,7 +52,7 @@ class RegisterForm(FlaskForm):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return all_user.query.get(user_id)
+    return userDN.query.get(user_id)
 
 """def load_user(user.id):
     user = UserTT.query.get(int(user.id))
@@ -125,7 +125,7 @@ def login():
 
         form_user = [form_username, form_password]
         #  collecting all of the people with the program 'time_to_thrift'
-        all_user_list = all_user.query.all()
+        all_user_list = userDN.query.all()
         users_in_data = []
 
         #user = all_user.query.filter_by(program=program)
@@ -158,7 +158,7 @@ def login():
             #if the information from the login matches the information that was sttored in the data base
             if form_user == user:
                 #username = str(form_user[0])
-                user_in_db = all_user.query.filter_by(username=form_username).first()
+                user_in_db = userDN.query.filter_by(username=form_username).first()
                 print(user_in_db)
                 #print(user)
                 login_user(user_in_db)
@@ -201,7 +201,7 @@ def signup():
         program = request.form['program']
 
         #  adding user into the all_user database
-        new_user = all_user(username=username, email=email, password=password, program=program)
+        new_user = userDN(username=username, email=email, password=password, program=program)
         db.session.add(new_user)
         db.session.commit()
 

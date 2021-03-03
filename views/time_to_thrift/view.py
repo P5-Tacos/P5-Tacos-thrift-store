@@ -16,7 +16,7 @@ import json
 from views import app
 # from app import app
 app = Flask(__name__)
-from models.module import UserTT, db
+from models.module import UserTT, db, userDN, userEE
 
 db.init_app(app)
 
@@ -48,11 +48,11 @@ class RegisterForm(FlaskForm):
     email = StringField('email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=50)])
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-
+    program = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
 
 @login_manager.user_loader
 def load_user(user_id):
-    return UserTT.query.get(user_id)
+    return userDN.query.get(user_id)
 
 """def load_user(user.id):
     user = UserTT.query.get(int(user.id))
@@ -101,7 +101,7 @@ def contactus():
                            display_cart=shopping_cart)  # this is the app route to the contact us page
 
 
-@time_to_thrift_bp.route('/login', methods=["GET", "POST"])
+"""@time_to_thrift_bp.route('/login', methods=["GET", "POST"])
 def login():
     authen = {"authen":""}
     if request.method == 'POST':
@@ -121,13 +121,68 @@ def login():
 
         return '<h1>Invalid username or password</h1>'
 
-    return render_template("time_to_thrift/login.html", display_cart=shopping_cart,authen = authen)
+    return render_template("time_to_thrift/login.html", display_cart=shopping_cart)"""
 
+@time_to_thrift_bp.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == 'POST':
+        form_username = request.form['username']
+        form_password = request.form['password']
+        program = 'time_to_thrift'
+
+        form_user = [form_username, form_password]
+        #  collecting all of the people with the program 'time_to_thrift'
+        all_user_list = userDN.query.all()
+        users_in_data = []
+
+        #user = all_user.query.filter_by(program=program)
+        #itterates through all of the data within user indat
+        id = []
+        all_user_info = []
+        for user in all_user_list:
+
+            #this loop is to display all the users within the system
+            user_info = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,
+                            'program': user.program}
+            users_in_data.append(user_info)
+
+            #  to find which users are corresponding to the system
+            x = 1
+            if user.program == program:
+                id.append(user.id)
+
+                user_cred = [user.username, user.password]
+                all_user_info.append(user_cred)
+                x = x + 1
+
+        #print("user:" + str(user))
+        print( "users_in_data: " +str(users_in_data))
+        #print("these are all the user ids in the system that have registered for time to thrift:"  + str(id))
+        print("these are the information for the users within the system" +str(all_user_info))
+
+        for user in all_user_info:
+            print(user)
+            #if the information from the login matches the information that was sttored in the data base
+            if form_user == user:
+                #username = str(form_user[0])
+                user_in_db = userDN.query.filter_by(username=form_username).first()
+                print(user_in_db)
+                #print(user)
+                login_user(user_in_db)
+                print('redirecting')
+                return redirect(url_for('time_to_thrift_bp.logged_in'))
+
+
+        #return '<h1>Invalid username or password</h1>'
+        return render_template("time_to_thrift/after_login.html")
+
+    return render_template("time_to_thrift/login.html", display_cart=shopping_cart)
+    return render_template("time_to_thrift/login.html", display_cart=shopping_cart,authen = authen)
 
 @time_to_thrift_bp.route('/logged_in', methods=["GET", "POST"])
 # @login_required
 def logged_in():
-    # print(current_user.username)
+    #print(current_user.username)
     # views/time_to_thrift/templates/time_to_thrift/logged_in.html
     username = current_user.username
     authen = {"authen":""}
@@ -136,7 +191,7 @@ def logged_in():
     return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart, authen = authen)
 
 
-@time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
+"""@time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == 'POST':
         email = request.form['email']
@@ -148,8 +203,29 @@ def signup():
         db.session.commit()
         return redirect(url_for('time_to_thrift_bp.login'))
 
-    return render_template("time_to_thrift/SU.html", display_cart=shopping_cart)  # form = form,
+    return render_template("time_to_thrift/SU.html", display_cart=shopping_cart)  # form = form,"""
 
+@time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
+def signup():
+    if request.method == 'POST':
+        email = request.form['email']
+        username = request.form['username']
+        password = request.form['password']
+        program = request.form['program']
+
+        #  adding user into the all_user database
+        new_user = userDN(username=username, email=email, password=password, program=program)
+        db.session.add(new_user)
+        db.session.commit()
+
+        #adding user into the UserTT database
+        new_user_2 = UserTT(username=username, email=email, password=password,shopping_cart_column='[]')
+        db.session.add(new_user_2)
+        db.session.commit()
+
+        return redirect(url_for('time_to_thrift_bp.login'))
+
+    return render_template("time_to_thrift/SU.html", display_cart=shopping_cart)  # form = form,
 
 @time_to_thrift_bp.route('/purchase', methods=["GET", "POST"])
 def purchase():

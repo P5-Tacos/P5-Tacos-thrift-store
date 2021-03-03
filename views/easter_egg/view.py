@@ -11,7 +11,7 @@ import json
 
 # importing databases form the module.py file
 app = Flask(__name__)
-from models.module import db, UserDN, OrderEE
+from models.module import db, userEE, OrderEE
 from models.login import load_user_DN, model_logout_all
 
 db.init_app(app)
@@ -34,7 +34,7 @@ def load_user(user_id):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return UserDN.query.get(user_id)
+    return userEE.query.get(user_id)
 
 user_type = 'user'
 
@@ -43,7 +43,7 @@ user_records = []
 order_records = []
 
 def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
-    user = UserDN.query.all()
+    user = userEE.query.all()
     for user in user:
         user_dn_dict = {'id': user.id,'user id': user.user_id,  'username': user.username, 'email': user.email, 'password': user.password}
         user_records.append(user_dn_dict)
@@ -84,7 +84,7 @@ def login():
         password = request.form['password']
         print(username)
         print(password)
-        user = UserDN.query.filter_by(username=username).first()
+        user = userEE.query.filter_by(username=username).first()
         print(user)
         if user:
             if user.password == password:
@@ -115,8 +115,8 @@ def signup():
          print(username)
          print(password)"""
 
-        new_user = UserDN(username = username, user_id = user_id, email = email, password = password)
-        #new_user = UserDN(username='billy', user_id=1111111, email='123@gmail.com', password='password')
+        new_user = userEE(username = username, user_id = user_id, email = email, password = password)
+        #new_user = userEE(username='billy', user_id=1111111, email='123@gmail.com', password='password')
         # adding information into the database
         db.session.add(new_user)
         db.session.commit()

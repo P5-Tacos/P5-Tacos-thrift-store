@@ -8,9 +8,11 @@ Dashboard
 {% block style %}
 <link href="../static/css/style_dashboard.css" rel="stylesheet" type="text/css" /> <!-- this is a temporary style -->
 {% endblock %}
-
+{% for info in authen %}
+{% set authen = authen["authen"] %}
+{% endfor %}
 {% block content %}
-{% if current_user.is_authenticated %}<!-- If the user has logged in-->
+{% if current_user.is_authenticated and authen == "user" %}<!-- If the user has logged in-->
 <div style="margin-left: 15px;">
     <h1>{{current_user.username}} Dashboard</h1>
     <form action={{url_for('time_to_thrift_bp.logout')}} method="post"><input type="submit" value="Log Out"></form>

@@ -103,18 +103,25 @@ def contactus():
 
 @time_to_thrift_bp.route('/login', methods=["GET", "POST"])
 def login():
+    authen = {"authen":""}
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         user = UserTT.query.filter_by(username=username).first()
         if user:
-            if user.password == password:
+            if user.password == password and user.authen == "user":
+                authen["authen"] = "user"
+                login_user(user)
+                return redirect(url_for('time_to_thrift_bp.logged_in'))
+            if user.password == password and user.authen == "admin":
+                authen["authen"] = "admin"
                 login_user(user)
                 return redirect(url_for('time_to_thrift_bp.logged_in'))
 
+
         return '<h1>Invalid username or password</h1>'
 
-    return render_template("time_to_thrift/login.html", display_cart=shopping_cart)
+    return render_template("time_to_thrift/login.html", display_cart=shopping_cart,authen = authen)
 
 
 @time_to_thrift_bp.route('/logged_in', methods=["GET", "POST"])
@@ -122,7 +129,11 @@ def login():
 def logged_in():
     # print(current_user.username)
     # views/time_to_thrift/templates/time_to_thrift/logged_in.html
-    return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart)
+    username = current_user.username
+    authen = {"authen":""}
+    user = UserTT.query.filter_by(username=username).first()
+    authen["authen"] = user.authen
+    return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart, authen = authen)
 
 
 @time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
@@ -131,7 +142,8 @@ def signup():
         email = request.form['email']
         username = request.form['username']
         password = request.form['password']
-        new_user = UserTT(username=username, email=email, password=password,shopping_cart_column='[]')
+        authen = request.form['authen']
+        new_user = UserTT(username=username, email=email, password=password,shopping_cart_column='[]',authen = authen)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('time_to_thrift_bp.login'))

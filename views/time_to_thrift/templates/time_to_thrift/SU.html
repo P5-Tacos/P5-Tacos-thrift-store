@@ -66,6 +66,11 @@ Sign Up
                 <tr><td><input name="username" type="text" size="20"></td></tr>
                 <tr><th>Password</th></tr>
                 <tr><td><input name="password" type="password" size="20"></td></tr>
+                <tr><th>Sign Up As:</th></tr>
+                <tr><td><select id="authen" name="authen">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select></tr></td>
                 <tr><td><input type="submit" class="button" value="Submit"></td></tr>
                 <tr><td><a href="{{url_for('time_to_thrift_bp.logged_in')}}">continue as guest</a></td></tr>
             </table>

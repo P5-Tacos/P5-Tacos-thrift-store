@@ -184,12 +184,16 @@ def login():
 def logged_in():
     #print(current_user.username)
     # views/time_to_thrift/templates/time_to_thrift/logged_in.html
-    username = current_user.username
-    authen = {"authen":""}
-    user = UserTT.query.filter_by(username=username).first()
-    authen["authen"] = user.authen
-    print(authen)
-    return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart, authen = authen)
+    try:
+        username = current_user.username
+        authen = {"authen":""}
+        user = UserTT.query.filter_by(username=username).first()
+        authen["authen"] = user.authen
+        print(authen)
+        return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart, authen = authen)
+    except AttributeError:
+        authen = {"authen":"guest"}
+        return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart, authen = authen)
 
 
 """@time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
@@ -321,6 +325,7 @@ def shopping_cart_load():
         for i in loaded_list:
             shopping_cart.append(i)
         return redirect(url_for('time_to_thrift_bp.logged_in'))
+
 
 
 @time_to_thrift_bp.route('/thriftythreads')

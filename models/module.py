@@ -29,7 +29,6 @@ class UserTT(db.Model):
 
     pass
 
-
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key=True)
     name = db.Column(db.String(100))

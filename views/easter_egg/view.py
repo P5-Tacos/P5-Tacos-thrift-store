@@ -77,9 +77,8 @@ def dash_handel():
     else:
         return render_template('easter_egg/user_dashboard_authen.html', user_type=user_type)
 
-@easter_egg_bp.route('/')  # this is the home page of the makeup API page
+@easter_egg_bp.route('/')
 def index():
-    # return render_template("easter_egg/home.html",user_type=user_type)
     user_type = 'user'
     result = dash_handel()
     return result
@@ -341,6 +340,16 @@ def runner_nav():
         #  if the user is not logged in as a customer, they will be redirected to the login runner page
         return render_template("easter_egg/runner/login_runner.html")
 
+@easter_egg_bp.route('/port_user')
+def user_nav():
+    if current_user.is_authenticated:
+        #  if the runner is logged in as a customer, they will be logged out
+        #  redirected to the login page of the user page
+        model_logout_all()
+        return redirect(url_for('easter_egg_bp.index'))
+    else:
+        #  if the runner is not logged in they will be redirected to the login runner page
+        return redirect(url_for('easter_egg_bp.index'))
 
 @easter_egg_bp.route('/logout', methods=["GET", "POST"])
 @login_required
@@ -349,3 +358,11 @@ def logout():
         model_logout_all()
         result = dash_handel()
         return result
+
+@easter_egg_bp.route('/logout_rr', methods=["GET", "POST"])
+@login_required
+def logout_rr():
+    print('loutout_rr')
+    if request.method == "POST":
+        model_logout_all()
+        return render_template("easter_egg/runner/login_runner.html")

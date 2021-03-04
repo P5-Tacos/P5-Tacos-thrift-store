@@ -64,14 +64,18 @@ def order_map():  # mapping the front end to the backend, put in the function so
 list_user_map()
 order_records = order_map()
 everbody_append()
-
+def dash_handel():
+    if current_user.is_anonymous:
+        return render_template('easter_egg/user_dashboard_guest.html', user_type=user_type)
+    else:
+        return render_template('easter_egg/user_dashboard_authen.html', user_type=user_type)
 
 @easter_egg_bp.route('/')  # this is the home page of the makeup API page
 def index():
     # return render_template("easter_egg/home.html",user_type=user_type)
     user_type = 'user'
-    return render_template('easter_egg/user_dashboard.html', user_type=user_type)
-
+    result = dash_handel()
+    return result
 
 @easter_egg_bp.route('/image_map_dnhs')
 def image_map():
@@ -127,17 +131,19 @@ def login():
                 # print(user)
                 login_user(user_in_db)
                 # print('redirecting')
-                return redirect(url_for('easter_egg_bp.user_dashboard'))
+                result = dash_handel()
+                return result
 
         # return '<h1>Invalid username or password</h1>'
-        return render_template("easter_egg/after_login.html")
+        return render_template("easter_egg/after_login.html", user_type=user_type)
 
-    return render_template("easter_egg/login.html")
+    return render_template("easter_egg/login.html", user_type=user_type)
 
 
 @easter_egg_bp.route('/logged_in')
 def logged_in():
-    return render_template("easter_egg/user_dashboard.html")
+    result = dash_handel()
+    return result
 
 
 @easter_egg_bp.route('/signup', methods=["GET", "POST"])
@@ -162,7 +168,7 @@ def signup():
 
         return redirect(url_for('easter_egg_bp.login'))
 
-    return render_template("easter_egg/SU.html")  # form = form,
+    return render_template("easter_egg/SU.html", user_type=user_type)  # form = form,
 
 
 @easter_egg_bp.route('/auth_user', methods=['GET', 'POST'])  # this is the home page of the makeup API page
@@ -266,7 +272,8 @@ def runner_dashboard():
 @easter_egg_bp.route('/user_dashboard')  # will eventually be post , methods = ['GET','POST']
 def user_dashboard():
     user_type = 'user'
-    return render_template('easter_egg/user_dashboard.html', user_type=user_type)
+    result = dash_handel()
+    return result
 
 
 @easter_egg_bp.route('/admin')
@@ -288,4 +295,5 @@ def home():
 def logout():
     if request.method == "POST":
         model_logout_all()
-        return redirect(url_for('easter_egg_bp.user_dashboard'))
+        result = dash_handel()
+        return result

@@ -50,7 +50,6 @@ class userDN(db.Model, UserMixin):
     password = db.Column(db.String(80))
     program = db.Column(db.String(50))
 
-
     def __init__(self, username, email, password, program):
         self.username = username
         self.email = email

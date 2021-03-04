@@ -188,6 +188,7 @@ def logged_in():
     authen = {"authen":""}
     user = UserTT.query.filter_by(username=username).first()
     authen["authen"] = user.authen
+    print(authen)
     return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart, authen = authen)
 
 
@@ -212,6 +213,7 @@ def signup():
         username = request.form['username']
         password = request.form['password']
         program = request.form['program']
+        authen = request.form['authen']
 
         #  adding user into the all_user database
         new_user = userDN(username=username, email=email, password=password, program=program)
@@ -219,7 +221,7 @@ def signup():
         db.session.commit()
 
         #adding user into the UserTT database
-        new_user_2 = UserTT(username=username, email=email, password=password,shopping_cart_column='[]')
+        new_user_2 = UserTT(username=username, email=email, password=password,shopping_cart_column='[]', authen = authen)
         db.session.add(new_user_2)
         db.session.commit()
 

@@ -12,7 +12,33 @@
 <div style="margin-left: 15px;">
     <h1>Admin Page - Del Norte Eats</h1>
     <p>This page is to display all of the users and passwords people have registered in the time to thrift page</p>
-    <p>there are <span>{{user_quanity}}</span> users in the system</p>
+    <p>there are <span>{{all_table|length}}</span> users in the system</p>
+    <p>there are <span>{{table|length}}</span> users registered for del norte eats</p>
+
+
+
+    <h1>All Users in System</h1>
+    <table id="user_table2">
+        <tr>
+            <th>ID</th>
+            <th>username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Program</th>
+        </tr>
+        <!-- Loop through rows in table -->
+        {% for row in all_table %}
+        <!-- build elements in table -->
+        <tr>
+            <th>{{ row['id'] }}</th>
+            <th>{{ row['username'] }}</th>
+            <th>{{ row['email'] }}</th>
+            <th>{{ row['password'] }}</th>
+            <th>{{ row['program'] }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+
     <h2>Users</h2>
     <table id="user_table">
         <tr>
@@ -34,7 +60,28 @@
         </tr>
         {% endfor %}
     </table>
+
     <h2>Orders</h2>
+    <table id="order_table">
+        <tr>
+            <th>ID</th>
+            <th>Time of Order</th>
+            <th>Username</th>
+            <th>Price</th>
+            <th>Order Contents</th>
+        </tr>
+        <!-- Loop through rows in table -->
+        {% for row in order_table %}
+        <!-- build elements in table -->
+        <tr>
+            <th>{{ row['id'] }}</th>
+            <th>{{ row['time'] }}</th>
+            <th>{{ row['username'] }}</th>
+            <th>{{ row['price'] }}</th>
+            <th>{{ row['order contents'] }}</th>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 </body>
 </html>

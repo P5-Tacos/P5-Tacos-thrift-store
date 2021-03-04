@@ -1,0 +1,33 @@
+{% extends 'easter_egg/base_egg.html' %}
+<html lang="en">
+
+{% block title %}
+Guest Dashboard
+{% endblock %}
+
+{% block style %}
+<style>
+    .margin_1 {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="margin_1">
+    <h1>Welcome Guest</h1>
+
+    <p>Here is your user dashboard where you can order food through the Del Norte Eats user interface</p>
+    <a href="{{url_for('easter_egg_bp.singlepage_form')}}"><button>Order</button></a>
+    <br>
+    <br>
+    <p>If you would like to sign up to save previous orders and keep track of money spent</p>
+    <a href="{{url_for('easter_egg_bp.signup')}}"><button>Sign Up</button></a>
+    <span> or </span>
+    <a href="{{url_for('easter_egg_bp.login')}}"><button>Login</button></a>
+
+
+
+</div>
+{% endblock %}
+

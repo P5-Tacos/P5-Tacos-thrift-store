@@ -1,16 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>P5-Tacos - Landing Page</title>
+    <link rel="icon" href="../static/images/favicons/taco_noback.gif">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        * {
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        a {
+            color: grey;
+        }
+
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Create three equal columns that floats next to each other */
+        /* these selectors are the total height as the browser window */
+        .selector{
+            float: left;
+            height: 95vh;
+            width: 33.33%;
+        }
+        /* Create columns with the same width as the selectors */
+        .column {
+            float: left;
+            height: 30vh;
+            width: 100%;
+            padding: 10px;
+        }
+        /* on hover increase the height of the column, provides the animation  */
+        .selector:hover .column {
+            color: black;
+            height: 95vh;
+            background-color: #e3dfdf;
+            transition: 1s ;
+        }
+        /* the default style of the descriptions for each site */
+        .description{
+            text-align: left;
+            color: black;
+            opacity: 0.3;
+            transition: 0.5s;
+        }
+        /* on the hover of the selector, increase the text to a readable opacity */
+        .selector:hover .description {opacity: 1}
+
+
+
+        </style>
+    </style>
 </head>
 <body>
-<p> here will be cards to each of the projects</p>
+<!--
+<div class="left"></div>
+<div class="middle"></div>
+<div class="right"></div>
+-->
+<div class="row">
+    <a href="{{url_for('time_to_thrift_bp.index_TT')}}">
+        <div class="selector">
+            <div class="column">
+               <h1 style="text-align: center">Time To Thrift</h1>
+                <p class="description">Thrift store inventory and sale system. A web based storefront for users to see what hot items are within local San Diego thrift shops.
+            </div>
+        </div>
+    </a>
+    <a href="{{url_for('easter_egg_bp.index')}}">
+        <div class="selector">
+            <div class="column">
+                <h1 style="text-align: center">Del Norte Eats</h1>
+                <p class="description">A lunch ordering system and delivery system centered around the menus and building geography of Del Norte High School.</p>
+            </div>
+        </div>
+    </a>
+    <a href="{{url_for('easter_egg_college_bp.index')}}">
+        <div class="selector">
+            <div class="column">
+                <h1 style="text-align: center">Easter Egg</h1>
+                <p class="description">Our team's documentation of lessons learned throughout the webdev process.</p>
+            </div>
+        </div>
+    </a>
+</div>
 
-<a href="{{url_for('time_to_thrift_bp.index_TT')}}">Time To Thrift</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
-<br>
-<a href="{{url_for('easter_egg_bp.index')}}">Del Norte Eats</a>
-<br>
-<a href="{{url_for('easter_egg_college_bp.index')}}">Easter Egg</a>
 </body>
 </html>

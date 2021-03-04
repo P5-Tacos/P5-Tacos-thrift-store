@@ -1,0 +1,31 @@
+{% extends 'easter_egg/base_egg.html' %}
+<html lang="en">
+
+{% block title %}
+{{current_user.username}}'s Dashboard
+{% endblock %}
+
+{% block style %}
+<style>
+    .margin_1 {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="margin_1">
+
+    <h1>Welcome <span>{{current_user.username}}</span></h1>
+
+    <a href="{{url_for('easter_egg_bp.singlepage_form')}}"><button>Order</button></a>
+    <br>
+    <br>
+    <a href=""><button>See Past Orders</button></a>
+    <br>
+    <br>
+    <form action={{url_for('easter_egg_bp.logout')}} method="post"><input type="submit" value="Log Out"></form>
+
+</div>
+{% endblock %}
+

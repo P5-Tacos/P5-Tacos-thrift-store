@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Del Norte Eats - {% block title %}{% endblock %}</title>
-
+    {% block meta %}{% endblock %}
     <link rel="icon" href="../static/images/favicons/taco_noback.gif"> <!--static/images/favicons/taco_noback.gif-->
     <!--<link rel="stylesheet" href="../../../../static/css/style_base.css" type="text/css">-->
     <style>
@@ -90,8 +90,8 @@
     </a>
     <a class="home" href={{url_for('easter_egg_bp.user_dashboard')}}>Home</a>
     <a href="{{url_for('.singlepage_form')}}">Order</a>
-    <a href="{{url_for('.signup')}}">Sign Up</a>
-    <a href="{{url_for('.login')}}">Login</a>
+    <a href="{{url_for('easter_egg_bp.signup')}}">Sign Up</a>
+    <a href="{{url_for('easter_egg_bp.login')}}">Login</a>
     {% endif %}
 </div>
 {% block style%}{% endblock %}

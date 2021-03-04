@@ -113,7 +113,7 @@ def login():
                 #print(user)
                 login_user(user_in_db)
                 #print('redirecting')
-                return redirect(url_for('time_to_thrift.logged_in'))
+                return redirect(url_for('easter_egg_bp.user_dashboard'))
 
 
         #return '<h1>Invalid username or password</h1>'
@@ -218,14 +218,16 @@ def after_form():
         #the information that will be stored into the database
         into_json = {"total cost": total_cost, "building group": building_group, "room number": room, "order_contents": pass_info}
         order_json = json.dumps(into_json)
-        #print(order_json)
 
-        #formating into the database
-        #need user id
-        #price
-        #order contents
-        #order time
-        return render_template("easter_egg/after_form.html", information=information, pass_info=pass_info,
+        #  if the user is not logged in when submitting the form the username is defualted to guest
+
+        if current_user.is_anonymous:
+            username = 'Guest'
+        else:
+            username = current_user.username
+        print(username)
+
+    return render_template("easter_egg/after_form.html", information=information, pass_info=pass_info,
                                user_type=user_type)
 
 
@@ -267,6 +269,5 @@ def home():
 def logout():
     if request.method == "POST":
         model_logout_all()
-        #logout_user()
-        return redirect(url_for('easter_egg_bp.login'))
+        return redirect(url_for('easter_egg_bp.user_dashboard'))
 

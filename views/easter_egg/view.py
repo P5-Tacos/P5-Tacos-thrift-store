@@ -36,27 +36,30 @@ user_records = []
 runner_records = []
 
 
-def everbody_append():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
+def everbody_append():
+    # mapping the backend to the front end, of all of the users in the login database
     user = userDN.query.all()
     for user in user:
         user_dn_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,
                         'program': user.program}
         everybody.append(user_dn_dict)
 
-
-def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
+def list_user_map():
+    #  mapping the backend to the front end, for the users of del norte eats
     user = userEE.query.all()
     for user in user:
         user_dn_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password}
         user_records.append(user_dn_dict)
 
-def list_runner_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
+def list_runner_map():
+    #  mapping the backend to the front end, for the runners of del norte eats in database
     runners = userRR.query.all()
     for user in runners:
         runner_dn_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password}
         runner_records.append(runner_dn_dict)
 
-def order_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
+def order_map():
+    #  mapping the backend end to the frontend, for the orders of the users
     order_records = []
     orders = orderEE.query.all()
     for order in orders:
@@ -72,26 +75,29 @@ everbody_append()
 order_records = order_map()
 
 def dash_handel():
+    # to redirect the user to the user to logged in or guest dashboard
     if current_user.is_anonymous:
         return render_template('easter_egg/user_dashboard_guest.html', user_type=user_type)
     else:
         return render_template('easter_egg/user_dashboard_authen.html', user_type=user_type)
 
+#  redirecting the user to the guest dashboard, the route for home int he user dashboard
 @easter_egg_bp.route('/')
 def index():
     user_type = 'user'
     result = dash_handel()
     return result
 
+#  static image map
 @easter_egg_bp.route('/image_map_dnhs')
 def image_map():
-    return render_template("easter_egg/image_map_dnhs.html", images=model.infoforthecontactsineaster(),
+    return render_template("easter_egg/unused_templates/image_map_dnhs.html", images=model.infoforthecontactsineaster(),
                            user_type=user_type)
 
-
+# image map that resizes with the window size
 @easter_egg_bp.route('/image_map_dnhs2')
 def image_map2():
-    return render_template("easter_egg/image_map_dnhs2.html", images=model.infoforthecontactsineaster(),
+    return render_template("easter_egg/unused_templates/image_map_dnhs2.html", images=model.infoforthecontactsineaster(),
                            user_type=user_type)
 
 
@@ -101,10 +107,10 @@ def login():
         form_username = request.form['username']
         form_password = request.form['password']
         form_program = request.form['program']
-        #print("this is the login page"+  str(form_program))
-        #program = 'del_norte_eats'
+        #  print("this is the login page"+  str(form_program))
+        #  program = 'del_norte_eats'
         program = form_program
-        print(program)
+        #  print(program)
         form_user = [form_username, form_password]
         #  collecting all of the people with the program 'time_to_thrift'
         all_user_list = userDN.query.all()
@@ -127,7 +133,7 @@ def login():
 
                 user_cred = [user.username, user.password]
                 all_user_info.append(user_cred)
-        print(all_user_info)
+        #  print(all_user_info)
         for user in all_user_info:
             # print(user)
             # if the information from the login matches the information that was sttored in the data base
@@ -152,17 +158,18 @@ def login():
                         #  there should never be a redirect to this, all the programs should correspond
                         return render_template("easter_egg/after_login.html", user_type=user_type)
 
-        # return '<h1>Invalid username or password</h1>'
+        # if there was a problem with the login
         return render_template("easter_egg/after_login.html", user_type=user_type)
-    return render_template("easter_egg/login.html", user_type=user_type)
 
+    #  default of what the user intially sees when selecting the login button
+    return render_template("easter_egg/login.html", user_type=user_type)
 
 @easter_egg_bp.route('/logged_in')
 def logged_in():
     result = dash_handel()
     return result
 
-
+#  sign up of users, creating the user into the main database and user database
 @easter_egg_bp.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == 'POST':
@@ -171,7 +178,7 @@ def signup():
         password = request.form['password']
         program = request.form['program']
 
-        print(str(email) + " " + str(username) + " " + str(password) + " " + str(program))
+        #  print(str(email) + " " + str(username) + " " + str(password) + " " + str(program))
 
         #  adding user into the all_user database
         new_user = userDN(username=username, email=email, password=password, program=program)
@@ -183,10 +190,12 @@ def signup():
         db.session.add(new_user_2)
         db.session.commit()
 
+        #  redirecting to the login logic
         return redirect(url_for('easter_egg_bp.login'))
 
     return render_template("easter_egg/SU.html", user_type=user_type)  # form = form,
 
+#  sign up of runners, creating the user into the main database and runner database
 @easter_egg_bp.route('/signup_runner', methods=["GET", "POST"])
 def signup_runner():
     if request.method == 'POST':
@@ -195,7 +204,7 @@ def signup_runner():
         password = request.form['password']
         program = request.form['program']
 
-        print(str(email) + " " + str(username) + " " + str(password) + " " + str(program))
+        #  print(str(email) + " " + str(username) + " " + str(password) + " " + str(program))
 
         #  adding user into the all_user database
         new_user = userDN(username=username, email=email, password=password, program=program)
@@ -207,22 +216,26 @@ def signup_runner():
         db.session.add(new_user_2)
         db.session.commit()
 
+        #  redirecting to the login logic
         return redirect(url_for('easter_egg_bp.login'))
 
     return render_template("easter_egg/runner/SU.html", user_type=user_type)
 
-@easter_egg_bp.route('/auth_user', methods=['GET', 'POST'])  # this is the home page of the makeup API page
+#  currently unused
+@easter_egg_bp.route('/auth_user', methods=['GET', 'POST'])
 def private():
     return render_template("easter_egg/auth_user.html", user_type=user_type)
 
 
 #  from JSON to python
 dict_buildings = json.loads(del_norte_buildings.json_all_building)
+#  setting up list to use data in after_form function
 class_rooms = []
 for i in dict_buildings:
     class_rooms.append(dict_buildings[i])
 
-
+#  the form using java script to progress the user through each section of the form rather than having all of the
+#  inputs on one page currently not used
 @easter_egg_bp.route('/singlepage_form')
 def singlepage_form():
     return render_template("easter_egg/singlepage_form.html", snack_list=food.inventory_stack(),
@@ -264,7 +277,7 @@ def after_form():
 
         #  getting the last number of the groups
         if len(building_group) == 5:
-            #  form "room1" to "room9"
+            #  from "room1" to "room9"
             last_char = building_group[-1]
         else:
             #  from "room10" to "room15"
@@ -303,14 +316,15 @@ def after_form():
                            user_type=user_type)
 
 
-@easter_egg_bp.route('/runner_dashboard')  # will eventually be post , methods = ['GET','POST']
+@easter_egg_bp.route('/runner_dashboard')
 def runner_dashboard():
     user_type = 'Runner'
     return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type)
 
 
-@easter_egg_bp.route('/user_dashboard')  # will eventually be post , methods = ['GET','POST']
+@easter_egg_bp.route('/user_dashboard')
 def user_dashboard():
+    #  the redirect to the dashboard when user clicks the home button in nav bar of Del Norte eats
     user_type = 'user'
     result = dash_handel()
     return result
@@ -318,11 +332,13 @@ def user_dashboard():
 
 @easter_egg_bp.route('/admin')
 def admin_page():
+    # admin page showing all of the data within Del Norte Eats
     return render_template('easter_egg/admin_page.html', user_table=user_records, all_table=everybody, order_table=order_records, runner_table = runner_records)
 
 
 @easter_egg_bp.route('/logout_return')
 def home():
+    #  logging out the user in Del Norte Eats and redirecting the user to the home page
     if current_user.is_authenticated:
         model_logout_all()
         return render_template("index.html")
@@ -354,6 +370,7 @@ def user_nav():
 @easter_egg_bp.route('/logout', methods=["GET", "POST"])
 @login_required
 def logout():
+    #  logging out the user and redirect the user back tot he user dashboard
     if request.method == "POST":
         model_logout_all()
         result = dash_handel()
@@ -362,7 +379,7 @@ def logout():
 @easter_egg_bp.route('/logout_rr', methods=["GET", "POST"])
 @login_required
 def logout_rr():
-    print('loutout_rr')
+    #  this is the route on the runner dashboard to reroute the runner back to the runner login
     if request.method == "POST":
         model_logout_all()
         return render_template("easter_egg/runner/login_runner.html")

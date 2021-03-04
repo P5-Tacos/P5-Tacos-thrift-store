@@ -1,0 +1,86 @@
+{% extends 'easter_egg/runner/base_egg_runner.html' %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block style%}
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    td, th {
+        text-align: left;
+        padding: 4px;
+    }
+
+    #all_in {
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #2E4785;
+        background-color: #e7e393;
+        border-radius: 10%;
+        width: 225px;
+    }
+
+    .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: #2E4785;
+        background-color: #E98A62;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .button:hover {
+        color: #E98A62;
+        background-color: #2E4785;
+    }
+    .no-label .control-label {
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+    <h1 style="text-align:center; color: #2E4785;">Sign Up - Runner</h1>
+<div class="row courses-buttons justify-content-center">
+    <div id="all_in">
+
+        <form name="signUp" action={{url_for('.signup_runner')}} onsubmit="return validateForm()" method="post">
+            <table border="0">
+                <tr><th>Email</th></tr>
+                <tr><td><input name="email" type="text" size="20"></td></tr>
+                <tr><th>Username</th></tr>
+                <tr><td><input name="username" type="text" size="20"></td></tr>
+                <tr><th>Password</th></tr>
+                <tr><td><input name="password" type="password" size="20"></td></tr>
+                <tr><td><input type="submit" class="button" value="Submit"></td></tr>
+                <input type="hidden" name="program" value="del_norte_eats_runner">
+            </table>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    function validateForm() {
+        var x = document.forms["signUp"]["username"].value;
+        if (x == "guest") {
+            alert("username GUEST already taken");
+            return false;
+        }
+    }
+</script>
+{% endblock %}

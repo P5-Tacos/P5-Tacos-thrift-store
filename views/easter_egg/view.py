@@ -94,8 +94,10 @@ def login():
     if request.method == 'POST':
         form_username = request.form['username']
         form_password = request.form['password']
-        program = 'del_norte_eats'
-
+        form_program = request.form['program']
+        #print("this is the login page"+  str(form_program))
+        #program = 'del_norte_eats'
+        program = form_program
         form_user = [form_username, form_password]
         #  collecting all of the people with the program 'time_to_thrift'
         all_user_list = userDN.query.all()
@@ -265,8 +267,8 @@ def after_form():
 
 @easter_egg_bp.route('/runner_dashboard')  # will eventually be post , methods = ['GET','POST']
 def runner_dashboard():
-    user_type = 'runner'
-    return render_template('easter_egg/runner_dashboard.html', user_type=user_type)
+    user_type = 'Runner'
+    return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type)
 
 
 @easter_egg_bp.route('/user_dashboard')  # will eventually be post , methods = ['GET','POST']

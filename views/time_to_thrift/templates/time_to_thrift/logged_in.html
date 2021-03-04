@@ -2,7 +2,11 @@
 {% extends "base.html" %}
 
 {% block title %}
+{% if current_user.is_anonymous  %}
+Guest Dashboard
+{% else %}
 {{current_user.username}}'s Dashboard
+{% endif %}
 {% endblock %}
 
 {% block style %}

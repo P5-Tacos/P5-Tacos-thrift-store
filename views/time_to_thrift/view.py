@@ -156,20 +156,20 @@ def login():
                 x = x + 1
 
         #print("user:" + str(user))
-        print( "users_in_data: " +str(users_in_data))
+        #print( "users_in_data: " +str(users_in_data))
         #print("these are all the user ids in the system that have registered for time to thrift:"  + str(id))
-        print("these are the information for the users within the system" +str(all_user_info))
+        #print("these are the information for the users within the system" +str(all_user_info))
 
         for user in all_user_info:
-            print(user)
+            #print(user)
             #if the information from the login matches the information that was sttored in the data base
             if form_user == user:
                 #username = str(form_user[0])
                 user_in_db = userDN.query.filter_by(username=form_username).first()
-                print(user_in_db)
+                #print(user_in_db)
                 #print(user)
                 login_user(user_in_db)
-                print('redirecting')
+                #print('redirecting')
                 return redirect(url_for('time_to_thrift_bp.logged_in'))
 
 

@@ -85,7 +85,7 @@
     </a>
     <a> Orders </a>
     {% else %}
-    <a href="{{url_for('.runner_dashboard')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/running_man_yellow.svg');" onmouseout="onHover('/easter_egg/static/images/running_man_white.svg');">
+    <a href="{{url_for('.runner_nav')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/running_man_yellow.svg');" onmouseout="onHover('/easter_egg/static/images/running_man_white.svg');">
         <img id="menuImg1" src="{{url_for('easter_egg_bp.static', filename='images/running_man_white.svg')}}" alt="Running Man" width="25px">
     </a>
     <a class="home" href={{url_for('easter_egg_bp.user_dashboard')}}>Home</a>

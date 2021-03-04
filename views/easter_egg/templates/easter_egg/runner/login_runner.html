@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-{% extends 'easter_egg/base_egg.html' %}
+{% extends 'easter_egg/runner/base_egg_runner.html' %}
 
 {% block title %}
 Login
@@ -52,7 +52,7 @@ Login
 
 {% block content %}
 
-<h1 style="text-align:center; color: #2E4785;">Login</h1>
+<h1 style="text-align:center; color: #2E4785;">Runner - Login</h1>
 <div class="row courses-buttons justify-content-center">
     <div id="all_in">
     <form action={{url_for('easter_egg_bp.login')}} method="post">
@@ -61,8 +61,9 @@ Login
             <tr><td><input name="username" type="text" size="20"></td></tr>
             <tr><th>Password</th></tr>
             <tr><td><input name="password" type="password" size="20"></td></tr>
+            <input type="hidden" name="program" value="del_norte_eats_runner">
             <tr><td><input type="submit" class="button" value="Submit"></td></tr>
-            <!--<tr><td><a href="">continue as guest</a></td></tr>-->
+            <tr><td><a href="{{url_for('easter_egg_bp.signup_runner')}}"><span>Sign Up</span></a></td></tr>
 
         </table>
     </form>

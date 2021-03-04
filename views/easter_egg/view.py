@@ -11,7 +11,7 @@ import json
 
 # importing databases form the module.py file
 app = Flask(__name__)
-from models.module import db, userEE, orderEE, userDN
+from models.module import db, userEE, orderEE, userDN, userRR
 from models.login import load_user_DN, model_logout_all
 
 from datetime import datetime
@@ -33,7 +33,7 @@ user_type = 'user'
 
 everybody = []
 user_records = []
-
+runner_records = []
 
 
 def everbody_append():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
@@ -50,6 +50,11 @@ def list_user_map():  # mapping the front end to the backend, put in the functio
         user_dn_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password}
         user_records.append(user_dn_dict)
 
+def list_runner_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
+    runners = userRR.query.all()
+    for user in runners:
+        runner_dn_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password}
+        runner_records.append(runner_dn_dict)
 
 def order_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
     order_records = []
@@ -62,8 +67,10 @@ def order_map():  # mapping the front end to the backend, put in the function so
 
 # running once, appends database items into list user sees
 list_user_map()
-order_records = order_map()
+list_runner_map()
 everbody_append()
+order_records = order_map()
+
 def dash_handel():
     if current_user.is_anonymous:
         return render_template('easter_egg/user_dashboard_guest.html', user_type=user_type)
@@ -98,13 +105,14 @@ def login():
         #print("this is the login page"+  str(form_program))
         #program = 'del_norte_eats'
         program = form_program
+        print(program)
         form_user = [form_username, form_password]
         #  collecting all of the people with the program 'time_to_thrift'
         all_user_list = userDN.query.all()
         users_in_data = []
 
         # user = all_user.query.filter_by(program=program)
-        # itterates through all of the data within user indat
+        # itterates through all of the data within user database
         id = []
         all_user_info = []
         for user in all_user_list:
@@ -115,30 +123,38 @@ def login():
             users_in_data.append(user_info)
 
             #  to find which users are corresponding to the system
-            x = 1
             if user.program == program:
                 id.append(user.id)
 
                 user_cred = [user.username, user.password]
                 all_user_info.append(user_cred)
-                x = x + 1
-
+        print(all_user_info)
         for user in all_user_info:
             # print(user)
             # if the information from the login matches the information that was sttored in the data base
             if form_user == user:
-                # username = str(form_user[0])
+
+                #  gets credentials of the user
                 user_in_db = userDN.query.filter_by(username=form_username).first()
-                # print(user_in_db)
-                # print(user)
+                #  logs in the user with their credentials
                 login_user(user_in_db)
-                # print('redirecting')
-                result = dash_handel()
-                return result
+                print("redirecting")
+                #  redirects the user to their specific dashboard
+                if program == 'del_norte_eats_runner':
+                    #  redirecting to the runner dashboard
+                    print('runner')
+                    return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type)
+                else:
+                    print('user')
+                    if program == 'del_norte_eats':
+                        #  redirecting for the user dashboard
+                        return render_template('easter_egg/user_dashboard_authen.html', user_type=user_type)
+                    else:
+                        #  there should never be a redirect to this, all the programs should correspond
+                        return render_template("easter_egg/after_login.html", user_type=user_type)
 
         # return '<h1>Invalid username or password</h1>'
         return render_template("easter_egg/after_login.html", user_type=user_type)
-
     return render_template("easter_egg/login.html", user_type=user_type)
 
 
@@ -172,6 +188,29 @@ def signup():
 
     return render_template("easter_egg/SU.html", user_type=user_type)  # form = form,
 
+@easter_egg_bp.route('/signup_runner', methods=["GET", "POST"])
+def signup_runner():
+    if request.method == 'POST':
+        email = request.form['email']
+        username = request.form['username']
+        password = request.form['password']
+        program = request.form['program']
+
+        print(str(email) + " " + str(username) + " " + str(password) + " " + str(program))
+
+        #  adding user into the all_user database
+        new_user = userDN(username=username, email=email, password=password, program=program)
+        db.session.add(new_user)
+        db.session.commit()
+
+        # adding user into the userEE database
+        new_user_2 = userRR(username=username, email=email, password=password)
+        db.session.add(new_user_2)
+        db.session.commit()
+
+        return redirect(url_for('easter_egg_bp.login'))
+
+    return render_template("easter_egg/runner/SU.html", user_type=user_type)
 
 @easter_egg_bp.route('/auth_user', methods=['GET', 'POST'])  # this is the home page of the makeup API page
 def private():
@@ -280,7 +319,7 @@ def user_dashboard():
 
 @easter_egg_bp.route('/admin')
 def admin_page():
-    return render_template('easter_egg/admin_page.html', table=user_records, all_table=everybody, order_table=order_records)  # , user_quanity=b
+    return render_template('easter_egg/admin_page.html', user_table=user_records, all_table=everybody, order_table=order_records, runner_table = runner_records)
 
 
 @easter_egg_bp.route('/logout_return')
@@ -290,6 +329,17 @@ def home():
         return render_template("index.html")
     else:
         return render_template("index.html")
+
+@easter_egg_bp.route('/port_runner')
+def runner_nav():
+    if current_user.is_authenticated:
+        #  if the user is logged in as a customer, they will be logged out
+        #  redirected to the login page of the runner page
+        model_logout_all()
+        return render_template("easter_egg/runner/login_runner.html")
+    else:
+        #  if the user is not logged in as a customer, they will be redirected to the login runner page
+        return render_template("easter_egg/runner/login_runner.html")
 
 
 @easter_egg_bp.route('/logout', methods=["GET", "POST"])

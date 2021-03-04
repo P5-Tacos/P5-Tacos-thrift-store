@@ -58,7 +58,7 @@ class userDN(db.Model, UserMixin):
 
     pass
 
-class OrderEE(db.Model):
+class orderEE(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15))
     price = db.Column(db.Integer, unique=False, nullable=False)

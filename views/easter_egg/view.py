@@ -6,13 +6,15 @@ from views.easter_egg.model import food, del_norte_buildings, model
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
-from flask_login import LoginManager, login_user, login_required,current_user
+from flask_login import LoginManager, login_user, login_required, current_user
 import json
 
 # importing databases form the module.py file
 app = Flask(__name__)
-from models.module import db, userEE, OrderEE, userDN
+from models.module import db, userEE, orderEE, userDN
 from models.login import load_user_DN, model_logout_all
+
+from datetime import datetime
 
 db.init_app(app)
 
@@ -21,38 +23,49 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return userDN.query.get(user_id)
+
 
 user_type = 'user'
 
 everybody = []
 user_records = []
-order_records = []
+
+
 
 def everbody_append():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
     user = userDN.query.all()
     for user in user:
-        user_dn_dict = {'id': user.id,  'username': user.username, 'email': user.email, 'password': user.password, 'program': user.program}
+        user_dn_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,
+                        'program': user.program}
         everybody.append(user_dn_dict)
+
 
 def list_user_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
     user = userEE.query.all()
     for user in user:
-        user_dn_dict = {'id': user.id,  'username': user.username, 'email': user.email, 'password': user.password}
+        user_dn_dict = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password}
         user_records.append(user_dn_dict)
 
+
 def order_map():  # mapping the front end to the backend, put in the function so we don't have to copy and paste
-    orders = OrderEE.query.all()
+    order_records = []
+    orders = orderEE.query.all()
     for order in orders:
-        order_dn_dict = {'user id': order.user_id,'price': order.price,  'order contents': order.order_contents, 'time': order.time}
+        order_dn_dict = {'id': order.id,'username': order.username, 'price': order.price, 'order contents': order.order_contents,
+                         'time': order.time}
         order_records.append(order_dn_dict)
+    return order_records
 
 # running once, appends database items into list user sees
 list_user_map()
-order_map()
+order_records = order_map()
 everbody_append()
+
+
 @easter_egg_bp.route('/')  # this is the home page of the makeup API page
 def index():
     # return render_template("easter_egg/home.html",user_type=user_type)
@@ -71,6 +84,7 @@ def image_map2():
     return render_template("easter_egg/image_map_dnhs2.html", images=model.infoforthecontactsineaster(),
                            user_type=user_type)
 
+
 @easter_egg_bp.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
@@ -83,13 +97,13 @@ def login():
         all_user_list = userDN.query.all()
         users_in_data = []
 
-        #user = all_user.query.filter_by(program=program)
-        #itterates through all of the data within user indat
+        # user = all_user.query.filter_by(program=program)
+        # itterates through all of the data within user indat
         id = []
         all_user_info = []
         for user in all_user_list:
 
-            #this loop is to display all the users within the system
+            # this loop is to display all the users within the system
             user_info = {'id': user.id, 'username': user.username, 'email': user.email, 'password': user.password,
                          'program': user.program}
             users_in_data.append(user_info)
@@ -104,26 +118,27 @@ def login():
                 x = x + 1
 
         for user in all_user_info:
-            #print(user)
-            #if the information from the login matches the information that was sttored in the data base
+            # print(user)
+            # if the information from the login matches the information that was sttored in the data base
             if form_user == user:
-                #username = str(form_user[0])
+                # username = str(form_user[0])
                 user_in_db = userDN.query.filter_by(username=form_username).first()
-                #print(user_in_db)
-                #print(user)
+                # print(user_in_db)
+                # print(user)
                 login_user(user_in_db)
-                #print('redirecting')
+                # print('redirecting')
                 return redirect(url_for('easter_egg_bp.user_dashboard'))
 
-
-        #return '<h1>Invalid username or password</h1>'
+        # return '<h1>Invalid username or password</h1>'
         return render_template("easter_egg/after_login.html")
 
     return render_template("easter_egg/login.html")
 
+
 @easter_egg_bp.route('/logged_in')
 def logged_in():
     return render_template("easter_egg/user_dashboard.html")
+
 
 @easter_egg_bp.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -133,14 +148,14 @@ def signup():
         password = request.form['password']
         program = request.form['program']
 
-        print(str(email) +" "+ str(username) +" "+ str(password) +" "+ str(program))
+        print(str(email) + " " + str(username) + " " + str(password) + " " + str(program))
 
         #  adding user into the all_user database
         new_user = userDN(username=username, email=email, password=password, program=program)
         db.session.add(new_user)
         db.session.commit()
 
-        #adding user into the userEE database
+        # adding user into the userEE database
         new_user_2 = userEE(username=username, email=email, password=password)
         db.session.add(new_user_2)
         db.session.commit()
@@ -193,7 +208,8 @@ def after_form():
         building_group = request.form.get('buildings_group')
         all_rooms = []
 
-        #  starting at 1 to ensure that we start at the correct value. This is because we have loop index define the name of the inputs
+        # starting at 1 to ensure that we start at the correct value. This is because we have loop index define the
+        # name of the inputs
         b = 1
         for i in class_rooms:
             room_number = request.form.get('room' + str(b))
@@ -215,20 +231,30 @@ def after_form():
 
         information = {"total cost": total_cost, "building group": building_group, "room number": room}
 
-        #the information that will be stored into the database
-        into_json = {"total cost": total_cost, "building group": building_group, "room number": room, "order_contents": pass_info}
+        # the information that will be stored into the database
+        into_json = {"total cost": total_cost, "building group": building_group, "room number": room,
+                     "order_contents": pass_info}
         order_json = json.dumps(into_json)
+        #print(order_json)
 
+        only_food_json = json.dumps(pass_info)
+        #print(only_food_json)
         #  if the user is not logged in when submitting the form the username is defualted to guest
 
         if current_user.is_anonymous:
             username = 'Guest'
         else:
             username = current_user.username
-        print(username)
+
+        #  getting the time of the submit
+        now = datetime.now()
+
+        order_info = orderEE(username=username, price=float(total_cost), order_contents=only_food_json, time=now)
+        db.session.add(order_info)
+        db.session.commit()
 
     return render_template("easter_egg/after_form.html", information=information, pass_info=pass_info,
-                               user_type=user_type)
+                           user_type=user_type)
 
 
 @easter_egg_bp.route('/runner_dashboard')  # will eventually be post , methods = ['GET','POST']
@@ -242,18 +268,11 @@ def user_dashboard():
     user_type = 'user'
     return render_template('easter_egg/user_dashboard.html', user_type=user_type)
 
+
 @easter_egg_bp.route('/admin')
 def admin_page():
-    #user_dn_dict = {'id': user.ID,'user id': user.user_id,  'username': user.username, 'email': user.email, 'password': user.password}
-    #counter for user Admin
-    #b = 0
+    return render_template('easter_egg/admin_page.html', table=user_records, all_table=everybody, order_table=order_records)  # , user_quanity=b
 
-    """print(user_records)
-    for i in user_records:
-        for v in i:
-            print(str(v))"""
-
-    return render_template('easter_egg/admin_page.html',table=user_records, all_table=everybody)#, user_quanity=b
 
 @easter_egg_bp.route('/logout_return')
 def home():
@@ -270,4 +289,3 @@ def logout():
     if request.method == "POST":
         model_logout_all()
         return redirect(url_for('easter_egg_bp.user_dashboard'))
-

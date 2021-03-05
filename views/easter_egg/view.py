@@ -376,6 +376,11 @@ def logout():
         result = dash_handel()
         return result
 
+    # if the input type was not a post form, if the logout was in the nav bar
+    model_logout_all()
+    result = dash_handel()
+    return result
+
 @easter_egg_bp.route('/logout_rr', methods=["GET", "POST"])
 @login_required
 def logout_rr():

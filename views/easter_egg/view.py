@@ -15,6 +15,8 @@ from models.module import db, userEE, orderEE, userDN, userRR
 from models.login import load_user_DN, model_logout_all
 
 from datetime import datetime
+from sqlalchemy import func
+import time
 
 db.init_app(app)
 
@@ -64,7 +66,7 @@ def order_map():
     orders = orderEE.query.all()
     for order in orders:
         order_dn_dict = {'id': order.id,'username': order.username, 'price': order.price, 'order contents': order.order_contents,
-                         'time': order.time}
+                         'time': order.time, 'picked up': order.picked_up, 'delivered': order.picked_up}
         order_records.append(order_dn_dict)
     return order_records
 
@@ -74,12 +76,29 @@ list_runner_map()
 everbody_append()
 order_records = order_map()
 
+def per_user():
+    if current_user.is_anonymous:
+        username = 'Guest'
+    else:
+        username = current_user.username
+    order_user = []
+    orders = orderEE.query.filter_by(username=username).all()
+    for order in orders:
+        order_dn_dict = {'id': order.id,'username': order.username, 'price': order.price, 'order contents': order.order_contents,
+                         'time': order.time, 'picked up': order.picked_up, 'delivered': order.picked_up}
+        order_user.append(order_dn_dict)
+    return order_user
+
 def dash_handel():
     # to redirect the user to the user to logged in or guest dashboard
+
+    # always getting the user orders based on the username of the current user
+    # username = current_user.username
+    order_user = per_user()
     if current_user.is_anonymous:
-        return render_template('easter_egg/user_dashboard_guest.html', user_type=user_type)
+        return render_template('easter_egg/user_dashboard_guest.html', user_type=user_type, order_table=order_user)
     else:
-        return render_template('easter_egg/user_dashboard_authen.html', user_type=user_type)
+        return render_template('easter_egg/user_dashboard_authen.html', user_type=user_type, order_table=order_user)
 
 #  redirecting the user to the guest dashboard, the route for home int he user dashboard
 @easter_egg_bp.route('/')
@@ -153,7 +172,8 @@ def login():
                     print('user')
                     if program == 'del_norte_eats':
                         #  redirecting for the user dashboard
-                        return render_template('easter_egg/user_dashboard_authen.html', user_type=user_type)
+                        order_user = per_user()
+                        return render_template('easter_egg/user_dashboard_authen.html', user_type=user_type, order_table=order_user)
                     else:
                         #  there should never be a redirect to this, all the programs should correspond
                         return render_template("easter_egg/after_login.html", user_type=user_type)
@@ -306,9 +326,14 @@ def after_form():
             username = current_user.username
 
         #  getting the time of the submit
-        now = datetime.now()
 
-        order_info = orderEE(username=username, price=float(total_cost), order_contents=only_food_json, time=now)
+        now = datetime.now()
+        default = datetime.now()
+        #  id = db.session.query(func.max(orderEE.id))
+        #  print(id)
+        #  orderEE.query.all()
+        #  1 interger is a dummy variable
+        order_info = orderEE(id=1,username=username, price=float(total_cost), order_contents=only_food_json, time=now, picked_up=default, delivered=default)
         db.session.add(order_info)
         db.session.commit()
 

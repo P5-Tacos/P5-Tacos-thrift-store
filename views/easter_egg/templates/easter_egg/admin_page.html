@@ -90,6 +90,8 @@ Admin Page
         <tr>
             <th>ID</th>
             <th>Time of Order</th>
+            <th>Picked Up Time</th>
+            <th>Delivered Time</th>
             <th>Username</th>
             <th>Price</th>
             <th>Order Contents</th>
@@ -100,10 +102,12 @@ Admin Page
         <tr>
             <th>{{ row['id'] }}</th>
             <th>{{ row['time'] }}</th>
+            <th>{{ row['picked up'] }}</th><!-- picked up-->
+            <th>{{ row['delivered'] }}</th><!--delivered-->
             <th>{{ row['username'] }}</th>
             <th>{{ row['price'] }}</th>
             <th>{{ row['order contents'] }}</th>
-        </tr>
+                    </tr>
         {% endfor %}
     </table>
 </div>

@@ -58,17 +58,22 @@ class userDN(db.Model, UserMixin):
     pass
 
 class orderEE(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=True)
     username = db.Column(db.String(15))
     price = db.Column(db.Integer, unique=False, nullable=False)
     order_contents = db.Column(db.String(1000), unique=False, nullable=False)
     time = db.Column(db.DateTime, primary_key=True)
+    picked_up = db.Column(db.DateTime)
+    delivered = db.Column(db.DateTime)
 
-    def __init__(self, price,username, order_contents, time):
+    def __init__(self, id, price,username, order_contents, time, picked_up, delivered):
+        self.id = id
         self.username = username
         self.price = price
         self.order_contents = order_contents
         self.time = time
+        self.picked_up = picked_up
+        self.delivered = delivered
     pass
 
 class userEE(db.Model):

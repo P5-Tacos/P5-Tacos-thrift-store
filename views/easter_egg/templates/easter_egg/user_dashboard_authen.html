@@ -34,6 +34,8 @@
             <th>Username</th>
             <th>Price</th>
             <th>Order Contents</th>
+            <th>Picked Up?</th>
+            <th>Delivered?</th>
         </tr>
         <!-- Loop through rows in table -->
         {% for row in order_table %}
@@ -44,6 +46,20 @@
             <th>{{ row['username'] }}</th>
             <th>{{ row['price'] }}</th>
             <th>{{ row['order contents'] }}</th>
+            <th>
+                {% if row['picked up'] == row['time'] %}
+                    no
+                {% else %}
+                    yes
+                {% endif %}
+            </th><!-- picked up-->
+            <th>
+                {% if row['delivered'] == row['time'] %}
+                no
+                {% else %}
+                yes
+                {% endif %}
+            </th><!--delivered-->
         </tr>
         {% endfor %}
     </table>

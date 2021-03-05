@@ -413,3 +413,15 @@ def logout_rr():
     if request.method == "POST":
         model_logout_all()
         return render_template("easter_egg/runner/login_runner.html")
+
+@easter_egg_bp.route('/picked_up/', methods=['GET', "POST"])
+def picked_up():
+    if request.method == "POST":  # we know the item id
+        order_id = request.form["order_id"]
+        print(order_id)
+
+
+        return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
+
+
+#

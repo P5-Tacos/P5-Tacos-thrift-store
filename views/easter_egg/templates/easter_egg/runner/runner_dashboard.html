@@ -25,6 +25,49 @@ Runner {{current_user.username}}'s Dashboard
     </div>
     <br>
     <form action="{{url_for('easter_egg_bp.logout_rr')}}" method="post"><input type="submit" value="Log Out"></form>
+
+    <h2>Orders To Deliever</h2>
+    <table id="order_table">
+        <tr>
+            <th>ID</th>
+            <th>Time of Order</th>
+            <th>Username</th>
+            <th>Price</th>
+            <th>Order Contents</th>
+            <th>Picked Up?</th>
+            <th>Delivered?</th>
+            <th></th>
+        </tr>
+        <!-- Loop through rows in table -->
+        {% for row in order_table %}
+        <!-- build elements in table -->
+        <tr>
+            <th>{{ row['id'] }}</th>
+            <th>{{ row['time'] }}</th>
+            <th>{{ row['username'] }}</th>
+            <th>{{ row['price'] }}</th>
+            <th>{{ row['order contents'] }}</th>
+            <th>
+                {% if row['picked up'] == row['time'] %}
+                no
+                {% else %}
+                yes
+                {% endif %}
+            </th><!-- picked up-->
+            <th>
+                {% if row['delivered'] == row['time'] %}
+                no
+                {% else %}
+                yes
+                {% endif %}
+            </th><!--delivered-->
+            <th><form action={{url_for('.picked_up')}} method="post">
+                <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                <input type="submit" value="Picked Up?">
+            </form></th>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 
 <script>

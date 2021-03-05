@@ -167,7 +167,7 @@ def login():
                 if program == 'del_norte_eats_runner':
                     #  redirecting to the runner dashboard
                     print('runner')
-                    return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type)
+                    return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
                 else:
                     print('user')
                     if program == 'del_norte_eats':
@@ -333,7 +333,7 @@ def after_form():
         #  print(id)
         #  orderEE.query.all()
         #  1 interger is a dummy variable
-        order_info = orderEE(id=1,username=username, price=float(total_cost), order_contents=only_food_json, time=now, picked_up=default, delivered=default)
+        order_info = orderEE(username=username, price=float(total_cost), order_contents=only_food_json, time=now, picked_up=default, delivered=default)
         db.session.add(order_info)
         db.session.commit()
 
@@ -344,7 +344,7 @@ def after_form():
 @easter_egg_bp.route('/runner_dashboard')
 def runner_dashboard():
     user_type = 'Runner'
-    return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type)
+    return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
 
 
 @easter_egg_bp.route('/user_dashboard')

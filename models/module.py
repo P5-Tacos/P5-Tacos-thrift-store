@@ -66,8 +66,7 @@ class orderEE(db.Model):
     picked_up = db.Column(db.DateTime)
     delivered = db.Column(db.DateTime)
 
-    def __init__(self, id, price,username, order_contents, time, picked_up, delivered):
-        self.id = id
+    def __init__(self, price,username, order_contents, time, picked_up, delivered):
         self.username = username
         self.price = price
         self.order_contents = order_contents

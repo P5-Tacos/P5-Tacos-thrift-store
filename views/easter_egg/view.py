@@ -66,7 +66,7 @@ def order_map():
     orders = orderEE.query.all()
     for order in orders:
         order_dn_dict = {'id': order.id,'username': order.username, 'price': order.price, 'order contents': order.order_contents,
-                         'time': order.time, 'picked up': order.picked_up, 'delivered': order.picked_up}
+                         'time': order.time, 'picked up': order.picked_up, 'delivered': order.delivered}
         order_records.append(order_dn_dict)
     return order_records
 
@@ -167,7 +167,8 @@ def login():
                 if program == 'del_norte_eats_runner':
                     #  redirecting to the runner dashboard
                     print('runner')
-                    return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
+                    return redirect(url_for('easter_egg_bp.runner_dashboard'))
+                    #return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
                 else:
                     print('user')
                     if program == 'del_norte_eats':
@@ -344,6 +345,40 @@ def after_form():
 @easter_egg_bp.route('/runner_dashboard')
 def runner_dashboard():
     user_type = 'Runner'
+    order_user = per_user()
+
+    # list to determine which button will show
+    button_logic_pickup = []
+    button_logic_delivered = []
+
+    order_records = []
+    orders = orderEE.query.all()
+    for order in orders:
+        #print(order.id)
+        if order.time != order.picked_up:
+            #print("has been picked up")
+            button_logic_pickup.append(1)
+            pickup_value = 1
+        else:
+            #print("has not been picked up")
+            button_logic_pickup.append(0)
+            pickup_value = 0
+        if order.time != order.delivered:
+            #print("has been delivered")
+            button_logic_delivered.append(1)
+            delivered_value = 1
+        else:
+            #print("has not been delivered")
+            button_logic_delivered.append(0)
+            delivered_value = 0
+        order_dn_dict = {'id': order.id,'username': order.username, 'price': order.price, 'order contents': order.order_contents,
+                         'time': order.time, 'picked up': order.picked_up, 'delivered': order.delivered, 'button_logic_pickup': pickup_value, 'button_logic_delivered': delivered_value}
+        order_records.append(order_dn_dict)
+    """
+    print(button_logic_pickup)
+    print(button_logic_delivered)
+    print(order_records)
+    """
     return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
 
 
@@ -418,10 +453,26 @@ def logout_rr():
 def picked_up():
     if request.method == "POST":  # we know the item id
         order_id = request.form["order_id"]
-        print(order_id)
+        now = datetime.now()
 
+        order_dict = {'picked_up': now}
+        db.session.query(orderEE).filter_by(id=order_id).update(order_dict)
+        db.session.commit()
 
-        return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
+        #return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
+        return redirect(url_for('easter_egg_bp.runner_dashboard'))
 
+# dilivered_button
 
-#
+@easter_egg_bp.route('/delivered/', methods=['GET', "POST"])
+def delivered():
+    if request.method == "POST":  # we know the item id
+        order_id = request.form["order_id"]
+        now = datetime.now()
+
+        order_dict = {'delivered': now}
+        db.session.query(orderEE).filter_by(id=order_id).update(order_dict)
+        db.session.commit()
+
+        #return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
+        return redirect(url_for('easter_egg_bp.runner_dashboard'))

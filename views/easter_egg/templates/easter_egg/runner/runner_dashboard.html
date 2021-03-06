@@ -21,7 +21,7 @@ Runner {{current_user.username}}'s Dashboard
     <p>Pending Orders:</p>
     <div>
         <button id="toggle_button" type="button" onclick="toggle()">Set Active</button>
-        <!--<p id="testingNumber"></p>-->
+        <span id="testingNumber" style="visibility: hidden"></span>
     </div>
     <br>
     <form action="{{url_for('easter_egg_bp.logout_rr')}}" method="post"><input type="submit" value="Log Out"></form>
@@ -61,10 +61,38 @@ Runner {{current_user.username}}'s Dashboard
                 yes
                 {% endif %}
             </th><!--delivered-->
-            <th><form action={{url_for('.picked_up')}} method="post">
-                <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
-                <input type="submit" value="Picked Up?">
-            </form></th>
+            <th>
+                {% if row['button_logic_pickup'] == 1 %}
+                <form id="pick_up_button{{loop.index}}" style="visibility: hidden;  float: left" action={{url_for('.picked_up')}} method="post">
+                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                    <input type="hidden" name="button_type" value="picked_up">
+                    <input type="hidden" name="visibility{{loop.index}}" value="visible" >
+                    <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
+                </form>
+                {% else %}
+                <form id="pick_up_button{{loop.index}}" style="visibility: visible;  float: left" action={{url_for('.picked_up')}} method="post">
+                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                    <input type="hidden" name="button_type" value="picked_up">
+                    <input type="hidden" name="visibility{{loop.index}}" value="visible" >
+                    <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
+                </form>
+                {% endif %}
+                {% if row['button_logic_delivered'] == 1 %}
+                <form id="dilivered_button{{loop.index}}" style="visibility: hidden; float: left" action={{url_for('.delivered')}} method="post">
+                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                    <input type="hidden" name="button_type" value="picked_up" >
+                    <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
+                    <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
+                </form>
+                {% else %}
+                <form id="dilivered_button{{loop.index}}" style="visibility: visible; float: left" action={{url_for('.delivered')}} method="post">
+                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                    <input type="hidden" name="button_type" value="picked_up" >
+                    <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
+                    <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
+                </form>
+                {% endif %}
+            </th>
         </tr>
         {% endfor %}
     </table>
@@ -72,7 +100,7 @@ Runner {{current_user.username}}'s Dashboard
 
 <script>
     var testEl = document.getElementById("testingNumber");
-    var buttonEl = document.getElementById("toggle_button")
+    var buttonEl = document.getElementById("toggle_button");
 
     //toggling effect of button
     var i = 0;
@@ -90,7 +118,19 @@ Runner {{current_user.username}}'s Dashboard
         }
 
     };
-
+    var pickUpButton = document.getElementById("pick_up_button");
+    var diliveredButton = document.getElementById("dilivered_button");
+    var i = 0;
+    var delivery_logic = function(id){
+        console.log(id) //parameter of which what button was pressed in the list
+        console.log(i)
+        if (i = 1){
+        pickUpButton.style.visibility = 'hidden';
+        diliveredButton.style.visibility = 'visible';
+        }
+        i++;
+    };
+    console.log(i)
     toggle();
 </script>
 {% endblock %}

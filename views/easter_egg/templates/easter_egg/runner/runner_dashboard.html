@@ -63,33 +63,34 @@ Runner {{current_user.username}}'s Dashboard
             </th><!--delivered-->
             <th>
                 {% if row['button_logic_pickup'] == 1 %}
-                <form id="pick_up_button{{loop.index}}" style="visibility: hidden;  float: left" action={{url_for('.picked_up')}} method="post">
+                <form id="pick_up_button{{loop.index}}" style="visibility: hidden;  float: left; position: absolute" action={{url_for('.picked_up')}} method="post">
                     <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
                     <input type="hidden" name="button_type" value="picked_up">
                     <input type="hidden" name="visibility{{loop.index}}" value="visible" >
                     <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
                 </form>
+
+                    {% if row['button_logic_delivered'] == 1 %}
+                    <form id="dilivered_button{{loop.index}}" style="visibility: hidden; float: left; position: absolute" action={{url_for('.delivered')}} method="post">
+                        <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                        <input type="hidden" name="button_type" value="picked_up" >
+                        <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
+                        <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
+                    </form>
+                    {% else %}
+                    <form id="dilivered_button{{loop.index}}" style="visibility: visible; float: left; position: absolute" action={{url_for('.delivered')}} method="post">
+                        <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                        <input type="hidden" name="button_type" value="picked_up" >
+                        <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
+                        <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
+                    </form>
+                    {% endif %}
                 {% else %}
-                <form id="pick_up_button{{loop.index}}" style="visibility: visible;  float: left" action={{url_for('.picked_up')}} method="post">
+                <form id="pick_up_button{{loop.index}}" style="visibility: visible;  float: left; position: absolute" action={{url_for('.picked_up')}} method="post">
                     <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
                     <input type="hidden" name="button_type" value="picked_up">
                     <input type="hidden" name="visibility{{loop.index}}" value="visible" >
                     <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
-                </form>
-                {% endif %}
-                {% if row['button_logic_delivered'] == 1 %}
-                <form id="dilivered_button{{loop.index}}" style="visibility: hidden; float: left" action={{url_for('.delivered')}} method="post">
-                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
-                    <input type="hidden" name="button_type" value="picked_up" >
-                    <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
-                    <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
-                </form>
-                {% else %}
-                <form id="dilivered_button{{loop.index}}" style="visibility: visible; float: left" action={{url_for('.delivered')}} method="post">
-                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
-                    <input type="hidden" name="button_type" value="picked_up" >
-                    <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
-                    <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
                 </form>
                 {% endif %}
             </th>

@@ -25,9 +25,27 @@ Guest Dashboard
     <a href="{{url_for('easter_egg_bp.signup')}}"><button>Sign Up</button></a>
     <span> or </span>
     <a href="{{url_for('easter_egg_bp.login')}}"><button>Login</button></a>
-
-
-
+    <!--
+    <h2>Orders</h2>
+    <table id="order_table">
+        <tr>
+            <th>ID</th>
+            <th>Time of Order</th>
+            <th>Username</th>
+            <th>Price</th>
+            <th>Order Contents</th>
+        </tr>
+        {% for row in order_table %}
+        <tr>
+            <th>{{ row['id'] }}</th>
+            <th>{{ row['time'] }}</th>
+            <th>{{ row['username'] }}</th>
+            <th>{{ row['price'] }}</th>
+            <th>{{ row['order contents'] }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+    -->
 </div>
 {% endblock %}
 

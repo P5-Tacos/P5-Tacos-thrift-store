@@ -29,7 +29,6 @@ class UserTT(db.Model):
 
     pass
 
-
 class items(db.Model):
     id = db.Column('item_id', db.Integer, primary_key=True)
     name = db.Column(db.String(100))
@@ -50,7 +49,6 @@ class userDN(db.Model, UserMixin):
     password = db.Column(db.String(80))
     program = db.Column(db.String(50))
 
-
     def __init__(self, username, email, password, program):
         self.username = username
         self.email = email
@@ -60,20 +58,36 @@ class userDN(db.Model, UserMixin):
     pass
 
 class orderEE(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=True)
     username = db.Column(db.String(15))
     price = db.Column(db.Integer, unique=False, nullable=False)
     order_contents = db.Column(db.String(1000), unique=False, nullable=False)
     time = db.Column(db.DateTime, primary_key=True)
+    picked_up = db.Column(db.DateTime)
+    delivered = db.Column(db.DateTime)
 
-    def __init__(self, price,username, order_contents, time):
+    def __init__(self, price,username, order_contents, time, picked_up, delivered):
         self.username = username
         self.price = price
         self.order_contents = order_contents
         self.time = time
+        self.picked_up = picked_up
+        self.delivered = delivered
     pass
 
 class userEE(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(15), unique=True)
+    email = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(80), nullable=False)
+
+    def __init__(self, username, email, password):
+        self.username = username
+        self.email = email
+        self.password = password
+    pass
+
+class userRR(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50), unique=True)

@@ -26,6 +26,43 @@
     <br>
     <form action={{url_for('easter_egg_bp.logout')}} method="post"><input type="submit" value="Log Out"></form>
 
+    <h2>Orders</h2>
+    <table id="order_table">
+        <tr>
+            <th>ID</th>
+            <th>Time of Order</th>
+            <th>Username</th>
+            <th>Price</th>
+            <th>Order Contents</th>
+            <th>Picked Up?</th>
+            <th>Delivered?</th>
+        </tr>
+        <!-- Loop through rows in table -->
+        {% for row in order_table %}
+        <!-- build elements in table -->
+        <tr>
+            <th>{{ row['id'] }}</th>
+            <th>{{ row['time'] }}</th>
+            <th>{{ row['username'] }}</th>
+            <th>{{ row['price'] }}</th>
+            <th>{{ row['order contents'] }}</th>
+            <th>
+                {% if row['picked up'] == row['time'] %}
+                    no
+                {% else %}
+                    yes
+                {% endif %}
+            </th><!-- picked up-->
+            <th>
+                {% if row['delivered'] == row['time'] %}
+                no
+                {% else %}
+                yes
+                {% endif %}
+            </th><!--delivered-->
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}
 

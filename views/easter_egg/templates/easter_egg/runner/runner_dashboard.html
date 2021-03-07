@@ -1,0 +1,137 @@
+{% extends 'easter_egg/runner/base_egg_runner.html' %}
+<html lang="en">
+
+{% block title %}
+Runner {{current_user.username}}'s Dashboard
+{% endblock %}
+
+{% block style %}
+<style>
+    .margin_1 {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="margin_1">
+    <!--<h1>Runner Dashboard</h1>-->
+    <h1>{{current_user.username}}'s Runner Dashboard</h1>
+    <p>Pending Orders:</p>
+    <div>
+        <button id="toggle_button" type="button" onclick="toggle()">Set Active</button>
+        <span id="testingNumber" style="visibility: hidden"></span>
+    </div>
+    <br>
+    <form action="{{url_for('easter_egg_bp.logout_rr')}}" method="post"><input type="submit" value="Log Out"></form>
+
+    <h2>Orders To Deliever</h2>
+    <table id="order_table">
+        <tr>
+            <th>ID</th>
+            <th>Time of Order</th>
+            <th>Username</th>
+            <th>Price</th>
+            <th>Order Contents</th>
+            <th>Picked Up?</th>
+            <th>Delivered?</th>
+            <th></th>
+        </tr>
+        <!-- Loop through rows in table -->
+        {% for row in order_table %}
+        <!-- build elements in table -->
+        <tr>
+            <th>{{ row['id'] }}</th>
+            <th>{{ row['time'] }}</th>
+            <th>{{ row['username'] }}</th>
+            <th>{{ row['price'] }}</th>
+            <th>{{ row['order contents'] }}</th>
+            <th>
+                {% if row['picked up'] == row['time'] %}
+                no
+                {% else %}
+                yes
+                {% endif %}
+            </th><!-- picked up-->
+            <th>
+                {% if row['delivered'] == row['time'] %}
+                no
+                {% else %}
+                yes
+                {% endif %}
+            </th><!--delivered-->
+            <th>
+                {% if row['button_logic_pickup'] == 1 %}
+                <form id="pick_up_button{{loop.index}}" style="visibility: hidden;  float: left; position: absolute" action={{url_for('.picked_up')}} method="post">
+                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                    <input type="hidden" name="button_type" value="picked_up">
+                    <input type="hidden" name="visibility{{loop.index}}" value="visible" >
+                    <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
+                </form>
+
+                    {% if row['button_logic_delivered'] == 1 %}
+                    <form id="dilivered_button{{loop.index}}" style="visibility: hidden; float: left; position: absolute" action={{url_for('.delivered')}} method="post">
+                        <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                        <input type="hidden" name="button_type" value="picked_up" >
+                        <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
+                        <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
+                    </form>
+                    {% else %}
+                    <form id="dilivered_button{{loop.index}}" style="visibility: visible; float: left; position: absolute" action={{url_for('.delivered')}} method="post">
+                        <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                        <input type="hidden" name="button_type" value="picked_up" >
+                        <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
+                        <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
+                    </form>
+                    {% endif %}
+                {% else %}
+                <form id="pick_up_button{{loop.index}}" style="visibility: visible;  float: left; position: absolute" action={{url_for('.picked_up')}} method="post">
+                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                    <input type="hidden" name="button_type" value="picked_up">
+                    <input type="hidden" name="visibility{{loop.index}}" value="visible" >
+                    <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
+                </form>
+                {% endif %}
+            </th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<script>
+    var testEl = document.getElementById("testingNumber");
+    var buttonEl = document.getElementById("toggle_button");
+
+    //toggling effect of button
+    var i = 0;
+    var toggle = function(){
+        i++;
+        var b_mod = 1 & i;
+        testEl.textContent = b_mod;
+
+        if (b_mod != 0){
+            //deactivated state
+            buttonEl.innerText = "Set Active"
+        } else {
+            //activated state
+            buttonEl.innerText = "Deactivate"
+        }
+
+    };
+    var pickUpButton = document.getElementById("pick_up_button");
+    var diliveredButton = document.getElementById("dilivered_button");
+    var i = 0;
+    var delivery_logic = function(id){
+        console.log(id) //parameter of which what button was pressed in the list
+        console.log(i)
+        if (i = 1){
+        pickUpButton.style.visibility = 'hidden';
+        diliveredButton.style.visibility = 'visible';
+        }
+        i++;
+    };
+    console.log(i)
+    toggle();
+</script>
+{% endblock %}

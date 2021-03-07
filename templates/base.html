@@ -26,6 +26,16 @@
             margin-left: 15px;
             margin-bottom: 10px;
         }
+        #return_link, #return_link:visited {
+            margin-left: 15px;
+            all: revert;
+            text-decoration: none;
+            color: #333;
+        }
+        #return_link:hover, #return_link:active{
+            text-decoration: none;
+            color: black;
+        }
     </style>
 </head>
 
@@ -33,8 +43,7 @@
     <!-- this is the nav bar -->
     <div class="sticky">
         <div class="topnav">
-            <h1 id="title_top"> Time to Thrift</h1>
-
+            <h1 id="title_top"> Time to Thrift <span><a id="return_link" href={{url_for('easter_egg_bp.home')}}>Back to Home</a></span> <!-- style="all: revert;" --></h1>
             <a class="home" href="{{url_for('time_to_thrift_bp.index_TT')}}">Home</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <a href="{{url_for('time_to_thrift_bp.storefront')}}">Store Front</a> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->
             <!--<a href="{{url_for('database_items_bp.shop_owner')}}">Database</a>--> <!--do not use url_for() this sill break the template when navigating to makeup_landing-->

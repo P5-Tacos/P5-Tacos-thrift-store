@@ -100,29 +100,6 @@ def contactus():
     return render_template("time_to_thrift/contactus.html", images=contactimages.grouppictures(),
                            display_cart=shopping_cart)  # this is the app route to the contact us page
 
-
-"""@time_to_thrift_bp.route('/login', methods=["GET", "POST"])
-def login():
-    authen = {"authen":""}
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        user = UserTT.query.filter_by(username=username).first()
-        if user:
-            if user.password == password and user.authen == "user":
-                authen["authen"] = "user"
-                login_user(user)
-                return redirect(url_for('time_to_thrift_bp.logged_in'))
-            if user.password == password and user.authen == "admin":
-                authen["authen"] = "admin"
-                login_user(user)
-                return redirect(url_for('time_to_thrift_bp.logged_in'))
-
-
-        return '<h1>Invalid username or password</h1>'
-
-    return render_template("time_to_thrift/login.html", display_cart=shopping_cart)"""
-
 @time_to_thrift_bp.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
@@ -177,7 +154,6 @@ def login():
         return render_template("time_to_thrift/after_login.html")
 
     return render_template("time_to_thrift/login.html", display_cart=shopping_cart)
-    return render_template("time_to_thrift/login.html", display_cart=shopping_cart,authen = authen)
 
 @time_to_thrift_bp.route('/logged_in', methods=["GET", "POST"])
 # @login_required
@@ -195,21 +171,6 @@ def logged_in():
         authen = {"authen":"guest"}
         return render_template("time_to_thrift/logged_in.html", display_cart=shopping_cart, authen = authen)
 
-
-"""@time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
-def signup():
-    if request.method == 'POST':
-        email = request.form['email']
-        username = request.form['username']
-        password = request.form['password']
-        authen = request.form['authen']
-        new_user = UserTT(username=username, email=email, password=password,shopping_cart_column='[]',authen = authen)
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect(url_for('time_to_thrift_bp.login'))
-
-    return render_template("time_to_thrift/SU.html", display_cart=shopping_cart)  # form = form,"""
-
 @time_to_thrift_bp.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == 'POST':
@@ -219,7 +180,7 @@ def signup():
         program = request.form['program']
         authen = request.form['authen']
 
-        #  adding user into the all_user database
+    #  adding user into the all_user database
         new_user = userDN(username=username, email=email, password=password, program=program)
         db.session.add(new_user)
         db.session.commit()
@@ -325,7 +286,6 @@ def shopping_cart_load():
         for i in loaded_list:
             shopping_cart.append(i)
         return redirect(url_for('time_to_thrift_bp.logged_in'))
-
 
 
 @time_to_thrift_bp.route('/thriftythreads')

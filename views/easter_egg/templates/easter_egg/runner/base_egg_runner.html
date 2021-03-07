@@ -67,36 +67,16 @@
 <!-- this is the nav bar -->
 <div class="topnav">
     <div style="margin-left: 15px">
-        {% if user_type == 'runner' %}
         <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats<span> - Runner</span></h1></a>
-        {% else %}
-            {% if user_type == 'user' %}
-            <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats<span> - User</span></h1></a>
-            {% else %}
-            <a style="all:revert; text-decoration: none;" href={{url_for('easter_egg_bp.index')}}><h1 id="header_title"> Del Norte Eats</h1></a>
-            {% endif %}
-        {% endif %}
         <a id="return_link" href={{url_for('easter_egg_bp.home')}}>Back to Home</a> <!-- style="all: revert;" -->
     </div>
-    {% if user_type == 'runner' %}
 
-    <a href="{{url_for('easter_egg_bp.index')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/shopping-cart-yellow.svg');" onmouseout="onHover('/easter_egg/static/images/shopping-cart-white.svg');">
+
+    <a href="{{url_for('easter_egg_bp.user_nav')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/shopping-cart-yellow.svg');" onmouseout="onHover('/easter_egg/static/images/shopping-cart-white.svg');">
         <img id="menuImg1" src="{{url_for('easter_egg_bp.static', filename='images/shopping-cart-white.svg')}}" alt="Running Man" width="25px">
     </a>
     <a> Orders </a>
-    {% else %}
-    <a href="{{url_for('.runner_nav')}}" style="height: 23px" onmouseover="onHover('/easter_egg/static/images/running_man_yellow.svg');" onmouseout="onHover('/easter_egg/static/images/running_man_white.svg');">
-        <img id="menuImg1" src="{{url_for('easter_egg_bp.static', filename='images/running_man_white.svg')}}" alt="Running Man" width="25px">
-    </a>
-    <a class="home" href={{url_for('easter_egg_bp.user_dashboard')}}>Home</a>
-    <a href="{{url_for('.singlepage_form')}}">Order</a>
-        {% if current_user.is_anonymous %}
-        <a href="{{url_for('easter_egg_bp.signup')}}">Sign Up</a>
-        <a href="{{url_for('easter_egg_bp.login')}}">Login</a>
-        {% else %}
-        <a href="{{url_for('easter_egg_bp.logout')}}">Logout</a>
-        {% endif %}
-    {% endif %}
+
 </div>
 {% block style%}{% endblock %}
 {% block content %}{% endblock %}

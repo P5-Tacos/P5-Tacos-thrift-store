@@ -287,6 +287,7 @@ To replace the arduous task of manually going out to a thrift store to take phot
 			- [Demonstration of API](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/makeup_api)
 				- this location contains the front end of pulling from the api of choice
 
+#### [Refrencing Class Guide](https://github.com/nighthawkcoders/flask-idea-homesite)
 #### Pull code from Github and update packages
 #### In console/terminal (every update: pull code and check package dependencies)...
 

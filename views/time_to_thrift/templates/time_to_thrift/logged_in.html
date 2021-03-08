@@ -64,6 +64,36 @@ Guest Dashboard
     </form>
 </div>
 {% endif %}
+{% if current_user.is_authenticated and authenticate == "user" %}
+<h1> Welcome User {{current_user.username}}</h1>
+<div>
+    <h3>{{display_cart|length}} Items in your cart</h3>
+    <p>Items in your cart:</p>
+    {% for info in display_cart %} <!-- Looping through each dictionary in the list-->
+    {% set name = info["item_name"] %}
+    {% set price = info["item_price"] %}
+    {% set image_location = info["item_location"] %}
+    <!-- need to place the cards here -->
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <!--<p>{{loop.index0}}</p>--><!-- to display positition of item in shopping cart-->
+                <img src="{{image_location}}" width=100px>
+                <div class="container">
+                    <h2>{{name}}</h2>
+                    <p sytle="color:black;">${{price}}</p>
+                </div>
+                <form action="{{url_for('time_to_thrift_bp.shopping_cart_remove')}}" method="post">
+                    <input type="number" id="item_pos_list" name="item_pos_list" value="{{loop.index0}}" style="visibility: hidden;">
+                    <button class="button">remove from cart</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
 {% if current_user.is_anonymous  %} <!-- If the user is a guest-->
 <div style="margin-left: 15px; z-index: -10">
     <h1>Welcome guest</h1>

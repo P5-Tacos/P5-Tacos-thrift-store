@@ -61,12 +61,17 @@ Sign Up
         <form name="signUp" action={{url_for('.signup')}} onsubmit="return validateForm()" method="post">
             <table border="0">
                 <tr><th>Email</th></tr>
-                <tr><td><input name="email" type="text" size="20"></td></tr>
+                <tr><td><input name="email" type="text" size="20" required></td></tr>
                 <tr><th>Username</th></tr>
-                <tr><td><input name="username" type="text" size="20"></td></tr>
+                <tr><td><input name="username" type="text" size="20" required></td></tr>
                 <tr><th>Password</th></tr>
-                <tr><td><input name="password" type="password" size="20"></td></tr>
+                <tr><td><input name="password" type="password" size="20" required></td></tr>
+                <tr><td><select id="authen" name="authen" required>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+                </select></td></tr>
                 <tr><td><input type="submit" class="button" value="Submit"></td></tr>
+
                 <input type="hidden" name="program" value="time_to_thrift">
                 <tr><td><a href="{{url_for('time_to_thrift_bp.logged_in')}}">continue as guest</a></td></tr>
             </table>

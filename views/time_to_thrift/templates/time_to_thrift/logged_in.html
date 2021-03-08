@@ -14,6 +14,8 @@ Guest Dashboard
 {% endblock %}
 {% set authenticate = authen['authen'] %}
 {% block content %}
+
+
 {% if current_user.is_authenticated and authenticate == "user" %}<!-- If the user has logged in-->
 <div style="margin-left: 15px;">
     <h1>{{current_user.username}} Dashboard</h1>
@@ -30,14 +32,16 @@ Guest Dashboard
     </form>
     <br>
 
+    <!-- Displaying the items within the users cart-->
     <h3>{{display_cart|length}} Items in your cart</h3>
     <p>Items in your cart:</p>
+    <div class="row">
     {% for info in display_cart %} <!-- Looping through each dictionary in the list-->
     {% set name = info["item_name"] %}
     {% set price = info["item_price"] %}
     {% set image_location = info["item_location"] %}
     <!-- need to place the cards here -->
-    <div class="row">
+
         <div class="column">
             <div class="card">
                 <!--<p>{{loop.index0}}</p>--><!-- to display positition of item in shopping cart-->
@@ -56,27 +60,37 @@ Guest Dashboard
     </div>
 </div>
 {% endif %}
+
 {% if current_user.is_authenticated and authenticate == "admin" %}
-<h1> Welcome Admin {{current_user.username}}</h1>
-<div>
+<div style="margin-left: 15px">
+    <h1> Welcome Admin {{current_user.username}}</h1>
+
+    <!-- redirect user to the database page -->
     <form action="{{url_for('database_items_bp.shop_owner')}}" method="post">
         <button type="submit" class="button" style="width: 100px; position: center;">Update Shop Items</button>
     </form>
 </div>
 {% endif %}
+
 {% if current_user.is_anonymous  %} <!-- If the user is a guest-->
 <div style="margin-left: 15px; z-index: -10">
     <h1>Welcome guest</h1>
     <p>Have an existing account? <span><a href="{{url_for('time_to_thrift_bp.login')}}">Login</a></span></p>
     <p>Don't an existing account? <span><a href="{{url_for('time_to_thrift_bp.signup')}}">Sign Up</a></span></p>
+    {% if display_cart|length == 0 %}
+    <p><span><a href="{{url_for('time_to_thrift_bp.index_TT')}}">Start Shopping!</a></span></p>
+    {% else %}
+    <p><span><a href="{{url_for('time_to_thrift_bp.index_TT')}}">Continue Shopping!</a></span></p>
+    {% endif %}
     <h3>{{display_cart|length}} Items in your cart</h3>
     <p>Items in your cart:</p>
+    <div class="row">
     {% for info in display_cart %} <!-- Looping through each dictionary in the list-->
     {% set name = info["item_name"] %}
     {% set price = info["item_price"] %}
     {% set image_location = info["item_location"] %}
     <!-- need to place the cards here -->
-    <div class="row">
+
         <div class="column">
             <div class="card">
                 <!--<p>{{loop.index0}}</p>--><!-- to display positition of item in shopping cart-->

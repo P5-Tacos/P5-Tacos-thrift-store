@@ -10,6 +10,7 @@ Runner {{current_user.username}}'s Dashboard
     .margin_1 {
         margin-left: 10px;
     }
+    tr:nth-child(even) {background-color: #f2f2f2;}
 </style>
 {% endblock %}
 
@@ -61,39 +62,39 @@ Runner {{current_user.username}}'s Dashboard
                 yes
                 {% endif %}
             </th><!--delivered-->
-            <th>
+            <td>
                 {% if row['button_logic_pickup'] == 1 %}
-                <form id="pick_up_button{{loop.index}}" style="visibility: hidden;  float: left; position: absolute" action={{url_for('.picked_up')}} method="post">
-                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                <form id="pick_up_button{{loop.index}}" style="display: none;" action={{url_for('.picked_up')}} method="post">
+                    <input type="number" name="order_id" value={{row['id']}} style="display: none;">
                     <input type="hidden" name="button_type" value="picked_up">
                     <input type="hidden" name="visibility{{loop.index}}" value="visible" >
                     <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
                 </form>
 
                     {% if row['button_logic_delivered'] == 1 %}
-                    <form id="dilivered_button{{loop.index}}" style="visibility: hidden; float: left; position: absolute" action={{url_for('.delivered')}} method="post">
-                        <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                    <form id="dilivered_button{{loop.index}}" style="display: none;" action={{url_for('.delivered')}} method="post">
+                        <input type="number" name="order_id" value={{row['id']}} style="display: none;">
                         <input type="hidden" name="button_type" value="picked_up" >
                         <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
                         <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
                     </form>
                     {% else %}
-                    <form id="dilivered_button{{loop.index}}" style="visibility: visible; float: left; position: absolute" action={{url_for('.delivered')}} method="post">
-                        <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                    <form id="dilivered_button{{loop.index}}" style="display: inline;" action={{url_for('.delivered')}} method="post">
+                        <input type="number" name="order_id" value={{row['id']}} style="display: none;">
                         <input type="hidden" name="button_type" value="picked_up" >
                         <input type="hidden" name="visibility{{loop.index}}" value="hidden" >
                         <input type="submit" value="delivered?" onclick="delivery_logic(String({{loop.index}})">
                     </form>
                     {% endif %}
                 {% else %}
-                <form id="pick_up_button{{loop.index}}" style="visibility: visible;  float: left; position: absolute" action={{url_for('.picked_up')}} method="post">
-                    <input type="number" name="order_id" value={{row['id']}} style="visibility: hidden; width: 0px;">
+                <form id="pick_up_button{{loop.index}}" style="display: inline;" action={{url_for('.picked_up')}} method="post">
+                    <input type="number" name="order_id" value={{row['id']}} style="display: none;">
                     <input type="hidden" name="button_type" value="picked_up">
                     <input type="hidden" name="visibility{{loop.index}}" value="visible" >
                     <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
                 </form>
                 {% endif %}
-            </th>
+            </td>
         </tr>
         {% endfor %}
     </table>

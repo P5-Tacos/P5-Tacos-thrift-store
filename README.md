@@ -13,6 +13,7 @@
 #### Link to scrum board: https://github.com/orgs/P5-Tacos/projects/1
 #### Link to project plan and requirements: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
 #### Link to easter egg: http://timetothrift.cf/easter_egg_college/
+#### Link to commercial: https://www.youtube.com/watch?v=4RPEFKNqaKE
 
 ## Changes Log
 #### Week 10 

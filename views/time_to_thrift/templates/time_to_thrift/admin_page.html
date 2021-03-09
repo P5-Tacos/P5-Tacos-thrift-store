@@ -7,6 +7,18 @@ Admin
 
 {% block style %}
 <link rel="stylesheet" href="../static/css/style_home.css" type="text/css">
+<style>
+    tr:nth-child(even) {background-color: #f2f2f2;}
+    table { border-collapse: collapse; }
+    tr { border: none; }
+    td {
+        border-right: solid 3px #000000;
+        border-left: solid 3px #000000;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+</style>
 {% endblock %}
 
 {% block content %}
@@ -19,21 +31,55 @@ Admin
             <th>Name</th>
             <th>Email</th>
             <th>Password</th>
-            <th>Shopping Cart</th>
             <th>User Status</th>
+            <th>Shopping Cart</th>
         </tr>
         <!-- Loop through rows in table -->
         {% for row in table %}
+        {% set password = row["password"] %}
         <!-- build elements in table -->
         <tr>
-            <th>{{ row['id'] }}</th>
-            <th>{{ row['username'] }}</th>
-            <th>{{ row['email'] }}</th>
-            <th>{{ row['password'] }}</th>
-            <th>{{ row['shopping_cart_column'] }}</th>
-            <th>{{ row['authen'] }}</th>
+            <td>{{ row['id'] }}</td>
+            <td>{{ row['username'] }}</td>
+            <td>{{ row['email'] }}</td>
+            <td onmouseover="showPassword({{loop.index}}, 'password_char2', 'password_real2')" onmouseout="showChar({{loop.index}}, 'password_char2', 'password_real2')">
+                <span style="display: inline;" id="password_char2{{loop.index}}">
+                    {% for i in password %}
+                    *
+                    {% endfor %}
+                </span>
+                <span style="display: none;" id="password_real2{{loop.index}}">{{password}}</span>
+            </td>
+            <td>{{ row['authen'] }}</td>
+            <td style="width: 1000px;">{{ row['shopping_cart_column'] }}</td>
         </tr>
         {% endfor %}
     </table>
 </div>
+
+<script>
+    function showPassword(x, idEl_char, idEl_real){
+        //hiding the characters
+        var idEl = idEl_char +String(x)
+        var passwordChar = document.getElementById(idEl)
+        passwordChar.style.display = 'none';
+
+        //showing the password
+        var idEl_string = idEl_real +String(x)
+        var passwordChar_real = document.getElementById(idEl_string)
+        passwordChar_real.style.display = 'inline';
+    }
+
+    function showChar(x, idEl_char, idEl_real){
+        //showing the characters
+        var idEl = idEl_char +String(x)
+        var passwordChar = document.getElementById(idEl)
+        passwordChar.style.display = 'inline';
+
+        //hiding the password
+        var idEl_string = idEl_real +String(x)
+        var passwordChar_real = document.getElementById(idEl_string)
+        passwordChar_real.style.display = 'none';
+    }
+</script>
 {% endblock %}

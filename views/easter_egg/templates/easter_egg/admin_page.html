@@ -35,11 +35,19 @@ Admin Page
         <!-- Loop through rows in table -->
         {% for row in all_table %}
         <!-- build elements in table -->
+        {% set password = row["password"] %}
         <tr>
             <th>{{ row['id'] }}</th>
             <th>{{ row['username'] }}</th>
             <th>{{ row['email'] }}</th>
-            <th>{{ row['password'] }}</th>
+            <th onmouseover="showPassword({{loop.index}}, 'password_char', 'password_real')" onmouseout="showChar({{loop.index}}, 'password_char', 'password_real')">
+                <span style="display: inline;" id="password_char{{loop.index}}">
+                    {% for i in password %}
+                    *
+                    {% endfor %}
+                </span>
+                <span style="display: none;" id="password_real{{loop.index}}">{{password}}</span>
+            </th>
             <th>{{ row['program'] }}</th>
         </tr>
         {% endfor %}
@@ -55,12 +63,20 @@ Admin Page
         </tr>
         <!-- Loop through rows in table -->
         {% for row in user_table %}
+        {% set password = row["password"] %}
         <!-- build elements in table -->
         <tr>
             <th>{{ row['id'] }}</th>
             <th>{{ row['username'] }}</th>
             <th>{{ row['email'] }}</th>
-            <th>{{ row['password'] }}</th>
+            <th onmouseover="showPassword({{loop.index}}, 'password_char1', 'password_real1')" onmouseout="showChar({{loop.index}}, 'password_char1', 'password_real1')">
+                <span style="display: inline;" id="password_char1{{loop.index}}">
+                    {% for i in password %}
+                    *
+                    {% endfor %}
+                </span>
+                <span style="display: none;" id="password_real1{{loop.index}}">{{password}}</span>
+            </th>
         </tr>
         {% endfor %}
     </table>
@@ -75,12 +91,20 @@ Admin Page
         </tr>
         <!-- Loop through rows in table -->
         {% for row in runner_table %}
+        {% set password = row["password"] %}
         <!-- build elements in table -->
         <tr>
             <th>{{ row['id'] }}</th>
             <th>{{ row['username'] }}</th>
             <th>{{ row['email'] }}</th>
-            <th>{{ row['password'] }}</th>
+            <th onmouseover="showPassword({{loop.index}}, 'password_char2', 'password_real2')" onmouseout="showChar({{loop.index}}, 'password_char2', 'password_real2')">
+                <span style="display: inline;" id="password_char2{{loop.index}}">
+                    {% for i in password %}
+                    *
+                    {% endfor %}
+                </span>
+                <span style="display: none;" id="password_real2{{loop.index}}">{{password}}</span>
+            </th>
         </tr>
         {% endfor %}
     </table>
@@ -112,5 +136,33 @@ Admin Page
     </table>
 </div>
 </body>
+
+<script>
+
+    function showPassword(x, idEl_char, idEl_real){
+        //hiding the characters
+        var idEl = idEl_char +String(x)
+        var passwordChar = document.getElementById(idEl)
+        passwordChar.style.display = 'none';
+
+        //showing the password
+        var idEl_string = idEl_real +String(x)
+        var passwordChar_real = document.getElementById(idEl_string)
+        passwordChar_real.style.display = 'inline';
+    }
+
+    function showChar(x, idEl_char, idEl_real){
+        //showing the characters
+        var idEl = idEl_char +String(x)
+        var passwordChar = document.getElementById(idEl)
+        passwordChar.style.display = 'inline';
+
+        //hiding the password
+        var idEl_string = idEl_real +String(x)
+        var passwordChar_real = document.getElementById(idEl_string)
+        passwordChar_real.style.display = 'none';
+    }
+
+</script>
 {% endblock %}
 </html>

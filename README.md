@@ -14,6 +14,20 @@
 #### Link to project plan and requirements: https://docs.google.com/document/d/1KfMvlYYCx5RgCIgN95gB9F38R15c6u2dG-cIQ-A9-oY/edit
 #### Link to easter egg: http://timetothrift.cf/easter_egg_college/
 
+## Overview
+##Wow 
+As there are multiple systems embedded in the same project it was important for the team to organize all user information in separate table for each system
+
+- [module.py](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/module.py) contains all of the database's setup. This file was created to allow for tracking of users across multiple projects.
+- [userDN](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/models/module.py#L45-L58) contains all of the users. The contents of the database can be found [here](http://delnorteeats.cf/easter_egg/admin) in the admin page of Del Norte Eats.
+- [userEE](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/models/module.py#L78-L88) is represented by “Users Del Norte Eats” [table](http://delnorteeats.cf/easter_egg/admin)
+- [userRR](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/models/module.py#L90-L100) is represented by “Runners Del Norte Eats” [table](http://delnorteeats.cf/easter_egg/admin)
+- [orderEE](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/models/module.py#L60-L76) is represented by “Orders” [table](http://delnorteeats.cf/easter_egg/admin)
+
+[userTT](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/models/module.py#L15-L30) is represented in the Admin page in Time to Thrift [table](http://delnorteeats.cf/time_to_thrift/admin)
+Highlights of the admin pages is that the passwords are represented by asterisks for each character in the table. On hover the asterisks are replaced with the actual characters of the password. [Here is the front end of the logic](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L50-L56)
+#### Front end Viewing data
+
 ## Changes Log
 #### Week 10 
 - Andrew

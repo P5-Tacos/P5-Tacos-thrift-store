@@ -7,7 +7,14 @@ Admin Page
 {% block style%}
 <style>
     tr:nth-child(even) {background-color: #f2f2f2;}
-
+    table { border-collapse: collapse; }
+    tr { border: none; }
+    td {
+        border-right: solid 2px #000000;
+        border-left: solid 2px #000000;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
     h2{
         margin-bottom: 0px;
     }
@@ -37,18 +44,18 @@ Admin Page
         <!-- build elements in table -->
         {% set password = row["password"] %}
         <tr>
-            <th>{{ row['id'] }}</th>
-            <th>{{ row['username'] }}</th>
-            <th>{{ row['email'] }}</th>
-            <th onmouseover="showPassword({{loop.index}}, 'password_char', 'password_real')" onmouseout="showChar({{loop.index}}, 'password_char', 'password_real')">
+            <td>{{ row['id'] }}</td>
+            <td>{{ row['username'] }}</td>
+            <td>{{ row['email'] }}</td>
+            <td onmouseover="showPassword({{loop.index}}, 'password_char', 'password_real')" onmouseout="showChar({{loop.index}}, 'password_char', 'password_real')">
                 <span style="display: inline;" id="password_char{{loop.index}}">
                     {% for i in password %}
                     *
                     {% endfor %}
                 </span>
                 <span style="display: none;" id="password_real{{loop.index}}">{{password}}</span>
-            </th>
-            <th>{{ row['program'] }}</th>
+            </td>
+            <td>{{ row['program'] }}</td>
         </tr>
         {% endfor %}
     </table>
@@ -66,17 +73,17 @@ Admin Page
         {% set password = row["password"] %}
         <!-- build elements in table -->
         <tr>
-            <th>{{ row['id'] }}</th>
-            <th>{{ row['username'] }}</th>
-            <th>{{ row['email'] }}</th>
-            <th onmouseover="showPassword({{loop.index}}, 'password_char1', 'password_real1')" onmouseout="showChar({{loop.index}}, 'password_char1', 'password_real1')">
+            <td>{{ row['id'] }}</td>
+            <td>{{ row['username'] }}</td>
+            <td>{{ row['email'] }}</td>
+            <td onmouseover="showPassword({{loop.index}}, 'password_char1', 'password_real1')" onmouseout="showChar({{loop.index}}, 'password_char1', 'password_real1')">
                 <span style="display: inline;" id="password_char1{{loop.index}}">
                     {% for i in password %}
                     *
                     {% endfor %}
                 </span>
                 <span style="display: none;" id="password_real1{{loop.index}}">{{password}}</span>
-            </th>
+            </td>
         </tr>
         {% endfor %}
     </table>
@@ -94,17 +101,17 @@ Admin Page
         {% set password = row["password"] %}
         <!-- build elements in table -->
         <tr>
-            <th>{{ row['id'] }}</th>
-            <th>{{ row['username'] }}</th>
-            <th>{{ row['email'] }}</th>
-            <th onmouseover="showPassword({{loop.index}}, 'password_char2', 'password_real2')" onmouseout="showChar({{loop.index}}, 'password_char2', 'password_real2')">
+            <td>{{ row['id'] }}</td>
+            <td>{{ row['username'] }}</td>
+            <td>{{ row['email'] }}</td>
+            <td onmouseover="showPassword({{loop.index}}, 'password_char2', 'password_real2')" onmouseout="showChar({{loop.index}}, 'password_char2', 'password_real2')">
                 <span style="display: inline;" id="password_char2{{loop.index}}">
                     {% for i in password %}
                     *
                     {% endfor %}
                 </span>
                 <span style="display: none;" id="password_real2{{loop.index}}">{{password}}</span>
-            </th>
+            </td>
         </tr>
         {% endfor %}
     </table>
@@ -124,13 +131,13 @@ Admin Page
         {% for row in order_table %}
         <!-- build elements in table -->
         <tr>
-            <th>{{ row['id'] }}</th>
-            <th>{{ row['time'] }}</th>
-            <th>{{ row['picked up'] }}</th><!-- picked up-->
-            <th>{{ row['delivered'] }}</th><!--delivered-->
-            <th>{{ row['username'] }}</th>
-            <th>{{ row['price'] }}</th>
-            <th>{{ row['order contents'] }}</th>
+            <td>{{ row['id'] }}</td>
+            <td>{{ row['time'] }}</td>
+            <td>{{ row['picked up'] }}</td><!-- picked up-->
+            <td>{{ row['delivered'] }}</td><!--delivered-->
+            <td>{{ row['username'] }}</td>
+            <td>{{ row['price'] }}</td>
+            <td>{{ row['order contents'] }}</td>
                     </tr>
         {% endfor %}
     </table>

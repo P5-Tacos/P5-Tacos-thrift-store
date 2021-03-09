@@ -367,18 +367,27 @@ def runner_dashboard():
             #print("has been delivered")
             button_logic_delivered.append(1)
             delivered_value = 1
+
+            #  assumming that the order has been picked up previously
+            total_time = order.delivered - order.time
+            print(total_time)
         else:
             #print("has not been delivered")
             button_logic_delivered.append(0)
             delivered_value = 0
-        order_dn_dict = {'id': order.id,'username': order.username, 'price': order.price, 'order contents': order.order_contents,
-                         'time': order.time, 'picked up': order.picked_up, 'delivered': order.delivered, 'button_logic_pickup': pickup_value, 'button_logic_delivered': delivered_value}
+
+        order_dn_dict = {'id': order.id,
+                         'username': order.username,
+                         'price': order.price,
+                         'order contents': order.order_contents,
+                         'time': order.time,
+                         'picked up': order.picked_up,
+                         'delivered': order.delivered,
+                         'button_logic_pickup': pickup_value,
+                         'button_logic_delivered': delivered_value,
+                         'total_time': total_time
+                         }
         order_records.append(order_dn_dict)
-    """
-    print(button_logic_pickup)
-    print(button_logic_delivered)
-    print(order_records)
-    """
     return render_template('easter_egg/runner/runner_dashboard.html', user_type=user_type, order_table=order_records)
 
 

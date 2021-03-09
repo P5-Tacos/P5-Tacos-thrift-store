@@ -41,6 +41,7 @@ Runner {{current_user.username}}'s Dashboard
         </tr>
         <!-- Loop through rows in table -->
         {% for row in order_table %}
+        {% set total_time = row["total_time"] %}
         <!-- build elements in table -->
         <tr>
             <th>{{ row['id'] }}</th>
@@ -93,8 +94,11 @@ Runner {{current_user.username}}'s Dashboard
                     <input type="hidden" name="visibility{{loop.index}}" value="visible" >
                     <input type="submit" value="Picked Up?" onclick="delivery_logic(String({{loop.index}}))">
                 </form>
-                {% endif %}
             </td>
+            {% endif %}
+            {% if row['button_logic_delivered'] == 1 %}
+            <td>Delivered in: {{total_time}}</td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>

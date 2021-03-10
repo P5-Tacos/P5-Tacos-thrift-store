@@ -60,7 +60,7 @@ These bullets highlight the structure of the templates (front end) of the websit
 
 
 
-## Wow 
+## Wow Factors
 ### Login Management (Use of Databases)
 
 As there are multiple systems embedded in the same project it was important for the team to organize all user information in separate table for each system

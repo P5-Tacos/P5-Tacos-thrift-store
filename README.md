@@ -49,7 +49,7 @@ These bullets highlight the structure of the templates (front end) of the websit
 		- [Runner](http://delnorteeats.cf/easter_egg/port_runner) (Colin) redirect from the user to runner page, logs out user
 			- [login:](http://delnorteeats.cf/easter_egg/port_runner) (Colin) required login for all Del Norte Eats Runners
 			- sign up: (need to be implemented) creating users in userDN and userRR
-			- **[dashboard:]**(http://delnorteeats.cf/easter_egg/runner_dashboard) (Colin) (need to be locked behind login required)updating information in the ordersEE table. [WOW]() down below
+			- **[dashboard:]**(http://delnorteeats.cf/easter_egg/runner_dashboard) (Colin) (need to be locked behind login required)updating information in the ordersEE table. [WOW](https://github.com/P5-Tacos/P5-Tacos-thrift-store#runner-dashboard-colins-contributions-runtime) down below
 		- [admin page:](http://delnorteeats.cf/easter_egg/admin) (Colin) see the contents of the databases involved in the Del Norte Eats 
 	- [Easter Egg](http://delnorteeats.cf/easter_egg_college/) - the section of code which contains CS P specific assignments
 		- [Requirements- Thrift Shop:](http://delnorteeats.cf/easter_egg_college/college_board_requirements) (everyone) Initial description how our project (only Time to Thrift at the time) satisfied college board requirements

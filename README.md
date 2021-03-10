@@ -15,9 +15,49 @@
 #### Link to easter egg: http://timetothrift.cf/easter_egg_college/
 #### Link to commercial: https://www.youtube.com/watch?v=4RPEFKNqaKE
 
-## Overview
-#Wow 
-#### Login Management (Use of Databases)
+## Structure of the Website (front end)
+
+These bullets highlight the structure of the templates (front end) of the website and what each page's function is. The inclusion of this section is to demonstrate the scale of the website. Be sure to check out our [wow section]() down below
+
+- **Landing page** landing page to navigate throughout each of the 3 main sections
+	- **[Time to Thrift](http://delnorteeats.cf/time_to_thrift/)** - First project landing page
+		- **[home page:](http://delnorteeats.cf/time_to_thrift/)** displays all items within the system
+			- **clothes info:** the page after clicking on the item photos on the home page (accessible by clicking the images on the homepage) will redirect user to the shopping cart (guest dashboard)
+		- **[storefront:](http://delnorteeats.cf/time_to_thrift/storefront)** navigation to the gallery for each store
+			- **[gallery view (Thrifty Threads)](http://delnorteeats.cf/time_to_thrift/thriftythreads):** view of all items within thrifty threads data. Click 'add to cart' button to add item to shopping cart
+			- **[gallery view (Barbarella):](http://delnorteeats.cf/time_to_thrift/barbarella)** view of all items within Barbarella data. Click 'add to cart' button to add item to shopping cart
+		- **[reaction test:](http://delnorteeats.cf/time_to_thrift/reactiontest)** fun game to burn time
+		- **[login:](http://delnorteeats.cf/time_to_thrift/login)** Reading the userDN database to verify user input
+		- **[sign up:](http://delnorteeats.cf/time_to_thrift/signup)** Creating users in userDN and userTT table (notice the dropdown selector of which user type one can sign up as)
+		- **[dashboard (shopping cart):](http://delnorteeats.cf/time_to_thrift/logged_in)** page for user to see what contents was saved to their cart. Shows the quanity in shopping cart
+			- **[guest:](http://delnorteeats.cf/time_to_thrift/logged_in)** a variation to manage those who have not logged in (default not logged out)
+			- **[user:](http://delnorteeats.cf/time_to_thrift/logged_in)** U D of CRUD of shopping cart - saves information of (signed in as ['jill', password]or ['billy4','password'])
+			- **[admin:](http://delnorteeats.cf/time_to_thrift/logged_in)** a variation of the dashboard when logged in (when logged in as ['KetherBuG','12345678'], ['billy','password'], ['bob','password'], ['brayden','password'])
+			  - **[database:](http://delnorteeats.cf/database_items/testing_action)** our first implementation of C and D of CRUD for the items table within the database (need to add in logic to only allow access when logged in as admin)
+		- **[admin page:](http://delnorteeats.cf/time_to_thrift/admin)** see the contents of the databases involved in the Time to Thrift page (hover over the asterics to see a WOW, described in readme [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store#front-end-viewing-data-within-databases-use-of-college-board-procedures---usign-java-script))
+	- **[Del Norte Eats](http://delnorteeats.cf/easter_egg/)** - Project team pivoted. Heavy use of Javascript and Databases
+		- **[User:](http://delnorteeats.cf/easter_egg/user_dashboard)** Landing page when navigating to Del norte eats
+			- **[login:](http://delnorteeats.cf/easter_egg/login)** Reading in userDN and userEE table (verify user input)
+			- **[sign up:](http://delnorteeats.cf/easter_egg/signup)** Creating users in userDN and userEE table
+			- **[dashboard:](http://delnorteeats.cf/easter_egg/user_dashboard)** Reading information that correspond to the username
+			- **[order food:](http://delnorteeats.cf/easter_egg/singlepage_form)** Creating information in the ordersEE table
+		- **[Runner](http://delnorteeats.cf/easter_egg/port_runner)** redirect from the user to runner page, logs out user
+			- **[login:](http://delnorteeats.cf/easter_egg/port_runner)** required login for all Del Norte Eats Runners
+			- **sign up:** (need to be implemented) creating users in userDN and userRR
+			- **[dashboard:](http://delnorteeats.cf/easter_egg/runner_dashboard)** (need to be login required)updating information in the ordersEE table
+		- **[admin page:](http://delnorteeats.cf/easter_egg/admin)** see the contents of the databases involved in the Del Norte Eats 
+	- **[Easter Egg](http://delnorteeats.cf/easter_egg_college/)** - the section of code which contains CS P specific assignments
+		- **[Requirements- Thrift Shop:](http://delnorteeats.cf/easter_egg_college/college_board_requirements)** Initial description how our project (only Time to Thrift at the time) satisfied college board requirements
+		- **[Who am I?:](http://delnorteeats.cf/easter_egg_college/who_am_i)** Descriptions of capabilities of each teammate in P5-Tacos
+		- **[AP CSP requirement reflections:](http://delnorteeats.cf/easter_egg_college/AP_CSP_Requirements)** Second reflection and planning document on how the team would work towards satisfying college board requirements
+	
+
+
+
+
+
+## Wow 
+### Login Management (Use of Databases)
 
 As there are multiple systems embedded in the same project it was important for the team to organize all user information in separate table for each system
 
@@ -30,7 +70,7 @@ As there are multiple systems embedded in the same project it was important for 
 [userTT](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/models/module.py#L15-L30) is represented in the Admin page in Time to Thrift [table](http://delnorteeats.cf/time_to_thrift/admin)
 Highlights of the admin pages is that the passwords are represented by asterisks for each character in the table. On hover the asterisks are replaced with the actual characters of the password. [Here is the front end of the logic](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L50-L56)
 
-#### Front end Viewing data within Databases (Use of College Board Procedures - Usign Java Script)
+### Front end Viewing data within Databases (Use of College Board Procedures - Usign Java Script)
 
 Highlights of the admin pages is that the passwords are represented by asterisks for each character in the table. On hover the asterisks are replaced with the actual characters of the password. [Here is the front end of the logic](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L50-L56) on hover for the cell, there is a javascript function called.
 
@@ -68,10 +108,13 @@ This login logic only covers the login for the users of Del Norte eats and the R
 	- Current each function is tied each [database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L230-L238)
 	- Users are uploaded to two databases simultaneously to keep track of them in userDN and either userTT, userEE, or userRR for time to thrift, user of Del Norte Eats, or runner of Del Norte Eats respectively
 	
-# Wow 
+### Wow 
 #### Runner Dashboard
 	
 ###### Line by line 
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/c45e9bb54cdff3f11c4e26442d6f63190e761276/views/easter_egg/templates/easter_egg/runner/runner_dashboard.html#L52-L65) if the input is default
+	- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/c45e9bb54cdff3f11c4e26442d6f63190e761276/views/easter_egg/view.py#L331-L339) the input for the time, picked_up, delivered is default all equal to one another
+
 
 ## Changes Log
 #### Week 10 

@@ -61,62 +61,34 @@ These bullets highlight the structure of the templates (front end) of the websit
 		- [AP CSP requirement reflections:](http://delnorteeats.cf/easter_egg_college/AP_CSP_Requirements) (everyone) Second reflection and planning document on how the team would work towards satisfying college board requirements
 
 ## Technicals (Blue Prints/Back End)
-<ul>
-<li>Models (backend)</li>
-<ul>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/models">Models for Time to Thrift</a></li>
-<ul>
-<li>here we have stored the python files which contains the information which populates the pages within the time to thrift store</li>
-<li>Include pages containing the initialization of the tables within the databases, where all the front end code refer to and retain information from.&nbsp;</li>
-<li>These information are stored in forms of dictionaries or databases.</li>
-<ul>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/websitecards.py">info for landing cards of the stores</a></li>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/module.py">Info for user management for time to thrift and del norte eats</a></li>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/barbarelladata.py">images for barbarella gallery</a></li>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/thriftythreadsdata.py">images for thrifty threads gallery</a></li>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/reactiontestcode.py">Logic for reaction test</a></li>
-</ul>
-</ul>
-</ul>
-<li>Views (front end)</li>
-<ul>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/__init__.py">app.py</a> contains all the routes for all of the blue prints</li>
-</ul>
-<li>Blue Prints</li>
-<ul>
-<li>we have many projects within the same repository, this was to provide a single location for our teacher to access all of our code and to keep track of student participation through monitoring our commits to the project</li>
-<ul>
-<li>we use blueprints to organize all of the files for each large section of the code <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views">here</a></li>
-<ul>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/database_items">Database</a></li>
-<ul>
-<li>This folder contains the CRUD backend which helps support the database page in the website. This was the first proof of concept of CRUD in the repo</li>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/database_items/view.py">view.py</a></li>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/database_items/templates/database_items/database_items.html">front end</a></li>
-</ul>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg">Del Norte Eats</a></li>
-<ul>
-<li>our second largest project on the repository, the blueprint contains its own model view control, we are working on paring it with an independent database to what we are currently using for time to thrift</li>
-</ul>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg_college">College Board Journal</a></li>
-<ul>
-<li>mainly contains specialized front end focused templates to address college board specific requirements</li>
-</ul>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/makeup_api">Demonstration of API</a></li>
-<ul>
-<li>this location contains the front end of pulling from the api of choice</li>
-</ul>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/time_to_thrift">Time to thrift</a></li>
-<ul>
-<li>This location contains all of the front end of the time to thrift. This allows the team to section off the front end and the views of the of the time to thrift</li>
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/views/time_to_thrift/view.py">view.py&nbsp;</a></li>
 
-<li><a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/time_to_thrift/templates/time_to_thrift">templates</a></li>
-</ul>
-</ul>
-</ul>
-</ul>
-</ul>
+- Models (backend)
+	- [Models for Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/models)
+		- here we have stored the python files which contains the information which populates the pages within the time to thrift store
+		- Include pages containing the initialization of the tables within the databases, where all the front end code refer to and retain information from.
+		- These information are stored in forms of dictionaries or databases.
+			- [info for landing cards of the stores](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/websitecards.py)
+			- [Info for user management for time to thrift and del norte eats](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/module.py)
+			- [images for barbarella gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/barbarelladata.py)
+			- [images for thrifty threads gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/thriftythreadsdata.py)
+			- [Logic for reaction test](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/reactiontestcode.py)
+- Views (front end)
+	- [app.py](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/__init__.py)
+		- contains all the routes for all of the blueprints
+- Blue Prints
+	- we have many projects within the same repository, this was to provide a single location for our teacher to access all of our code and to keep track of student participation through monitoring our commits to the project
+		- we use blueprints to organize all of the files for each large section of the code [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views)
+			- [Database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/database_items)
+				- This folder contains the CRUD backend which helps support the database page in the website. This was the first proof of concept of CRUD in the repo
+			- [Del Norte Eats](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg)
+				- our second largest project on the repository, the blueprint contains its own model view control.
+			- [College Board Journal](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg_college)
+				- mainly contains specialized front end focused templates to address college board specific requirements
+			- [Demonstration of API](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/makeup_api)
+				- this location contains the front end of pulling from the api of choice
+			- [Time to thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/time_to_thrift)
+				- This location contains all of the front end of the time to thrift. This allows the team to section off the front end and the views of the of the time to thrift
+
 
 ## Wow 
 ### Login Management (Use of Databases) (Colin's Contributions)

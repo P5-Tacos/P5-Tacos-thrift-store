@@ -17,9 +17,9 @@
 
 ## Structure of the Website (front end)
 
-These bullets highlight the structure of the templates (front end) of the website and what each page's function is. The inclusion of this section is to demonstrate the scale of the website. Be sure to check out our [wow section]() down below
+These bullets highlight the structure of the templates (front end) of the website and what each page's function is. The inclusion of this section is to demonstrate the scale of the website. Be sure to check out our [wow section](https://github.com/P5-Tacos/P5-Tacos-thrift-store#wow) down below
 
-- **Landing page** landing page to navigate throughout each of the 3 main sections
+- **[Landing page](http://delnorteeats.cf/)** landing page to navigate throughout each of the 3 main sections. Notice the css on hover. Need to improve css for mobile users and assesibility guidelines
 	- **[Time to Thrift](http://delnorteeats.cf/time_to_thrift/)** - First project landing page
 		- **[home page:](http://delnorteeats.cf/time_to_thrift/)** displays all items within the system
 			- **clothes info:** the page after clicking on the item photos on the home page (accessible by clicking the images on the homepage) will redirect user to the shopping cart (guest dashboard)
@@ -31,14 +31,18 @@ These bullets highlight the structure of the templates (front end) of the websit
 		- **[sign up:](http://delnorteeats.cf/time_to_thrift/signup)** Creating users in userDN and userTT table (notice the dropdown selector of which user type one can sign up as)
 		- **[dashboard (shopping cart):](http://delnorteeats.cf/time_to_thrift/logged_in)** page for user to see what contents was saved to their cart. Shows the quanity in shopping cart
 			- **[guest:](http://delnorteeats.cf/time_to_thrift/logged_in)** a variation to manage those who have not logged in (default not logged out)
-			- **[user:](http://delnorteeats.cf/time_to_thrift/logged_in)** U D of CRUD of shopping cart - saves information of (signed in as ['jill', password]or ['billy4','password'])
+			- **[user:](http://delnorteeats.cf/time_to_thrift/logged_in)** U D of CRUD of shopping cart - saves information of (signed in as ['jill', password])
+				- clicking the 'save shopping list' will U (update) the items table of the database
+				- clicking the 'load shopping list' will R (read) the items table of the database and map the contents into a viewable front end from the user perspective
 			- **[admin:](http://delnorteeats.cf/time_to_thrift/logged_in)** a variation of the dashboard when logged in (when logged in as ['KetherBuG','12345678'], ['billy','password'], ['bob','password'], ['brayden','password'])
 			  - **[database:](http://delnorteeats.cf/database_items/testing_action)** our first implementation of C and D of CRUD for the items table within the database (need to add in logic to only allow access when logged in as admin)
-		- **[admin page:](http://delnorteeats.cf/time_to_thrift/admin)** see the contents of the databases involved in the Time to Thrift page (hover over the asterics to see a WOW, described in readme [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store#front-end-viewing-data-within-databases-use-of-college-board-procedures---usign-java-script))
+				- be sure to click the show gallery view to toggle with js the display of the contents of the database in a table view to a cards view
+				- feel free to add in an item within the databse with the feilds at the top of the page
+		- **[admin page:](http://delnorteeats.cf/time_to_thrift/admin)** see the contents of the databases involved in the Time to Thrift page (hover over the asterics to see a <span><a style="color:red" href="https://github.com/P5-Tacos/P5-Tacos-thrift-store#front-end-viewing-data-within-databases-use-of-college-board-procedures---usign-java-script">WOW</a><span>)
 	- **[Del Norte Eats](http://delnorteeats.cf/easter_egg/)** - Project team pivoted. Heavy use of Javascript and Databases
 		- **[User:](http://delnorteeats.cf/easter_egg/user_dashboard)** Landing page when navigating to Del norte eats
-			- **[login:](http://delnorteeats.cf/easter_egg/login)** Reading in userDN and userEE table (verify user input)
-			- **[sign up:](http://delnorteeats.cf/easter_egg/signup)** Creating users in userDN and userEE table
+			- **[login:](http://delnorteeats.cf/easter_egg/login)** Reading in userDN and userEE table (verify user input). See to see the code and read the <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store#back-end-login-management" style="color:red"> WOW </a> procedure
+			- **[sign up:](http://delnorteeats.cf/easter_egg/signup)** Creating users in userDN and userEE table. See [below](https://github.com/P5-Tacos/P5-Tacos-thrift-store#signin-logic-c-part-of-crud) to see the code and read logic and see future improvements
 			- **[dashboard:](http://delnorteeats.cf/easter_egg/user_dashboard)** Reading information that correspond to the username
 			- **[order food:](http://delnorteeats.cf/easter_egg/singlepage_form)** Creating information in the ordersEE table
 		- **[Runner](http://delnorteeats.cf/easter_egg/port_runner)** redirect from the user to runner page, logs out user

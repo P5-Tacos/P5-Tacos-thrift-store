@@ -15,9 +15,13 @@
 #### [Link to easter egg](http://timetothrift.cf/easter_egg_college/)
 #### [Link to commercial](https://www.youtube.com/watch?v=4RPEFKNqaKE)
 
+## Overview (description)
+- **Time to Thrift** Thrift store inventory and sale system. A web based storefront for users to see what hot items are within local San Diego thrift shops.
+- **Del Norte Eats** A lunch ordering system and delivery system centered around the menus and building geography of Del Norte High School.
+
 ## Structure of the Website (front end)
 
-These bullets highlight the structure of the templates (front end) of the website and what each page's function is. The inclusion of this section is to demonstrate the scale of the website. Be sure to check out our [wow section](https://github.com/P5-Tacos/P5-Tacos-thrift-store#wow) down below
+These bullets highlight the structure of the templates (front end) of the website and what each page's function is. The inclusion of this section is to demonstrate the scale of the website. Be sure to check out our [wow section](https://github.com/P5-Tacos/P5-Tacos-thrift-store#wow) down below. ['jhon','password'] represents the username and password (many passwords are the string: 'passwords') that will need to be typed in at each login.
 
 - [Landing page](http://delnorteeats.cf/) landing page to navigate throughout each of the 3 main sections. Notice the css on hover. Need to improve css for mobile users and assesibility guidelines
 	- [Time to Thrift](http://delnorteeats.cf/time_to_thrift/) - First project landing page
@@ -42,13 +46,13 @@ These bullets highlight the structure of the templates (front end) of the websit
 		- **[admin page:](http://delnorteeats.cf/time_to_thrift/admin)** (Colin) see the contents of the databases involved in the Time to Thrift page (hover over the asterics to see a <span><a style="color:red" href="https://github.com/P5-Tacos/P5-Tacos-thrift-store#front-end-viewing-data-within-databases-use-of-college-board-procedures---usign-java-script">WOW</a><span>)
 	- [Del Norte Eats](http://delnorteeats.cf/easter_egg/) - Project team pivoted. Heavy use of Javascript and Databases
 		- [User:](http://delnorteeats.cf/easter_egg/user_dashboard) (Colin) Landing page when navigating to Del norte eats
-			- **[login:](http://delnorteeats.cf/easter_egg/login)** (Colin) Reading in userDN and userEE table (verify user input). See to see the code and read the <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store#back-end-login-management" style="color:red"> WOW </a> procedure
+			- **[login:](http://delnorteeats.cf/easter_egg/login)** (Colin) Reading in userDN and userEE table (verify user input). See to see the code and read the <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store#back-end-login-management" style="color:red"> WOW </a> procedure. Sign in as ['jhon','password'] to see the progress of delivery on your items
 			- [sign up:](http://delnorteeats.cf/easter_egg/signup) (Colin) Creating users in userDN and userEE table. See [below](https://github.com/P5-Tacos/P5-Tacos-thrift-store#signin-logic-c-part-of-crud) (Colin) to see the code and read logic and see future improvements
 			- [dashboard:](http://delnorteeats.cf/easter_egg/user_dashboard) (Colin) Reading information that correspond to the username
 			- [order food:](http://delnorteeats.cf/easter_egg/singlepage_form) (colin+Sam) Creating information in the ordersEE table
 		- [Runner](http://delnorteeats.cf/easter_egg/port_runner) (Colin) redirect from the user to runner page, logs out user
 			- [login:](http://delnorteeats.cf/easter_egg/port_runner) (Colin) required login for all Del Norte Eats Runners
-			- sign up: (need to be implemented) creating users in userDN and userRR
+			- sign up: (need to be implemented) creating users in userDN and userRR. Sign in as ['bobby','password']
 			- **[dashboard:]**(http://delnorteeats.cf/easter_egg/runner_dashboard) (Colin) (need to be locked behind login required)updating information in the ordersEE table. [WOW](https://github.com/P5-Tacos/P5-Tacos-thrift-store#runner-dashboard-colins-contributions-runtime) down below
 		- [admin page:](http://delnorteeats.cf/easter_egg/admin) (Colin) see the contents of the databases involved in the Del Norte Eats 
 	- [Easter Egg](http://delnorteeats.cf/easter_egg_college/) - the section of code which contains CS P specific assignments

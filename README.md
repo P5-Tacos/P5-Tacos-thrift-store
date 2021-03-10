@@ -15,7 +15,9 @@
 #### Link to easter egg: http://timetothrift.cf/easter_egg_college/
 
 ## Overview
-##Wow 
+#Wow 
+#### Login Management (Use of Databases)
+
 As there are multiple systems embedded in the same project it was important for the team to organize all user information in separate table for each system
 
 - [module.py](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/module.py) contains all of the database's setup. This file was created to allow for tracking of users across multiple projects.
@@ -26,7 +28,49 @@ As there are multiple systems embedded in the same project it was important for 
 
 [userTT](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/models/module.py#L15-L30) is represented in the Admin page in Time to Thrift [table](http://delnorteeats.cf/time_to_thrift/admin)
 Highlights of the admin pages is that the passwords are represented by asterisks for each character in the table. On hover the asterisks are replaced with the actual characters of the password. [Here is the front end of the logic](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L50-L56)
-#### Front end Viewing data
+
+#### Front end Viewing data within Databases (Use of College Board Procedures - Usign Java Script)
+
+Highlights of the admin pages is that the passwords are represented by asterisks for each character in the table. On hover the asterisks are replaced with the actual characters of the password. [Here is the front end of the logic](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L50-L56) on hover for the cell, there is a javascript function called.
+
+[There are javascript procedures (using college board diction)](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L149-L171) the arguments that are passed in are the variable iteration of the loop (which row in the table are in), and the prefix of each of the id tags. The prefixes correspond to the ids of the character representation then the actual password. The arguments are [concatenated](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L151) together to then [determine which row](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L153) was hovered over and then changes the css to display the actual characters rather than the representation of the password.
+
+(Where the procedures are used) Using procedures was beneficial as the function can be used over and over for all of the tables as there are just different arguments passed to differentiate between rows of each table.
+- [userDN](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L50)
+- [userEE](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L79)
+- [userRR](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/admin_page.html#L107)
+
+#### Back End Login Management
+Here is the bulk of the [login logic](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L123-L186)
+This login logic only covers the login for the users of Del Norte eats and the Runners of Del Norte eats
+
+###### line by line of the login logic
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L128) differentiates which login template was used
+	- []() either the user (customer) login 
+	- []() or the runner login 
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L133) storing the user input in a list format
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L142-L147) itterates through the userDN (the umbrella database) and stores all the information in a list of dictonaries (similar to JSON formatting)
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L150-L154) if the program stored with the user in userDN corresponds with the form program, append the information into a list for later refrence. This is a list of lists, the first value is the username, second value is the password. This line can be replaced with more effective validators as storing passwords as strings currently is super insecure
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L156-L159) Itterates through the list that conatins all the users which correspond to the program. Checks to see if the user input username and password correspond with username and passwords stored in the system 
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L167-L171) if the program was 'del_norte_eats_runner' then redirect the user to the runner homepage
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L173-L177) if the program was not 'del_norte_eats_runner' but was 'del_norte_eats' the redirect to the user homepage
+- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L178-L180) if the program was not 'del_norte_eats_runner' and was not 'del_norte_eats' the redirect to error page which will then redirect the user back to the login
+
+###### signin logic (C part of CRUD)
+- [Sign up as a user (code)](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L193-L217) (someone who orders food at DN)
+	- Connected to this [sign up page (code)](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/SU.html#L61)
+- [Sign up as a runner (code)](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L219-L243) (someone who delivers food at DN )
+	- Connected to this [sign up page (code)](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/runner/SU.html#L61)
+	
+[Here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/templates/easter_egg/SU.html#L70) is a feature to expand onto where the signup page would be differentiated by a hidden input and only reference one sign up manager.
+- This input would differentiate what databases that the data would be uploaded in
+	- Current each function is tied each [database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/b3a01738d759423fb11f9530b7bd88ba6266c19a/views/easter_egg/view.py#L230-L238)
+	- Users are uploaded to two databases simultaneously to keep track of them in userDN and either userTT, userEE, or userRR for time to thrift, user of Del Norte Eats, or runner of Del Norte Eats respectively
+	
+# Wow 
+#### Runner Dashboard
+	
+###### Line by line 
 
 ## Changes Log
 #### Week 10 

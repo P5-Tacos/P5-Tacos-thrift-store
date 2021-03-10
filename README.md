@@ -19,41 +19,42 @@
 
 These bullets highlight the structure of the templates (front end) of the website and what each page's function is. The inclusion of this section is to demonstrate the scale of the website. Be sure to check out our [wow section](https://github.com/P5-Tacos/P5-Tacos-thrift-store#wow) down below
 
-- **[Landing page](http://delnorteeats.cf/)** landing page to navigate throughout each of the 3 main sections. Notice the css on hover. Need to improve css for mobile users and assesibility guidelines
-	- **[Time to Thrift](http://delnorteeats.cf/time_to_thrift/)** - First project landing page
-		- **[home page:](http://delnorteeats.cf/time_to_thrift/)** (Brayden) displays all items within the system
-			- **clothes info:** (Sam) the page after clicking on the item photos on the home page (accessible by clicking the images on the homepage) will redirect user to the shopping cart (guest dashboard)
-		- **[storefront:](http://delnorteeats.cf/time_to_thrift/storefront)** (Sam) navigation to the gallery for each store
-			- **[gallery view (Thrifty Threads)](http://delnorteeats.cf/time_to_thrift/thriftythreads):** (Sam) view of all items within thrifty threads data. Click 'add to cart' button to add item to shopping cart
-			- **[gallery view (Barbarella):](http://delnorteeats.cf/time_to_thrift/barbarella)** (Sam) view of all items within Barbarella data. Click 'add to cart' button to add item to shopping cart
-		- **[reaction test:](http://delnorteeats.cf/time_to_thrift/reactiontest)** (Brayden) fun game to burn time
-		- **[login:](http://delnorteeats.cf/time_to_thrift/login)** (Andrew) Reading the userDN database to verify user input
-		- **[sign up:](http://delnorteeats.cf/time_to_thrift/signup)** (Andrew)  Creating users in userDN and userTT table (notice the dropdown selector of which user type one can sign up as)
-		- **[dashboard (shopping cart):](http://delnorteeats.cf/time_to_thrift/logged_in)** (Colin)  page for user to see what contents was saved to their cart. Shows the quanity in shopping cart
-			- **[guest:](http://delnorteeats.cf/time_to_thrift/logged_in)** (Colin) a variation to manage those who have not logged in (default not logged out)
-			- **[user:](http://delnorteeats.cf/time_to_thrift/logged_in)** (Colin) U D of CRUD of shopping cart - saves information of (signed in as ['jill', password])
+- [Landing page](http://delnorteeats.cf/) landing page to navigate throughout each of the 3 main sections. Notice the css on hover. Need to improve css for mobile users and assesibility guidelines
+	- [Time to Thrift](http://delnorteeats.cf/time_to_thrift/) - First project landing page
+		- [home page:](http://delnorteeats.cf/time_to_thrift/) (Brayden) displays all items within the system
+			- clothes info: (Sam) the page after clicking on the item photos on the home page (accessible by clicking the images on the homepage) will redirect user to the shopping cart (guest dashboard)
+		- [storefront:](http://delnorteeats.cf/time_to_thrift/storefront) (Sam) navigation to the gallery for each store
+			- [gallery view (Thrifty Threads)](http://delnorteeats.cf/time_to_thrift/thriftythreads): (Sam) view of all items within thrifty threads data. Click 'add to cart' button to add item to shopping cart
+			- [gallery view (Barbarella):](http://delnorteeats.cf/time_to_thrift/barbarella) (Sam) view of all items within Barbarella data. Click 'add to cart' button to add item to shopping cart
+		- **[Make Up](http://delnorteeats.cf/makeup_api/makeup_landing)** (Colin) the first use of API [WOW]()
+		- [reaction test:](http://delnorteeats.cf/time_to_thrift/reactiontest) (Brayden) fun game to burn time
+		- [login:](http://delnorteeats.cf/time_to_thrift/login) (Andrew) Reading the userDN database to verify user input
+		- [sign up:](http://delnorteeats.cf/time_to_thrift/signup) (Andrew)  Creating users in userDN and userTT table (notice the dropdown selector of which user type one can sign up as)
+		- [dashboard (shopping cart):](http://delnorteeats.cf/time_to_thrift/logged_in) (Colin)  page for user to see what contents was saved to their cart. Shows the quanity in shopping cart
+			- [guest:](http://delnorteeats.cf/time_to_thrift/logged_in) (Colin) a variation to manage those who have not logged in (default not logged out)
+			- [user:](http://delnorteeats.cf/time_to_thrift/logged_in) (Colin) U D of CRUD of shopping cart - saves information of (signed in as ['jill', password])
 				- clicking the 'save shopping list' will U (update) the items table of the database
 				- clicking the 'load shopping list' will R (read) the items table of the database and map the contents into a viewable front end from the user perspective
-			- **[admin:](http://delnorteeats.cf/time_to_thrift/logged_in)** (Andrew) a variation of the dashboard when logged in (when logged in as ['KetherBuG','12345678'], ['billy','password'], ['bob','password'], ['brayden','password'])
-			  - **[database:](http://delnorteeats.cf/database_items/testing_action)** (Andrew) our first implementation of C and D of CRUD for the items table within the database (need to add in logic to only allow access when logged in as admin)
+			- [admin:](http://delnorteeats.cf/time_to_thrift/logged_in) (Andrew) a variation of the dashboard when logged in (when logged in as ['KetherBuG','12345678'], ['billy','password'], ['bob','password'], ['brayden','password'])
+			  - [database:](http://delnorteeats.cf/database_items/testing_action) (Andrew) our first implementation of C and D of CRUD for the items table within the database (need to add in logic to only allow access when logged in as admin)
 				- be sure to click the show gallery view to toggle with js the display of the contents of the database in a table view to a cards view
 				- feel free to add in an item within the databse with the feilds at the top of the page
 		- **[admin page:](http://delnorteeats.cf/time_to_thrift/admin)** (Colin) see the contents of the databases involved in the Time to Thrift page (hover over the asterics to see a <span><a style="color:red" href="https://github.com/P5-Tacos/P5-Tacos-thrift-store#front-end-viewing-data-within-databases-use-of-college-board-procedures---usign-java-script">WOW</a><span>)
-	- **[Del Norte Eats](http://delnorteeats.cf/easter_egg/)** - Project team pivoted. Heavy use of Javascript and Databases
-		- **[User:](http://delnorteeats.cf/easter_egg/user_dashboard)** (Colin) Landing page when navigating to Del norte eats
+	- [Del Norte Eats](http://delnorteeats.cf/easter_egg/) - Project team pivoted. Heavy use of Javascript and Databases
+		- [User:](http://delnorteeats.cf/easter_egg/user_dashboard) (Colin) Landing page when navigating to Del norte eats
 			- **[login:](http://delnorteeats.cf/easter_egg/login)** (Colin) Reading in userDN and userEE table (verify user input). See to see the code and read the <a href="https://github.com/P5-Tacos/P5-Tacos-thrift-store#back-end-login-management" style="color:red"> WOW </a> procedure
-			- **[sign up:](http://delnorteeats.cf/easter_egg/signup)** (Colin) Creating users in userDN and userEE table. See [below](https://github.com/P5-Tacos/P5-Tacos-thrift-store#signin-logic-c-part-of-crud) (Colin) to see the code and read logic and see future improvements
-			- **[dashboard:](http://delnorteeats.cf/easter_egg/user_dashboard)** (Colin) Reading information that correspond to the username
-			- **[order food:](http://delnorteeats.cf/easter_egg/singlepage_form)** (colin+Sam) Creating information in the ordersEE table
-		- **[Runner](http://delnorteeats.cf/easter_egg/port_runner)** (Colin) redirect from the user to runner page, logs out user
-			- **[login:](http://delnorteeats.cf/easter_egg/port_runner)** (Colin) required login for all Del Norte Eats Runners
-			- **sign up:** (need to be implemented) creating users in userDN and userRR
-			- **[dashboard:](http://delnorteeats.cf/easter_egg/runner_dashboard)** (Colin) (need to be locked behind login required)updating information in the ordersEE table
-		- **[admin page:](http://delnorteeats.cf/easter_egg/admin)** (Colin) see the contents of the databases involved in the Del Norte Eats 
-	- **[Easter Egg](http://delnorteeats.cf/easter_egg_college/)** - the section of code which contains CS P specific assignments
-		- **[Requirements- Thrift Shop:](http://delnorteeats.cf/easter_egg_college/college_board_requirements)** (everyone) Initial description how our project (only Time to Thrift at the time) satisfied college board requirements
-		- **[Who am I?:](http://delnorteeats.cf/easter_egg_college/who_am_i)** (everyone) Descriptions of capabilities of each teammate in P5-Tacos
-		- **[AP CSP requirement reflections:](http://delnorteeats.cf/easter_egg_college/AP_CSP_Requirements)** (everyone) Second reflection and planning document on how the team would work towards satisfying college board requirements
+			- [sign up:](http://delnorteeats.cf/easter_egg/signup) (Colin) Creating users in userDN and userEE table. See [below](https://github.com/P5-Tacos/P5-Tacos-thrift-store#signin-logic-c-part-of-crud) (Colin) to see the code and read logic and see future improvements
+			- [dashboard:](http://delnorteeats.cf/easter_egg/user_dashboard) (Colin) Reading information that correspond to the username
+			- [order food:](http://delnorteeats.cf/easter_egg/singlepage_form) (colin+Sam) Creating information in the ordersEE table
+		- [Runner](http://delnorteeats.cf/easter_egg/port_runner) (Colin) redirect from the user to runner page, logs out user
+			- [login:](http://delnorteeats.cf/easter_egg/port_runner) (Colin) required login for all Del Norte Eats Runners
+			- sign up: (need to be implemented) creating users in userDN and userRR
+			- **[dashboard:]**(http://delnorteeats.cf/easter_egg/runner_dashboard) (Colin) (need to be locked behind login required)updating information in the ordersEE table. [WOW]() down below
+		- [admin page:](http://delnorteeats.cf/easter_egg/admin) (Colin) see the contents of the databases involved in the Del Norte Eats 
+	- [Easter Egg](http://delnorteeats.cf/easter_egg_college/) - the section of code which contains CS P specific assignments
+		- [Requirements- Thrift Shop:](http://delnorteeats.cf/easter_egg_college/college_board_requirements) (everyone) Initial description how our project (only Time to Thrift at the time) satisfied college board requirements
+		- [Who am I?:](http://delnorteeats.cf/easter_egg_college/who_am_i) (everyone) Descriptions of capabilities of each teammate in P5-Tacos
+		- [AP CSP requirement reflections:](http://delnorteeats.cf/easter_egg_college/AP_CSP_Requirements) (everyone) Second reflection and planning document on how the team would work towards satisfying college board requirements
 	
 ## Wow 
 ### Login Management (Use of Databases) (Colin's Contributions)
@@ -119,7 +120,7 @@ This login logic only covers the login for the users of Del Norte eats and the R
 		- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/easter_egg/view.py#L358-L365) checking to see if the value within picked_up column is default, if not append 1 to button_logic_pickup if not append 0 (using data abstracting to representing the state of each step in the delivery proccess)
 		- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/easter_egg/view.py#L366-L377) checking to see if the value within delivered column is default, if not append 1 to button_logic_delivered and defined total_time variable as current time (time when delivered button was selected) if not append 0
 		- [code](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/easter_egg/view.py#L386-L388) passing in the values of the database values into the template with the information of button_logic_pickup, button_logic_delivered, total_time
-			- (conceptual) say if we had 5 items within the orderEE table, all of them had been picked up then the list button_logic_pickup would read [1,1,1,1,1] yet if only 3 were delivered the list button_logic_delivered would read [1,0,0,1,1] . These lists can be interpreted that the orders of row 1, 3,5 have been totally completed and orders of row 2 and 3 have not yet been delivted
+			- (conceptual) say if we had 5 items within the orderEE table, all of them had been picked up then the list button_logic_pickup would read [1,1,1,1,1] yet if only 3 were delivered the list button_logic_delivered would read [1,0,0,1,1] . These lists can be interpreted that the orders of row 1, 3,5 have been totally completed and orders of row 2 and 3 have not yet been delivered
 	- [code frontend](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/easter_egg/templates/easter_egg/runner/runner_dashboard.html#L67) jinja if statements read the values in the list and based off of that information display the picked up? button or delivered? or not show any 
 	- [code frontend](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/3fbe9efccde72aae2b3918b5e8ed176b3844a111/views/easter_egg/templates/easter_egg/runner/runner_dashboard.html#L99-L101) if the order has been delivered then display the time it took from user placing the order to delivering the order
 
@@ -373,31 +374,6 @@ To replace the arduous task of manually going out to a thrift store to take phot
 #### when downloading need to execute:
 ```pip install -r requirements.txt```
 
-#### Structure of code
-- Databases
-	- [Users Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/UsersTT.db)
-	- [Items in Database Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/UsersTT.db)
-	- [Archived items in database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/env/items.sqlite3)
-- Models
-	- [Models for Time to Thrift](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/models)
-		- here we have stored the python files which contains the information which populates the pages within the time to thrift store
-			- [info for landing cards of the stores](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/websitecards.py)
-			- [images for barbarella gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/barbarelladata.py)
-			- [images for thrifty threads gallery](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/models/thriftythreadsdata.py)
-- Views
-	- [app.py](https://github.com/P5-Tacos/P5-Tacos-thrift-store/blob/main/app.py)
-		- contains the CRUD logic to manage user login and the shopping cart which is tied to the Time to Thrift webpage. this logic is intertwined with the routes that enable the user to navigate around the home page. 
-- Blue Prints 
-	- we have many projects within the same repository, this was to provide a single location for our teacher to access all of our code and to keep track of student participation through monitoring our commits to the project 
-		- we use blueprints to organize all of the files for each large section of the code [here](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views)
-			- [database](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/database_items)
-				- this folder contains the CRUD backend which helps supports the database page in the website. This was the first proof of concept of CRUD in the repo
-			- [Del Norte Eats](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg)
-				- our second largest project on the repository, the blueprint contains its own model view control, we are working on paring it with an independent database to what we are currently using for time to thrift 	 
-			- [College Board Journal](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/easter_egg_college)
-				- mainly contains specialized front end focused templates to address college board specific requirements 	
-			- [Demonstration of API](https://github.com/P5-Tacos/P5-Tacos-thrift-store/tree/main/views/makeup_api)
-				- this location contains the front end of pulling from the api of choice
 
 #### [Refrencing Class Guide](https://github.com/nighthawkcoders/flask-idea-homesite)
 #### Pull code from Github and update packages

@@ -1,0 +1,329 @@
+Folder PATH listing for volume DATA
+Volume serial number is CC31-6B05
+D:.
+|   app.py
+|   eggers.sqlite3
+|   identifier.sqlite
+|   output.doc
+|   pyvenv.cfg
+|   README.md
+|   requirements.txt
+|   UsersTT.db
+|   wsgi.py
+|   
++---models
+|   |   barbarelladata.py
+|   |   contactimages.py
+|   |   crud_items.py
+|   |   data_food.sqlite
+|   |   gallery_form.py
+|   |   image_downloader.py
+|   |   login.py
+|   |   module.py
+|   |   reactiontestcode.py
+|   |   setup.py
+|   |   thriftythreadsdata.py
+|   |   websitecards.py
+|   |   __init__.py
+|   |   __init__.pyc
+|   |   
+|   \---__pycache__
+|           barbarelladata.cpython-39.pyc
+|           contactimages.cpython-39.pyc
+|           crud_items.cpython-39.pyc
+|           login.cpython-39.pyc
+|           module.cpython-39.pyc
+|           thriftythreadsdata.cpython-39.pyc
+|           websitecards.cpython-39.pyc
+|           __init__.cpython-39.pyc
+|           
++---static
+|   +---css
+|   |       signin.css
+|   |       signinEgg.css
+|   |       style.css
+|   |       style_base.css
+|   |       style_dashboard.css
+|   |       style_database_gallery.css
+|   |       style_database_gallery_new.css
+|   |       style_gallery.css
+|   |       style_home.css
+|   |       
+|   \---images
+|       +---barbarella
+|       |       item1.jpg
+|       |       item10.jpg
+|       |       item11.jpg
+|       |       item12.jpg
+|       |       item13.jpg
+|       |       item14.jpg
+|       |       item15.jpg
+|       |       item16.jpg
+|       |       item17.jpg
+|       |       item18.jpg
+|       |       item19.jpg
+|       |       item2.jpg
+|       |       item3.jpg
+|       |       item4.jpg
+|       |       item5.jpg
+|       |       item6.jpg
+|       |       item7.jpg
+|       |       item8.jpg
+|       |       item9.jpg
+|       |       
+|       +---college_board
+|       |       college_board_banner.jpg
+|       |       
+|       +---contactus
+|       |       Andrew_Profile.jpg
+|       |       Brayden_Profile.png
+|       |       Colin_Profile.jpg
+|       |       linkedin.png
+|       |       Samuel_Mahjouri.jpg
+|       |       
+|       +---delnorteeatsfood
+|       |       snack1.jpg
+|       |       snack10.jpg
+|       |       snack11.jpg
+|       |       snack12.jpg
+|       |       snack13.jpg
+|       |       snack14.jpg
+|       |       snack15.jpg
+|       |       snack16.jpg
+|       |       snack17.jpg
+|       |       snack18.jpg
+|       |       snack19.jpg
+|       |       snack2.jpg
+|       |       snack3.jpg
+|       |       snack4.jpg
+|       |       snack5.jpg
+|       |       snack6.jpg
+|       |       snack7.jpg
+|       |       snack8.jpg
+|       |       snack9.jpg
+|       |       
+|       +---DNHSpitures
+|       |       campusmap.jpg
+|       |       DNHS-Campus-Map.jpg
+|       |       overhead map testing-02.svg
+|       |       overhead map testing_d buildings.svg
+|       |       
+|       +---favicons
+|       |       acorn_noback.gif
+|       |       egg.jpg
+|       |       shirt_noback.gif
+|       |       taco_noback.gif
+|       |       uber-eats-logo-1.jpg
+|       |       
+|       +---github_images
+|       +---icon
+|       |       delete_button.jpg
+|       |       delete_button2.jpg
+|       |       
+|       +---owner_upload
+|       |       1.jpg
+|       |       10.jpg
+|       |       11.jpg
+|       |       12.jpg
+|       |       15.jpg
+|       |       2.jpg
+|       |       20.jpg
+|       |       22.jpg
+|       |       3.jpg
+|       |       8.jpg
+|       |       9.jpg
+|       |       rolling.jpg
+|       |       
+|       +---storefront
+|       |       barbarellaimage.jpg
+|       |       thriftythreadsimage.jpg
+|       |       
+|       +---thrifty_threads
+|       |       item1.jpg
+|       |       item2.jpg
+|       |       item3.jpg
+|       |       item4.jpg
+|       |       item5.jpg
+|       |       
+|       \---user_dashboard
+|               shopping-cart-black.svg
+|               shopping-cart-white-filled.svg
+|               shopping-cart-white.svg
+|               
++---templates
+|   |   404.html
+|   |   base.html
+|   |   database_form.html
+|   |   index.html
+|   |   reactiontest.html
+|   |   testing_home.html
+|   |   
+|   \---unused_templates
+|           clothing.html
+|           gallery_makeup.html
+|           inventory.html
+|           men.html
+|           women.html
+|           
++---views
+|   |   __init__.py
+|   |   __init__.pyc
+|   |   
+|   +---database_items
+|   |   |   items.sqlite3
+|   |   |   model.py
+|   |   |   view.py
+|   |   |   view.pyc
+|   |   |   __init__.py
+|   |   |   __init__.pyc
+|   |   |   
+|   |   +---static
+|   |   +---templates
+|   |   |   \---database_items
+|   |   |           database_items.html
+|   |   |           index.html
+|   |   |           
+|   |   \---__pycache__
+|   |           view.cpython-39.pyc
+|   |           __init__.cpython-39.pyc
+|   |           
+|   +---easter_egg
+|   |   |   view.py
+|   |   |   view.pyc
+|   |   |   __init__.py
+|   |   |   __init__.pyc
+|   |   |   
+|   |   +---model
+|   |   |   |   del_norte_buildings.py
+|   |   |   |   food.py
+|   |   |   |   model.py
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   \---__pycache__
+|   |   |           del_norte_buildings.cpython-39.pyc
+|   |   |           food.cpython-39.pyc
+|   |   |           model.cpython-39.pyc
+|   |   |           __init__.cpython-39.pyc
+|   |   |           
+|   |   +---static
+|   |   |   |   formValScript.js
+|   |   |   |   multiPageForm.css
+|   |   |   |   singlepage_form.css
+|   |   |   |   
+|   |   |   \---images
+|   |   |           running_man_black.svg
+|   |   |           running_man_white.svg
+|   |   |           running_man_yellow.svg
+|   |   |           shopping-cart-white.svg
+|   |   |           shopping-cart-yellow.svg
+|   |   |           
+|   |   +---templates
+|   |   |   \---easter_egg
+|   |   |       |   admin_page.html
+|   |   |       |   after_form.html
+|   |   |       |   after_login.html
+|   |   |       |   base_egg.html
+|   |   |       |   login.html
+|   |   |       |   singlepage_form.html
+|   |   |       |   singlepage_form_map.html
+|   |   |       |   SU.html
+|   |   |       |   user_dashboard_authen.html
+|   |   |       |   user_dashboard_guest.html
+|   |   |       |   
+|   |   |       +---runner
+|   |   |       |       base_egg_runner.html
+|   |   |       |       login_runner.html
+|   |   |       |       runner_dashboard.html
+|   |   |       |       SU.html
+|   |   |       |       
+|   |   |       \---unused_templates
+|   |   |               auth_user.html
+|   |   |               home.html
+|   |   |               imagemapofDNHS.html
+|   |   |               image_map_dnhs.html
+|   |   |               image_map_dnhs2.html
+|   |   |               multipage_form.html
+|   |   |               newcontactus.html
+|   |   |               ordernow.html
+|   |   |               Signup.html
+|   |   |               sign_up.html
+|   |   |               user_dashboard.html
+|   |   |               
+|   |   \---__pycache__
+|   |           del_norte_buildings.cpython-39.pyc
+|   |           food.cpython-39.pyc
+|   |           model.cpython-39.pyc
+|   |           view.cpython-39.pyc
+|   |           __init__.cpython-39.pyc
+|   |           
+|   +---easter_egg_college
+|   |   |   contactimages.py
+|   |   |   view.py
+|   |   |   view.pyc
+|   |   |   __init__.py
+|   |   |   __init__.pyc
+|   |   |   
+|   |   +---templates
+|   |   |   \---easter_egg_college
+|   |   |           AP CSP Requirements Reflection.html
+|   |   |           base_egg_college.html
+|   |   |           college_board_requirements.html
+|   |   |           home.html
+|   |   |           who_am_i.html
+|   |   |           
+|   |   \---__pycache__
+|   |           view.cpython-39.pyc
+|   |           __init__.cpython-39.pyc
+|   |           
+|   +---makeup_api
+|   |   |   model.py
+|   |   |   model.pyc
+|   |   |   view.py
+|   |   |   view.pyc
+|   |   |   __init__.py
+|   |   |   __init__.pyc
+|   |   |   
+|   |   +---static
+|   |   +---templates
+|   |   |   \---makeup_api
+|   |   |           home.html
+|   |   |           makeup_landing.html
+|   |   |           
+|   |   \---__pycache__
+|   |           model.cpython-39.pyc
+|   |           view.cpython-39.pyc
+|   |           __init__.cpython-39.pyc
+|   |           
+|   +---static
+|   |   \---images
+|   |       \---owner_upload
+|   +---time_to_thrift
+|   |   |   view.py
+|   |   |   __init__.py
+|   |   |   
+|   |   +---static
+|   |   +---templates
+|   |   |   \---time_to_thrift
+|   |   |           admin_page.html
+|   |   |           after_login.html
+|   |   |           clothes_info.html
+|   |   |           contactus.html
+|   |   |           gallery.html
+|   |   |           home.html
+|   |   |           logged_in.html
+|   |   |           login.html
+|   |   |           storefront.html
+|   |   |           SU.html
+|   |   |           
+|   |   \---__pycache__
+|   |           model.cpython-39.pyc
+|   |           view.cpython-39.pyc
+|   |           __init__.cpython-39.pyc
+|   |           
+|   \---__pycache__
+|           __init__.cpython-39.pyc
+|           
+\---__pycache__
+        app.cpython-39.pyc
+        makeup_data.cpython-39.pyc
+        

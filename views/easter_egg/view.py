@@ -108,9 +108,9 @@ def index():
     return result
 
 #  static image map
-@easter_egg_bp.route('/image_map_dnhs')
+@easter_egg_bp.route('/imagemap')
 def image_map():
-    return render_template("easter_egg/unused_templates/image_map_dnhs.html", images=model.infoforthecontactsineaster(),
+    return render_template("easter_egg/unused_templates/image_map_dnhs3.html", images=model.infoforthecontactsineaster(),
                            user_type=user_type)
 
 # image map that resizes with the window size

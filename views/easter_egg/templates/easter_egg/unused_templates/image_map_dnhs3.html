@@ -22,6 +22,11 @@ Image Map
     polyline:hover{
         fill: red;
     }
+
+    #map_of_school {
+        width:960px;
+        border:1px solid grey
+    }
 </style>
 {% endblock %}
 
@@ -32,9 +37,15 @@ Image Map
 <body>
 
 <!-- refrence: https://css-tricks.com/svg-map-rollovers/-->
+
 <h1>Recent Map</h1>
+
+<button onclick="resizeMap(10)">+</button>
+<button onclick="resizeMap(-10)">-</button>
+<br>
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 324 378.23" xmlns="http://www.w3.org/2000/svg">
+<div id="map_of_school">
+<svg  viewBox="0 0 324 378.23" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <style>.b6a5f13c-e414-4c64-b1f1-7b6ca79506e1{fill:#fff200;}.fc9a9c34-c030-4bc2-babc-87e99dc0a195{fill:#00aeef;}.efda9ebf-bfee-4e0d-adb2-036ec6f1d08b{fill:#92278f;}.a5aaf82f-b17f-416f-918f-e4af0f9e2432{fill:#1c75bc;}.a138e5a9-c3f1-44ad-8da2-4c5b7c0831bb{fill:#eda9ae;}.a6f0ee56-a258-4ee1-a142-06d44ef2cd81{fill:#d7df23;}.a511e063-0af9-4bd4-98e6-56d8fc76a17e{fill:#ed1c24;}</style>
     </defs>
@@ -74,7 +85,29 @@ Image Map
         <rect class="b6a5f13c-e414-4c64-b1f1-7b6ca79506e1" transform="translate(-128.93 222.87) rotate(-41.91)" x="210.96" y="238.18" width="31.19" height="83.21" data-name="g_button"/>
     </g>
 </svg>
+</div>
 
+<script>
+
+    //function to resize the size of the svg
+    function resizeMap(x){
+        console.log(x)
+        var map = document.getElementById("map_of_school");
+
+        //gets the width of the div that the map is conatined n
+        currentWidth = map.offsetWidth;
+        //console.log('currentWidth'+ String(currentWidth));
+
+        //adds the current width to the value that was provided by the argument
+        finalWidth = Number(currentWidth) + Number(x);
+        //console.log(finalWidth);
+
+        //makes the div reflect the user input
+        map.style.width = String(finalWidth)+'px';
+
+    }
+
+</script>
 </body>
 </div>
 {% endblock %}

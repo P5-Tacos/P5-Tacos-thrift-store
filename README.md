@@ -21,7 +21,7 @@
 
 ## Structure of the Website (front end)
 
-These bullets highlight the structure of the templates (front end) of the website and what each page's function is. The inclusion of this section is to demonstrate the scale of the website. WOW items to check out are denoted by both being bold and italicized. Be sure to check out our [wow section](https://github.com/P5-Tacos/P5-Tacos-thrift-store#wow) down below for more indepth explinations of each wow. ['jhon','password'] represents the username and password (many passwords are the string: 'passwords') that will need to be typed in at each login.
+These bullets highlight the structure of the templates (front end) of the website and what each page's function is. The inclusion of this section is to demonstrate the scale of the website. WOW items to check out are denoted by both being ***bold and italicized***. Be sure to check out our [wow section](https://github.com/P5-Tacos/P5-Tacos-thrift-store#wow) down below for more indepth explinations of each wow. ['jhon','password'] represents the username and password (many passwords are the string: 'passwords') that will need to be typed in at each login.
 
 - [Landing page](http://delnorteeats.cf/) landing page to navigate throughout each of the 3 main sections. Notice the css on hover. Need to improve css for mobile users and assesibility guidelines
 	- [Time to Thrift](http://delnorteeats.cf/time_to_thrift/) - First project landing page

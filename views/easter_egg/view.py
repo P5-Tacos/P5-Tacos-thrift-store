@@ -113,6 +113,12 @@ def image_map():
     return render_template("easter_egg/unused_templates/image_map_dnhs3.html", images=model.infoforthecontactsineaster(),
                            user_type=user_type)
 
+#  where the user is able to see where they have previously ordered in a map
+@easter_egg_bp.route('/imagemap4')
+def image_map_user():
+    return render_template("easter_egg/unused_templates/image_map_dnhs4.html", images=model.infoforthecontactsineaster(),
+                           user_type=user_type)
+
 # image map that resizes with the window size
 @easter_egg_bp.route('/image_map_dnhs2')
 def image_map2():

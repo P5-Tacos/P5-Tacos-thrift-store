@@ -1,0 +1,244 @@
+{% extends "easter_egg/base_egg.html" %}
+<html lang="en">
+
+
+{% block title %}
+Image Map
+{% endblock %}
+
+{% block style %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!--allows to run jquery in code-->
+
+<style>
+    path:hover {
+        fill: red;
+    }
+    rect:hover{
+        fill: red;
+    }
+    polygon:hover{
+        fill: red;
+    }
+    polyline:hover{
+        fill: red;
+    }
+
+    #map_of_school {
+        width:960px;
+        border:1px solid grey
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="margin_1">
+
+<body>
+
+<!-- refrence: https://css-tricks.com/svg-map-rollovers/-->
+
+<h1>Recent Map</h1>
+
+<button onclick="resizeMap(-100)">-</button>
+<input id="map_slider" type="range" min="1" max="1920" value="50" class="slider" >
+<button onclick="resizeMap(100)">+</button>
+
+<br>
+<?xml version="1.0" encoding="UTF-8"?>
+<div id="map_of_school">
+    <svg viewBox="0 0 324 378.23" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <style>.b3266438-da1d-4e3c-bac2-d770dedb8474{fill:#fff200;stroke:#231f20;stroke-miterlimit:10;stroke-width:0.5px;}.b10adf20-7396-4bf3-99d5-e5ca36f86b3a{fill:#00aeef;}.bf3597f2-9c48-4708-8d45-0b561aee8c82{fill:#92278f;}.f7d029d0-c566-42d1-96b1-68b3b8b5624c{fill:#662d91;}.e2775818-9eba-486d-8208-ff542ffe4d43{fill:#eda9ae;}.aceb01df-44ba-44dd-b8ba-be5d251a2e0c{fill:#1c75bc;}.fb94e9f5-7635-4a44-b9b0-be009afa3e46{fill:#d7df23;}.bb9b70e8-393d-49f1-9be9-fa402ca1908f{fill:#ed1c24;}</style>
+        </defs>
+        <g data-name="Layer 13">
+            <g data-name="all_buildings">
+                <g data-name="a_buildings">
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="M149.57,101.55l-7.6.26-1.51.31s-1.35.17-2,.32l2.09,19.08,8.87-1.32.2,0,.2-18.66Z" data-name="a135"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="m150.09 76.27-0.26 25.31 12.85 1.16 4.24-25a113.71 113.71 0 0 0-16.83-1.5" data-name="a126"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="149.63 120.24 159.39 122.14 162.68 102.75 149.83 101.58" data-name="a136"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="m136.57 92.17 0.62 6c2.33-0.35 2.32 0.06 4.7-0.11l0.42 3.81 7.26-0.29h0.26l0.26-25.31h-1.92c-7.9 0-12.35 0-19.8 1.55l2.84 15.18z" data-name="a125"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="m113.56 89.74-2.88-7.16a84.2 84.2 0 0 0-8.85 3.62l9.67 19.34a103.2 103.2 0 0 1 11.62-4.17l-4.29-13.76z" data-name="a116"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="M136.57,92.17l-5.36.84-2.84-15.23c-2.22.46-9.51,2.12-11.67,2.71l2.13,7.12,4.29,13.76a105.48,105.48,0,0,1,14.07-3.23Z" data-name="a124"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="121.23 127.53 112.85 109.3 101.42 115.26 112.89 132.33" data-name="a144"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="110.49 128.8 112.89 132.33 101.42 115.26 91.02 122.99 90.96 123.06 101.95 135.14" data-name="a150"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="100.88 135.93 101.95 135.14 90.96 123.06 82.59 132.6 96.18 143.92 102.26 137.42" data-name="a151"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="m121.23 127.53-8.34 4.8-4.24 3.17 8.79 11.5c4.91-4.18 9.31-7.47 9.31-7.47z" data-name="a148"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="m63.59 114.54 13.79 12.16 9.32-9.23-11.41-14.33a113.47 113.47 0 0 0-11.7 11.4" data-name="a101"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="M75.15,103.12l11.43,14.36,1.93-1.9,2.38,2.61a76.46,76.46,0,0,1,8.77-6.11L88.2,93.57a114.57,114.57,0,0,0-13,9.55" data-name="a102"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="m101.83 86.2a113.85 113.85 0 0 0-13.63 7.37l9.37 15.13 3.12-2 2.18 3.45a95 95 0 0 1 8.63-4.6z" data-name="a107"/>
+                </g>
+                <g data-name="d_buildings">
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="147.76 302.01 133.96 301.96 133.97 314.03 147.78 314.07" data-name="d112"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="147.78 314.07 133.97 314.03 133.98 326.16 147.8 326.21" data-name="d114"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="147.8 326.21 133.98 326.16 133.99 339.01 147.82 339.06" data-name="d116"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="147.84 350.98 147.82 339.06 133.99 339.01 133.99 350.93" data-name="d118"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="164.8 326.25 150.98 326.21 150.99 339.06 164.82 339.11" data-name="d115"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="164.84 351.03 164.82 339.11 150.99 339.06 151 350.98" data-name="d117"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="164.76 302.06 150.94 302.01 150.95 314.86 164.78 314.91" data-name="d111"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="164.8 326.83 164.78 314.91 150.95 314.86 150.96 326.79" data-name="d113"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="164.51 267.28 151.45 267.28 151.43 278.98 164.51 278.98" data-name="d102"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="151.43 278.98 151.41 290.59 164.51 290.59 164.51 278.98" data-name="d104"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="148.24 267.28 135.18 267.28 135.16 278.98 148.24 278.98" data-name="d101"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="135.16 278.98 135.14 290.59 148.24 290.59 148.24 278.98" data-name="d103"/>
+                </g>
+                <g data-name="g_buildings">
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="219.47 274.24 209.18 283.43 217.25 292.39 227.55 283.2" data-name="g112"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="227.55 283.2 217.25 292.39 225.37 301.41 235.68 292.2" data-name="g114"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="235.68 292.2 225.37 301.41 233.97 310.96 244.28 301.75" data-name="g116"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="252.27 310.6 244.28 301.75 233.96 310.96 241.94 319.82" data-name="g118"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="248.35 280.87 238.04 290.08 246.64 299.63 256.96 290.42" data-name="g115"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="264.95 299.27 256.96 290.42 246.64 299.63 254.62 308.49" data-name="g117"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="232.15 262.91 221.84 272.11 230.43 281.67 240.75 272.45" data-name="g111"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="248.74 281.3 240.75 272.45 230.43 281.67 238.41 290.53" data-name="g113"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="210.25 237.95 199.9 247.21 207.79 255.81 218.03 246.65" data-name="g102"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="224.98 254.43 218.03 246.65 207.79 255.81 214.84 263.5" data-name="g104"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="197.51 249.34 187.15 258.6 195.04 267.2 205.28 258.05" data-name="g101"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="212.24 265.83 205.28 258.05 195.04 267.2 202.09 274.89" data-name="g103"/>
+                </g>
+                <g data-name="l_buildings">
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="251.92 150.86 256.84 163.75 268.1 159.4 263.17 146.5" data-name="l113"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="263.17 146.5 268.1 159.4 279.41 155.03 274.48 142.12" data-name="l114"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="274.48 142.12 279.41 155.03 291.4 150.4 286.46 137.47" data-name="l116"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="297.58 133.16 286.46 137.47 291.4 150.39 302.52 146.1" data-name="l118"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="268.4 126.23 273.33 139.15 285.32 134.51 280.38 121.59" data-name="l115"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="257.09 130.62 253.3 132.09 258.23 144.99 262.02 143.52 265.32 142.25 260.39 129.34" data-name="l111"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="245.85 134.98 250.77 147.87 258.23 144.99 253.3 132.09" data-name="l110"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="268.4 126.23 260.39 129.34 265.32 142.24 273.33 139.15" data-name="l112"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="291.5 117.28 280.38 121.59 285.32 134.51 296.44 130.22" data-name="l117"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="215.14 147.34 219.7 159.22 230.53 155.1 225.97 143.19" data-name="l102"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="235.79 139.42 225.97 143.19 230.53 155.1 240.36 151.36" data-name="l104"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="220.85 162.22 225.41 174.1 236.24 169.98 231.67 158.07" data-name="l101"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="241.49 154.3 231.67 158.07 236.24 169.98 246.07 166.24" data-name="l103"/>
+                </g>
+                <g data-name="j_buildings">
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="252.37 228.2 247.64 241.16 259 245.24 263.72 232.27" data-name="j113"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="263.72 232.27 258.99 245.24 270.41 249.35 275.14 236.36" data-name="j114"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="275.14 236.36 270.41 249.35 282.5 253.7 287.24 240.7" data-name="j116"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="298.46 244.72 287.24 240.7 282.5 253.7 293.72 257.73" data-name="j118"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="280.95 220.38 276.22 233.37 288.31 237.72 293.04 224.72" data-name="j115"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="269.53 216.29 266.25 215.12 261.53 228.09 264.8 229.26 268.94 230.75 273.67 217.78" data-name="j111"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="280.95 220.38 273.67 217.77 268.94 230.75 276.22 233.37" data-name="j112"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="258.17 212.22 253.45 225.18 261.53 228.09 266.25 215.12" data-name="j110"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="304.27 228.74 293.05 224.72 288.31 237.72 299.53 241.75" data-name="j117"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="227.09 200.9 222.36 213.86 233.72 217.94 238.44 204.97" data-name="j102"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="238.44 204.97 233.72 217.94 245.13 222.05 249.86 209.06" data-name="j104"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="221.28 216.88 216.55 229.84 227.91 233.92 232.63 220.95" data-name="j101"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="232.63 220.95 227.91 233.92 239.32 238.03 244.05 225.04" data-name="j103"/>
+                </g>
+                <g data-name="e_buildings">
+                    <rect class="b3266438-da1d-4e3c-bac2-d770dedb8474" transform="translate(-101.72 92.97) rotate(-22.26)" x="179.35" y="296.47" width="12.04" height="16.98" data-name="e101"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="198.36 290.47 191.61 293.24 187.73 294.83 194.16 310.54 198.04 308.95 204.8 306.19" data-name="e102"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="191.94 311.45 183.02 315.1 180.09 316.3 186.37 331.64 198.22 326.79" data-name="e103"/>
+                    <rect class="b3266438-da1d-4e3c-bac2-d770dedb8474" transform="translate(-113.12 99.19) rotate(-22.26)" x="189.1" y="328.59" width="12.8" height="16.94" data-name="e105"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="207.73 304.99 204.8 306.19 195.82 309.86 202.1 325.2 214.01 320.33" data-name="e104"/>
+                    <rect class="b3266438-da1d-4e3c-bac2-d770dedb8474" transform="translate(-109.5 104.68) rotate(-22.26)" x="204.83" y="322.14" width="12.87" height="16.94" data-name="e106"/>
+                </g>
+                <g data-name="k_buildings">
+                    <rect class="b3266438-da1d-4e3c-bac2-d770dedb8474" transform="translate(-.2 .27) rotate(-.06)" x="258.44" y="187.81" width="17.72" height="12.57" data-name="k101"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="258.42 175.82 258.43 183.44 258.44 187.82 276.16 187.8 276.15 183.42 276.15 175.8" data-name="k102"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="276.16 190.3 276.17 200.36 276.17 203.66 293.47 203.65 293.46 190.28" data-name="k103"/>
+                    <rect class="b3266438-da1d-4e3c-bac2-d770dedb8474" x="293.46" y="190.27" width="17.68" height="13.36" data-name="k105"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="276.14 172.5 276.15 175.8 276.16 185.93 293.46 185.91 293.44 172.48" data-name="k104"/>
+                    <rect class="b3266438-da1d-4e3c-bac2-d770dedb8474" x="293.45" y="172.47" width="17.68" height="13.43" data-name="k106"/>
+                </g>
+                <g data-name="m_buildings">
+                    <polygon class="b10adf20-7396-4bf3-99d5-e5ca36f86b3a" points="266.5 73.22 265.17 71.72 258.24 78.25 266.18 87.37 273.09 81.15"/>
+                    <polygon class="b10adf20-7396-4bf3-99d5-e5ca36f86b3a" points="254.66 98.74 266.17 112.86 269.2 110.51 257.13 96.56"/>
+                    <polygon class="b10adf20-7396-4bf3-99d5-e5ca36f86b3a" points="279.48 62.8 266.5 73.22 273.09 81.15 278.9 76.57 292.65 92.32 299.78 86.79"/>
+                    <polygon class="b10adf20-7396-4bf3-99d5-e5ca36f86b3a" points="269.84 51.41 261.98 58.06 265.5 62.5 273.54 55.78"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="278.56 76.81 272.76 81.39 265.85 87.61 256.24 96.02 256.79 96.8 268.87 110.75 292.32 92.56" data-name="m101"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="273.21 56.03 265.17 62.74 260.7 66.88 264.83 71.97 266.17 73.46 279.14 63.04" data-name="m116"/>
+                </g>
+                <g data-name="p_buildings">
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="205.22 12.14 196.51 9.46 195.6 12.84 204.42 15.36" data-name="p111_2"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="208.55 16.78 205.22 28.1 203.35 34.8 215.59 38.52 220.38 20.86" data-name="p116"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="204.42 15.36 195.6 12.84 189.78 11.23 186.66 22.25 192.75 24.07 203.28 27.47 206.62 16.11" data-name="p111"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="180.96 8.79 180.34 10.97 178.85 16.74 182.09 17.53 181.31 20.65 186.66 22.25 189.78 11.23" data-name="p108"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="192.75 24.07 181.31 20.65 182.09 17.52 178.86 16.74 174.39 15.76 170.31 31.48 189.5 36.3" data-name="p107"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="181.32 50.2 166.42 46.45 163.44 57.92 162.45 61.75 181.36 66.98 184.52 55.06 180.42 53.92" data-name="p101"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="182.32 46.11 186.6 47.24 189.5 36.3 170.31 31.48 166.42 46.45 181.32 50.2" data-name="p104"/>
+                </g>
+                <g data-name="r_buildings">
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="286.34 338.54 277.77 329.38 267.09 339.29 275.66 348.44" data-name="r502"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="298.44 327.31 289.87 318.16 279.19 328.06 287.76 337.22" data-name="r401"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="256.45 361.6 249.65 351.07 237.38 358.9 244.18 369.44" data-name="r402"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="270.36 352.72 263.57 342.18 251.29 350.02 258.09 360.56" data-name="r401"/>
+                </g>
+                <g data-name="n_buildings">
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="M203.53,75l2.08-4.13s-10-4.48-15.17-6.25L186,78.14q3.17,1.08,6.25,2.32l-1.61,4.06a114.85,114.85,0,0,1,11.8,5.57l2.07-3.8,3.84-8.7Z" data-name="n113"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="M225.19,87.64l-6.31,8-2.57,3.45a109.53,109.53,0,0,1,8.84,7.45l2.9-3.2c1.88,1.75,3.7,3.55,5.46,5.42L243.69,99a132.64,132.64,0,0,0-13.18-12.23L228.43,90Z" data-name="n122"/>
+                    <path class="b10adf20-7396-4bf3-99d5-e5ca36f86b3a" d="M227.49,56.36,229.05,54l8,5.36-1.23,2.45,2.68,2,3.3,5.49,7.59-9.72c-1-.77-2-1.51-3-2.26l1.83-2.92-6.81-4.68-1.5,3c-2.12-1.42-4.27-2.8-6.46-4.12l1.43-2.86-6-3.12-1.21,2.65c-1-.55-2-1.12-3-1.64l-4.89,9.49,4.38,1.32Z" data-name="preforming_arts_center"/>
+                    <path class="bf3597f2-9c48-4708-8d45-0b561aee8c82" d="m238.54 63.84-2.68-2 1.23-2.45-8-5.36-1.56 2.34-3.24-1.9-4.38-1.31-6.79-1.47s-1.08 8.25-7 19l-2.12 4.1 4.8 2.56-3.8 8.7a118.55 118.55 0 0 1 14.38 9.31l6.31-8 3.24 2.35 2.07-3.2c3.27-4.61 8.74-9.7 13.88-13.58l-3.06-3.6z" data-name="preforming_arts_center"/>
+                </g>
+                <g data-name="b_buildings">
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="m75 342.91-2.2 4.47c8.55 4.4 13.12 5.86 22.46 8.82l4.17-12.63-18.09-8.8z" data-name="b121"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="91.15 322.12 81.31 334.77 99.39 343.57 104.34 328.54" data-name="b123"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="107.73 318.27 97.72 313.68 91.15 322.12 104.34 328.54" data-name="b125"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="m33.56 316.83-3.1 3.91c-7.64-5.84-10.92-9.33-17.61-16.5l9.62-9.18 15.72 12.55z" data-name="b115"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="45.38 293.28 38.19 307.61 22.47 295.06 33.92 284.13" data-name="b113"/>
+                    <polygon class="b3266438-da1d-4e3c-bac2-d770dedb8474" points="41.74 276.65 50.19 283.72 45.38 293.28 33.92 284.13" data-name="b111"/>
+                    <path class="b3266438-da1d-4e3c-bac2-d770dedb8474" d="M111.82,304.08l2.3-7.24c-3.34-1.07-6.6-2.3-9.79-3.66L99.7,309.09l9.52,4.5.77-2.45,8.13,3.46,2.45-9.38Z" data-name="b128"/>
+                    <path class="f7d029d0-c566-42d1-96b1-68b3b8b5624c" d="M98,290l-5.64,6.44L88.93,290c-2.35-1.39-11.55-7.18-13.82-8.7L67.79,281l3.38-7.87a112.6,112.6,0,0,1-12.92-11.72L45.26,273l8.17,6.64-3.29,3.77L33.61,316.58,75,342.67l22.76-29.24,2-4.58,4.63-15.91c-2.15-.92-4.28-1.88-6.36-2.93" data-name="gym"/>
+                </g>
+                <path class="e2775818-9eba-486d-8208-ff542ffe4d43" d="M118.14,250l-.59-5.52-8,.85c-.68-.44-1.36-.87-2-1.33l-.71-6.75L100,238a66.86,66.86,0,0,1-6.17-6.54L67,253.4A101.77,101.77,0,0,0,115.23,286l10.38-33.09a64.1,64.1,0,0,1-7.47-2.89" data-name="food_court"/>
+                <g data-name="admin_buildings">
+                    <path class="aceb01df-44ba-44dd-b8ba-be5d251a2e0c" d="m92.23 189.85 4.7-21.68-54.93-24.17a106 106 0 0 0-4.28 12.63l-5.1-1a127.76 127.76 0 0 0-3.46 19.4l4.33 0.47a114.84 114.84 0 0 0-0.78 13.5v3l3.85-0.18 40.19-1.52z" data-name="administration"/>
+                    <path class="fb94e9f5-7635-4a44-b9b0-be009afa3e46" d="M61,114.3q-3,3.38-5.71,7l-6.53-4.88c-.67.9-1.33,1.83-2,2.75a121.41,121.41,0,0,0-6.59,10.44c-.49.87-1,1.73-1.45,2.62l7.17,3.8Q43.8,139.9,42,144l55.35,24.31,2.33-3.65,4.32-6.77,2.33-3.66Z" data-name="library"/>
+                    <path class="b10adf20-7396-4bf3-99d5-e5ca36f86b3a" d="m61.14 239.2-8.66-15.34-9.1 3.14-3.58 1.41a112 112 0 0 0 7.75 16.59l3.34-1.93q2.63 4.59 5.68 8.89l14.28-10.19-3.58-5.44z" data-name="maintenance"/>
+                    <path class="bb9b70e8-393d-49f1-9be9-fa402ca1908f" d="M76.14,199.17l.65-8.92L36.6,191.77q.1,4.38.56,8.67l-3.84.34a112.16,112.16,0,0,0,5.44,24.76l3.69-1.13q.45,1.32.93,2.61l9.1-3.16,8.66,15.34,6.13-2.89,3.58,5.44,20-14.25Z" data-name="food_service"/>
+                </g>
+            </g>
+        </g>
+    </svg>
+
+</div>
+
+<script>
+    function init() {
+        console.log('init')
+        //to get the value to set the slider to
+        var map = document.getElementById("map_of_school");
+        currentWidth = map.offsetWidth;
+
+        var slider = document.getElementById("map_slider")
+        slider.value = currentWidth;
+        console.log('slidervalue'+ String(slider.value))
+
+    }
+
+    //function to resize the size of the svg
+    function resizeMap(x){
+        console.log(x)
+        var map = document.getElementById("map_of_school");
+
+        //gets the width of the div that the map is conatined n
+        currentWidth = map.offsetWidth;
+        //console.log('currentWidth'+ String(currentWidth));
+
+        //adds the current width to the value that was provided by the argument
+        finalWidth = Number(currentWidth) + Number(x);
+        //console.log(finalWidth);
+
+        //makes the div reflect the user input
+        map.style.width = String(finalWidth)+'px';
+
+        var slider = document.getElementById("map_slider")
+        slider.value = finalWidth;
+    }
+
+    let elslider = document.getElementById("map_slider");
+
+    // use 'change' instead to see the difference in response
+    //refrence: https://www.impressivewebs.com/onchange-vs-oninput-for-range-sliders/
+    elslider.addEventListener('input', function () {
+        //console.log(elslider.value)
+        document.getElementById("map_of_school").style.width = String(elslider.value)+'px';
+    }, false);
+
+    //running on init
+    init();
+</script>
+</body>
+</div>
+{% endblock %}

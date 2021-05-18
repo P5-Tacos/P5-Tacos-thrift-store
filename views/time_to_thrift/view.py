@@ -303,16 +303,29 @@ def barbarella():
                            display_cart=shopping_cart)  # this is the app route to Barbarella's page
 
 
+def passInfo(store_route, item_name,item_price, item_location, item_description):
+    if float(item_price) > 10.00:
+        item_name = "Expensive - " + str(item_name)
+        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location, "item_description": item_description}
+    else:
+        item_name = "Cheap - " + str(item_name)
+        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location, "item_description": item_description}
+
+    return  pass_info
+
 @time_to_thrift_bp.route('/clothes_info', methods=["GET", "POST"])
 def clothes_info():
     if request.method == 'POST':
+
         store_route = request.form['store_route']
+        print("hello world!")
+        print(store_route)
         item_name = request.form['item_name']
         item_price = request.form['item_price']
         item_location = request.form['item_location']
         item_description = request.form['item_description']
 
-        pass_info = {"item_name": item_name, "item_price": item_price, "item_location": item_location, "item_description": item_description}
+        pass_info = passInfo(store_route,item_name,item_price,item_location,item_description) # callling procedure
 
         return render_template("time_to_thrift/clothes_info.html",
                                pass_info=pass_info)  # this is the app route to Barbarella's page
